@@ -16,10 +16,13 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
-            'full_name' => 'Coach Amr',
+            'name' => 'Coach Amr',
             'email' => 'test@example.com',
+            'phone_number' => '+963958295285',
             'password' => bcrypt('password'),
-            'role' => 'coach'
+            'birth_date' => '2003-10-20',
+            'gender' => 'MALE',
+            'role' => 'Trainer'
         ]);
     }
 }

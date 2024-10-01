@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workout_exercise_set', function (Blueprint $table) {
+        Schema::create('workout_exercise_reps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('workout_exercise_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('workout_exercise_id')->constrained('workout_exercises')->cascadeOnDelete();
             $table->integer('set_number');
-            $table->integer('reps');
-            $table->integer('reps_done')->nullable();
+            $table->integer('expected_reps');
+            $table->decimal('expected_weight');
+            $table->integer('user_reps')->nullable();
+            $table->decimal('user_rep_weight')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('program_exercise_reps');
+        Schema::dropIfExists('workout_exercise_reps');
     }
 };

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_photo', function (Blueprint $table) {
+        Schema::create('workout_exercises', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('photo_path');
+            $table->foreignId('exercise_id')->constrained('exercises')->cascadeOnDelete();
+            $table->integer('no_sets');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_photos');
+        Schema::dropIfExists('workout_exercises');
     }
 };

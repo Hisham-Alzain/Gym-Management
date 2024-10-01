@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\Genders;
+use App\Enums\Roles;
 
 return new class extends Migration
 {
@@ -13,17 +15,14 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone_number')->unique();
             $table->string('password');
-            $table->integer('height')->nullable();
-            $table->integer('weight')->nullable();
-            $table->string('birth_date')->nullable();
-            $table->text('allergies')->nullable();
-            $table->text('disliked_food')->nullable();
-            $table->integer('active_days')->nullable();
-            $table->text('role')->default('trainee');
+            $table->date('birth_date');
+            $table->enum('gender', Genders::names());
+            $table->enum('role', Roles::names())->default('Trainee');
             $table->rememberToken();
             $table->timestamps();
         });

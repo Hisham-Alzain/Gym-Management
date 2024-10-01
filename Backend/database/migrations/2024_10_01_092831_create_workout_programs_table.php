@@ -1,6 +1,5 @@
 <?php
 
-use App\WorkoutMuscle;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workout_day', function (Blueprint $table) {
+        Schema::create('workout_programs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('workout_program_id')->constrained()->cascadeOnDelete();
-            $table->enum("muscle", WorkoutMuscle::names());
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->integer('no_days');
+            $table->integer('repeat_days'); # after how many days to repeat the workout
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('workout_day');
+        Schema::dropIfExists('workout_programs');
     }
 };

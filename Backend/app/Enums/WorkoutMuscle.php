@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Enums;
 
-enum WorkoutMuscle :string
+enum WorkoutMuscle: string
 {
     case Chest = 'Chest';
     case Back = 'Back';
