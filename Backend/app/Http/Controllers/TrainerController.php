@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\SubscriptionRequest;
 use App\Models\User;
 use App\Models\Subscription;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SubscriptionRequest;
 
 class TrainerController extends Controller
 {
@@ -13,7 +14,7 @@ class TrainerController extends Controller
     {
         $validated = $request->validated();
         // Get user
-        $user = auth()->user();
+        $user = Auth::user();
 
         // Check user
         if ($user == null) {
