@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subscription_info', function (Blueprint $table) {
+        Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->decimal('height')->nullable();
+            $table->decimal('weight')->nullable();
+            $table->text('illnesses')->nullable();
+            $table->text('allergies')->nullable();
+            $table->text('disliked_food')->nullable();
+            $table->integer('active_days')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subscription_info');
+        Schema::dropIfExists('user_infos');
     }
 };
