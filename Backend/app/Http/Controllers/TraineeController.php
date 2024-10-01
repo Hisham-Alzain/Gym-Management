@@ -64,10 +64,8 @@ class TraineeController extends Controller
             200
         );
     }
-    public function ShowWorkoutProgram(){
-        
-    }
-    public function ShowDietProgram(){
-        
-    }
+
+    public function ShowWorkoutProgram() {}
+
+    public function ShowDietProgram() {}
 }

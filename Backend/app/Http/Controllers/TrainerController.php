@@ -148,8 +148,11 @@ class TrainerController extends Controller
             }
         }
     }
+
     public function CreateDietProgram() {}
+
     public function CreateWorkoutProgram() {}
+
     public function ShowAllSubscriptions()
     {
         // Get user
@@ -170,7 +173,10 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            // Get all subscriptions
             $subscriptions = Subscription::all();
+
+            // Response
             return response()->json([
                 "message" => "all subscriptions fetched",
                 "data" => new SubscriptionCollection($subscriptions)

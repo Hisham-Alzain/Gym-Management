@@ -48,8 +48,9 @@ class UserInfo extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
     public function photos(): HasMany
     {
-        return $this->hasMany(Photo::class, 'info_id','id');
+        return $this->hasMany(UserPhoto::class, 'info_id', 'id');
     }
 }
