@@ -24,16 +24,17 @@ class UpdateUserInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "height" => ["sometimes","numeric","between:120,210"],
-            "weight" => ["sometimes","numeric","between:40,200"],
+            "height" => ["sometimes", "numeric", "between:120,210"],
+            "weight" => ["sometimes", "numeric", "between:40,200"],
             "ilness" => ["sometimes"],
             "allergies" => ["sometimes"],
-            "disliked_food"=>["sometimes"],
-            "active_days"=>["sometimes","integer","between:2,7"],
+            "disliked_food" => ["sometimes"],
+            "active_days" => ["sometimes", "integer", "between:2,7"],
             'photos' => ['sometimes', 'array', 'max:3'],
             'photos.*' => ['image', 'max:2048'],
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([

@@ -13,6 +13,7 @@ class AdminPolicy
     {
         //
     }
+
     public function Policy(User $user)
     {
         if ($user->role == 'Trainer') {

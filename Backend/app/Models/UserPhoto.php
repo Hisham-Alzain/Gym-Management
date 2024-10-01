@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
-class Subscription extends Model
+class UserPhoto extends Model
 {
     use HasFactory;
 
@@ -16,9 +16,8 @@ class Subscription extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
-        'start_date',
-        'end_date'
+        'info_id',
+        'photo_path'
     ];
 
     /**
@@ -39,8 +38,8 @@ class Subscription extends Model
     }
 
     /* Relations */
-    public function user(): BelongsTo
+    public function userInfo(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(userInfo::class, 'info_id', 'id');
     }
 }
