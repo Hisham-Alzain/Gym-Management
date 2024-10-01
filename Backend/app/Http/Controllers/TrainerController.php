@@ -8,6 +8,7 @@ use App\Models\Subscription;
 use App\Policies\AdminPolicy;
 use Illuminate\Http\Request;
 use App\Http\Requests\SubscriptionRequest;
+use App\Http\Resources\SubscriptionCollection;
 use App\Http\Resources\UserInfoCollection;
 use Illuminate\Support\Facades\Auth;
 
@@ -145,6 +146,35 @@ class TrainerController extends Controller
                     'message' => 'Successfully deleted user'
                 ], 200);
             }
+        }
+    }
+    public function CreateDietProgram() {}
+    public function CreateWorkoutProgram() {}
+    public function ShowAllSubscriptions()
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            $subscriptions = Subscription::all();
+            return response()->json([
+                "message" => "all subscriptions fetched",
+                "data" => new SubscriptionCollection($subscriptions)
+            ], 200);
         }
     }
 }
