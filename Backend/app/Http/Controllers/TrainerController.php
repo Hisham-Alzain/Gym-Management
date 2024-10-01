@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserInfoCollection;
 use App\Models\User;
 use App\Models\Subscription;
+use App\Policies\AdminPolicy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SubscriptionRequest;
@@ -23,7 +25,12 @@ class TrainerController extends Controller
             ], 401);
         }
         // Check user role
-        if ($user->role == 'Trainer') {
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
             $trainee = User::where('id', $validated['user_id'])->first();
             if ($trainee == null) {
                 return response()->json([
@@ -50,10 +57,68 @@ class TrainerController extends Controller
                     'message' => 'added the subscription successfully'
                 ], 200);
             }
-        } else {
+        }
+    }
+
+    public function ShowUsers(Request $request)
+    {
+
+        // Get user
+        //$user = Auth::user();
+        $user = User::find(1);
+        // Check user
+        if ($user == null) {
             return response()->json([
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
+        }
+        // Check user role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            $users = User::all();
+            return response()->json([
+                "users" => new UserInfoCollection($users->items()),
+            ]);
+        }
+    }
+
+    public function DeleteUser(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required',
+        ]);
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+        // Check user role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            $trainee = User::where('id', $validated['user_id'])->first();
+            if ($trainee == null) {
+                return response()->json([
+                    'errors' => ['user' => 'user not found'],
+                ], 404);
+            } else {
+                $trainee->delete();
+                // Response
+                return response()->json([
+                    'message' => 'Successfully deleted user'
+                ], 200);
+            }
         }
     }
 }

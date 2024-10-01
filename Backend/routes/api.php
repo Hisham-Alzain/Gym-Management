@@ -20,4 +20,6 @@ Route::controller(TraineeController::class)->group(function () {
 });
 Route::controller(TrainerController::class)->group(function () {
     Route::post('/subscription/start', 'StartSubscription');
+    Route::get('/users', 'ShowUsers');
+    Route::delete('/delete', 'DeleteUser');
 });
