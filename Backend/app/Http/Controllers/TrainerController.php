@@ -64,8 +64,7 @@ class TrainerController extends Controller
     {
 
         // Get user
-        //$user = Auth::user();
-        $user = User::find(1);
+        $user = Auth::user();
         // Check user
         if ($user == null) {
             return response()->json([

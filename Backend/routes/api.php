@@ -11,7 +11,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::controller(AuthController::class)->group(function () {
-    Route::post('/register',  'Register');
+    Route::post('/register', 'Register');
     Route::post('/login', 'Login');
 });
 Route::controller(TraineeController::class)->group(function () {
@@ -19,7 +19,9 @@ Route::controller(TraineeController::class)->group(function () {
     Route::post('/trainee', 'UpdateUserInfo');
 });
 Route::controller(TrainerController::class)->group(function () {
-    Route::post('/subscription/start', 'StartSubscription');
-    Route::get('/users', 'ShowUsers');
-    Route::delete('/delete', 'DeleteUser');
+    Route::middleware('auth:api')->group(function () {
+        Route::post('/subscription/start', 'StartSubscription');
+        Route::get('/users', 'ShowUsers');
+        Route::delete('/delete', 'DeleteUser');
+    });
 });
