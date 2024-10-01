@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('diets', function (Blueprint $table) {
+        Schema::create('meals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->string('time_between_meals');
+            $table->foreignId('diet_id')->constrained()->cascadeOnDelete();
+            $table->integer('meal_number');
+            $table->text('description');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('diets');
+        Schema::dropIfExists('meals');
     }
 };

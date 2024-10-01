@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('birth_date')->nullable();
             $table->text('allergies')->nullable();
             $table->text('disliked_food')->nullable();
+            $table->integer('active_days')->nullable();
             $table->text('role')->default('trainee');
             $table->rememberToken();
             $table->timestamps();
