@@ -42,12 +42,8 @@ class TraineeController extends Controller
                 'errors' => ['user' => 'Invalid user']
             ], status: 401);
         }
-        $userInfo = UserInfo::where("user_id", $user->id)->first();
-        if ($userInfo == null) {
-            $userInfo=UserInfo::create([]);
-        }
         return response()->json([
-            "data" => new UserInfoResource($userInfo),
+            "data" => new UserInfoResource($user),
             "message" => "User info retrieved successfully"
         ]
         , 200);

@@ -29,7 +29,7 @@ class AuthController extends Controller
         }
 
         // Prepare token
-        $token = $user->createToken($request->device_name)->plainTextToken;
+        $token = $user->createToken("api_token")->plainTextToken;
 
         // Response
         return response()->json([
