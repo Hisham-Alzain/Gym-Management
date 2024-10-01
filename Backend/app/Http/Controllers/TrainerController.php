@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Subscription;
-use Illuminate\Http\Request;
 use App\Policies\AdminPolicy;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Resources\UserInfoCollection;
+use Illuminate\Support\Facades\Auth;
 
 class TrainerController extends Controller
 {
     public function StartSubscription(SubscriptionRequest $request)
     {
+        // Validate request
         $validated = $request->validated();
+
         // Get user
         $user = Auth::user();
 
@@ -25,15 +27,21 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         }
-        // Check user role
+
+        // Check user_role
         $policy = new AdminPolicy();
         if (!$policy->Policy(User::find($user->id))) {
+            // Response
             return response()->json([
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            // Get Trainee
             $trainee = User::where('id', $validated['user_id'])->first();
+
+            // Check Trainee
             if ($trainee == null) {
+                // Response
                 return response()->json([
                     'errors' => ['user' => 'user not found'],
                 ], 404);
@@ -48,11 +56,14 @@ class TrainerController extends Controller
                 } else {
                     $end_date = $start_date->addMonth($new_month);
                 }
+
+                // Create subscription
                 $subscription = Subscription::create([
                     'user_id' => $validated['user_id'],
                     'start_date' => $start_date,
                     'end_date' => $end_date
                 ]);
+
                 // Response
                 return response()->json([
                     'message' => 'added the subscription successfully'
@@ -65,20 +76,26 @@ class TrainerController extends Controller
     {
         // Get user
         $user = Auth::user();
+
         // Check user
         if ($user == null) {
             return response()->json([
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         }
-        // Check user role
+
+        // Check user_role
         $policy = new AdminPolicy();
         if (!$policy->Policy(User::find($user->id))) {
+            // Response
             return response()->json([
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            // Get all users
             $users = User::all();
+
+            // Response
             return response()->json([
                 "users" => new UserInfoCollection($users),
             ]);
@@ -87,9 +104,11 @@ class TrainerController extends Controller
 
     public function DeleteUser(Request $request)
     {
+        // Validate request
         $validated = $request->validate([
             'user_id' => 'required',
         ]);
+
         // Get user
         $user = Auth::user();
 
@@ -99,20 +118,28 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         }
-        // Check user role
+
+        // Check user_role
         $policy = new AdminPolicy();
         if (!$policy->Policy(User::find($user->id))) {
+            // Response
             return response()->json([
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            // Get trainee
             $trainee = User::where('id', $validated['user_id'])->first();
+
+            // Check Trainee
             if ($trainee == null) {
+                // Response
                 return response()->json([
                     'errors' => ['user' => 'user not found'],
                 ], 404);
             } else {
+                // Delete trainee
                 $trainee->delete();
+
                 // Response
                 return response()->json([
                     'message' => 'Successfully deleted user'

@@ -51,11 +51,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-        /* Relations */
+
+    /* Relations */
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class, 'user_id', 'id');
     }
+
     public function userInfo(): HasOne
     {
         return $this->hasOne(UserInfo::class, 'user_id', 'id');

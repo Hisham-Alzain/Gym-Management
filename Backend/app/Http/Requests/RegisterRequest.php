@@ -26,15 +26,16 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>["required", "string"],
-            "email"=>["required","email","unique:users"],
-            'phone_number' => ['required', 'unique:users', 'min:11', 'max:14', 'regex:/^\+/'],            
+            "name" => ["required", "string"],
+            "email" => ["required", "email", "unique:users"],
+            'phone_number' => ['required', 'unique:users', 'min:11', 'max:14', 'regex:/^\+/'],
             'password' => ['required'],
             'confirm_password' => ['required', 'same:password'],
             'birth_date' => ['required', 'date_format:Y-m-d'],
             'gender' => ['required', Rule::in(Genders::names())],
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
