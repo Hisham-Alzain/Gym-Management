@@ -15,11 +15,15 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'Login');
 });
 Route::controller(TraineeController::class)->group(function () {
-    Route::get('/trainee', 'GetUserInfo');
-    Route::post('/trainee', 'UpdateUserInfo');
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/trainee', 'GetUserInfo');
+        Route::post('/trainee', 'UpdateUserInfo');
+    });
 });
-Route::controller(TrainerController::class)->group(function () {
-    Route::post('/subscription/start', 'StartSubscription');
-    Route::get('/users', 'ShowUsers');
-    Route::delete('/delete', 'DeleteUser');
+Route::controller( TrainerController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/subscription/start', 'StartSubscription');
+        Route::get('/users',  'ShowUsers');
+        Route::delete('/delete', 'DeleteUser');
+    });
 });

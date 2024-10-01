@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserInfoCollection;
+
 use App\Models\User;
 use App\Models\Subscription;
-use App\Policies\AdminPolicy;
 use Illuminate\Http\Request;
+use App\Policies\AdminPolicy;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SubscriptionRequest;
+use App\Http\Resources\UserInfoCollection;
 
 class TrainerController extends Controller
 {
@@ -60,12 +61,10 @@ class TrainerController extends Controller
         }
     }
 
-    public function ShowUsers(Request $request)
+    public function ShowUsers()
     {
-
         // Get user
-        //$user = Auth::user();
-        $user = User::find(1);
+        $user = Auth::user();
         // Check user
         if ($user == null) {
             return response()->json([
@@ -81,7 +80,7 @@ class TrainerController extends Controller
         } else {
             $users = User::all();
             return response()->json([
-                "users" => new UserInfoCollection($users->items()),
+                "users" => new UserInfoCollection($users),
             ]);
         }
     }

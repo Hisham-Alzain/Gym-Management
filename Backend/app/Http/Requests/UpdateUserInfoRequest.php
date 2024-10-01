@@ -26,10 +26,10 @@ class UpdateUserInfoRequest extends FormRequest
         return [
             "height" => ["sometimes","numeric","between:120,210"],
             "weight" => ["sometimes","numeric","between:40,200"],
-            "ilness" => ["sometimes","text"],
-            "allergies" => ["sometimes","text"],
-            "disliked_food"=>["sometimes","text"],
-            "active_days"=>["sometimes","integer","between:2:7"],
+            "ilness" => ["sometimes"],
+            "allergies" => ["sometimes"],
+            "disliked_food"=>["sometimes"],
+            "active_days"=>["sometimes","integer","between:2,7"],
             'photos' => ['sometimes', 'array', 'max:3'],
             'photos.*' => ['image', 'max:2048'],
         ];
