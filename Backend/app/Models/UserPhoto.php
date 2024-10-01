@@ -40,6 +40,6 @@ class UserPhoto extends Model
     /* Relations */
     public function userInfo(): BelongsTo
     {
-        return $this->belongsTo(userInfo::class, 'info_id', 'id');
+        return $this->belongsTo(UserInfo::class, 'info_id', 'id');
     }
 }
