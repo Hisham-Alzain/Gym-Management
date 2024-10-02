@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import cat1 from './assets/cat1.png'
 import cat2 from './assets/cat2.png'
+import team1 from './assets/team1.png'
+import team2 from './assets/team2.png'
+import team3 from './assets/team3.png'
 import './App.css'
 
 function App() {
@@ -39,7 +42,7 @@ function App() {
                     <div className="topic-content">
                       <h3>Personal traning</h3>
                       <p>You’ll look at graphs and charts in Task One, how to approach the task and <br /> the language needed for a successful answer.</p>
-                      <a href="courses.html" className="btn">View Courses</a>
+                      <a href="" className="btn">View Courses</a>
                     </div>
                   </div>
                 </div>
@@ -53,9 +56,56 @@ function App() {
                     <div className="topic-content">
                       <h3>Group traning</h3>
                       <p>You’ll look at graphs and charts in Task One, how to approach the task and <br /> the language needed for a successful answer.</p>
-                      <a href="courses.html" className="btn">View Courses</a>
+                      <a href="" className="btn">View Courses</a>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id='gallery'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col'>
+              <div className="section-title">
+                <h2>What I Offer</h2>
+              </div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col'>
+              <div className='box'>
+                <div className='icon'>
+                  <img src={team1} alt="" />
+                </div>
+                <div className='caption'>
+                  <h5><a href="">Body Building</a></h5>
+                  <p>You’ll look at graphs and charts in Task One, how to approach the task </p>
+                </div>
+              </div>
+            </div>
+            <div className='col'>
+              <div className='box'>
+                <div className='icon'>
+                  <img src={team2} alt="" />
+                </div>
+                <div className='caption'>
+                  <h5><a href="">Muscle Gain</a></h5>
+                  <p>You’ll look at graphs and charts in Task One, how to approach the task </p>
+                </div>
+              </div>
+            </div>
+            <div className='col'>
+              <div className='box'>
+                <div className='icon'>
+                  <img src={team3} alt="" />
+                </div>
+                <div className='caption'>
+                  <h5><a href="">Weight Loss</a></h5>
+                  <p>You’ll look at graphs and charts in Task One, how to approach the task </p>
                 </div>
               </div>
             </div>

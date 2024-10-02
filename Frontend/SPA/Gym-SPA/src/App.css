@@ -1,4 +1,5 @@
 #root {
+  width: auto;
   /*max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -70,8 +71,10 @@ nav ul li a:hover {
   height: 100vh;
   display: flex;
   align-items: center;
-  background-image: url("./assets/SC-Arnold-Off-Plat-copy.webp");
+  background-image: url("./assets/hero.png");
+  background-position: top center;
   background-attachment: fixed;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -205,6 +208,70 @@ nav ul li a:hover {
   transition: 0.2s;
 }
 
+#gallery {
+  background: black;
+}
+
+#gallery .container {
+  width: 100%;
+}
+
+#gallery .container .row {
+  display: flex;
+}
+
+#gallery .container .row .col {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding: 0px 15px;
+}
+
+
+#gallery .container .row .col .section-title h2 {
+  font-size: 70px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  margin-block-end: 35px;
+  -webkit-text-stroke: 1px #f6f7f8;
+  -webkit-text-fill-color: transparent;
+}
+
+#gallery .container .row .col .box {
+  transition: 0.6s;
+  margin-block-end: 30px;
+}
+
+#gallery .container .row .col .box .icon {
+  margin: 0 auto;
+  margin-block-end: 30px;
+}
+
+#gallery .container .row .col .box .caption p {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  transition: 0.4s;
+  margin: 0;
+}
+
+#gallery .container .row .col .box .caption h5 a {
+  font-size: 30px;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  transition: 0.3s;
+  margin-block-end: 15px;
+}
 
 
 @media (prefers-reduced-motion: no-preference) {
