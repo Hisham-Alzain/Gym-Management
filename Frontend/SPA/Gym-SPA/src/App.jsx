@@ -6,6 +6,9 @@ import cat2 from './assets/cat2.png'
 import team1 from './assets/team1.png'
 import team2 from './assets/team2.png'
 import team3 from './assets/team3.png'
+import icon1 from './assets/icon1.svg'
+import icon2 from './assets/icon2.svg'
+import icon3 from './assets/icon3.svg'
 import './App.css'
 
 function App() {
@@ -14,12 +17,12 @@ function App() {
     <>
       <nav>
         <ul id="navigation">
-          <li><a href="">Home</a></li>
+          <li><a href="#home">Home</a></li>
           <li><a href="">About</a></li>
-          <li><a href="">Training</a></li>
-          <li><a href="">Gallery</a></li>
+          <li><a href="#training">Training</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="">Pricing</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
       <section id='home'>
@@ -106,6 +109,48 @@ function App() {
                 <div className='caption'>
                   <h5><a href="">Weight Loss</a></h5>
                   <p>You’ll look at graphs and charts in Task One, how to approach the task </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id='contact'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col'>
+              <div className='item'>
+                <div className='icon'>
+                  <img src={icon1} alt="" />
+                </div>
+                <div className='caption'>
+                  <h3>Location</h3>
+                  <p>You’ll look at graphs and charts in Task One, how to approach </p>
+                </div>
+              </div>
+            </div>
+            <div className='col'>
+              <div className='item'>
+                <div className='icon'>
+                  <img src={icon2} alt="" />
+                </div>
+                <div className='caption'>
+                  <h3>Phone</h3>
+                  <p>(90) 277 278 2566</p>
+                  <p>  (78) 267 256 2578</p>
+                </div>
+              </div>
+            </div>
+            <div className='col'>
+              <div className='item'>
+                <div className='icon'>
+                  <img src={icon3} alt="" />
+                </div>
+                <div className='caption'>
+                  <h3>Email</h3>
+                  <p>Amrcoach@gmail.com</p>
+                  <p>coashAmr@gmail.com</p>
                 </div>
               </div>
             </div>

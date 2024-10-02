@@ -273,6 +273,63 @@ nav ul li a:hover {
   margin-block-end: 15px;
 }
 
+#contact {
+  background: #111111;
+  padding-block: 70px;
+}
+
+#contact .container {
+  width: 100%;
+}
+
+#contact .container .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-inline-start: 10px;
+}
+
+#contact .container .row .col {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding: 0px 20px;
+}
+
+#contact .container .row .col .item {
+  display: flex;
+  margin-block-end: 40px;
+}
+
+#contact .container .row .col .icon {
+  position: relative;
+  inset-block-start: 10px;
+}
+
+#contact .container .row .col .icon img {
+  display: block;
+  border-style: none;
+}
+
+#contact .container .row .col .caption {
+  padding-inline-start: 20px;
+}
+
+#contact .container .row .col .caption h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-block-end: 10px;
+}
+
+#contact .container .row .col .caption p {
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1.5;
+  margin-block: 0;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
