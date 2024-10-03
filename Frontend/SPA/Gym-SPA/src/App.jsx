@@ -9,6 +9,8 @@ import team3 from './assets/team3.png'
 import icon1 from './assets/icon1.svg'
 import icon2 from './assets/icon2.svg'
 import icon3 from './assets/icon3.svg'
+import price from './assets/price.svg'
+import check from './assets/check.svg'
 import './App.css'
 
 function App() {
@@ -109,6 +111,182 @@ function App() {
                 <div className='caption'>
                   <h5><a href="">Weight Loss</a></h5>
                   <p>You’ll look at graphs and charts in Task One, how to approach the task </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id='pricing'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col'>
+              <div className='section-title'>
+                <h2>Pricing</h2>
+              </div>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col'>
+              <div className='properties'>
+                <div className='card'>
+                  <div className='icon'>
+                    <img src={price} alt="" />
+                  </div>
+                  <div className='caption'>
+                    <span className='month'>6 month</span>
+                    <p>$30/m  <span>(Single class)</span></p>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Free riding </p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Unlimited equipments</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Personal trainer</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Weight losing classes</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Month to mouth</p>
+                      </div>
+                    </div>
+                    <a href="#" className='button'>Join Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col'>
+              <div className='properties'>
+                <div className='card'>
+                  <div className='icon'>
+                    <img src={price} alt="" />
+                  </div>
+                  <div className='caption'>
+                    <span className='month'>6 month</span>
+                    <p>$30/m  <span>(Single className)</span></p>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Free riding </p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Unlimited equipments</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Personal trainer</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Weight losing classes</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Month to mouth</p>
+                      </div>
+                    </div>
+                    <a href="#" className='button'>Join Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col'>
+              <div className='properties'>
+                <div className='card'>
+                  <div className='icon'>
+                    <img src={price} alt="" />
+                  </div>
+                  <div className='caption'>
+                    <span className='month'>6 month</span>
+                    <p>$30/m  <span>(Single className)</span></p>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Free riding </p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Unlimited equipments</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Personal trainer</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Weight losing classes</p>
+                      </div>
+                    </div>
+                    <div className='features'>
+                      <div className='check'>
+                        <img src={check} alt="" />
+                      </div>
+                      <div className='caption'>
+                        <p>Month to mouth</p>
+                      </div>
+                    </div>
+                    <a href="#" className='button'>Join Now</a>
+                  </div>
                 </div>
               </div>
             </div>

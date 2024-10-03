@@ -273,6 +273,134 @@ nav ul li a:hover {
   margin-block-end: 15px;
 }
 
+#pricing {
+  background: black;
+}
+
+#pricing .container {
+  width: 100%;
+}
+
+#pricing .container .row {
+  display: flex;
+}
+
+
+#pricing .container .row .col {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding: 0px 15px;
+}
+
+#pricing .container .row .col .section-title h2 {
+  font-size: 70px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  margin-block-end: 35px;
+  -webkit-text-stroke: 1px #f6f7f8;
+  -webkit-text-fill-color: transparent;
+}
+
+#pricing .container .row .col .properties {
+  margin-block-end: 30px;
+}
+
+#pricing .container .row .col .properties .card {
+  box-shadow: 0px 6px 6px 0px rgba(2, 25, 65, 0.08);
+  transition: 0.4s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding-block-start: 36px;
+  padding-block-end: 24px;
+  padding-inline: 24px;
+}
+
+#pricing .container .row .col .properties .card .icon {
+  width: 80px;
+  height: 80px;
+  background: red;
+  border-radius: 50px;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 31px;
+  line-height: 80px;
+  text-align: center;
+  box-shadow: 0px 15px 25px rgba(66, 85, 164, 0.08);
+}
+
+#pricing .container .row .col .properties .card .caption .month {
+  font-size: 30px;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+#pricing .container .row .col .properties .card .caption p {
+  font-size: 30px;
+  font-weight: 500;
+  color: #FF0000;
+  text-transform: uppercase;
+  margin-block-end: 25px;
+}
+
+#pricing .container .row .col .properties .card .caption p>span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+#pricing .container .row .col .properties .card .caption .features {
+  display: flex;
+}
+
+#pricing .container .row .col .properties .card .caption .features .check {
+  position: relative;
+  inset-block-start: 20px;
+}
+
+#pricing .container .row .col .properties .card .caption .features .check img {
+  display: block;
+}
+
+#pricing .container .row .col .properties .card .caption .features .caption {
+  padding-inline-start: 20px;
+}
+
+#pricing .container .row .col .properties .card .caption .features .caption p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+#pricing .container .row .col .properties .card .caption .button {
+  width: 60%;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  background: none;
+  border: 2px solid #fff;
+  border-radius: 0px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 43px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+  transition: color 0.4s linear;
+  overflow: hidden;
+  margin: 0;
+}
+
+
+
 #contact {
   background: #111111;
   padding-block: 70px;
