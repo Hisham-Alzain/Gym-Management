@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/routes/routes.dart';
-import 'package:mobile/views/authViews/login_view.dart';
+import 'package:mobile/views/authViews/auth_view.dart';
 
 Future<void> main() async {
   runApp(const MainApp());
@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: const LoginView(),
+      home: const AuthView(),
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -27,8 +27,8 @@ class MainApp extends StatelessWidget {
         textTheme: TextTheme(
           titleLarge: GoogleFonts.oswald(color: Colors.white),
           headlineLarge: GoogleFonts.oswald(color: Colors.white),
-          labelLarge: GoogleFonts.oswald(color: Colors.white),
-          bodyLarge: GoogleFonts.oswald(color: Colors.white),
+          labelLarge: GoogleFonts.afacad(color: Colors.white),
+          bodyLarge: GoogleFonts.afacad(color: Colors.white),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: ButtonStyle(
@@ -39,9 +39,24 @@ class MainApp extends StatelessWidget {
                 side: BorderSide.none,
               ),
             ),
+            foregroundColor: const WidgetStatePropertyAll(Colors.white),
+            textStyle:
+                WidgetStatePropertyAll(Theme.of(context).textTheme.bodyLarge),
             iconColor: const WidgetStatePropertyAll(Colors.white),
             overlayColor: const WidgetStatePropertyAll(Colors.red),
           ),
+        ),
+        textButtonTheme: const TextButtonThemeData(
+          style: ButtonStyle(
+            foregroundColor: WidgetStatePropertyAll(Colors.white),
+          ),
+        ),
+        tabBarTheme: const TabBarTheme(
+          labelColor: Colors.redAccent,
+          unselectedLabelColor: Colors.white,
+          indicatorSize: TabBarIndicatorSize.tab,
+          dividerColor: Colors.white,
+          indicatorColor: Colors.redAccent,
         ),
       ),
     );

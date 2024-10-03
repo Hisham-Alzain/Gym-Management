@@ -43,6 +43,10 @@ class CustomTextField extends StatelessWidget {
         hintStyle: Theme.of(context).textTheme.labelLarge,
         labelText: labelText,
         labelStyle: Theme.of(context).textTheme.labelLarge,
+        errorStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+              color: Colors.red,
+              fontSize: 12,
+            ),
         border: const OutlineInputBorder(),
         prefixIcon: Icon(
           icon,

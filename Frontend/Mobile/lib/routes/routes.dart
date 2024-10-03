@@ -1,9 +1,19 @@
 import 'package:get/get.dart';
+import 'package:mobile/views/authViews/auth_view.dart';
 import 'package:mobile/views/authViews/login_view.dart';
+import 'package:mobile/views/authViews/register_view.dart';
 
 List<GetPage<dynamic>>? getPages = [
   GetPage(
-    name: '/splashScreen',
+    name: '/auth',
+    page: () => AuthView(),
+  ),
+  GetPage(
+    name: '/login',
     page: () => LoginView(),
+  ),
+  GetPage(
+    name: '/register',
+    page: () => RegisterView(),
   ),
 ];
