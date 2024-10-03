@@ -1,0 +1,539 @@
+{
+    "pages": {
+        "Index": {
+            "slide1": {
+                "span": "Find Your Next Dream Job",
+                "p": "Easiest way to find a perfect job",
+                "button1": "Looking For a job?",
+                "button2": "Post a job"
+            },
+            "slide2": {
+                "span": "No.1 Job platform in Syria",
+                "p": "Jobera is the most reliable job platform in Syria because of it's awesome features and comfortable use"
+            },
+            "slide3": {
+                "span": "We always listen",
+                "p": "We would love to hear about your experience using the platform or the difficulties you encountered to help improve your experience and assure your satisfaction"
+            },
+            "great_title1": "What is Jobera?",
+            "h2_1": "Jobera is a platform that specializes in posting and accepting jobs and serves two types of users companies and individuals",
+            "mini_title1": "Jobera's services",
+            "little_card1": {
+                "title": "Posting jobs",
+                "info": "Jobera gives you the ability to post jobs based on your needs easily and provides the best experience along with low costs"
+            },
+            "little_card2": {
+                "title": "Viewing jobs",
+                "info": "Jobera makes it easier for you to view variant types of jobs and search through them to get what will suit you best"
+            },
+            "little_card3": {
+                "title": "Paying system",
+                "info": "You can trust us with your money, The transactions are done smoothly between users and recorded for further view"
+            },
+            "little_card4": {
+                "title": "Chat system",
+                "info": "Jobera provides the ability to chat between job maker and job accepters inside the app to make sure work is going smoothly"
+            },
+            "great_title2": "Why Jobera?",
+            "h2_2": "Jobera is the best Job app because of its awesome features that gives the user the best experience",
+            "mini_title2": "Some of Jobera's features",
+            "little_card5": {
+                "title": "Job feed",
+                "info": "A page designed especially to provide the users with the informations about best jobs or the best deals in particular time"
+            },
+            "little_card6": {
+                "title": "Comfortable system",
+                "info": "It's easy to manage your account information and your activities like the job you posted, bookmarked and applied to"
+            },
+            "little_card7": {
+                "title": "Variant job types",
+                "info": "Jobera provides to the users three types of jobs (fulltime, parttime, freelancing) which can easily be accessed through the navbar"
+            },
+            "little_card8": {
+                "title": "Interactive interfaces",
+                "info": "Jobera has great interfaces that are responsive, clear and even beautiful which will provide best experience"
+            }
+        },
+        "Login": {
+            "title": "Login",
+            "email_input": "Email",
+            "password_input": "Password",
+            "remember_me": "Remember me",
+            "error": "Invalid email or password",
+            "email_error": "The email field must be a valid email address",
+            "forgot_password": "Forgot password?",
+            "button": "Log In Now",
+            "login_register_div": "Don't have an account?",
+            "login_register_a": "Register",
+            "social": "log in via"
+        },
+        "Register": {
+            "title": "Register",
+            "slider": {
+                "individual": "Individual",
+                "company": "Company"
+            },
+            "email_input": "Email",
+            "password_input": "Password",
+            "confirm_password_input": "Confirm Password",
+            "country_input": "Country",
+            "city_input": "City",
+            "individual_form": {
+                "first_name_input": "First Name",
+                "last_name_input": "Last Name",
+                "gender": {
+                    "Male": "Male",
+                    "Female": "Female"
+                },
+                "error_message": "the email or phone number is already taken"
+            },
+            "company_form": {
+                "name_input": "Company Name",
+                "field_input": "Field of work",
+                "error_message": "the email or phone number is already taken"
+            },
+            "button": "Register now",
+            "register_login_div": "Already have an account?",
+            "register_login_a": "Log in"
+        },
+        "forgot_password": {
+            "title": "Forgot Password",
+            "label": "Enter your email address and we'll send you an email with instructions to reset your password.",
+            "email": "Email",
+            "span": "Send reset-link",
+            "success": "Reset password email has been sent",
+            "failed": "Something went wrong, try again later"
+        },
+        "reset_password": {
+            "title": "Reset Password",
+            "button": "Return to log in",
+            "password": "Password",
+            "confirm_password": "Confirm Password",
+            "span": "Change Password",
+            "alert": "The Password and Confirm-Password fields should be the same",
+            "success": "Password has been changed successfully"
+        },
+        "email_verification": {
+            "span": "Email has been verified successfully!",
+            "p": "Email verification pending, Please wait."
+        },
+        "not_found": {
+            "title": "The selected page was not found",
+            "anchor": "Return to profile"
+        },
+        "error_page": {
+            "An": "An",
+            "error": "error",
+            "title": "has occured, please try again later",
+            "anchor": "Return to profile"
+        },
+        "jobs": {
+            "job_filter": {
+                "published_by1": "Published By:",
+                "published_by2": "Name",
+                "salary": "Salary:",
+                "deadline": {
+                    "label": "Deadline:",
+                    "from": "From:",
+                    "to": "To:"
+                },
+                "skills": {
+                    "label": "Skills",
+                    "see_less": "See less",
+                    "see_more": "See more"
+                },
+                "button": "Submit filter"
+            },
+            "job_card": {
+                "type": "Type:",
+                "salary": "Salary:",
+                "budget": "Budget:",
+                "published_by": "Published by:",
+                "publish_date": "Publish date:",
+                "deadline": "Deadline:"
+            },
+            "job_slider": {
+                "full_time": "FullTime",
+                "part_time": "PartTime",
+                "freelancing": "Freelancing"
+            },
+            "done": "No more jobs to show"
+        },
+        "post_job": {
+            "heading1": "Post a",
+            "heading2": "job",
+            "title_fulltime": "FullTime",
+            "title_parttime": "PartTime",
+            "title_freelancing": "Freelancing",
+            "form": {
+                "title": "Title",
+                "description": "Description",
+                "reg": {
+                    "salary": "Salary",
+                    "admin_share": "Website Tax $"
+                },
+                "freelancing": {
+                    "min_salary": "Min Salary",
+                    "max_salary": "Max Salary",
+                    "deadline": "Deadline"
+                },
+                "country_input": "Country",
+                "city_input": "City",
+                "h4_heading": "Skills wanted:",
+                "search_input": "Search skill",
+                "not_found": "Skill was not found",
+                "left": "Skills left:",
+                "unveriefied_error": "can't procced until verify your email",
+                "balance_error": "not enough balance to create the job",
+                "button": "Submit"
+            }
+        },
+        "job_feed": {
+            "tops": {
+                "title1": "Most Needed Skills",
+                "title2": "Most Payed Regular Jobs",
+                "title3": "Most Payed Freelancing Jobs",
+                "title4": "Most Posting Companies",
+                "salary": "Salary:",
+                "count": "Count:"
+            }
+        }
+    },
+    "components": {
+        "profile_cards": {
+            "set_up": {
+                "title": "Setup Profile",
+                "card_title": "Continue your registration:",
+                "card_text": "Please click the following button then follow the instructions to complete your registration.",
+                "button": "Set yourself up"
+            },
+            "verify": {
+                "title": "Verification",
+                "card_title": "Resend Verification Email:",
+                "card_text": "Please click the following button then open your email to verify your account.",
+                "button": "Resend Verification Email "
+            },
+            "user_info": {
+                "picture_text": "Change Photo",
+                "location": "Location:",
+                "rating": "Rating:",
+                "reviews": "reviews",
+                "description": "Description:",
+                "edit_Profile_button": "Edit Profile",
+                "edit_Description_button": "Edit Description",
+                "save_description_button": "Save Description",
+                "cancel_button": "Cancel",
+                "edit_menu": {
+                    "success": "User data updated successfully",
+                    "fail": "Error in user info update",
+                    "save_button": "Save",
+                    "close_button": "Close"
+                }
+            },
+            "wallet": {
+                "wallet_title": "Personal Wallet",
+                "wallet_body1": "Available balance:",
+                "wallet_body2": "Total balance:",
+                "button1": "Transactions",
+                "button2": "Redeem Code",
+                "admin_button": "Generate redeem code"
+            },
+            "skills": {
+                "title": "Skills",
+                "no_data": "No skills to display",
+                "view_more": "View more",
+                "view_less": "View less"
+            },
+            "education": {
+                "title": "Education",
+                "no_data": "No education to display",
+                "level": "Level:",
+                "field": "Field:",
+                "school": "School:",
+                "start_date": "Start date:",
+                "end_date": "End date:",
+                "edit_education_button": "Edit education",
+                "show_certificate_button": "Show certificate"
+            },
+            "certifications": {
+                "title": "Personal Certifications",
+                "card_text": "Click on the button to display your certificates",
+                "button": "Show Certificates"
+            },
+            "portfolio": {
+                "portfolio_title": "Portfolio",
+                "button": "View All",
+                "no_data": "No portfolio to display"
+            }
+        },
+        "redeem_code": {
+            "message1": "Charged your wallet successfully",
+            "message1_generate": "Generated the code successfully",
+            "message2": "Something went wrong, please recheck your redeem code then try again",
+            "title": "Redeem",
+            "h3": "Enter redeem code to charge your wallet",
+            "input": "Redeem code",
+            "button": "Submit",
+            "anchor": "Return to profile",
+            "title_generate": "Generate redeem code",
+            "h3_generate": "Enter the amount for generating redeem code",
+            "generate": "Amount of generated code"
+        },
+        "education": {
+            "heading1": "Edit Education",
+            "heading2": "Add Education",
+            "level": "Level:",
+            "select": {
+                "level": "Select Level",
+                "bachelor": "Bachelor",
+                "master": "Master",
+                "PHD": "PHD",
+                "high_school_diploma": "High School Diploma",
+                "high_institute": "High Institute"
+            },
+            "field": "Field:",
+            "school": "School:",
+            "start_date": "Start date:",
+            "end_date": "End date:",
+            "certificate": "Certificate",
+            "button": "Submit Education"
+        },
+        "certificates": {
+            "h1": "'s Certificates",
+            "search_input": "Search...",
+            "create_button": "Add certificate",
+            "submit_button1": "Back to profile",
+            "submit_button2": "Submit",
+            "name": "Name",
+            "organization": "Organization",
+            "release_date": "Release Date",
+            "actions": "Actions"
+        },
+        "certificate": {
+            "heading1": "Add Certificate",
+            "heading2": "Edit Certificate",
+            "name": "Name:",
+            "organization": "Organization:",
+            "release_date": "Release Date:",
+            "certificate": "Certificate"
+        },
+        "portfolios": {
+            "h1": "'s Portfolio",
+            "button": "+ Add item",
+            "back_button": "Back to profile"
+        },
+        "show_portfolio": {
+            "h2_heading": "Portfolio item",
+            "edit_button": "Edit",
+            "delete_button": "Delete",
+            "h4_heading1": "Skills used:",
+            "h4_heading2": "Files:",
+            "browse_button": "Browse"
+        },
+        "edit_portfolio": {
+            "h2_heading1": "Edit Portfolio item",
+            "h2_heading2": "Add Portfolio item",
+            "title_input": "Title",
+            "description_input": "Description",
+            "link_input": "Link",
+            "files_input": "Files",
+            "files_text_p": "Up to 5 files.",
+            "files_text_span": "If more is uploaded, only the first 5 files will be uploaded.",
+            "h4_heading": "Skills used:",
+            "search_input": "Search skill",
+            "not_found": "Skill was not found",
+            "count": "Skills left:",
+            "button": "Submit"
+        },
+        "show_job": {
+            "heading": "Wanted skills",
+            "name": "Job owner:",
+            "type": "job",
+            "description": "Description:",
+            "salary": "Salary:",
+            "budget": "Budget:",
+            "avg_salary": "Avg offer:",
+            "location": "Job location:",
+            "deadline": "Deadline:",
+            "publish_date": "Publish date:",
+            "end_job_button": "End job",
+            "delete_job_button": "Delete job",
+            "h5": "Competitors",
+            "competitor_button": "+ Be a competitor",
+            "unverified": "can't compete on a job until verify your email",
+            "money": "please choose amount greater than 0",
+            "refresh": "please refresh your page competitor changed his offer",
+            "comment_input": "Add your comment",
+            "desired_salary": "Desired offer",
+            "tax": "Your share after website taxes:",
+            "send_button": "Send",
+            "cancel_button": "Cancel"
+        },
+        "nav_bar": {
+            "nav_logo": "Jobera",
+            "li_home": "Home",
+            "li_jobs": "Jobs",
+            "all": "All Jobs",
+            "full_time": "FullTime",
+            "part_time": "PartTime",
+            "freelancing": "FreeLance",
+            "post_job": "Post a job",
+            "li_manage": "Manage",
+            "li_chats": "Chats",
+            "li_notifications": "Notifications",
+            "li_profile": "My Profile",
+            "li_logout": "LogOut",
+            "li_login": "Login",
+            "li_register": "Register",
+            "h4_chats": "Recent Chats",
+            "button_chats": "Show Chats",
+            "no_chats": "No chats yet",
+            "card_chat": "No messages yet",
+            "h4_notifications": "Notifications",
+            "button_notifications": "Show Notifications",
+            "no_notifications": "No new notifications"
+        },
+        "footer": {
+            "footer_logo": "Jobera",
+            "app_lang": "Language:",
+            "en": "English",
+            "ar": "Arabic",
+            "copyright": "Copyright ©2024 All rights reserved",
+            "h3_jobs": "Jobs",
+            "post_job": "Post a job",
+            "all": "Browse All Jobs",
+            "full_time": "Browse FullTime Jobs",
+            "part_time": "Browse PartTime Jobs",
+            "freelancing": "Browse Freelancing Jobs",
+            "h3_apps": "Apps",
+            "android": "Android App",
+            "ios": "IOS App",
+            "h3_about": "About",
+            "about_us": "About us",
+            "contact_us": "Contact us",
+            "services": "Services",
+            "careers": "Careers",
+            "team": "Team",
+            "h3_info": "Further Information",
+            "privacy&policy": "Privacy & Policy",
+            "terms&conditions": "Terms & Conditions",
+            "code_of_conduct": "Code of Conduct"
+        },
+        "chat_page": {
+            "chat_header": "No chat selected",
+            "chat_input": "Type a message...",
+            "chat_button": "Send"
+        },
+        "offer": {
+            "type": "Type:",
+            "offer": "Offer:",
+            "status": "Status:"
+        },
+        "notifications": {
+            "th1": "From:",
+            "th2": "Message",
+            "th3": "Date",
+            "th4": "Read and delete",
+            "div": "Mark all as read",
+            "read": "Read"
+        },
+        "transactions": {
+            "th1": "From:",
+            "th2": "To:",
+            "th3": "Job title",
+            "th4": "Amount",
+            "th5": "Date and Time"
+        },
+        "rating": {
+            "title": "Please, rate the accepted freelancer",
+            "button_rate": "Rate",
+            "button_cancel": "Cancel"
+        },
+        "admin": {
+            "jobs_table": {
+                "h1": "Jobs",
+                "search": "Search...",
+                "actions": "Actions",
+                "not_accepted": "Not Accepted",
+                "no_jobs": "No jobs found",
+                "FullTime": "FullTime",
+                "PartTime": "PartTime",
+                "Freelancing": "Freelancing",
+                "column_structure": {
+                    "title": "Title",
+                    "company": "Company",
+                    "client": "Client",
+                    "post_date": "Post Date",
+                    "deadline": "Deadline",
+                    "salary": "Salary",
+                    "avg_salary": "Average Salary",
+                    "accepted_user": "Accepted User"
+                }
+            },
+            "skills_table": {
+                "h1": "Skills",
+                "search": "Search...",
+                "create": "Create",
+                "no_skills": "No skills found",
+                "table": {
+                    "th1": "Name",
+                    "th2": "Type",
+                    "th3": "Count",
+                    "th4": "Actions"
+                }
+            },
+            "users_table": {
+                "h1": "Users",
+                "search": "Name...",
+                "individual": "Individual",
+                "company": "Company",
+                "actions": "Actions",
+                "no_users": "No users found",
+                "column_structure": {
+                    "name": "Name",
+                    "full_name": "Full Name",
+                    "phone_number": "Phone Number",
+                    "country": "Country",
+                    "state": "State",
+                    "field": "Field",
+                    "founding_date": "Founding Date",
+                    "birth_date": "Birth Date",
+                    "gender": "Gender",
+                    "rating": "Rating",
+                    "is_verified": "Verified"
+                }
+            },
+            "wallet_table": {
+                "h1": "Transactions",
+                "search": "Search...",
+                "all": "All",
+                "admin_s": "Admin's",
+                "actions": "Actions",
+                "no_transactions": "No transactions found",
+                "column_structure": {
+                    "sender_name": "Sender Name",
+                    "receiver_name": "Receiver Name",
+                    "job_title": "Job title",
+                    "amount": "Amount",
+                    "date": "Date"
+                }
+            },
+            "home": "Home",
+            "sidebar": {
+                "dashboard": "Dashboard",
+                "jobs": "Jobs",
+                "skills": "Skills",
+                "users": "Users",
+                "transactions": "Transactions",
+                "reports": "Reports",
+                "settings": "Settings"
+            },
+            "reports": {
+                "location": "Locations with most jobs",
+                "users": "Most rated users",
+                "types": "Most Skill Types",
+                "transactions": "Transactions per month"
+            }
+        }
+    }
+}

@@ -99,6 +99,21 @@ class TrainerController extends Controller
             // Response
             return response()->json([
                 "users" => new UserInfoCollection($users),
+                'pagination_data' => [
+                        'from' => $users->firstItem(),
+                        'to' => $users->lastItem(),
+                        'total' => $users->total(),
+                        'first_page' => 1,
+                        'current_page' => $users->currentPage(),
+                        'last_page' => $users->lastPage(),
+                        'pageNumbers' => $this->generateNumberArray(1, $users->lastPage()),
+                        'first_page_url' => $users->url(1),
+                        'current_page_url' => $users->url($users->currentPage()),
+                        'last_page_url' => $users->url($users->lastPage()),
+                        'next_page' => $users->nextPageUrl(),
+                        'prev_page' => $users->previousPageUrl(),
+                        'path' => $users->path(),
+                    ],
             ]);
         }
     }
@@ -174,13 +189,33 @@ class TrainerController extends Controller
             ], 401);
         } else {
             // Get all subscriptions
-            $subscriptions = Subscription::all();
+            $subscriptions = Subscription::paginate(10);
 
             // Response
             return response()->json([
-                "message" => "all subscriptions fetched",
-                "data" => new SubscriptionCollection($subscriptions)
+                "message" => "Subscriptions fetched",
+                "subscriptions" => new SubscriptionCollection($subscriptions),
+                'pagination_data' => [
+                        'from' => $subscriptions->firstItem(),
+                        'to' => $subscriptions->lastItem(),
+                        'total' => $subscriptions->total(),
+                        'first_page' => 1,
+                        'current_page' => $subscriptions->currentPage(),
+                        'last_page' => $subscriptions->lastPage(),
+                        'pageNumbers' => $this->generateNumberArray(1, $subscriptions->lastPage()),
+                        'first_page_url' => $subscriptions->url(1),
+                        'current_page_url' => $subscriptions->url($subscriptions->currentPage()),
+                        'last_page_url' => $subscriptions->url($subscriptions->lastPage()),
+                        'next_page' => $subscriptions->nextPageUrl(),
+                        'prev_page' => $subscriptions->previousPageUrl(),
+                        'path' => $subscriptions->path(),
+                    ],
             ], 200);
         }
+    }
+    public function generateNumberArray($start, $end)
+    {
+        $numbers = range($start, $end);
+        return $numbers;
     }
 }
