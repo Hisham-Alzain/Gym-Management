@@ -222,6 +222,7 @@ nav ul li a:hover {
 
 #gallery .container .row .column .box .box-img img {
   width: 60%;
+  border-radius: 6px;
 }
 
 #gallery .container .row .column .box .caption h5 {
