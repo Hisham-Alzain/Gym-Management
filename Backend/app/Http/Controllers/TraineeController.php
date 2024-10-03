@@ -54,7 +54,16 @@ class TraineeController extends Controller
                 'errors' => ['user' => 'Invalid user']
             ], status: 401);
         }
-
+        if ($user->role == 'trainer') {
+            return response()->json([
+                'data' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'role' => $user->role
+                ],
+                "message" => "Coach info retrieved successfully"
+            ], 200);
+        }
         // Response
         return response()->json(
             [

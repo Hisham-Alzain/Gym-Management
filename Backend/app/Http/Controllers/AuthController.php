@@ -69,4 +69,10 @@ class AuthController extends Controller
             "token_type" => "bearer"
         ], 200);
     }
+    public function IsExpired()
+    {
+        return response()->json([
+            'message' => 'Token is valid',
+        ], 200);
+    }
 }
