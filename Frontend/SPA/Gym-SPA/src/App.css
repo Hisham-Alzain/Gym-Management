@@ -6,32 +6,6 @@
   text-align: center;*/
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
 /* OUR CSS */
 /* NavBar */
 nav {
@@ -67,43 +41,6 @@ nav ul li a:hover {
   transition: 0.3s;
 }
 
-/* Home */
-#home {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background-image: url("./assets/hero.png");
-  background-position: top center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#home .container {
-  width: 100%;
-  padding-inline: 50px;
-}
-
-#home .container .caption {
-  font-weight: 600;
-  position: relative;
-  display: inline-block;
-  text-transform: uppercase;
-}
-
-#home .container .caption span {
-  font-size: 90px;
-  margin: 0;
-  padding: 0;
-}
-
-#home .container .caption h1 {
-  font-size: 60px;
-  margin: 0;
-  padding: 0;
-}
-
 /* Global */
 #training,
 #gallery,
@@ -117,13 +54,44 @@ nav ul li a:hover {
 
 .row {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-inline: 15px;
 }
 
 .column {
   position: relative;
   width: 100%;
   min-height: 1px;
-  padding: 0px 15px;
+}
+
+.btn {
+  font-size: 18px;
+  font-weight: 360;
+  color: #ffffff;
+  background: none;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 48px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 2px;
+  transition: color 0.4s linear;
+  overflow: hidden;
+  margin: 0;
+}
+
+.btn:hover {
+  background: #ff1313;
+  transition: 0.4s;
+}
+
+.section-title {
+  width: 100%;
 }
 
 .section-title h2 {
@@ -138,6 +106,42 @@ nav ul li a:hover {
   margin-block-end: 35px;
   -webkit-text-stroke: 1px #f6f7f8;
   -webkit-text-fill-color: transparent;
+}
+
+/* Home */
+#home {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url("./assets/hero.png");
+  background-position: top center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#home .caption {
+  width: 100%;
+  padding-inline: 50px;
+}
+
+#home .caption span {
+  font-size: 70px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px #f6f7f8;
+  -webkit-text-fill-color: transparent;
+}
+
+#home .caption h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 70px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
 /* Training */
@@ -202,51 +206,27 @@ nav ul li a:hover {
   margin-block-end: 30px;
 }
 
-.topic .content-box .content .btn {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ffffff;
-  background: none;
-  border: 2px solid #fff;
-  border-radius: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 12px 48px;
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
-  letter-spacing: 2px;
-  transition: color 0.4s linear;
-  overflow: hidden;
-  margin: 0;
-}
-
-.topic .content-box .content .btn:hover {
-  background: #ff1313;
-  transition: 0.4s;
-}
-
 /* Gallery */
 #gallery .container .row .column .box {
-  transition: 0.6s;
-  margin-block-end: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-block-end: 50px;
+  transition: 0.5s;
 }
 
-#gallery .container .row .column .box .icon {
-  margin: 0 auto;
-  margin-block-end: 30px;
+#gallery .container .row .column .box .box-img {
+  display: flex;
+  justify-content: center;
 }
 
-#gallery .container .row .column .box .caption p {
-  font-size: 16px;
-  line-height: 32px;
-  color: #ffffff;
-  text-align: center;
-  transition: 0.4s;
+#gallery .container .row .column .box .box-img img {
+  width: 60%;
+}
+
+#gallery .container .row .column .box .caption h5 {
   margin: 0;
-}
-
-#gallery .container .row .column .box .caption h5 a {
+  padding: 10px;
   font-size: 30px;
   font-weight: 500;
   color: #ffffff;
@@ -255,7 +235,16 @@ nav ul li a:hover {
   text-align: center;
   display: block;
   transition: 0.3s;
-  margin-block-end: 15px;
+}
+
+#gallery .container .row .column .box .caption p {
+  font-size: 16px;
+  line-height: 32px;
+  color: #ffffff;
+  text-align: center;
+  transition: 0.4s;
+  padding: 4px;
+  margin: 0;
 }
 
 /* Pricing  */
@@ -265,19 +254,20 @@ nav ul li a:hover {
   padding-block-start: 36px;
   padding-block-end: 24px;
   padding-inline: 24px;
+  margin-inline: 12px;
   margin-block-end: 32px;
   transition: 0.4s;
 }
 
 #pricing .container .row .column .card .icon {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   color: #ffffff;
   background: #ff0000;
   border-radius: 48px;
   display: inline-block;
   position: relative;
-  padding: 8px;
+  padding: 16px;
   margin-block-end: 16px;
   box-shadow: 0px 16px 24px rgba(64, 86, 160, 0.08);
 }
@@ -308,13 +298,13 @@ nav ul li a:hover {
 }
 
 #pricing .container .row .column .card .details .features .check {
-  width: 35px;
-  height: 35px;
+  width: 20px;
+  height: 20px;
   color: #ff0000;
   display: inline-block;
   position: relative;
-  inset-block-start: 10px;
-  padding-inline-start: 5px;
+  inset-block-start: 20px;
+  padding-inline-start: 10px;
 }
 
 #pricing .container .row .column .card .details .features p {
@@ -326,61 +316,35 @@ nav ul li a:hover {
 }
 
 #pricing .container .row .column .card .details .button {
-  width: 60%;
-  font-size: 18px;
-  font-weight: 600;
-  color: #ffffff;
-  background: none;
-  border: 2px solid #fff;
-  border-radius: 0px;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  padding: 14px 43px;
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
-  letter-spacing: 1px;
-  transition: color 0.4s linear;
-  overflow: hidden;
-  margin: 0;
-}
-
-#pricing .container .row .column .card:hover .details .button {
-  background: #ff1313;
-  transition: 0.4s;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* Contact */
 #contact {
   background: #111111;
-  padding-block: 70px;
-}
-
-#contact .container .row {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding-inline-start: 10px;
-}
-
-#contact .container .row .column {
-  padding: 0px 20px;
+  padding-block: 40px;
 }
 
 #contact .container .row .column .item {
   display: flex;
+  align-items: center;
+  padding-inline: 20px;
   margin-block-end: 40px;
 }
 
 #contact .container .row .column .icon {
-  position: relative;
-  inset-block-start: 10px;
-}
-
-#contact .container .row .column .icon img {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  color: #ff0000;
   display: block;
-  border-style: none;
+  position: relative;
+  inset-block-start: 20px;
+  padding-inline-start: 10px;
+  inset-block-start: 10px;
 }
 
 #contact .container .row .column .caption {
@@ -403,16 +367,87 @@ nav ul li a:hover {
 }
 
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Responsive*/
+/* Start of desktop styles */
+#training .column {
+  max-width: 50%;
+}
+
+#gallery .column,
+#pricing .column,
+#contact .column {
+  max-width: 33%;
+}
+
+@media screen and (max-width: 1199px) {
+
+  #gallery .column {
+    max-width: 50%;
   }
 }
 
-.card {
-  padding: 2em;
+@media screen and (max-width: 991px) {
+
+  /* Start of large tablet styles */
+
+  #home .caption span,
+  #home .caption h1 {
+    font-size: 50px;
+  }
+
+  #training .column,
+  #gallery .column {
+    max-width: 100%;
+  }
+
+  #pricing .column,
+  #contact .column {
+    max-width: 50%;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@media screen and (max-width: 767px) {
+
+  /* Start of medium tablet styles */
+
+  #home .caption span,
+  #home .caption h1 {
+    font-size: 35px;
+  }
+
+  #training .column {
+    margin-block-end: 25px;
+  }
+
+  #pricing .column,
+  #contact .column {
+    max-width: 75%;
+  }
+
+  .section-title h2 {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+
+  /* Start of phone styles */
+
+  #home .caption span,
+  #home .caption h1 {
+    font-size: 25px;
+  }
+
+  #training h3 {
+    font-size: 25px;
+  }
+
+  #pricing .column,
+  #contact .column {
+    max-width: 100%;
+  }
+
+  .section-title h2 {
+    font-size: 35px;
+  }
 }
