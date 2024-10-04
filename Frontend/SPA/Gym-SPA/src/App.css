@@ -49,9 +49,11 @@
 }
 
 /* Global */
+#about,
 #training,
 #gallery,
-#pricing {
+#pricing,
+#footer {
   background: black;
 }
 
@@ -107,8 +109,8 @@
   font-size: 70px;
   font-weight: 700;
   color: #ffffff;
-  text-transform: uppercase;
   text-align: center;
+  text-transform: uppercase;
   display: block;
   margin-block-end: 35px;
   -webkit-text-stroke: 1px #f6f7f8;
@@ -152,14 +154,9 @@
 }
 
 /* About */
-
-#about{
-  background: black;
-}
-
-#about .container .row{
-  padding-inline: 0;
+#about .container .row {
   align-items: flex-start;
+  padding-inline: 0;
 }
 
 #about .container .row .column .sec {
@@ -199,10 +196,10 @@
 }
 
 .sec .content-box .content h3 {
-  text-align: center;
   font-size: 35px;
   font-weight: 500;
   color: #ff0000;
+  text-align: center;
   text-transform: uppercase;
   margin-block-end: 10px;
   transition: 0.5s;
@@ -304,9 +301,9 @@
   font-size: 30px;
   font-weight: 500;
   color: #ffffff;
+  text-align: center;
   text-transform: uppercase;
   text-decoration: none;
-  text-align: center;
   display: block;
   transition: 0.3s;
 }
@@ -440,6 +437,99 @@
   margin-block: 0;
 }
 
+/* Footer */
+#footer .container .top {
+  padding-block-start: 75px;
+  padding-block-end: 50px;
+}
+
+#footer .container .top .row .column .caption {
+  text-align: center;
+  margin-block-end: 50px;
+}
+
+#footer .container .top .row .column .caption .f-logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+#footer .container .top .row .column .caption .f-logo img {
+  width: 50px;
+  height: 50px;
+}
+
+#footer .container .top .row .column .caption .menu ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+#footer .container .top .row .column .caption .menu ul li {
+  padding: 15px 10px;
+}
+
+#footer .container .top .row .column .caption .menu ul li a {
+  font-size: 16px;
+  font-weight: 640;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+#footer .container .top .row .column .caption .menu ul li a:hover {
+  text-shadow: 2px 2px 4px red;
+  transition: 0.4s;
+}
+
+#footer .container .top .row .column .social {
+  margin-block-start: 30px;
+}
+
+#footer .container .top .row .column .social a {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  font-size: 25px;
+  color: #ff0000;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  background: rgba(255, 0, 0, 0.1);
+  margin-inline-end: 10px;
+}
+
+#footer .container .top .row .column .social a:hover {
+  color: #ffffff;
+  background: #ff0000;
+  transition: 0.1s;
+}
+
+#footer .container .bottom {
+  border-block-start: 2px solid #1f2024;
+  padding-block-start: 40px;
+  padding-block-end: 50px;
+  margin-inline: 30px;
+}
+
+#footer .container .bottom .row .column .copy-right {
+  font-size: 16px;
+  font-weight: 320;
+  color: #c4c4c4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: 16px;
+}
+
 
 /* Responsive*/
 /* Start of desktop styles */
@@ -448,7 +538,9 @@
   display: none;
 }
 
-#training .column, #about .column {
+#about .column,
+#training .column,
+#footer .column {
   max-width: 50%;
 }
 
@@ -463,6 +555,10 @@
   #gallery .column {
     max-width: 50%;
   }
+
+  #footer .column {
+    max-width: 60%;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -474,8 +570,8 @@
     font-size: 50px;
   }
 
-  #training .column,
   #about .column,
+  #training .column,
   #gallery .column {
     max-width: 100%;
   }
@@ -483,6 +579,10 @@
   #pricing .column,
   #contact .column {
     max-width: 50%;
+  }
+
+  #footer .column {
+    max-width: 75%;
   }
 }
 
@@ -529,6 +629,10 @@
     transform: none;
   }
 
+  .section-title h2 {
+    font-size: 50px;
+  }
+
   #home .caption span,
   #home .caption h1 {
     font-size: 35px;
@@ -543,8 +647,8 @@
     max-width: 75%;
   }
 
-  .section-title h2 {
-    font-size: 50px;
+  #footer .column {
+    max-width: 90%;
   }
 }
 
@@ -552,12 +656,17 @@
 
   /* Start of phone styles */
 
+  .section-title h2 {
+    font-size: 35px;
+  }
+
   #home .caption span,
   #home .caption h1 {
     font-size: 25px;
   }
 
-  #training h3, #about h3 {
+  #about h3,
+  #training h3 {
     font-size: 25px;
   }
 
@@ -566,7 +675,7 @@
     max-width: 100%;
   }
 
-  .section-title h2 {
-    font-size: 35px;
+  #footer .column {
+    max-width: 100%;
   }
 }
