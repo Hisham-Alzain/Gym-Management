@@ -9,6 +9,8 @@ import {
 import gym from './assets/gym.jpg'
 import cat1 from './assets/cat1.png';
 import cat2 from './assets/cat2.png';
+import caoch from './assets/coach.jpg';
+import app from './assets/gym-app.jpg';
 import team1 from './assets/team1.png';
 import team2 from './assets/team2.png';
 import team3 from './assets/team3.png';
@@ -22,11 +24,18 @@ function App() {
 
   const navigation = [
     { href: '#home', name: 'Home' },
-    { href: '#', name: 'About' },
+    { href: '#about', name: 'About' },
     { href: '#training', name: 'Training' },
     { href: '#gallery', name: 'Gallery' },
     { href: '#pricing', name: 'Pricing' },
     { href: '#contact', name: 'Contact' },
+  ]
+
+  const about = [
+    { img: caoch, h3: '', p: '' },
+    { img: '', h3: 'Coach Amr:', p: 'a trustworthy coach with a certificate in human organs and chemical effects in the body specialize in reforming the body to the desired shape.' },
+    { img: app, h3: '', p: '' },
+    { img: '', h3: 'My app:', p: 'special app designed to give professional advices and workout plans and it also provides many nutritional programs to give you the best experince and results.' }
   ]
 
   const training = [
@@ -110,7 +119,30 @@ function App() {
         </div>
       </section>
 
-      {/* Training*/}
+            {/* About */}
+            <section id='about'>
+        <div className='container'>
+          <div className='row'>
+            {about.map((a, i) => (
+              <div key={i} className='column'>
+                <div className='sec'>
+                  <div className='sec-img'>
+                    <img src={a.img} alt="" />
+                    <div className='content-box'>
+                      <div className='content'>
+                        <h3>{a.h3}</h3>
+                        <p>{a.p}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Training */}
       <section id='training'>
         <div className='container'>
           <div className='row'>
