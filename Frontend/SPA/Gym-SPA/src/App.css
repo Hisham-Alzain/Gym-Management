@@ -1,20 +1,28 @@
 #root {
   width: auto;
-  /*max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;*/
 }
 
 /* OUR CSS */
 /* NavBar */
-nav {
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin-inline: 10px;
+}
+
+.nav {
   width: 100%;
+  height: 70px;
+  display: flex;
   position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
   z-index: 1;
 }
 
-nav ul {
+.nav ul {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -24,8 +32,7 @@ nav ul {
   list-style: none;
 }
 
-nav ul li a {
-  display: block;
+.nav ul li a {
   font-size: 20px;
   font-weight: 400;
   color: #ffffff;
@@ -35,8 +42,8 @@ nav ul li a {
   transition: 0.3s;
 }
 
-nav ul li a:hover {
-  transform: scale(1.2);
+.nav ul li a:hover {
+  font-size: 24px;
   text-shadow: 2px 2px 4px red;
   transition: 0.3s;
 }
@@ -61,9 +68,9 @@ nav ul li a:hover {
 }
 
 .column {
-  position: relative;
   width: 100%;
   min-height: 1px;
+  position: relative;
 }
 
 .btn {
@@ -95,14 +102,14 @@ nav ul li a:hover {
 }
 
 .section-title h2 {
+  margin: 0;
+  padding: 0;
   font-size: 70px;
   font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
   text-align: center;
   display: block;
-  margin: 0;
-  padding: 0;
   margin-block-end: 35px;
   -webkit-text-stroke: 1px #f6f7f8;
   -webkit-text-fill-color: transparent;
@@ -239,13 +246,13 @@ nav ul li a:hover {
 }
 
 #gallery .container .row .column .box .caption p {
+  margin: 0;
+  padding: 4px;
   font-size: 16px;
   line-height: 32px;
   color: #ffffff;
   text-align: center;
   transition: 0.4s;
-  padding: 4px;
-  margin: 0;
 }
 
 /* Pricing  */
@@ -370,6 +377,11 @@ nav ul li a:hover {
 
 /* Responsive*/
 /* Start of desktop styles */
+.show-nav,
+.hide-nav {
+  display: none;
+}
+
 #training .column {
   max-width: 50%;
 }
@@ -410,6 +422,45 @@ nav ul li a:hover {
 @media screen and (max-width: 767px) {
 
   /* Start of medium tablet styles */
+
+  .show-nav,
+  .hide-nav {
+    position: absolute;
+    font-size: 30px;
+    color: #ffffff;
+    display: block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    inset-block-start: 20px;
+    inset-inline-end: 30px;
+  }
+
+  .nav {
+    height: 300px;
+    flex-direction: column;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    transform: translateY(-100vh);
+    transition: 1s;
+  }
+
+  .nav ul {
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo {
+    position: absolute;
+    inset-block-start: 20px;
+    inset-inline-start: 20px;
+  }
+
+  .responsive {
+    transform: none;
+  }
 
   #home .caption span,
   #home .caption h1 {

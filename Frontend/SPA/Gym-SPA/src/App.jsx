@@ -1,20 +1,29 @@
-import React from 'react'
+import { useRef } from 'react';
 import {
-  FaDumbbell, FaCheck, FaLocationDot,
+  FaBars, FaTimes, FaCheck
+} from 'react-icons/fa';
+import {
+  FaDumbbell, FaLocationDot,
   FaPhone, FaEnvelope
 } from 'react-icons/fa6';
-import cat1 from './assets/cat1.png'
-import cat2 from './assets/cat2.png'
-import team1 from './assets/team1.png'
-import team2 from './assets/team2.png'
-import team3 from './assets/team3.png'
-import './App.css'
+import gym from './assets/gym.jpg'
+import cat1 from './assets/cat1.png';
+import cat2 from './assets/cat2.png';
+import team1 from './assets/team1.png';
+import team2 from './assets/team2.png';
+import team3 from './assets/team3.png';
+import './App.css';
 
 function App() {
+  const navbar = useRef();
+  const toggleNavbar = () => {
+    navbar.current.classList.toggle('responsive');
+  }
+
   const navigation = [
     { href: '#home', name: 'Home' },
     { href: '#', name: 'About' },
-    { href: '#about', name: 'Training' },
+    { href: '#training', name: 'Training' },
     { href: '#gallery', name: 'Gallery' },
     { href: '#pricing', name: 'Pricing' },
     { href: '#contact', name: 'Contact' },
@@ -77,13 +86,22 @@ function App() {
 
   return (
     <>
-      <nav>
-        <ul id="navigation">
-          {navigation.map((n) => (
-            <li><a href={n.href}>{n.name}</a></li>
+      <nav className='nav' ref={navbar}>
+        <button className='hide-nav' onClick={toggleNavbar}>
+          <FaTimes />
+        </button>
+        <img className='logo' src={gym} />
+        <ul>
+          {navigation.map((n, i) => (
+            <li key={i} onClick={toggleNavbar}>
+              <a href={n.href}>{n.name}</a>
+            </li>
           ))}
         </ul>
       </nav>
+      <button className='show-nav' onClick={toggleNavbar}>
+        <FaBars />
+      </button>
 
       <section id='home'>
         <div className="caption">
@@ -96,8 +114,8 @@ function App() {
       <section id='training'>
         <div className='container'>
           <div className='row'>
-            {training.map((t) => (
-              <div className='column'>
+            {training.map((t, i) => (
+              <div key={i} className='column'>
                 <div className='topic'>
                   <div className='topic-img'>
                     <img src={t.img} alt="" />
@@ -105,7 +123,7 @@ function App() {
                       <div className='content'>
                         <h3>{t.h3}</h3>
                         <p>{t.p}</p>
-                        <a href="#" className="btn">View Courses</a>
+                        <a href="#" className='btn'>View Courses</a>
                       </div>
                     </div>
                   </div>
@@ -125,8 +143,8 @@ function App() {
             </div>
           </div>
           <div className='row'>
-            {gallery.map((g) => (
-              <div className='column'>
+            {gallery.map((g, i) => (
+              <div key={i} className='column'>
                 <div className='box'>
                   <div className='box-img'>
                     <img src={g.img} alt="" />
@@ -151,15 +169,15 @@ function App() {
             </div>
           </div>
           <div className='row'>
-            {pricing.map((p) => (
-              <div className='column'>
+            {pricing.map((p, i) => (
+              <div key={i} className='column'>
                 <div className='card'>
                   <FaDumbbell className='icon' />
                   <div className='details'>
                     <span className='plan'>{p.plan}</span>
                     <p>{p.price}  <span>{p.span_txt}</span></p>
-                    {p.features.map((feature) => (
-                      <div className='features'>
+                    {p.features.map((feature, index) => (
+                      <div key={index} className='features'>
                         <FaCheck className='check' />
                         <p>{feature}</p>
                       </div>
@@ -179,8 +197,8 @@ function App() {
       <section id='contact'>
         <div className='container'>
           <div className='row'>
-            {contact.map((c) => (
-              <div className='column'>
+            {contact.map((c, i) => (
+              <div key={i} className='column'>
                 <div className='item'>
                   {c.icon}
                   <div className='caption'>
@@ -197,7 +215,7 @@ function App() {
       <div style={{ height: '1000px' }}> K </div>
 
     </>
-  )
+  );
 }
 
-export default App
+export default App;
