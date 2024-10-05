@@ -14,7 +14,7 @@ class LoginController extends GetxController {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     passwordToggle = true;
-    remeberMe = false;
+    remeberMe = true;
     super.onInit();
   }
 
@@ -33,5 +33,10 @@ class LoginController extends GetxController {
       },
       child: Icon(passwordToggle ? Icons.visibility_off : Icons.visibility),
     );
+  }
+
+  void toggleRemeberMe(bool rememberMe) {
+    remeberMe = !remeberMe;
+    update();
   }
 }

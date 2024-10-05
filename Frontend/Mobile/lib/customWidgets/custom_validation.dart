@@ -25,4 +25,13 @@ class CustomValidation {
     }
     return null;
   }
+
+  String? validatePhoneNumber(String? value) {
+    if (value!.isEmpty) {
+      return 'Required Field'.tr;
+    } else if (!value.isNum) {
+      return 'Invalid NUmber'.tr;
+    }
+    return null;
+  }
 }

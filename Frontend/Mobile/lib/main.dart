@@ -18,6 +18,7 @@ class MainApp extends StatelessWidget {
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        colorSchemeSeed: Colors.redAccent,
         appBarTheme: const AppBarTheme(
           color: Colors.redAccent,
           centerTitle: true,
@@ -51,12 +52,19 @@ class MainApp extends StatelessWidget {
             foregroundColor: WidgetStatePropertyAll(Colors.white),
           ),
         ),
-        tabBarTheme: const TabBarTheme(
+        tabBarTheme: TabBarTheme(
           labelColor: Colors.redAccent,
           unselectedLabelColor: Colors.white,
           indicatorSize: TabBarIndicatorSize.tab,
           dividerColor: Colors.white,
           indicatorColor: Colors.redAccent,
+          labelStyle: Theme.of(context).textTheme.labelLarge,
+          unselectedLabelStyle: Theme.of(context).textTheme.labelLarge,
+        ),
+        radioTheme: const RadioThemeData(
+          fillColor: WidgetStatePropertyAll(
+            Colors.redAccent,
+          ),
         ),
       ),
     );

@@ -6,7 +6,7 @@ import 'package:mobile/views/authViews/register_view.dart';
 List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: '/auth',
-    page: () => AuthView(),
+    page: () => const AuthView(),
   ),
   GetPage(
     name: '/login',

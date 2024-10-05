@@ -12,8 +12,7 @@ class AuthView extends StatelessWidget {
         length: 2,
         initialIndex: 0,
         child: Scaffold(
-          backgroundColor: Colors.black,
-          appBar: const TabBar(
+          bottomNavigationBar: const TabBar(
             tabs: <Widget>[
               Tab(
                 icon: Icon(
@@ -29,6 +28,7 @@ class AuthView extends StatelessWidget {
               ),
             ],
           ),
+          backgroundColor: Colors.black,
           body: TabBarView(
             children: [
               LoginView(),
