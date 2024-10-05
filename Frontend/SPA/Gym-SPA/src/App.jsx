@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   FaBars, FaTimes, FaCheck,
   FaFacebookF, FaInstagram,
@@ -8,6 +8,7 @@ import {
   FaDumbbell, FaLocationDot,
   FaPhone, FaEnvelope
 } from 'react-icons/fa6';
+import { useTranslation } from 'react-i18next';
 import gym from './assets/gym.jpg'
 import cat1 from './assets/cat1.png';
 import cat2 from './assets/cat2.png';
@@ -19,6 +20,21 @@ import team3 from './assets/team3.png';
 import './App.css';
 
 function App() {
+  // Translations
+  const { t, i18n } = useTranslation('global');
+
+  useEffect(() => {
+    localStorage.setItem('Lang', i18n.language);
+    document.documentElement.lang = i18n.language;
+    document.documentElement.dir = i18n.dir(i18n.language);
+  }, [i18n.language]);
+
+  const changeLanguage = (event) => {
+    if (event.target.value === 'en' || event.target.value === 'ar') {
+      i18n.changeLanguage(event.target.value);
+    }
+  };
+
   const navbar = useRef();
   const toggleNavbar = () => {
     navbar.current.classList.toggle('responsive');
@@ -273,6 +289,17 @@ function App() {
                   <div className='caption'>
                     <div className='f-logo'>
                       <a href='#'><img src={gym} alt="" /></a>
+                      <div className='lang'>
+                        Language:
+                        <select onChange={changeLanguage} value={i18n.language}>
+                          <option key='en' value='en'>
+                            English
+                          </option>
+                          <option key='ar' value='ar'>
+                            Arabic
+                          </option>
+                        </select>
+                      </div>
                     </div>
                     <div className='menu'>
                       <ul>
