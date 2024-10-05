@@ -34,14 +34,14 @@ function App() {
   ]
 
   const about = [
-    { img: coach, h3: '', p: '' },
+    { img: coach },
     {
-      img: '', h3: 'Coach Amr:',
+      h3: 'Coach Amr:',
       p: 'a trustworthy coach with a certificate in human organs and chemical effects in the body specialize in reforming the body to the desired shape.'
     },
-    { img: app, h3: '', p: '' },
+    { img: app },
     {
-      img: '', h3: 'My app:',
+      h3: 'My app:',
       p: 'special app designed to give professional advices and workout plans and it also provides many nutritional programs to give you the best experince and results.'
     }
   ]
@@ -140,12 +140,12 @@ function App() {
                 <div key={i} className='column'>
                   <div className='sec'>
                     <div className='sec-img'>
-                      <img src={a.img} alt="" />
-                      <div className='content-box'>
-                        <div className='content'>
-                          <h3>{a.h3}</h3>
-                          <p>{a.p}</p>
-                        </div>
+                      {a.img && <img src={a.img} alt="" />}
+                    </div>
+                    <div className='content-box'>
+                      <div className='content'>
+                        {a.h3 && <h3>{a.h3}</h3>}
+                        {a.p && <p>{a.p}</p>}
                       </div>
                     </div>
                   </div>
