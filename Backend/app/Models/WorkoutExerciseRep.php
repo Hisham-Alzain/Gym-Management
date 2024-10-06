@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Exercise extends Model
+class WorkoutExerciseRep extends Model
 {
     use HasFactory;
 
@@ -15,11 +15,12 @@ class Exercise extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'muscle',
-        'description',
-        'video_path',
-        'thumbnail_path'
+        'workout_exercise_id',
+        'set_number',
+        'expected_reps',
+        'expected_weight',
+        'user_reps',
+        'user_rep_weight'
     ];
 
     /**

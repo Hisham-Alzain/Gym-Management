@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Subscription;
+use App\Models\WorkoutDay;
+use App\Models\WorkoutExercise;
+use App\Models\WorkoutExerciseRep;
+use App\Models\WorkoutProgram;
 use App\Policies\AdminPolicy;
 use Illuminate\Http\Request;
+use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Resources\SubscriptionCollection;
 use App\Http\Resources\UserInfoCollection;
@@ -165,9 +170,63 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateDietProgram() {}
+    public function CreateDietProgram()
+    {
+    }
 
-    public function CreateWorkoutProgram() {}
+    public function CreateWorkoutProgram(WorkoutRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            $program = WorkoutProgram::create([
+                'user_id' => $validated['user_id'],
+                'start_date' => $validated['start_date'],
+                'end_date' => $validated['end_date'],
+                'no_days' => $validated['no_days'],
+                'repeat_days' => $validated['repeat_days']
+            ]);
+            foreach ($validated['days'] as $D) {
+                $day = WorkoutDay::create([
+                    'workout_program_id' => $program->id,
+                    'muscle' => $D['muscle']
+                ]);
+                foreach ($validated['exercises'] as $E) {
+                    $exercise = WorkoutExercise::create([
+                        'exercise_id' => $E['exercise_id'],
+                        'no_sets' => $E['no_sets']
+                    ]);
+                    foreach ($E['sets'] as $S) {
+                        $set = WorkoutExerciseRep::create([
+                            'workout_exercise_id' => $exercise->id,
+                            'set_number' => $S['set_no'],
+                            'expected_reps' => $S['exp_reps'],
+                            'expected_weight' => $S['exp_weight'],
+                        ]);
+                    }
+                }
+            }
+            return response()->json($validated, 200);
+        }
+    }
 
     public function ShowAllSubscriptions()
     {
