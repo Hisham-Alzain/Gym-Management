@@ -31,27 +31,72 @@ class PersonalInfoView extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: CustomDropDownButton(
                   value: controller.selectedGender,
-                  items: controller.genders.entries.map((entry) {
-                    return DropdownMenuItem<String>(
-                      value: entry.value,
-                      child: Center(
-                        child: Text(
-                          entry.key,
-                          style: Theme.of(context).textTheme.bodyLarge,
+                  items: controller.genders.entries.map(
+                    (entry) {
+                      return DropdownMenuItem<String>(
+                        value: entry.value,
+                        child: Center(
+                          child: Text(
+                            entry.key,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
+                      );
+                    },
+                  ).toList(),
                   onChanged: (p0) => controller.selectGender(p0),
                   hint: 'Gender',
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10),
+                child: CustomDropDownButton(
+                  value: controller.selectedHeight,
+                  items: controller.cmList
+                      .map(
+                        (cm) => DropdownMenuItem<int>(
+                          value: cm,
+                          child: Center(
+                            child: Text(
+                              '$cm cm',
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (p0) => controller.selectHeight(p0),
+                  hint: 'Height',
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: CustomDropDownButton(
+                  value: controller.selectedWeight,
+                  items: controller.kgList
+                      .map(
+                        (kg) => DropdownMenuItem<int>(
+                          value: kg,
+                          child: Center(
+                            child: Text(
+                              '$kg kg',
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (p0) => controller.selectWeight(p0),
+                  hint: 'Weight',
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
                 child: OutlinedButton(
                   onPressed: () {
-                    if (controller.formField.currentState?.validate() ==
-                        true) {}
+                    if (controller.formField.currentState?.validate() == true) {
+                      Get.toNamed('/auth');
+                    }
                   },
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -72,42 +72,41 @@ class LoginView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      OutlinedButton(
-                        onPressed: () {
-                          if (controller.formField.currentState?.validate() ==
-                              true) {}
-                        },
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Login',
-                            ),
-                            Icon(Icons.arrow_forward_ios),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: OutlinedButton(
+                      onPressed: () {
+                        if (controller.formField.currentState?.validate() ==
+                            true) {}
+                      },
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Text(
-                                'Remeber Me?',
-                                style: Theme.of(context).textTheme.labelLarge,
-                              ),
-                              Checkbox(
-                                value: controller.remeberMe,
-                                activeColor: Colors.redAccent,
-                                onChanged: (value) => controller
-                                    .toggleRemeberMe(controller.remeberMe),
-                              ),
-                            ],
+                          Text(
+                            'Login',
+                          ),
+                          Icon(Icons.arrow_forward_ios),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Remeber Me?',
+                            style: Theme.of(context).textTheme.labelLarge,
+                          ),
+                          Checkbox(
+                            value: controller.remeberMe,
+                            activeColor: Colors.redAccent,
+                            onChanged: (value) => controller
+                                .toggleRemeberMe(controller.remeberMe),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ],

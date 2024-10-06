@@ -43,7 +43,7 @@ class MainApp extends StatelessWidget {
               ),
             ),
             fixedSize: const WidgetStatePropertyAll(
-              Size(350, 50),
+              Size(300, 50),
             ),
             foregroundColor: const WidgetStatePropertyAll(Colors.white),
             textStyle:
