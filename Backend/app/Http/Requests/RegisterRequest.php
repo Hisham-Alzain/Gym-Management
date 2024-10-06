@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\Genders;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -31,8 +29,6 @@ class RegisterRequest extends FormRequest
             'phone_number' => ['required', 'unique:users', 'min:11', 'max:14', 'regex:/^\+/'],
             'password' => ['required'],
             'confirm_password' => ['required', 'same:password'],
-            'birth_date' => ['required', 'date_format:Y-m-d'],
-            'gender' => ['required', Rule::in(Genders::names())],
         ];
     }
 

@@ -2,28 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
-use App\Http\Requests\UpdateUserInfoRequest;
+use App\Http\Requests\UserInfoRequest;
 use App\Http\Resources\UserInfoResource;
 use Illuminate\Support\Facades\Auth;
 
 
 class TraineeController extends Controller
 {
-    public function UpdateUserInfo(UpdateUserInfoRequest $request)
+    public function UpdateUserInfo(UserInfoRequest $request)
     {
         // Validate request
         $validated = $request->validated();
 
         // Get user
         $user = Auth::user();
+        $user = User::find($user->id);
 
         // Check user
         if ($user == null) {
             return response()->json([
                 'errors' => ['user' => 'Invalid user']
             ], 401);
+        }
+
+        // Update user birth_date and gender
+        if (isset($validated['birth_date'])) {
+            $user->birthdate = $validated['birth_date'];
+            $user->save();
+        }
+        if (isset($validated['gender'])) {
+            $user->birthdate = $validated['gender'];
+            $user->save();
         }
 
         // Get userInfo
@@ -40,10 +52,10 @@ class TraineeController extends Controller
         // Response
         return response()->json([
             "message" => "User info updated successfully",
-        ], 201);
+        ], 200);
     }
 
-    public function GetUserInfo()
+    public function GetUserInfo(Request $request)
     {
         // Get user
         $user = Auth::user();
@@ -54,7 +66,10 @@ class TraineeController extends Controller
                 'errors' => ['user' => 'Invalid user']
             ], status: 401);
         }
+
+        // Trainer
         if ($user->role == 'trainer') {
+            // Response
             return response()->json([
                 'data' => [
                     'id' => $user->id,
@@ -64,6 +79,8 @@ class TraineeController extends Controller
                 "message" => "Coach info retrieved successfully"
             ], 200);
         }
+
+        // Trainee
         // Response
         return response()->json(
             [
