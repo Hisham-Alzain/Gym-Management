@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/routes/routes.dart';
-import 'package:mobile/views/authViews/auth_view.dart';
+import 'package:mobile/views/AppViews/personal_info_view.dart';
 
 Future<void> main() async {
   runApp(const MainApp());
@@ -14,20 +14,22 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: const AuthView(),
+      home: PersonalInfoView(),
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorSchemeSeed: Colors.redAccent,
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           color: Colors.redAccent,
           centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
+          toolbarTextStyle: Theme.of(context).textTheme.titleLarge,
+          foregroundColor: Colors.white,
         ),
         scaffoldBackgroundColor: Colors.grey.shade900,
         textTheme: TextTheme(
           titleLarge: GoogleFonts.oswald(color: Colors.white),
-          headlineLarge: GoogleFonts.oswald(color: Colors.white),
+          headlineSmall: GoogleFonts.oswald(color: Colors.white),
           labelLarge: GoogleFonts.afacad(color: Colors.white),
           bodyLarge: GoogleFonts.afacad(color: Colors.white),
         ),
@@ -39,6 +41,9 @@ class MainApp extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 side: BorderSide.none,
               ),
+            ),
+            fixedSize: const WidgetStatePropertyAll(
+              Size(350, 50),
             ),
             foregroundColor: const WidgetStatePropertyAll(Colors.white),
             textStyle:

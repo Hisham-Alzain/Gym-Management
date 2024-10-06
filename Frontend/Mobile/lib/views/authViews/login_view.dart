@@ -12,8 +12,9 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
+      body: SizedBox(
+        height: Get.height,
+        width: Get.width,
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -24,103 +25,92 @@ class LoginView extends StatelessWidget {
           child: Form(
             key: _loginController.formField,
             child: GetBuilder<LoginController>(
-              builder: (controller) => SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: CustomTextField(
-                        controller: controller.emailController,
-                        textInputType: TextInputType.emailAddress,
-                        obsecureText: false,
-                        icon: Icons.email,
-                        labelText: 'Email',
-                        validator: (p0) => CustomValidation().validateEmail(p0),
-                      ),
+              builder: (controller) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: CustomTextField(
+                      controller: controller.emailController,
+                      textInputType: TextInputType.emailAddress,
+                      obsecureText: false,
+                      icon: Icons.email,
+                      labelText: 'Email',
+                      validator: (p0) => CustomValidation().validateEmail(p0),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: CustomTextField(
-                        controller: controller.passwordController,
-                        textInputType: TextInputType.visiblePassword,
-                        obsecureText: controller.passwordToggle,
-                        icon: Icons.key,
-                        labelText: 'Password',
-                        validator: (p0) =>
-                            CustomValidation().validateRequiredField(p0),
-                        inkWell: controller.passwordInkwell(),
-                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: CustomTextField(
+                      controller: controller.passwordController,
+                      textInputType: TextInputType.visiblePassword,
+                      obsecureText: controller.passwordToggle,
+                      icon: Icons.key,
+                      labelText: 'Password',
+                      validator: (p0) =>
+                          CustomValidation().validateRequiredField(p0),
+                      inkWell: controller.passwordInkwell(),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                          child: TextButton(
-                            child: Text('Forgot Password',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(
-                                      decoration: TextDecoration.underline,
-                                      color: Colors.redAccent,
-                                      decorationColor: Colors.redAccent,
-                                    )),
-                            onPressed: () {},
-                          ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                        child: TextButton(
+                          child: Text('Forgot Password',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.redAccent,
+                                    decorationColor: Colors.redAccent,
+                                  )),
+                          onPressed: () {},
                         ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 200, 0, 0),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: 50,
-                            width: 350,
-                            child: OutlinedButton(
-                              onPressed: () {
-                                if (controller.formField.currentState
-                                        ?.validate() ==
-                                    true) {}
-                              },
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Login',
-                                  ),
-                                  Icon(Icons.arrow_forward_ios),
-                                ],
-                              ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      OutlinedButton(
+                        onPressed: () {
+                          if (controller.formField.currentState?.validate() ==
+                              true) {}
+                        },
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Login',
                             ),
-                          ),
+                            Icon(Icons.arrow_forward_ios),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    'Remeber Me?',
-                                    style:
-                                        Theme.of(context).textTheme.labelLarge,
-                                  ),
-                                  Checkbox(
-                                    value: controller.remeberMe,
-                                    activeColor: Colors.redAccent,
-                                    onChanged: (value) => controller
-                                        .toggleRemeberMe(controller.remeberMe),
-                                  ),
-                                ],
+                              Text(
+                                'Remeber Me?',
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                              Checkbox(
+                                value: controller.remeberMe,
+                                activeColor: Colors.redAccent,
+                                onChanged: (value) => controller
+                                    .toggleRemeberMe(controller.remeberMe),
                               ),
                             ],
-                          )
+                          ),
                         ],
-                      ),
-                    ),
-                  ],
-                ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

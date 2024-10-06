@@ -34,4 +34,11 @@ class CustomValidation {
     }
     return null;
   }
+
+  String? validateRequiredDropDown(dynamic value) {
+    if (value == null) {
+      return 'Required Field';
+    }
+    return null;
+  }
 }

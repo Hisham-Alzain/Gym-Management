@@ -10,7 +10,6 @@ class RegisterController extends GetxController {
   late TextEditingController passwordController;
   late TextEditingController confirmPasswordController;
   late CountryCode countryCode;
-  late String selectedGender;
   late bool passwordToggle;
 
   @override
@@ -20,7 +19,6 @@ class RegisterController extends GetxController {
     emailController = TextEditingController();
     phoneNumberController = TextEditingController(text: '+963');
     countryCode = CountryCode(dialCode: '+963');
-    selectedGender = 'MALE';
     passwordController = TextEditingController();
     confirmPasswordController = TextEditingController();
     passwordToggle = true;
@@ -40,11 +38,6 @@ class RegisterController extends GetxController {
   void selectCountryCode(CountryCode code) {
     countryCode = code;
     phoneNumberController.text = code.dialCode!;
-    update();
-  }
-
-  void changeGender(String value) {
-    selectedGender = value;
     update();
   }
 
