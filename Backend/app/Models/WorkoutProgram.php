@@ -48,6 +48,6 @@ class WorkoutProgram extends Model
 
     public function workoutDays(): HasMany
     {
-        return $this->hasMany(WorkoutProgram::class, 'workout_program_id', 'id');
+        return $this->hasMany(WorkoutDay::class, 'workout_program_id', 'id');
     }
 }

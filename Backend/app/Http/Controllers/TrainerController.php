@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\User;
 use App\Models\Subscription;
 use App\Models\WorkoutDay;
@@ -14,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Resources\WorkoutProgramResource;
+use App\Http\Resources\WorkoutProgramCollection;
 use App\Http\Resources\SubscriptionCollection;
 use App\Http\Resources\UserInfoCollection;
 use Illuminate\Support\Facades\Auth;
@@ -198,12 +198,14 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            // Create program
             $program = WorkoutProgram::create([
                 'user_id' => $validated['user_id'],
                 'start_date' => $validated['start_date'],
                 'end_date' => $validated['end_date'],
                 'repeat_days' => $validated['repeat_days']
             ]);
+            // Create days
             foreach ($validated['days'] as $D) {
                 $day = WorkoutDay::create([
                     'workout_program_id' => $program->id,
@@ -224,10 +226,58 @@ class TrainerController extends Controller
                     }
                 }
             }
+
+            // Response
             return response()->json([
                 'message' => 'Workout program has been created successfully',
                 'program' => new WorkoutProgramResource($program)
             ], 201);
+        }
+    }
+
+    public function ShowWorkoutPrograms(Request $request)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get all programs
+            $programs = WorkoutProgram::paginate(10);
+
+            // Response
+            return response()->json([
+                "message" => "programs fetched",
+                "programs" => new WorkoutProgramCollection($programs),
+                'pagination_data' => [
+                    'from' => $programs->firstItem(),
+                    'to' => $programs->lastItem(),
+                    'total' => $programs->total(),
+                    'first_page' => 1,
+                    'current_page' => $programs->currentPage(),
+                    'last_page' => $programs->lastPage(),
+                    'pageNumbers' => $this->generateNumberArray(1, $programs->lastPage()),
+                    'first_page_url' => $programs->url(1),
+                    'current_page_url' => $programs->url($programs->currentPage()),
+                    'last_page_url' => $programs->url($programs->lastPage()),
+                    'next_page' => $programs->nextPageUrl(),
+                    'prev_page' => $programs->previousPageUrl(),
+                    'path' => $programs->path(),
+                ],
+            ]);
         }
     }
 

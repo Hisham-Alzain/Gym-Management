@@ -14,6 +14,17 @@ class WorkoutProgramResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'program_id' => $this->id,
+            'user' => [
+                'id' => $this->user->id,
+                'name' => $this->user->name,
+            ],
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'repeat_days' => $this->repeat_days,
+            'no_days' => $this->workoutDays()->count(),
+            'days' => new WorkoutDayCollection($this->workoutDays)
+        ];
     }
 }
