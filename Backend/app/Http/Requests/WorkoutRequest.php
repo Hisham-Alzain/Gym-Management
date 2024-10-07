@@ -30,7 +30,6 @@ class WorkoutRequest extends FormRequest
             'user_id' => ['required'],
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d'],
-            'no_days' => ['required', 'integer', 'min:1', 'max:7'],
             'repeat_days' => ['required', 'integer', 'min:1', 'max:7'],
 
             // Workout_days table
@@ -40,7 +39,6 @@ class WorkoutRequest extends FormRequest
             // Workout_excercises table
             'days.*.exercises' => ['required', 'array'],
             'days.*.exercises.*.exercise_id' => ['required'],
-            'days.*.exercises.*.no_sets' => ['required', 'integer'],
 
             // Workout_excercise_reps table
             'days.*.exercises.*.sets' => ['required', 'array'],

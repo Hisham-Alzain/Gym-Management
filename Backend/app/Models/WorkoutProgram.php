@@ -20,7 +20,6 @@ class WorkoutProgram extends Model
         'user_id',
         'start_date',
         'end_date',
-        'no_days',
         'repeat_days'
     ];
 

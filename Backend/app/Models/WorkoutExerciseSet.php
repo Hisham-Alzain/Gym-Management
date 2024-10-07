@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\Belongsto;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkoutExerciseRep extends Model
+class WorkoutExerciseSet extends Model
 {
     use HasFactory;
 
@@ -41,4 +42,8 @@ class WorkoutExerciseRep extends Model
     }
 
     /* Relations */
+    public function workoutExercise(): BelongsTo
+    {
+        return $this->belongsTo(WorkoutExercise::class, 'workout_exercise_id', 'id');
+    }
 }

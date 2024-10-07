@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('no_days');
             $table->integer('repeat_days'); # after how many days to repeat the workout
             $table->timestamps();
         });

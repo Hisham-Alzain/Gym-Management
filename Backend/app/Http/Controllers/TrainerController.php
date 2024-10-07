@@ -7,12 +7,13 @@ use App\Models\User;
 use App\Models\Subscription;
 use App\Models\WorkoutDay;
 use App\Models\WorkoutExercise;
-use App\Models\WorkoutExerciseRep;
+use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutProgram;
 use App\Policies\AdminPolicy;
 use Illuminate\Http\Request;
 use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\SubscriptionRequest;
+use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\SubscriptionCollection;
 use App\Http\Resources\UserInfoCollection;
 use Illuminate\Support\Facades\Auth;
@@ -201,7 +202,6 @@ class TrainerController extends Controller
                 'user_id' => $validated['user_id'],
                 'start_date' => $validated['start_date'],
                 'end_date' => $validated['end_date'],
-                'no_days' => $validated['no_days'],
                 'repeat_days' => $validated['repeat_days']
             ]);
             foreach ($validated['days'] as $D) {
@@ -209,13 +209,13 @@ class TrainerController extends Controller
                     'workout_program_id' => $program->id,
                     'muscle' => $D['muscle']
                 ]);
-                foreach ($validated['exercises'] as $E) {
+                foreach ($D['exercises'] as $E) {
                     $exercise = WorkoutExercise::create([
+                        'workout_day_id' => $day->id,
                         'exercise_id' => $E['exercise_id'],
-                        'no_sets' => $E['no_sets']
                     ]);
                     foreach ($E['sets'] as $S) {
-                        $set = WorkoutExerciseRep::create([
+                        $set = WorkoutExerciseSet::create([
                             'workout_exercise_id' => $exercise->id,
                             'set_number' => $S['set_no'],
                             'expected_reps' => $S['exp_reps'],
@@ -224,7 +224,10 @@ class TrainerController extends Controller
                     }
                 }
             }
-            return response()->json($validated, 200);
+            return response()->json([
+                'message' => 'Workout program has been created successfully',
+                'program' => new WorkoutProgramResource($program)
+            ], 201);
         }
     }
 

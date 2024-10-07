@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Exercise extends Model
@@ -40,4 +41,8 @@ class Exercise extends Model
     }
 
     /* Relations */
+    public function workoutExercises(): HasMany
+    {
+        return $this->hasMany(WorkoutExercise::class, 'exercise_id', 'id');
+    }
 }

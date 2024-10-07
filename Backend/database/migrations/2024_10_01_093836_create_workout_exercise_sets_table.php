@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('workout_exercise_reps', function (Blueprint $table) {
+        Schema::create('workout_exercise_sets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('workout_exercise_id')->constrained('workout_exercises')->cascadeOnDelete();
             $table->integer('set_number');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('workout_exercise_reps');
+        Schema::dropIfExists('workout_exercise_sets');
     }
 };
