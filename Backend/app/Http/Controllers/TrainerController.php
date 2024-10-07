@@ -166,10 +166,6 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateDietProgram()
-    {
-    }
-
     public function CreateWorkoutProgram(WorkoutRequest $request)
     {
         // Validate request
@@ -230,48 +226,6 @@ class TrainerController extends Controller
         }
     }
 
-    public function DeleteWorkoutProgram(Request $request, $program_id)
-    {
-        // Get user
-        $user = Auth::user();
-
-        // Check user
-        if ($user == null) {
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        }
-
-        // Check user_role
-        $policy = new AdminPolicy();
-        if (!$policy->Policy(User::find($user->id))) {
-            // Response
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        } else {
-            // Get trainee
-            $program = WorkoutProgram::find($program_id);
-
-            // Check Trainee
-            if ($program == null) {
-                // Response
-                return response()->json([
-                    'errors' => ['program' => 'program was not found'],
-                ], 404);
-            } else {
-                // Delete trainee
-                $program->delete();
-
-                // Response
-                return response()->json([
-                    'message' => 'Successfully deleted program'
-                ], 204);
-            }
-        }
-    }
-
-
     public function ShowWorkoutPrograms(Request $request)
     {
         // Get user
@@ -316,6 +270,51 @@ class TrainerController extends Controller
                 ],
             ]);
         }
+    }
+
+    public function DeleteWorkoutProgram(Request $request, $program_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get trainee
+            $program = WorkoutProgram::find($program_id);
+
+            // Check Trainee
+            if ($program == null) {
+                // Response
+                return response()->json([
+                    'errors' => ['program' => 'program was not found'],
+                ], 404);
+            } else {
+                // Delete trainee
+                $program->delete();
+
+                // Response
+                return response()->json([
+                    'message' => 'Successfully deleted program'
+                ], 204);
+            }
+        }
+    }
+
+    public function CreateDietProgram()
+    {
     }
 
     public function ShowAllSubscriptions()

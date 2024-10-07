@@ -16,6 +16,9 @@ Route::controller(TraineeController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/trainee', 'GetUserInfo');
         Route::post('/trainee', 'UpdateUserInfo');
+
+        Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
+        Route::get('/trainee/workout/{program_id}', 'ShowWorkoutProgram');
     });
 });
 
