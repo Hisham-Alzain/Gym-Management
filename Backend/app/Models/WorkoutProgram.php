@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\Belongsto;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class WorkoutProgram extends Model
@@ -40,4 +42,13 @@ class WorkoutProgram extends Model
     }
 
     /* Relations */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function workoutDays(): HasMany
+    {
+        return $this->hasMany(WorkoutProgram::class, 'workout_program_id', 'id');
+    }
 }

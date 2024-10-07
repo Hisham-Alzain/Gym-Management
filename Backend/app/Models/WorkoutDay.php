@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\Belongsto;
 use Illuminate\Database\Eloquent\Model;
 
 class WorkoutDay extends Model
@@ -37,4 +38,8 @@ class WorkoutDay extends Model
     }
 
     /* Relations */
+    public function workoutProgram(): BelongsTo
+    {
+        return $this->belongsTo(WorkoutProgram::class, 'workout_program_id', 'id');
+    }
 }
