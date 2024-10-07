@@ -125,13 +125,8 @@ class TrainerController extends Controller
         }
     }
 
-    public function DeleteUser(Request $request)
+    public function DeleteUser(Request $request, $user_id)
     {
-        // Validate request
-        $validated = $request->validate([
-            'user_id' => 'required',
-        ]);
-
         // Get user
         $user = Auth::user();
 
@@ -151,13 +146,13 @@ class TrainerController extends Controller
             ], 401);
         } else {
             // Get trainee
-            $trainee = User::where('id', $validated['user_id'])->first();
+            $trainee = User::find($user_id);
 
             // Check Trainee
             if ($trainee == null) {
                 // Response
                 return response()->json([
-                    'errors' => ['user' => 'user not found'],
+                    'errors' => ['user' => 'user was not found'],
                 ], 404);
             } else {
                 // Delete trainee
@@ -166,7 +161,7 @@ class TrainerController extends Controller
                 // Response
                 return response()->json([
                     'message' => 'Successfully deleted user'
-                ], 200);
+                ], 204);
             }
         }
     }
@@ -234,6 +229,48 @@ class TrainerController extends Controller
             ], 201);
         }
     }
+
+    public function DeleteWorkoutProgram(Request $request, $program_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get trainee
+            $program = WorkoutProgram::find($program_id);
+
+            // Check Trainee
+            if ($program == null) {
+                // Response
+                return response()->json([
+                    'errors' => ['program' => 'program was not found'],
+                ], 404);
+            } else {
+                // Delete trainee
+                $program->delete();
+
+                // Response
+                return response()->json([
+                    'message' => 'Successfully deleted program'
+                ], 204);
+            }
+        }
+    }
+
 
     public function ShowWorkoutPrograms(Request $request)
     {

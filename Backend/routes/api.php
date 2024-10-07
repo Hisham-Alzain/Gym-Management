@@ -22,10 +22,12 @@ Route::controller(TraineeController::class)->group(function () {
 Route::controller(TrainerController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/subscription/start', 'StartSubscription');
-        Route::post('/workout/create', 'CreateWorkoutProgram');
-        Route::get('/workout/programs', 'ShowWorkoutPrograms');
+
+        Route::get('/workout_programs', 'ShowWorkoutPrograms');
+        Route::post('/workouts/create', 'CreateWorkoutProgram');
+        Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
 
         Route::get('/users', 'ShowUsers');
-        Route::delete('/delete', 'DeleteUser');
+        Route::delete('/users/{user_id}', 'DeleteUser');
     });
 });
