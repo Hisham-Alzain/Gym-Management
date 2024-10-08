@@ -67,4 +67,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(WorkoutProgram::class, 'user_id', 'id');
     }
+
+    public function dietPrograms(): HasMany
+    {
+        return $this->hasMany(DietProgram::class, 'user_id', 'id');
+    }
 }
