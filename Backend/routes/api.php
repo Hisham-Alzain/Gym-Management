@@ -19,6 +19,7 @@ Route::controller(TraineeController::class)->group(function () {
 
         Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
         Route::get('/trainee/workout/{program_id}', 'ShowWorkoutProgram');
+        Route::post('/trainee/workout/set', 'UpdateExerciseSet');
 
         Route::get('/trainee/diets', 'ShowDietPrograms');
         Route::get('/trainee/diet/{program_id}', 'ShowDietProgram');

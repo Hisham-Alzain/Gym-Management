@@ -26,7 +26,7 @@ class UserExerciseSetRequest extends FormRequest
         return [
             'exercise_id' => ['required'],
             'set_id' => ['required'],
-            'user_rep' => ['required'],
+            'user_reps' => ['required'],
             'user_rep_weight' => ['required']
         ];
     }
