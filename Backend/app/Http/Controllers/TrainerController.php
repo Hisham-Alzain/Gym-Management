@@ -12,9 +12,12 @@ use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutProgram;
 use App\Policies\AdminPolicy;
 use Illuminate\Http\Request;
+use App\Http\Requests\MealRequest;
+use App\Http\Requests\U_MealRequest;
 use App\Http\Requests\DietRequest;
 use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\SubscriptionRequest;
+use App\Http\Resources\DietMealResource;
 use App\Http\Resources\DietProgramResource;
 use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\WorkoutProgramResource;
@@ -277,6 +280,21 @@ class TrainerController extends Controller
         }
     }
 
+    public function CreateExerciseSet(Request $request, $program_id)
+    {
+
+    }
+
+    public function UpdateExerciseSet(Request $request, $program_id)
+    {
+
+    }
+
+    public function DeleteExerciseSet(Request $request, $program_id)
+    {
+
+    }
+
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {
         // Get user
@@ -360,7 +378,7 @@ class TrainerController extends Controller
 
             // Response
             return response()->json([
-                'message' => 'Workout program has been created successfully',
+                'message' => 'Diet program has been created successfully',
                 'program' => new DietProgramResource($program)
             ], 201);
         }
@@ -412,6 +430,132 @@ class TrainerController extends Controller
         }
     }
 
+    public function CreateDietMeal(MealRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Create meal
+            $meal = DietMeal::create([
+                'diet_program_id' => $validated['program_id'],
+                'meal_number' => $validated['meal_number'],
+                'meal_name' => $validated['meal_name'],
+                'description' => $validated['description'],
+                'time_after' => $validated['time_after']
+            ]);
+
+            // Response
+            return response()->json([
+                'message' => 'Meal has been created successfully',
+                'meal' => new DietMealResource($meal)
+            ], 201);
+        }
+    }
+
+    public function UpdateDietMeal(U_MealRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Find meal
+            $meal = DietMeal::find($validated['meal_id']);
+
+            // Check meal
+            if ($meal == null) {
+                return response()->json([
+                    'errors' => ['meal' => 'Meal was not found'],
+                ], 404);
+            }
+
+            // Update meal
+            $meal->fill($validated);
+            $meal->save();
+
+            // Response
+            return response()->json([
+                'message' => 'Meal has been created successfully',
+                'meal' => new DietMealResource($meal)
+            ], 201);
+        }
+    }
+
+    public function DeleteDietMeal(Request $request, $meal_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get meal
+            $meal = DietMeal::find($meal_id);
+
+            // Check meal
+            if ($meal == null) {
+                // Response
+                return response()->json([
+                    'errors' => ['meal' => 'meal was not found'],
+                ], 404);
+            } else {
+                // Delete meal
+                $meal->delete();
+
+                // Response
+                return response()->json([
+                    'message' => 'Successfully deleted meal'
+                ], 204);
+            }
+        }
+    }
+
     public function DeleteDietProgram(Request $request, $program_id)
     {
         // Get user
@@ -432,17 +576,17 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            // Get trainee
+            // Get program
             $program = DietProgram::find($program_id);
 
-            // Check Trainee
+            // Check program
             if ($program == null) {
                 // Response
                 return response()->json([
                     'errors' => ['program' => 'program was not found'],
                 ], 404);
             } else {
-                // Delete trainee
+                // Delete program
                 $program->delete();
 
                 // Response

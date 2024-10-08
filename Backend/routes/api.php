@@ -37,6 +37,10 @@ Route::controller(TrainerController::class)->group(function () {
         Route::post('/diets/create', 'CreateDietProgram');
         Route::delete('/diets/{program_id}', 'DeleteDietProgram');
 
+        Route::post('/meals/create', 'CreateDietMeal');
+        Route::post('/meals/update', 'UpdateDietMeal');
+        Route::delete('/meals/{meal_id}', 'DeleteDietMeal');
+
         Route::get('/users', 'ShowUsers');
         Route::delete('/users/{user_id}', 'DeleteUser');
     });
