@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Subscription;
+use App\Models\DietMeal;
+use App\Models\DietProgram;
 use App\Models\WorkoutDay;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutProgram;
 use App\Policies\AdminPolicy;
 use Illuminate\Http\Request;
+use App\Http\Requests\DietRequest;
 use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\SubscriptionRequest;
+use App\Http\Resources\DietProgramResource;
+use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
 use App\Http\Resources\SubscriptionCollection;
@@ -313,8 +318,139 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateDietProgram()
+    public function CreateDietProgram(DietRequest $request)
     {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Create program
+            $program = DietProgram::create([
+                'user_id' => $validated['user_id'],
+                'start_date' => $validated['start_date'],
+                'end_date' => $validated['end_date'],
+            ]);
+            // Create meals
+            foreach ($validated['meals'] as $M) {
+                $meal = DietMeal::create([
+                    'diet_program_id' => $program->id,
+                    'meal_number' => $M['meal_number'],
+                    'meal_name' => $M['meal_name'],
+                    'description' => $M['description'],
+                    'time_after' => $M['time_after']
+                ]);
+            }
+
+            // Response
+            return response()->json([
+                'message' => 'Workout program has been created successfully',
+                'program' => new DietProgramResource($program)
+            ], 201);
+        }
+    }
+
+    public function ShowDietPrograms(Request $request)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get all programs
+            $programs = DietProgram::paginate(10);
+
+            // Response
+            return response()->json([
+                "message" => "programs fetched",
+                "programs" => new DietProgramCollection($programs),
+                'pagination_data' => [
+                    'from' => $programs->firstItem(),
+                    'to' => $programs->lastItem(),
+                    'total' => $programs->total(),
+                    'first_page' => 1,
+                    'current_page' => $programs->currentPage(),
+                    'last_page' => $programs->lastPage(),
+                    'pageNumbers' => $this->generateNumberArray(1, $programs->lastPage()),
+                    'first_page_url' => $programs->url(1),
+                    'current_page_url' => $programs->url($programs->currentPage()),
+                    'last_page_url' => $programs->url($programs->lastPage()),
+                    'next_page' => $programs->nextPageUrl(),
+                    'prev_page' => $programs->previousPageUrl(),
+                    'path' => $programs->path(),
+                ],
+            ]);
+        }
+    }
+
+    public function DeleteDietProgram(Request $request, $program_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get trainee
+            $program = DietProgram::find($program_id);
+
+            // Check Trainee
+            if ($program == null) {
+                // Response
+                return response()->json([
+                    'errors' => ['program' => 'program was not found'],
+                ], 404);
+            } else {
+                // Delete trainee
+                $program->delete();
+
+                // Response
+                return response()->json([
+                    'message' => 'Successfully deleted program'
+                ], 204);
+            }
+        }
     }
 
     public function ShowAllSubscriptions()

@@ -2,13 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\WorkoutMuscle;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class WorkoutRequest extends FormRequest
+class DietRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,25 +24,17 @@ class WorkoutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // Workout_programs table
+            // Validate diet program
             'user_id' => ['required'],
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d', 'after:start_date'],
-            'repeat_days' => ['required', 'integer', 'min:1', 'max:7'],
 
-            // Workout_days table
-            'days' => ['required', 'array'],
-            'days.*.muscle' => ['required', Rule::in(WorkoutMuscle::names())],
-
-            // Workout_excercises table
-            'days.*.exercises' => ['required', 'array'],
-            'days.*.exercises.*.exercise_id' => ['required'],
-
-            // Workout_excercise_reps table
-            'days.*.exercises.*.sets' => ['required', 'array'],
-            'days.*.exercises.*.sets.*.set_no' => ['required', 'integer'],
-            'days.*.exercises.*.sets.*.exp_reps' => ['required', 'integer'],
-            'days.*.exercises.*.sets.*.exp_weight' => ['required', 'numeric'],
+            // Validate diet meals
+            'meals' => ['required', 'array'],
+            'meals.*.meal_number' => ['required', 'integer'],
+            'meals.*.meal_name' => ['required'],
+            'meals.*.description' => ['required'],
+            'meals.*.time_after' => ['required', 'integer']
         ];
     }
 

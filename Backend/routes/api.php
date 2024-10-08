@@ -19,6 +19,9 @@ Route::controller(TraineeController::class)->group(function () {
 
         Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
         Route::get('/trainee/workout/{program_id}', 'ShowWorkoutProgram');
+
+        Route::get('/trainee/diets', 'ShowDietPrograms');
+        Route::get('/trainee/diet/{program_id}', 'ShowDietProgram');
     });
 });
 
@@ -29,6 +32,10 @@ Route::controller(TrainerController::class)->group(function () {
         Route::get('/workout_programs', 'ShowWorkoutPrograms');
         Route::post('/workouts/create', 'CreateWorkoutProgram');
         Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
+
+        Route::get('/diet_programs', 'ShowDietPrograms');
+        Route::post('/diets/create', 'CreateDietProgram');
+        Route::delete('/diets/{program_id}', 'DeleteDietProgram');
 
         Route::get('/users', 'ShowUsers');
         Route::delete('/users/{user_id}', 'DeleteUser');
