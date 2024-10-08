@@ -509,9 +509,9 @@ class TrainerController extends Controller
 
             // Response
             return response()->json([
-                'message' => 'Meal has been created successfully',
+                'message' => 'Meal has been updated successfully',
                 'meal' => new DietMealResource($meal)
-            ], 201);
+            ], 200);
         }
     }
 

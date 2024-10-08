@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Models\DietProgram;
+use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutProgram;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserInfoRequest;
+use App\Http\Requests\UserExerciseSetRequest;
 use App\Http\Resources\UserInfoResource;
 use App\Http\Resources\DietProgramResource;
 use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
+use App\Http\Resources\WorkoutExerciseSetResource;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -163,6 +166,43 @@ class TraineeController extends Controller
                 "program" => new DietProgramResource($program),
             ], 200);
         }
+    }
+
+    public function UpdateExerciseSet(UserExerciseSetRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Get set
+        $set = WorkoutExerciseSet::where('id', $validated['set_id'])
+            ->where('workout_exercise_id', $validated['exercise_id'])->first();
+
+        // Check set
+        if ($set == null) {
+            return response()->json([
+                'errors' => ['set' => 'Set was not found'],
+            ], 404);
+        }
+
+        // Update set
+        $set->fill($validated);
+        $set->save();
+
+        // Response
+        return response()->json([
+            'message' => 'Set has been Updated successfully',
+            'set' => new WorkoutExerciseSetResource($set)
+        ], 200);
     }
 
     public function ShowDietPrograms(Request $request)
