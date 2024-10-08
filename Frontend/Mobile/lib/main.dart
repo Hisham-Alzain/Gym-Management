@@ -29,6 +29,7 @@ class MainApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.grey.shade900,
         textTheme: TextTheme(
           titleLarge: GoogleFonts.oswald(color: Colors.white),
+          titleSmall: GoogleFonts.oswald(color: Colors.white),
           headlineSmall: GoogleFonts.oswald(color: Colors.white),
           labelLarge: GoogleFonts.afacad(color: Colors.white),
           bodyLarge: GoogleFonts.afacad(color: Colors.white),
@@ -70,6 +71,17 @@ class MainApp extends StatelessWidget {
           fillColor: WidgetStatePropertyAll(
             Colors.redAccent,
           ),
+        ),
+        datePickerTheme: DatePickerThemeData(
+          backgroundColor: Colors.grey.shade800,
+          dayForegroundColor: const WidgetStatePropertyAll(Colors.white),
+          dayStyle: Theme.of(context).textTheme.bodyLarge,
+          dividerColor: Colors.white,
+          headerForegroundColor: Colors.white,
+          weekdayStyle: const TextStyle(
+            color: Colors.white,
+          ),
+          yearForegroundColor: const WidgetStatePropertyAll(Colors.white),
         ),
       ),
     );

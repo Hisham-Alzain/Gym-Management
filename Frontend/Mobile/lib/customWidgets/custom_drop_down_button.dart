@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_validation.dart';
 
 class CustomDropDownButton extends StatelessWidget {
@@ -23,16 +24,8 @@ class CustomDropDownButton extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            RedContainer(
               width: 300,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.redAccent,
-                ),
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(5),
-                ),
-              ),
               child: DropdownButton<dynamic>(
                 value: value,
                 onChanged: (newValue) {

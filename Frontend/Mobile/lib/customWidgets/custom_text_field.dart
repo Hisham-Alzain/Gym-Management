@@ -8,11 +8,11 @@ class CustomTextField extends StatelessWidget {
   final String? labelText;
   final IconData icon;
   final InkWell? inkWell;
-  final int? maxLength;
   final String? initialValue;
   final String? hintText;
   final void Function(String)? onChanged;
   final TextDirection? textDirection;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
@@ -23,11 +23,11 @@ class CustomTextField extends StatelessWidget {
     this.labelText,
     this.validator,
     this.inkWell,
-    this.maxLength,
     this.initialValue,
     this.hintText,
     this.onChanged,
     this.textDirection,
+    this.maxLines,
   });
 
   @override
@@ -79,9 +79,9 @@ class CustomTextField extends StatelessWidget {
       keyboardType: textInputType,
       style: Theme.of(context).textTheme.bodyLarge,
       validator: validator,
-      maxLength: maxLength,
       onChanged: onChanged,
       textDirection: textDirection,
+      maxLines: maxLines,
     );
   }
 }
