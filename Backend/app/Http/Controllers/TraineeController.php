@@ -80,24 +80,21 @@ class TraineeController extends Controller
         if ($user->role == 'trainer') {
             // Response
             return response()->json([
-                'data' => [
+                "message" => "Coach info retrieved successfully",
+                'user' => [
                     'id' => $user->id,
                     'name' => $user->name,
                     'role' => $user->role
-                ],
-                "message" => "Coach info retrieved successfully"
+                ]
             ], 200);
         }
 
         // Trainee
         // Response
-        return response()->json(
-            [
-                "data" => new UserInfoResource($user),
-                "message" => "User info retrieved successfully"
-            ],
-            200
-        );
+        return response()->json([
+            "message" => "User retrieved successfully",
+            "user" => new UserInfoResource($user)
+        ], 200);
     }
 
     public function ShowWorkoutPrograms(Request $request)

@@ -125,7 +125,7 @@ class PersonalInfoView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: RedContainer(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
                         child: GestureDetector(
                           onTap: () => controller.selectDate(context),
                           child: Text(
@@ -137,32 +137,35 @@ class PersonalInfoView extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RadioMenuButton(
-                      value: false,
-                      groupValue: controller.hasIllness,
-                      onChanged: (value) => controller.addIllness(value!),
-                      child: Text(
-                        'No illness',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RadioMenuButton(
+                        value: false,
+                        groupValue: controller.hasIllness,
+                        onChanged: (value) => controller.addIllness(value!),
+                        child: Text(
+                          'No illness',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ),
-                    ),
-                    RadioMenuButton(
-                      value: true,
-                      groupValue: controller.hasIllness,
-                      onChanged: (value) => controller.addIllness(value!),
-                      child: Text(
-                        'illnesses',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                      RadioMenuButton(
+                        value: true,
+                        groupValue: controller.hasIllness,
+                        onChanged: (value) => controller.addIllness(value!),
+                        child: Text(
+                          'illnesses',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 if (controller.hasIllness)
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: CustomTextField(
                       controller: controller.illnessController,
                       textInputType: TextInputType.multiline,
@@ -173,32 +176,35 @@ class PersonalInfoView extends StatelessWidget {
                           CustomValidation().validateRequiredField(p0),
                     ),
                   ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RadioMenuButton(
-                      value: false,
-                      groupValue: controller.hasAllergies,
-                      onChanged: (value) => controller.addAllergies(value!),
-                      child: Text(
-                        'No Allergies',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RadioMenuButton(
+                        value: false,
+                        groupValue: controller.hasAllergies,
+                        onChanged: (value) => controller.addAllergies(value!),
+                        child: Text(
+                          'No Allergies',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ),
-                    ),
-                    RadioMenuButton(
-                      value: true,
-                      groupValue: controller.hasAllergies,
-                      onChanged: (value) => controller.addAllergies(value!),
-                      child: Text(
-                        'Allergies',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                      RadioMenuButton(
+                        value: true,
+                        groupValue: controller.hasAllergies,
+                        onChanged: (value) => controller.addAllergies(value!),
+                        child: Text(
+                          'Allergies',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 if (controller.hasAllergies)
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: CustomTextField(
                       controller: controller.allergiesController,
                       textInputType: TextInputType.multiline,
@@ -209,32 +215,37 @@ class PersonalInfoView extends StatelessWidget {
                           CustomValidation().validateRequiredField(p0),
                     ),
                   ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RadioMenuButton(
-                      value: false,
-                      groupValue: controller.hasDislikedFood,
-                      onChanged: (value) => controller.addDislikedFood(value!),
-                      child: Text(
-                        'No disliked foods',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RadioMenuButton(
+                        value: false,
+                        groupValue: controller.hasDislikedFood,
+                        onChanged: (value) =>
+                            controller.addDislikedFood(value!),
+                        child: Text(
+                          'No disliked foods',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ),
-                    ),
-                    RadioMenuButton(
-                      value: true,
-                      groupValue: controller.hasDislikedFood,
-                      onChanged: (value) => controller.addDislikedFood(value!),
-                      child: Text(
-                        'Disliked foods',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                      RadioMenuButton(
+                        value: true,
+                        groupValue: controller.hasDislikedFood,
+                        onChanged: (value) =>
+                            controller.addDislikedFood(value!),
+                        child: Text(
+                          'Disliked foods',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 if (controller.hasDislikedFood)
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: CustomTextField(
                       controller: controller.dislikedFoodController,
                       textInputType: TextInputType.multiline,

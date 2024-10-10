@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use App\Models\UserInfo;
 use App\Http\Resources\UserInfoResource;
 use Illuminate\Validation\ValidationException;
 
@@ -63,9 +64,19 @@ class AuthController extends Controller
         // Prepare token
         $token = $user->createToken("api_token")->plainTextToken;
 
+        // Check user_info
+        $info = UserInfo::where('user_id', $user->id)->first();
+
+        if ($info == null) {
+            $completed_info = false;
+        } else {
+            $completed_info = true;
+        }
+
         // Response
         return response()->json([
             "message" => "user logged in successfully",
+            "completed_info" => $completed_info,
             "access_token" => $token,
             "token_type" => "bearer",
             'user' => $user->role == 'trainer' ? [
