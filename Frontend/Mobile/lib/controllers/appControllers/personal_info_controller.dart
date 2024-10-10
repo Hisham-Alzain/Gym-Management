@@ -26,12 +26,12 @@ class PersonalInfoController extends GetxController {
     genders = {'Male': 'MALE', 'Female': 'FEMALE'};
     selectedHeight = null;
     cmList = List.generate(
-      251,
+      301,
       (index) => index.toDouble(),
     );
     selectedWeight = null;
     kgList = List.generate(
-      251,
+      301,
       (index) => index.toDouble(),
     );
     activeDays = null;

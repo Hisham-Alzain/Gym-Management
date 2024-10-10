@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/routes/routes.dart';
-import 'package:mobile/views/AppViews/personal_info_view.dart';
+import 'package:mobile/views/authViews/auth_view.dart';
 
+GetStorage? storage;
 Future<void> main() async {
+  storage = GetStorage();
+  await storage?.initStorage;
   runApp(const MainApp());
 }
 
@@ -14,7 +18,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: PersonalInfoView(),
+      home: const AuthView(),
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -83,6 +87,8 @@ class MainApp extends StatelessWidget {
           ),
           yearForegroundColor: const WidgetStatePropertyAll(Colors.white),
         ),
+        progressIndicatorTheme:
+            const ProgressIndicatorThemeData(color: Colors.red),
       ),
     );
   }
