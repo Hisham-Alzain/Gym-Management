@@ -6,8 +6,9 @@ use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserInfoResource;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -66,7 +67,13 @@ class AuthController extends Controller
         return response()->json([
             "message" => "user logged in successfully",
             "access_token" => $token,
-            "token_type" => "bearer"
+            "token_type" => "bearer",
+            'user' => $user->role == 'trainer' ? [
+                'id' => $user->id,
+                'name' => $user->name,
+                'role' => $user->role
+            ]
+            :new UserInfoResource($user),
         ], 200);
     }
 

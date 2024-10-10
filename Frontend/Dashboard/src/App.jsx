@@ -7,6 +7,7 @@ import AdminRoutes from './utils/AdminRoutes.jsx';
 import './App.css'
 import Login from './components/Login.jsx';
 import { FetchProfile,CheckToken } from './apis/AuthApis.jsx';
+import Home from './components/Home.jsx';
 
 function App() {
   const initialized = useRef(false);
@@ -20,19 +21,22 @@ function App() {
       initialized.current = true;
        // Get user token from cookie (if there is any)
        const cookieToken = Cookies.get('access_token');
+       console.log(cookieToken)
        // Check user token
        if (typeof cookieToken !== 'undefined') {
         CheckToken(cookieToken).then((response) => {
+          console.log("true")
           if (response.status === 200) {
             setLoggedIn(true);
             setAccessToken(cookieToken);
 
             FetchProfile(cookieToken).then((response) => {
+              console.log(response.data.data)
               if (response.status === 200) {
-                setProfile(response.data.user);
+                setProfile(response.data.data);
               }
               else {
-                console.log(response.statusText);
+                console.log(response);
               }
             }).then(() => {
               setIsLoading(false);
@@ -49,14 +53,14 @@ function App() {
         setIsLoading(false);
       }
     }
-  }, []);
+  }, [loggedIn]);
   return (
     <LoginContext.Provider value={{ loggedIn, setLoggedIn, accessToken, setAccessToken }}>
         <ProfileContext.Provider value={{ profile, setProfile }}>
           <BrowserRouter>
             <Routes>
               <Route element={<AdminRoutes />}>
-                <Route path="/" element={<Admin />} />
+                <Route path="/" element={<Home/>} />
               </Route>
               <Route element={<AnonymousRoutes />}>
                 <Route path="/login" element={<Login />} />

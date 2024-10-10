@@ -31,3 +31,24 @@ export const CheckToken = async (
         return error.response;
     }
 };
+export const LoginAPI = async (
+  email,
+  password,
+  rememberMe
+) => {
+  try {
+      const response = await axios.post('http://127.0.0.1:8000/api/login', {
+          "email": "test@example.com",
+          "password": "password",
+          "remember": false,
+      }, {
+          headers: {
+              'Content-Type': 'application/json; charset=UTF-8',
+              'Accept': "application/json",
+          }
+      });
+      return response;
+  } catch (error) {
+      return error.response;
+  }
+};
