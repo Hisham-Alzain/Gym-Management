@@ -8,6 +8,7 @@ import './App.css'
 import Login from './components/Login.jsx';
 import { FetchProfile,CheckToken } from './apis/AuthApis.jsx';
 import Home from './components/Home.jsx';
+import Logout from './components/Logout.jsx';
 
 function App() {
   const initialized = useRef(false);
@@ -15,7 +16,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
   const [profile, setProfile] = useState(null);
-   
+
   useEffect(() => {
     if (!initialized.current) {
       initialized.current = true;
@@ -59,11 +60,10 @@ function App() {
         <ProfileContext.Provider value={{ profile, setProfile }}>
           <BrowserRouter>
             <Routes>
+            <Route path="/" element={<Login />} />
               <Route element={<AdminRoutes />}>
-                <Route path="/" element={<Home/>} />
-              </Route>
-              <Route element={<AnonymousRoutes />}>
-                <Route path="/login" element={<Login />} />
+                <Route path="/home" element={<Home/>} />
+                <Route path='/logout' element={<Logout/>} />
               </Route>
             </Routes>
           </BrowserRouter>

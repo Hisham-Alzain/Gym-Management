@@ -77,7 +77,7 @@ class TraineeController extends Controller
         }
 
         // Trainer
-        if ($user->role == 'trainer') {
+        if ($user->role == 'Trainer') {
             // Response
             return response()->json([
                 "message" => "Coach info retrieved successfully",

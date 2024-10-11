@@ -84,7 +84,7 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'role' => $user->role
             ]
-            :new UserInfoResource($user),
+                : new UserInfoResource($user),
         ], 200);
     }
 
@@ -92,6 +92,16 @@ class AuthController extends Controller
     {
         return response()->json([
             'message' => 'Token is valid',
+        ], 200);
+    }
+    public function Logout(Request $request)
+    {
+        // Delete Token
+        $request->user()->token()->delete();
+
+        // Response
+        return response()->json([
+            "message" => "Logged Out Successfully",
         ], 200);
     }
 }

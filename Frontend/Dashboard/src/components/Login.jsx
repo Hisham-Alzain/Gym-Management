@@ -47,7 +47,7 @@ const Login = () => {
             Cookies.set('access_token', token, { secure: true, expires: 1 });
             console.log(token)
           }
-          navigate('/')
+          navigate('/home')
 
         }
         else {

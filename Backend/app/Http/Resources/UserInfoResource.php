@@ -34,6 +34,7 @@ class UserInfoResource extends JsonResource
             'disliked_food' => $userInfo->disliked_food,
             'active_days' => $userInfo->active_days,
             'subsiption_plan' => $this->subscription,
+            'role'=> $this->role
         ];
     }
 }
