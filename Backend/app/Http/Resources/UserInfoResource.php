@@ -33,8 +33,8 @@ class UserInfoResource extends JsonResource
             'allergies' => $userInfo->allergies,
             'disliked_food' => $userInfo->disliked_food,
             'active_days' => $userInfo->active_days,
-            'subsiption_plan' => $this->subscription,
-            'role' => $this->role
+            'subscription_plan' => new SubscriptionResource($this->subscriptions->last()),
+            'role'=> $this->role
         ];
     }
 }

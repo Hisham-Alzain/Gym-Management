@@ -88,7 +88,6 @@ h1 {
 /* Action Buttons */
 .create_button,
 .view_button,
-.edit_button,
 .delete_button {
     padding: 10px 10px;
     border: none;
@@ -114,16 +113,6 @@ h1 {
 
 .view_button:hover {
     background-color: #138496;
-}
-
-.edit_button {
-    background-color: #ffc107;
-    color: #ffffff;
-    margin-inline-end: 5px;
-}
-
-.edit_button:hover {
-    background-color: #e0a800;
 }
 
 .delete_button {

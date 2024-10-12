@@ -25,7 +25,6 @@ class SubscriptionRequest extends FormRequest
     {
         return [
             'user_id' => 'required',
-            'start_date' => 'required|date',
             'duration' => 'required|numeric|min:1|max:12'
         ];
     }

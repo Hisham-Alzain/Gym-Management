@@ -22,6 +22,7 @@ use App\Http\Resources\DietProgramResource;
 use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
+use App\Http\Resources\SubscriptionResource;
 use App\Http\Resources\SubscriptionCollection;
 use App\Http\Resources\UserInfoCollection;
 use Illuminate\Support\Facades\Auth;
@@ -61,28 +62,29 @@ class TrainerController extends Controller
                     'errors' => ['user' => 'user not found'],
                 ], 404);
             } else {
-                $start_date = $validated['start_date'];
-                $month = date('m', strtotime($start_date));
-                $new_month = $month + $validated['duration'];
-                if ($new_month > 12) {
-                    $remaining = $new_month - 12;
-                    $end_date = $start_date->addYear();
-                    $end_date = $end_date->addMonth($remaining);
+                $subscription = Subscription::where('user_id', $trainee->id)
+                    ->orderByDesc('end_date')->first();
+                if ($subscription == null || $subscription->end_date < today()->toDateString()) {
+                    // Create subscription
+                    $subscription = Subscription::create([
+                        'user_id' => $validated['user_id'],
+                        'start_date' => today()->toDateString(),
+                        'end_date' => today()->addMonths($validated['duration'])->toDateString()
+                    ]);
                 } else {
-                    $end_date = $start_date->addMonth($new_month);
+                    // Create subscription
+                    $subscription = Subscription::create([
+                        'user_id' => $validated['user_id'],
+                        'start_date' => $subscription->end_date->toDateString(),
+                        'end_date' => $subscription->end_date->addMonths($validated['duration'])->toDateString()
+                    ]);
                 }
-
-                // Create subscription
-                $subscription = Subscription::create([
-                    'user_id' => $validated['user_id'],
-                    'start_date' => $start_date,
-                    'end_date' => $end_date
-                ]);
 
                 // Response
                 return response()->json([
-                    'message' => 'added the subscription successfully'
-                ], 200);
+                    'message' => 'Added the subscription successfully',
+                    'subscription' => new SubscriptionResource($subscription)
+                ], 201);
             }
         }
     }

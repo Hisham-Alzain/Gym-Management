@@ -74,6 +74,7 @@ const Users = () => {
         { key: "phone_number", label: t('components.admin.users_table.column_structure.phone_number') },
         { key: "gender", label: 'Gender' },
         { key: "birth_date", label: 'Birth date' },
+        { key: "role", label: 'Role' },
         { key: "is_verified", label: t('components.admin.users_table.column_structure.is_verified') },
     ];
 
