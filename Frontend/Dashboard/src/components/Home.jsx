@@ -1,6 +1,7 @@
+import Users from "./UsersTable";
 const Home=()=>{
 return (
-    <div>Hoome</div>
+    <Users />
 )
 }
 export default Home;

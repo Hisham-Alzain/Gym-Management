@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import { LoginContext, ProfileContext } from './Contexts';
+import NavBar from '../components/NavBar';
 
 
 const AdminRoutes = () => {
@@ -10,7 +11,7 @@ const AdminRoutes = () => {
     console.log(loggedIn, profile);
     // Routes that Appear when user is (The Admin)
     return (
-        loggedIn && profile.role == "Trainer" ? <Outlet /> : <Navigate to="/" replace />
+        loggedIn && profile.role == "Trainer" ? <> <NavBar /> <Outlet /></> : <Navigate to="/" replace />
     );
 }
 

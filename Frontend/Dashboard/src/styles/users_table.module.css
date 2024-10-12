@@ -1,0 +1,214 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: var(--color-background);
+    min-height: 100vh;
+    padding: 20px;
+    border: 1px solid #fff;
+}
+
+.content {
+    margin-block-start: 50px;
+    background-color: var(--color-background);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+h1 {
+    font-size: 24px;
+    margin-block-end: 20px;
+    text-align: center;
+}
+
+.search_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: 20px;
+    background-color: var(--color-background);
+}
+
+.search_input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--color-foreground);
+    border-radius: 4px;
+    margin-inline-start: 10px;
+    background-color: var(--color-background);
+    color: var(--color--foreground);
+}
+
+.anchor {
+    text-decoration: none;
+    color: var(--color-button);
+}
+
+.anchor:hover {
+    text-decoration: underline;
+    color: var(--color-title);
+}
+
+/* Table Styles */
+.certificates_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-block-start: 20px;
+    flex-grow: 1;
+    max-height: 40px;
+}
+
+.certificates_table th,
+.certificates_table td {
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    justify-content: space-evenly;
+}
+
+.certificates_table th {
+    background-color: var(--color-background);
+}
+
+.certificates_table tr:nth-child(even) {
+    background-color: var(--color-background);
+}
+
+.certificates_table tr:hover {
+    background-color: var(--color-better_orange);
+}
+
+/* Action Buttons */
+.create_button,
+.view_button,
+.edit_button,
+.delete_button {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-inline-start: 5px;
+}
+
+.create_button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.create_button:hover {
+    background-color: #0056b3;
+}
+
+.view_button {
+    background-color: #17a2b8;
+    color: #ffffff;
+}
+
+.view_button:hover {
+    background-color: #138496;
+}
+
+.edit_button {
+    background-color: #ffc107;
+    color: #ffffff;
+    margin-inline-end: 5px;
+}
+
+.edit_button:hover {
+    background-color: #e0a800;
+}
+
+.delete_button {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.delete_button:hover {
+    background-color: #c82333;
+}
+
+/* JobSlider */
+.slider {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-block-end: 20px;
+}
+
+.slider label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--color--titles);
+    border: 2px solid transparent;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.slider input[type="radio"] {
+    display: none;
+}
+
+.slider label:hover {
+    background-color: var(--color--titles);
+}
+
+.slider input[type="radio"]:checked+label {
+    background-color: var(--color--title);
+    color: var(--color--titles);
+    border-color: var(--color--title);
+}
+
+.slider label span {
+    display: block;
+    padding-inline-end: 10px;
+}
+
+.slider label::before {
+    content: "";
+    position: absolute;
+    inset-inline-end: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--color--titles);
+    border: 2px solid var(--color--title);
+    transition: transform 0.3s;
+}
+
+.slider input[type="radio"]:checked+label::before {
+    transform: scale(1.2);
+    background-color: var(--color--titles);
+    border-color: var(--color--title);
+}
+
+.pagination {
+    text-align: center;
+}
+
+.activePage {
+    margin: 3px 3px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    color: var(--color-title);
+    background-color: var(--color-better_orange);
+}
+
+.page {
+    margin: 3px 3px;
+    border-radius: 5px;
+    background-color: var(--color-background);
+    color: var(--color-button);
+    border-color: var(--color-foreground);
+}
