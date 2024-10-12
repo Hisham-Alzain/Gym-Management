@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
-use App\Models\UserInfo;
-use App\Http\Resources\UserInfoResource;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -55,7 +54,7 @@ class AuthController extends Controller
         // Check user
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($validated['password'], $user->password)) {
+        if (!$user || !Hash::check($validated['password'], $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
@@ -64,28 +63,36 @@ class AuthController extends Controller
         // Prepare token
         $token = $user->createToken("api_token")->plainTextToken;
 
-        // Check user_info
-        $info = UserInfo::where('user_id', $user->id)->first();
-
-        if ($info == null) {
-            $completed_info = false;
+        if ($user->role == 'Trainer') {
+            // Response
+            return response()->json([
+                "message" => "user logged in successfully",
+                "access_token" => $token,
+                "token_type" => "bearer",
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'role' => $user->role
+                ],
+            ], 200);
         } else {
-            $completed_info = true;
-        }
+            // Check user_info
+            $info = UserInfo::where('user_id', $user->id)->first();
 
-        // Response
-        return response()->json([
-            "message" => "user logged in successfully",
-            "completed_info" => $completed_info,
-            "access_token" => $token,
-            "token_type" => "bearer",
-            'user' => $user->role == 'trainer' ? [
-                'id' => $user->id,
-                'name' => $user->name,
-                'role' => $user->role
-            ]
-                : new UserInfoResource($user),
-        ], 200);
+            if ($info == null) {
+                $completed_info = false;
+            } else {
+                $completed_info = true;
+            }
+
+            // Response
+            return response()->json([
+                "message" => "user logged in successfully",
+                "completed_info" => $completed_info,
+                "access_token" => $token,
+                "token_type" => "bearer"
+            ], 200);
+        }
     }
 
     public function IsExpired()
@@ -94,6 +101,7 @@ class AuthController extends Controller
             'message' => 'Token is valid',
         ], 200);
     }
+
     public function Logout(Request $request)
     {
         // Delete Token
