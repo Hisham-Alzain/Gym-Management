@@ -47,3 +47,11 @@ Route::controller(TrainerController::class)->group(function () {
         Route::delete('/users/{user_id}', 'DeleteUser');
     });
 });
+
+Route::get('/image/{user_id}/{image}', function (Request $request, $user_id, $image) {
+    $path = storage_path('app/' . $user_id . '/' . $image);
+    if ($path == null) {
+        return null;
+    }
+    return response()->file($path);
+});

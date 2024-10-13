@@ -6,8 +6,8 @@ import { FaCircleInfo } from "react-icons/fa6";
 import { LoginContext } from "../utils/Contexts";
 import { FetchUsers, DeleteUser } from "../apis/AuthApis";
 import PopUp from "./PopUp";
+import ImgPopUp from "./ImgPopUp";
 import styles from "../styles/users_table.module.css";
-
 
 const Users = () => {
     // Translations
@@ -47,7 +47,7 @@ const Users = () => {
                 setIsLoading(false);
             });
         }
-    }, [currentPage, userType]);
+    }, [currentPage]);
 
     const handleSearch = (event) => {
         setSearchQuery(event.target.value);
@@ -123,6 +123,7 @@ const Users = () => {
                                 ))}
                                 <td>
                                     <PopUp user={user} />
+                                    <ImgPopUp user={user} />
                                     <button onClick={() => handleDelete(user.id)} className={styles.delete_button} >
                                         <BsTrash />
                                     </button>
