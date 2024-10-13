@@ -110,7 +110,7 @@ class TrainerController extends Controller
             ], 401);
         } else {
             // Get all users
-            $users = User::paginate(10);
+            $users = User::where('role', 'Trainee')->paginate(10);
 
             // Response
             return response()->json([
@@ -599,51 +599,51 @@ class TrainerController extends Controller
         }
     }
 
-    public function ShowAllSubscriptions()
-    {
-        // Get user
-        $user = Auth::user();
+    // public function ShowAllSubscriptions()
+    // {
+    //     // Get user
+    //     $user = Auth::user();
 
-        // Check user
-        if ($user == null) {
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        }
+    //     // Check user
+    //     if ($user == null) {
+    //         return response()->json([
+    //             'errors' => ['user' => 'Invalid user'],
+    //         ], 401);
+    //     }
 
-        // Check user_role
-        $policy = new AdminPolicy();
-        if (!$policy->Policy(User::find($user->id))) {
-            // Response
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        } else {
-            // Get all subscriptions
-            $subscriptions = Subscription::paginate(10);
+    //     // Check user_role
+    //     $policy = new AdminPolicy();
+    //     if (!$policy->Policy(User::find($user->id))) {
+    //         // Response
+    //         return response()->json([
+    //             'errors' => ['user' => 'Invalid user'],
+    //         ], 401);
+    //     } else {
+    //         // Get all subscriptions
+    //         $subscriptions = Subscription::paginate(10);
 
-            // Response
-            return response()->json([
-                "message" => "Subscriptions fetched",
-                "subscriptions" => new SubscriptionCollection($subscriptions),
-                'pagination_data' => [
-                    'from' => $subscriptions->firstItem(),
-                    'to' => $subscriptions->lastItem(),
-                    'total' => $subscriptions->total(),
-                    'first_page' => 1,
-                    'current_page' => $subscriptions->currentPage(),
-                    'last_page' => $subscriptions->lastPage(),
-                    'pageNumbers' => $this->generateNumberArray(1, $subscriptions->lastPage()),
-                    'first_page_url' => $subscriptions->url(1),
-                    'current_page_url' => $subscriptions->url($subscriptions->currentPage()),
-                    'last_page_url' => $subscriptions->url($subscriptions->lastPage()),
-                    'next_page' => $subscriptions->nextPageUrl(),
-                    'prev_page' => $subscriptions->previousPageUrl(),
-                    'path' => $subscriptions->path(),
-                ],
-            ], 200);
-        }
-    }
+    //         // Response
+    //         return response()->json([
+    //             "message" => "Subscriptions fetched",
+    //             "subscriptions" => new SubscriptionCollection($subscriptions),
+    //             'pagination_data' => [
+    //                 'from' => $subscriptions->firstItem(),
+    //                 'to' => $subscriptions->lastItem(),
+    //                 'total' => $subscriptions->total(),
+    //                 'first_page' => 1,
+    //                 'current_page' => $subscriptions->currentPage(),
+    //                 'last_page' => $subscriptions->lastPage(),
+    //                 'pageNumbers' => $this->generateNumberArray(1, $subscriptions->lastPage()),
+    //                 'first_page_url' => $subscriptions->url(1),
+    //                 'current_page_url' => $subscriptions->url($subscriptions->currentPage()),
+    //                 'last_page_url' => $subscriptions->url($subscriptions->lastPage()),
+    //                 'next_page' => $subscriptions->nextPageUrl(),
+    //                 'prev_page' => $subscriptions->previousPageUrl(),
+    //                 'path' => $subscriptions->path(),
+    //             ],
+    //         ], 200);
+    //     }
+    // }
 
     public function generateNumberArray($start, $end)
     {
