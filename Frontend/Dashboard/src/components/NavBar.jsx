@@ -18,7 +18,7 @@ const NavBar = () => {
             <div className={styles.wrapper}>
                 <div className={styles.logo}>
                     <img src={logo} alt="logo" />
-                    <a href="/">
+                    <a href="/home">
                         {t('components.nav_bar.nav_logo')}
                     </a>
                 </div>
