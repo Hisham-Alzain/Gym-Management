@@ -15,7 +15,7 @@ const Login = () => {
   const { setLoggedIn, setAccessToken } = useContext(LoginContext);
   const { setProfile } = useContext(ProfileContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
   const [message, setMessage] = useState('')
 
   // Handle form submit
@@ -84,7 +84,7 @@ const Login = () => {
       <div className={styles.row}>
         <div className={styles.col + ' ' + styles.leftSection}>
           <div className={styles.left_content}>
-            <h1 style={{ fontFamily: 'Fugaz One', fontSize: '4vw', color: '#F3EEEBFF' }}>
+            <h1 style={{ fontFamily: 'Roboto', fontSize: '4vw', color: '#F3EEEBFF' }}>
               Welcome to your Clients Dashboard
             </h1>
           </div>
