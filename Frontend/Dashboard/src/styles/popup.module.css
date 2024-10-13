@@ -16,6 +16,7 @@
 
 .modal {
     font-size: 12px;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 1);
 }
 
 .modal .header {

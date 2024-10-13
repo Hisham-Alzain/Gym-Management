@@ -56,8 +56,8 @@ const Users = () => {
     const handleInfo = (user) => {
     }
 
-    const handleDelete = (user_id) => {
-        console.log(user_id);
+    const handleDelete = (event, user_id) => {
+        event.preventDefault();
         DeleteUser(accessToken, user_id).then((response) => {
             if (response.status == 204) {
                 console.log('user deleted');
@@ -92,59 +92,61 @@ const Users = () => {
     return (
         <div className={styles.screen}>
             <div className={styles.content}>
-                <div>
-                    <h1>{t('components.admin.users_table.h1')}</h1>
-                    <div className={styles.search_bar}>
-                        <input
-                            type="text"
-                            placeholder={t('components.admin.users_table.search')}
-                            value={searchQuery}
-                            onChange={handleSearch}
-                            className={styles.search_input}
-                        />
+                <div className={styles.content_div}>
+                    <div>
+                        <h1>{t('components.admin.users_table.h1')}</h1>
+                        <div className={styles.search_bar}>
+                            <input
+                                type="text"
+                                placeholder={t('components.admin.users_table.search')}
+                                value={searchQuery}
+                                onChange={handleSearch}
+                                className={styles.search_input}
+                            />
+                        </div>
                     </div>
-                </div>
-                <table className={styles.certificates_table}>
-                    <thead>
-                        <tr>
-                            {currentColumns.map((column) => (<th key={column.key}>{column.label}</th>))}
-                            <th>{t('components.admin.users_table.actions')}</th>
-                        </tr>
-                    </thead>
-                    <tbody>{filteredUsers.length > 0 ? (
-                        filteredUsers.map((user) => <tr key={user.id}>
-                            {currentColumns.map((column) => (
-                                <td key={column.key}>
-                                    {column.key == "is_verified" ? column.key == true ? "False" : "True" :
-                                        user[column.key]
-                                    }
+                    <table className={styles.users_table}>
+                        <thead>
+                            <tr>
+                                {currentColumns.map((column) => (<th key={column.key}>{column.label}</th>))}
+                                <th>{t('components.admin.users_table.actions')}</th>
+                            </tr>
+                        </thead>
+                        <tbody>{filteredUsers.length > 0 ? (
+                            filteredUsers.map((user) => <tr key={user.id}>
+                                {currentColumns.map((column) => (
+                                    <td key={column.key}>
+                                        {column.key == "is_verified" ? column.key == true ? "False" : "True" :
+                                            user[column.key]
+                                        }
+                                    </td>
+                                ))}
+                                <td>
+                                    <PopUp user={user} />
+                                    <button onClick={() => handleDelete(user.id)} className={styles.delete_button} >
+                                        <BsTrash />
+                                    </button>
                                 </td>
-                            ))}
-                            <td>
-                                <PopUp user={user} />
-                                <button onClick={() => handleDelete(user.id)} className={styles.delete_button} >
-                                    <BsTrash />
-                                </button>
-                            </td>
-                        </tr>)
-                    ) : (
-                        <tr>
-                            <td colSpan={currentColumns.length + 1}>{t('components.admin.users_table.no_users')}</td>
-                        </tr>
-                    )}
-                    </tbody>
-                </table>
-                {/* Pagination */}
-                <div className={styles.pagination}>
-                    {data.pageNumbers.map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? styles.activePage : styles.page}
-                        >
-                            {page}
-                        </button>
-                    ))}
+                            </tr>)
+                        ) : (
+                            <tr>
+                                <td colSpan={currentColumns.length + 1}>{t('components.admin.users_table.no_users')}</td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </table>
+                    {/* Pagination */}
+                    <div className={styles.pagination}>
+                        {data.pageNumbers.map((page) => (
+                            <button
+                                key={page}
+                                onClick={() => setCurrentPage(page)}
+                                className={currentPage === page ? styles.activePage : styles.page}
+                            >
+                                {page}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

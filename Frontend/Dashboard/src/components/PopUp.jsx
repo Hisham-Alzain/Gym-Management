@@ -1,13 +1,27 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { FaCircleInfo } from "react-icons/fa6";
+import { LoginContext } from "../utils/Contexts";
+import { StartSubscription } from '../apis/AuthApis';
 import styles from '../styles/popup.module.css';
 
 const PopUp = ({ user }) => {
-    const [month, setMonth] = useState(1);
-    const handleSubscription = () => {
+    // Context
+    const { accessToken } = useContext(LoginContext);
 
+    const [month, setMonth] = useState(1);
+
+    const handleSubscription = (event) => {
+        event.preventDefault();
+        StartSubscription(accessToken, user.id, parseInt(month)).then((response) => {
+            if (response.status == 201) {
+                console.log('Added Subscription successfully');
+                window.location.reload();
+            } else {
+                console.log(response.data)
+            }
+        })
     }
     return (
         <Popup
