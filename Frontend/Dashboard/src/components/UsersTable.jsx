@@ -74,17 +74,12 @@ const Users = () => {
         { key: "phone_number", label: t('components.admin.users_table.column_structure.phone_number') },
         { key: "gender", label: 'Gender' },
         { key: "birth_date", label: 'Birth date' },
-        { key: "role", label: 'Role' },
-        { key: "is_verified", label: t('components.admin.users_table.column_structure.is_verified') },
     ];
-
-    const currentColumns = columnStructure;
 
     const filteredUsers = userData
         ? userData.filter(user =>
             user.name.toLowerCase().includes(searchQuery.toLowerCase())
         ) : [];
-
 
     if (isLoading) {
         return <></>;
@@ -94,7 +89,7 @@ const Users = () => {
             <div className={styles.content}>
                 <div className={styles.content_div}>
                     <div>
-                        <h1>{t('components.admin.users_table.h1')}</h1>
+                        <h1>Trainees</h1>
                         <div className={styles.search_bar}>
                             <input
                                 type="text"
@@ -108,17 +103,15 @@ const Users = () => {
                     <table className={styles.users_table}>
                         <thead>
                             <tr>
-                                {currentColumns.map((column) => (<th key={column.key}>{column.label}</th>))}
+                                {columnStructure.map((column) => (<th key={column.key}>{column.label}</th>))}
                                 <th>{t('components.admin.users_table.actions')}</th>
                             </tr>
                         </thead>
                         <tbody>{filteredUsers.length > 0 ? (
                             filteredUsers.map((user) => <tr key={user.id}>
-                                {currentColumns.map((column) => (
+                                {columnStructure.map((column) => (
                                     <td key={column.key}>
-                                        {column.key == "is_verified" ? column.key == true ? "False" : "True" :
-                                            user[column.key]
-                                        }
+                                        {user[column.key]}
                                     </td>
                                 ))}
                                 <td>
@@ -131,7 +124,7 @@ const Users = () => {
                             </tr>)
                         ) : (
                             <tr>
-                                <td colSpan={currentColumns.length + 1}>{t('components.admin.users_table.no_users')}</td>
+                                <td colSpan={columnStructure.length + 1}>{t('components.admin.users_table.no_users')}</td>
                             </tr>
                         )}
                         </tbody>
