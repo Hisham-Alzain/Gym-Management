@@ -1,8 +1,10 @@
+import 'dart:developer';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
+import 'package:mobile/main.dart';
 
 class RegisterController extends GetxController {
   late GlobalKey<FormState> formField;
@@ -67,10 +69,11 @@ class RegisterController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'https://192.168.43.23/api/register',
+        'http://192.168.43.23:8000/api/register',
         data: {
-          "full_name": fullName,
+          "name": fullName,
           "email": email,
+          "phone_number": phoneNumber,
           "password": password,
           "confirm_password": confirmPassword,
         },
@@ -81,21 +84,21 @@ class RegisterController extends GetxController {
           },
         ),
       );
+      log(response.data.toString());
       if (response.statusCode == 201) {
-        print(response.data);
-        // Get.back();
-        // storage!.write('token', response.data);
-        // customDialogs.showSuccessDialog('151'.tr, '');
-        // Future.delayed(
-        //   const Duration(seconds: 1),
-        //   () {
-        //     Get.offAllNamed('/userEditSkills');
-        //   },
-        // );
+        Get.back();
+        storage!.write('token', response.data['access_token']);
+        customDialogs.showSuccessDialog('Registered successfully', '');
+        Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            Get.offAllNamed('/personalInfo');
+          },
+        );
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
-        'Error'.tr,
+        'Error',
         e.response!.data['errors'].toString(),
       );
     }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class RedContainer extends StatelessWidget {
+class GreyContainer extends StatelessWidget {
   final Widget? child;
   final double? width;
   final EdgeInsetsGeometry? padding;
 
-  const RedContainer({
+  const GreyContainer({
     super.key,
     required this.child,
     this.width,
@@ -18,8 +18,9 @@ class RedContainer extends StatelessWidget {
       width: width,
       padding: padding,
       decoration: BoxDecoration(
+        color: Colors.grey.shade900,
         border: Border.all(
-          color: Colors.redAccent,
+          color: Colors.red.shade900,
         ),
         borderRadius: const BorderRadius.all(
           Radius.circular(5),

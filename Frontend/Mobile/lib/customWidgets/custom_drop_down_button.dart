@@ -6,14 +6,16 @@ class CustomDropDownButton extends StatelessWidget {
   final dynamic value;
   final void Function(dynamic) onChanged;
   final List<DropdownMenuItem<dynamic>>? items;
-  final String hint;
+  final String hintText;
+  final IconData? hintTcon;
 
   const CustomDropDownButton({
     super.key,
     this.value,
     this.items,
     required this.onChanged,
-    required this.hint,
+    required this.hintText,
+    this.hintTcon,
   });
 
   @override
@@ -24,7 +26,7 @@ class CustomDropDownButton extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RedContainer(
+            GreyContainer(
               width: 300,
               child: DropdownButton<dynamic>(
                 value: value,
@@ -32,17 +34,21 @@ class CustomDropDownButton extends StatelessWidget {
                   onChanged(newValue);
                   state.didChange(newValue);
                 },
-                iconEnabledColor: Colors.redAccent,
+                iconEnabledColor: Colors.red.shade900,
                 items: items,
-                hint: Center(
-                  child: Text(
-                    hint,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
+                hint: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      hintText,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    Icon(hintTcon)
+                  ],
                 ),
                 menuMaxHeight: 300,
                 isExpanded: true,
-                dropdownColor: Colors.grey.shade800,
+                dropdownColor: Colors.grey.shade900,
                 underline: const SizedBox.shrink(),
               ),
             ),
