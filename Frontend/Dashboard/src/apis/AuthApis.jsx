@@ -88,6 +88,21 @@ export const FetchUsers = async (token) => {
   }
 };
 
+export const FetchSubscription = async (token, user_id) => {
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/subscription/${user_id}`, {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const DeleteUser = async (token, user_id) => {
   try {
     const response = await axios.delete(`http://127.0.0.1:8000/api/users/${user_id}`, {

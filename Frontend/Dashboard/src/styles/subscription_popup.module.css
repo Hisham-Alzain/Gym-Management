@@ -1,0 +1,110 @@
+.subscription_button{
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-inline: 5px;
+    margin-block-start: 1px;
+    background-color: #46dc35;
+    color: #ffffff;
+}
+
+.subscription_button:hover {
+    background-color: #31c823;
+}
+
+.modal {
+    font-size: 12px;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 1);
+}
+
+.modal .header {
+    width: 100%;
+    border-block-end: 1px solid gray;
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+}
+
+.modal .content {
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.modal .content .list {
+    font-size: 15px;
+}
+
+.content .list li h4 {
+    margin-block: 6px;
+}
+
+.modal .actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+}
+
+.modal .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}
+
+/* Table Styles */
+.users_table {
+    width: 100%;
+    position: relative;
+    border-collapse: collapse;
+    margin-block-start: 20px;
+}
+
+.users_table th,
+.users_table td {
+    padding: 6px 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.users_table th {
+    background-color: var(--color-background);
+}
+
+.users_table tr:nth-child(even) {
+    background-color: var(--color-background);
+}
+
+.users_table tr:hover {
+    background-color: var(--color-better_orange);
+}
+
+.pagination {
+    text-align: center;
+    margin-block-start: 10px;
+}
+
+.activePage {
+    margin: 3px 3px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    color: var(--color-title);
+    background-color: var(--color-better_orange);
+}
+
+.page {
+    margin: 3px 3px;
+    border-radius: 5px;
+    background-color: var(--color-background);
+    color: var(--color-button);
+    border-color: var(--color-foreground);
+}
