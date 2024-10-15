@@ -39,7 +39,7 @@ const NavBar = () => {
                     <div className={styles.nav_links_left}>
                         {loggedIn &&
                             <li>
-                                <a href="/dashboard">{t('components.nav_bar.li_home')}</a>
+                                <a href="/home">{t('components.nav_bar.li_home')}</a>
                             </li>
                         }
                         <li>
@@ -55,7 +55,7 @@ const NavBar = () => {
                                     <a href="/jobs/all">{t('components.nav_bar.all')}</a>
                                 </li>
                                 <li>
-                                    <a href="/jobs/FullTime">{t('components.nav_bar.full_time')}</a>
+                                    <a href="/workouts">{t('components.nav_bar.full_time')}</a>
                                 </li>
                                 <li>
                                     <a href="/jobs/PartTime">{t('components.nav_bar.part_time')}</a>

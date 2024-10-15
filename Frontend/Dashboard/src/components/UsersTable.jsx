@@ -10,6 +10,7 @@ import PopUp from "./PopUp";
 import ImgPopUp from "./ImgPopUp";
 import SubscriptionPopUp from "./SubscriptionPopUp";
 import styles from "../styles/users_table.module.css";
+import Programs from "./Programs";
 
 const Users = () => {
     // Translations
@@ -129,9 +130,7 @@ const Users = () => {
                                     <PopUp user={user} />
                                     <ImgPopUp user={user} />
                                     <SubscriptionPopUp user_id={user.id} user_name={user.name} />
-                                    <button onClick={() => handleWorkOut(event, user)} className={styles.workout_button} title='Show workout programs' >
-                                        <FaDumbbell />
-                                    </button>
+                                    <Programs user={user}/>
                                     <button onClick={() => handleDiet(event, user)} className={styles.diet_button} title='Show diet programs' >
                                         <MdNoFood />
                                     </button>

@@ -9,6 +9,7 @@ import Login from './components/Login.jsx';
 import { FetchProfile, CheckToken } from './apis/AuthApis.jsx';
 import Home from './components/Home.jsx';
 import Logout from './components/Logout.jsx';
+import Programs from './components/Programs.jsx';
 
 function App() {
   const initialized = useRef(false);
@@ -82,6 +83,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route element={<AdminRoutes />}>
               <Route path="/home" element={<Home />} />
+              <Route path='/workouts' element={<Programs />} />
               <Route path='/logout' element={<Logout />} />
             </Route>
           </Routes>
