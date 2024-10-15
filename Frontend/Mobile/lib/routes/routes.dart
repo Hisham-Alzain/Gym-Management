@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mobile/middleware/middleware.dart';
 import 'package:mobile/views/AppViews/home_view.dart';
 import 'package:mobile/views/AppViews/personal_info_view.dart';
 import 'package:mobile/views/authViews/auth_view.dart';
@@ -9,6 +10,7 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: '/auth',
     page: () => const AuthView(),
+    middlewares: [Middleware()],
   ),
   GetPage(
     name: '/login',

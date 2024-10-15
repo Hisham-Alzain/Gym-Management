@@ -77,7 +77,11 @@ class LoginController extends GetxController {
         Future.delayed(
           const Duration(seconds: 1),
           () {
-            Get.offAllNamed('/home');
+            if (response.data['completed_info']) {
+              Get.offAllNamed('/home');
+            } else {
+              Get.offAllNamed('/personalInfo');
+            }
           },
         );
       }

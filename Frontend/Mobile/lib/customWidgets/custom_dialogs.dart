@@ -69,4 +69,32 @@ class CustomDialogs {
       ),
     );
   }
+
+  Future<void> showSesionExpiredDialog() async {
+    Get.defaultDialog(
+      backgroundColor: Colors.grey.shade800,
+      title: 'Session expired',
+      titleStyle: const TextStyle(
+        color: Colors.red,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+      content: const Column(
+        children: [
+          Icon(
+            Icons.timer_off,
+            color: Colors.red,
+            size: 40,
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Text(
+              'Please login again',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

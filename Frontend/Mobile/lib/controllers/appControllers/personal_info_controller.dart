@@ -154,6 +154,15 @@ class PersonalInfoController extends GetxController {
             Get.offAllNamed('/home');
           },
         );
+      } else if (response.statusCode == 401) {
+        Get.back();
+        customDialogs.showSesionExpiredDialog();
+        Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            Get.offAllNamed('/login');
+          },
+        );
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(

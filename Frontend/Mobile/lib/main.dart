@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/enums/enums.dart';
+import 'package:mobile/middleware/middleware_controller.dart';
 import 'package:mobile/routes/routes.dart';
-import 'package:mobile/views/authViews/auth_view.dart';
 
 GetStorage? storage;
+late MiddlewareCases middlewareCase;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   storage = GetStorage();
   await storage?.initStorage;
+  MiddlewareController middlewareController = Get.put(MiddlewareController());
+  middlewareCase = await middlewareController.checkToken();
   runApp(const MainApp());
 }
 
@@ -19,7 +23,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: const AuthView(),
+      initialRoute: '/auth',
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
