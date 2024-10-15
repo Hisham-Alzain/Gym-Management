@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePasswordRequest;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\ForgetPasswordRequest;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -110,6 +113,53 @@ class AuthController extends Controller
         // Response
         return response()->json([
             "message" => "Logged Out Successfully",
+        ], 200);
+    }
+    public function ForgotPassword(ForgetPasswordRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+        // Get User
+        $user = User::where("email", $validated->email)->first();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['email' => 'Email was not found']
+            ], 404);
+        }
+
+        $code = rand(100000, 999999);
+        $user->notify(new ResetPassword($code));
+
+        return response()->json([
+            'message' => 'Reset Password code has been sent to your email',
+            'code' => $code
+        ], 200);
+    }
+    public function ChangePassword(ChangePasswordRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+        // Get user
+        $user = User::where("email", $validated['email'])->first();
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['email' => 'Email was not found']
+            ], 404);
+        }
+        // Update user
+        $validated['password'] = bcrypt($validated['password']);
+        $user->update($validated);
+
+        // Prepare token
+        $token = $user->createToken("api_token")->plainTextToken;
+        // Response
+        return response()->json([
+            "data" => $user,
+            "access_token" => $token,
+            "token_type" => "bearer"
         ], 200);
     }
 }

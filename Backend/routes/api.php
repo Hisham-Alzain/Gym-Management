@@ -9,6 +9,8 @@ use App\Http\Controllers\TrainerController;
 Route::controller(AuthController::class)->group(function () {
     Route::post('/register', 'Register');
     Route::post('/login', 'Login');
+    Route::post('/forgetPassword', 'ForgotPassword');
+    Route::post('/changePassword', 'ChangePassword');
     Route::get('/isExpired', 'IsExpired')->middleware('auth:sanctum');
     Route::get('/logout', 'Logout')->middleware('auth:sanctum');
 });

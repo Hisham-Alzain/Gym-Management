@@ -20,8 +20,8 @@ class WorkoutProgramResource extends JsonResource
                 'id' => $this->user->id,
                 'name' => $this->user->name,
             ],
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date,
+            'start_date' => $this->start_date->format('Y-m-d'),
+            'end_date' => $this->end_date->format('Y-m-d'),
             'repeat_days' => $this->repeat_days,
             'no_days' => $this->workoutDays()->count(),
             'days' => new WorkoutDayCollection($this->workoutDays)
