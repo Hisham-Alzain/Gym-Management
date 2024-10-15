@@ -6,7 +6,7 @@ class CustomDialogs {
     Get.defaultDialog(
       backgroundColor: Colors.grey.shade800,
       title: 'Loading...',
-      titleStyle: const TextStyle(color: Colors.redAccent),
+      titleStyle: TextStyle(color: Colors.red.shade900),
       content: const CircularProgressIndicator(),
     );
   }
@@ -29,7 +29,10 @@ class CustomDialogs {
           ),
           Padding(
             padding: const EdgeInsets.all(10),
-            child: Text(content),
+            child: Text(
+              content,
+              style: const TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),

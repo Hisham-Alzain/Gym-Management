@@ -7,6 +7,7 @@ import 'package:mobile/views/authViews/auth_view.dart';
 
 GetStorage? storage;
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   storage = GetStorage();
   await storage?.initStorage;
   runApp(const MainApp());
@@ -22,9 +23,9 @@ class MainApp extends StatelessWidget {
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorSchemeSeed: Colors.redAccent,
+        colorSchemeSeed: Colors.red.shade900,
         appBarTheme: AppBarTheme(
-          color: Colors.redAccent,
+          color: Colors.red.shade900,
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.white),
           toolbarTextStyle: Theme.of(context).textTheme.titleLarge,
@@ -40,7 +41,7 @@ class MainApp extends StatelessWidget {
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: ButtonStyle(
-            backgroundColor: const WidgetStatePropertyAll(Colors.redAccent),
+            backgroundColor: WidgetStatePropertyAll(Colors.red.shade900),
             shape: WidgetStatePropertyAll(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -63,17 +64,17 @@ class MainApp extends StatelessWidget {
           ),
         ),
         tabBarTheme: TabBarTheme(
-          labelColor: Colors.redAccent,
+          labelColor: Colors.red.shade900,
           unselectedLabelColor: Colors.white,
           indicatorSize: TabBarIndicatorSize.tab,
           dividerColor: Colors.white,
-          indicatorColor: Colors.redAccent,
+          indicatorColor: Colors.red.shade900,
           labelStyle: Theme.of(context).textTheme.labelLarge,
           unselectedLabelStyle: Theme.of(context).textTheme.labelLarge,
         ),
-        radioTheme: const RadioThemeData(
+        radioTheme: RadioThemeData(
           fillColor: WidgetStatePropertyAll(
-            Colors.redAccent,
+            Colors.red.shade900,
           ),
         ),
         datePickerTheme: DatePickerThemeData(
@@ -88,7 +89,8 @@ class MainApp extends StatelessWidget {
           yearForegroundColor: const WidgetStatePropertyAll(Colors.white),
         ),
         progressIndicatorTheme:
-            const ProgressIndicatorThemeData(color: Colors.red),
+            ProgressIndicatorThemeData(color: Colors.red.shade900),
+        iconTheme: IconThemeData(color: Colors.red.shade900),
       ),
     );
   }

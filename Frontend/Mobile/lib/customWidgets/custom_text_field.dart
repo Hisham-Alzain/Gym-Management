@@ -12,6 +12,7 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final void Function(String)? onChanged;
   final TextDirection? textDirection;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
@@ -26,17 +27,20 @@ class CustomTextField extends StatelessWidget {
     this.hintText,
     this.onChanged,
     this.textDirection,
+    this.maxLines,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: Colors.redAccent,
+      cursorColor: Colors.red.shade900,
       initialValue: initialValue,
       autocorrect: false,
       obscureText: obsecureText,
       controller: controller,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.grey.shade900,
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.labelLarge,
         labelText: labelText,
@@ -48,19 +52,19 @@ class CustomTextField extends StatelessWidget {
         border: const OutlineInputBorder(),
         prefixIcon: Icon(
           icon,
-          color: Colors.redAccent,
+          color: Colors.red.shade900,
         ),
-        prefixIconColor: Colors.redAccent,
+        prefixIconColor: Colors.red.shade900,
         suffixIcon: inkWell,
-        suffixIconColor: Colors.redAccent,
-        enabledBorder: const UnderlineInputBorder(
+        suffixIconColor: Colors.red.shade900,
+        enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Colors.red.shade900,
           ),
         ),
-        focusedBorder: const UnderlineInputBorder(
+        focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.redAccent,
+            color: Colors.red.shade900,
           ),
         ),
         errorBorder: const UnderlineInputBorder(
@@ -79,6 +83,7 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       textDirection: textDirection,
+      maxLines: maxLines,
     );
   }
 }

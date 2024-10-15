@@ -1,12 +1,14 @@
 import { useEffect, useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { BsChatFill, BsTrash } from "react-icons/bs";
-import { FaCircleInfo } from "react-icons/fa6";
+import { BsTrash } from "react-icons/bs";
+import { FaDumbbell } from "react-icons/fa6";
+import { MdNoFood } from "react-icons/md";
 import { LoginContext } from "../utils/Contexts";
 import { FetchUsers, DeleteUser } from "../apis/AuthApis";
 import PopUp from "./PopUp";
 import ImgPopUp from "./ImgPopUp";
+import SubscriptionPopUp from "./SubscriptionPopUp";
 import styles from "../styles/users_table.module.css";
 
 const Users = () => {
@@ -21,7 +23,6 @@ const Users = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [userData, setUserData] = useState([]);
     const [data, setData] = useState([]);
-    const [userType, setUserType] = useState("individual");
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const Users = () => {
         } else {
             setIsLoading(true);
 
-            FetchUsers(accessToken, currentPage, userType).then((response) => {
+            FetchUsers(accessToken, currentPage).then((response) => {
                 if (response.status === 200) {
                     console.log(response.data);
                     setData(response.data.pagination_data);
@@ -56,6 +57,18 @@ const Users = () => {
     const handleInfo = (user) => {
     }
 
+    const handleWorkOut = (event, user) => {
+        event.preventDefault();
+        console.log(user);
+        navigate(`/trainee/workout/${user.id}/${user.name}`);
+    };
+
+    const handleDiet = (event, user) => {
+        event.preventDefault();
+        console.log(user);
+        navigate(`/trainee/diet/${user.id}/${user.name}`);
+    };
+
     const handleDelete = (event, user_id) => {
         event.preventDefault();
         DeleteUser(accessToken, user_id).then((response) => {
@@ -72,8 +85,6 @@ const Users = () => {
         { key: "name", label: t('components.admin.users_table.column_structure.name') },
         { key: "email", label: 'Email' },
         { key: "phone_number", label: t('components.admin.users_table.column_structure.phone_number') },
-        { key: "gender", label: 'Gender' },
-        { key: "birth_date", label: 'Birth date' },
     ];
 
     const filteredUsers = userData
@@ -117,7 +128,14 @@ const Users = () => {
                                 <td>
                                     <PopUp user={user} />
                                     <ImgPopUp user={user} />
-                                    <button onClick={() => handleDelete(user.id)} className={styles.delete_button} >
+                                    <SubscriptionPopUp user_id={user.id} user_name={user.name} />
+                                    <button onClick={() => handleWorkOut(event, user)} className={styles.workout_button} title='Show workout programs' >
+                                        <FaDumbbell />
+                                    </button>
+                                    <button onClick={() => handleDiet(event, user)} className={styles.diet_button} title='Show diet programs' >
+                                        <MdNoFood />
+                                    </button>
+                                    <button onClick={() => handleDelete(event, user.id)} className={styles.delete_button} title='Delete trainee' >
                                         <BsTrash />
                                     </button>
                                 </td>

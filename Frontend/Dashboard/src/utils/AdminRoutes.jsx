@@ -8,7 +8,6 @@ const AdminRoutes = () => {
     const { loggedIn } = useContext(LoginContext);
     const { profile } = useContext(ProfileContext);
 
-    console.log(loggedIn, profile);
     // Routes that Appear when user is (The Admin)
     return (
         loggedIn && profile.role == "Trainer" ? <> <NavBar /> <Outlet /></> : <Navigate to="/" replace />

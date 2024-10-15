@@ -1,8 +1,13 @@
+import 'dart:developer';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/customWidgets/custom_dialogs.dart';
 
 class PersonalInfoController extends GetxController {
   late GlobalKey<FormState> formField;
+  late Dio dio;
+  late CustomDialogs customDialogs;
   late String? selectedGender;
   late Map<String, String> genders;
   late double? selectedHeight;
@@ -22,17 +27,19 @@ class PersonalInfoController extends GetxController {
   @override
   void onInit() {
     formField = GlobalKey<FormState>();
+    dio = Dio();
+    customDialogs = CustomDialogs();
     selectedGender = null;
     genders = {'Male': 'MALE', 'Female': 'FEMALE'};
     selectedHeight = null;
     cmList = List.generate(
-      301,
-      (index) => index.toDouble(),
+      91,
+      (index) => (index + 120).toDouble(),
     );
     selectedWeight = null;
     kgList = List.generate(
-      301,
-      (index) => index.toDouble(),
+      161,
+      (index) => (index + 40).toDouble(),
     );
     activeDays = null;
     daysList = List.generate(7, (index) => index + 1);
@@ -101,5 +108,55 @@ class PersonalInfoController extends GetxController {
   void addDislikedFood(bool value) {
     hasDislikedFood = value;
     update();
+  }
+
+  Future<dynamic> addPersonalInfo(
+    DateTime birthDate,
+    String gender,
+    double height,
+    double weight,
+    String illness,
+    String allergies,
+    String dislikedFood,
+    int activeDyas,
+  ) async {
+    customDialogs.showLoadingDialog();
+    try {
+      var response = await dio.post(
+        'http://192.168.43.23:8000/api/UpdateUserInfo',
+        data: {
+          "birth_date": birthDate.toString().split(' ')[0],
+          "gender": gender,
+          "height": height,
+          "weight": weight,
+          "ilness": hasIllness ? illness : null,
+          "allergies": hasAllergies ? allergies : null,
+          "disliked_food": hasDislikedFood ? dislikedFood : null,
+          "active_days": activeDyas
+        },
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+      log(response.data.toString());
+      // if (response.statusCode == 200) {
+      //   Get.back();
+      //   customDialogs.showSuccessDialog('Registered successfully', '');
+      //   Future.delayed(
+      //     const Duration(seconds: 1),
+      //     () {
+      //       Get.offAllNamed('/home');
+      //     },
+      //   );
+      // }
+    } on DioException catch (e) {
+      customDialogs.showErrorDialog(
+        'Error',
+        e.response!.data['errors'].toString(),
+      );
+    }
   }
 }

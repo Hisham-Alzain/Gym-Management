@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { FaRegImages } from "react-icons/fa6";
 import { LoginContext } from "../utils/Contexts";
-import { StartSubscription, FetchImage } from '../apis/AuthApis';
+import { FetchImage } from '../apis/AuthApis';
 import styles from '../styles/img_popup.module.css';
 
 const ImgPopUp = ({ user }) => {
@@ -22,7 +22,6 @@ const ImgPopUp = ({ user }) => {
 
             if (user.photos.length > 0) {
                 user.photos.map((photo) => {
-                    console.log(photo);
                     FetchImage(accessToken, photo.photo_path).then((response) => {
                         setImages((prev) => [...prev, response]);
                     }).then(() => {
@@ -32,22 +31,13 @@ const ImgPopUp = ({ user }) => {
             }
         }
     }, [user]);
-    console.log(images);
 
-    const handleSubscription = (event) => {
-        event.preventDefault();
-        StartSubscription(accessToken, user.id, parseInt(month)).then((response) => {
-            if (response.status == 201) {
-                console.log('Added Subscription successfully');
-                window.location.reload();
-            } else {
-                console.log(response.data)
-            }
-        })
+    if (isLoading) {
+        return <></>;
     }
     return (
         <Popup
-            trigger={<button className={styles.img_button}> <FaRegImages /></button>}
+            trigger={<button className={styles.img_button} title='Trainee images' > <FaRegImages /></button>}
             modal
             nested
         >
@@ -60,7 +50,6 @@ const ImgPopUp = ({ user }) => {
                     <div className={styles.content}>
                         {images.map((image) => {
                             return (
-
                                 <Popup
                                     trigger={
                                         <div className={styles.img_div}>

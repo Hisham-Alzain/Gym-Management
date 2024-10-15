@@ -21,6 +21,7 @@ class RegisterView extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage('assets/auth_background2.jpg'),
               fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
             ),
           ),
           child: Center(
@@ -33,13 +34,14 @@ class RegisterView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                         child: CustomTextField(
-                          controller: controller.emailController,
+                          controller: controller.nameController,
                           textInputType: TextInputType.emailAddress,
                           obsecureText: false,
                           icon: Icons.abc,
                           labelText: 'Full Name',
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
+                          maxLines: 1,
                         ),
                       ),
                       Padding(
@@ -52,6 +54,7 @@ class RegisterView extends StatelessWidget {
                           labelText: 'Email',
                           validator: (p0) =>
                               CustomValidation().validateEmail(p0),
+                          maxLines: 1,
                         ),
                       ),
                       Padding(
@@ -75,6 +78,7 @@ class RegisterView extends StatelessWidget {
                                   icon: Icons.phone,
                                   validator: (p0) => CustomValidation()
                                       .validatePhoneNumber(p0),
+                                  maxLines: 1,
                                 ),
                               ),
                             ),
@@ -92,6 +96,7 @@ class RegisterView extends StatelessWidget {
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
                           inkWell: controller.passwordInkwell(),
+                          maxLines: 1,
                         ),
                       ),
                       Padding(
@@ -108,6 +113,7 @@ class RegisterView extends StatelessWidget {
                             controller.passwordController.text,
                           ),
                           inkWell: controller.passwordInkwell(),
+                          maxLines: 1,
                         ),
                       ),
                       Padding(
@@ -115,7 +121,15 @@ class RegisterView extends StatelessWidget {
                         child: OutlinedButton(
                           onPressed: () {
                             if (controller.formField.currentState?.validate() ==
-                                true) {}
+                                true) {
+                              controller.register(
+                                controller.nameController.text,
+                                controller.emailController.text,
+                                controller.passwordController.text,
+                                controller.confirmPasswordController.text,
+                                controller.phoneNumberController.text,
+                              );
+                            }
                           },
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

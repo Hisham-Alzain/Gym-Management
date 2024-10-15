@@ -20,6 +20,7 @@ class LoginView extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage('assets/auth_background1.jpg'),
               fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
             ),
           ),
           child: Form(
@@ -37,6 +38,7 @@ class LoginView extends StatelessWidget {
                       icon: Icons.email,
                       labelText: 'Email',
                       validator: (p0) => CustomValidation().validateEmail(p0),
+                      maxLines: 1,
                     ),
                   ),
                   Padding(
@@ -50,6 +52,7 @@ class LoginView extends StatelessWidget {
                       validator: (p0) =>
                           CustomValidation().validateRequiredField(p0),
                       inkWell: controller.passwordInkwell(),
+                      maxLines: 1,
                     ),
                   ),
                   Row(
@@ -64,8 +67,8 @@ class LoginView extends StatelessWidget {
                                   .bodyLarge
                                   ?.copyWith(
                                     decoration: TextDecoration.underline,
-                                    color: Colors.redAccent,
-                                    decorationColor: Colors.redAccent,
+                                    color: Colors.red.shade900,
+                                    decorationColor: Colors.red.shade900,
                                   )),
                           onPressed: () {},
                         ),
@@ -101,7 +104,7 @@ class LoginView extends StatelessWidget {
                           ),
                           Checkbox(
                             value: controller.remeberMe,
-                            activeColor: Colors.redAccent,
+                            activeColor: Colors.red.shade900,
                             onChanged: (value) => controller
                                 .toggleRemeberMe(controller.remeberMe),
                           ),

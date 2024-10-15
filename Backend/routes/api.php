@@ -31,6 +31,7 @@ Route::controller(TraineeController::class)->group(function () {
 
 Route::controller(TrainerController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/subscription/{user_id}', 'ShowUserSubscriptions');
         Route::post('/subscription/start', 'StartSubscription');
 
         Route::get('/workout_programs', 'ShowWorkoutPrograms');
