@@ -41,4 +41,13 @@ class CustomValidation {
     }
     return null;
   }
+
+  String? validateVerificationCode(dynamic value, dynamic value2) {
+    if (value == null) {
+      return 'Required Field';
+    } else if (value != value2) {
+      return 'Wrong code';
+    }
+    return null;
+  }
 }

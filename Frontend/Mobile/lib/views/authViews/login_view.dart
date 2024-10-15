@@ -69,7 +69,7 @@ class LoginView extends StatelessWidget {
                                     color: Colors.red.shade900,
                                     decorationColor: Colors.red.shade900,
                                   )),
-                          onPressed: () {},
+                          onPressed: () => Get.toNamed('/forgotPassword'),
                         ),
                       ),
                     ],

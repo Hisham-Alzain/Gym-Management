@@ -8,6 +8,7 @@ import 'package:mobile/routes/routes.dart';
 
 GetStorage? storage;
 late MiddlewareCases middlewareCase;
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   storage = GetStorage();
@@ -23,7 +24,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: '/auth',
+      initialRoute: '/splashScreen',
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
