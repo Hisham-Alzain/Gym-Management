@@ -21,7 +21,6 @@ class RegisterView extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage('assets/auth_background2.jpg'),
               fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
             ),
           ),
           child: Center(
@@ -32,7 +31,7 @@ class RegisterView extends StatelessWidget {
                   builder: (controller) => Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                        padding: const EdgeInsets.all(20),
                         child: CustomTextField(
                           controller: controller.nameController,
                           textInputType: TextInputType.emailAddress,
@@ -45,7 +44,7 @@ class RegisterView extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                        padding: const EdgeInsets.all(20),
                         child: CustomTextField(
                           controller: controller.emailController,
                           textInputType: TextInputType.emailAddress,
@@ -58,35 +57,31 @@ class RegisterView extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(20),
                         child: Row(
                           children: [
-                            CustomCodePicker(
-                              onChanged: (value) =>
-                                  controller.selectCountryCode(value),
-                            ),
                             Expanded(
                               flex: 1,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                child: CustomTextField(
-                                  controller: controller.phoneNumberController,
-                                  textInputType: TextInputType.phone,
-                                  obsecureText: false,
-                                  labelText: 'Phone Number',
-                                  icon: Icons.phone,
-                                  validator: (p0) => CustomValidation()
-                                      .validatePhoneNumber(p0),
-                                  maxLines: 1,
+                              child: CustomTextField(
+                                controller: controller.phoneNumberController,
+                                textInputType: TextInputType.phone,
+                                obsecureText: false,
+                                labelText: 'Phone Number',
+                                icon: Icons.phone,
+                                suffixIcon: CustomCodePicker(
+                                  onChanged: (value) =>
+                                      controller.selectCountryCode(value),
                                 ),
+                                validator: (p0) =>
+                                    CustomValidation().validatePhoneNumber(p0),
+                                maxLines: 1,
                               ),
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                        padding: const EdgeInsets.all(20),
                         child: CustomTextField(
                           controller: controller.passwordController,
                           textInputType: TextInputType.visiblePassword,
@@ -95,12 +90,12 @@ class RegisterView extends StatelessWidget {
                           labelText: 'Password',
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
-                          inkWell: controller.passwordInkwell(),
+                          suffixIcon: controller.passwordInkwell(),
                           maxLines: 1,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                        padding: const EdgeInsets.all(20),
                         child: CustomTextField(
                           controller: controller.confirmPasswordController,
                           textInputType: TextInputType.visiblePassword,
@@ -112,7 +107,7 @@ class RegisterView extends StatelessWidget {
                             p0,
                             controller.passwordController.text,
                           ),
-                          inkWell: controller.passwordInkwell(),
+                          suffixIcon: controller.passwordInkwell(),
                           maxLines: 1,
                         ),
                       ),

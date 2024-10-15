@@ -20,7 +20,6 @@ class LoginView extends StatelessWidget {
             image: DecorationImage(
               image: AssetImage('assets/auth_background1.jpg'),
               fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
             ),
           ),
           child: Form(
@@ -42,7 +41,7 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                     child: CustomTextField(
                       controller: controller.passwordController,
                       textInputType: TextInputType.visiblePassword,
@@ -51,7 +50,7 @@ class LoginView extends StatelessWidget {
                       labelText: 'Password',
                       validator: (p0) =>
                           CustomValidation().validateRequiredField(p0),
-                      inkWell: controller.passwordInkwell(),
+                      suffixIcon: controller.passwordInkwell(),
                       maxLines: 1,
                     ),
                   ),

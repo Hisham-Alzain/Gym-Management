@@ -15,6 +15,27 @@ class CustomCodePicker extends StatelessWidget {
       searchStyle: Theme.of(context).textTheme.bodyLarge,
       dialogTextStyle: Theme.of(context).textTheme.labelLarge,
       barrierColor: Colors.transparent,
+      searchDecoration: InputDecoration(
+        iconColor: Colors.red.shade900,
+        prefixIconColor: Colors.red.shade900,
+        suffixIconColor: Colors.red.shade900,
+        border: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.red.shade900),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.red.shade900,
+          ),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.red.shade900,
+          ),
+        ),
+        labelText: 'Search',
+        labelStyle: Theme.of(context).textTheme.bodyLarge,
+      ),
+      showDropDownButton: true,
     );
   }
 }

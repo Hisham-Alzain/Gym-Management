@@ -33,7 +33,7 @@ class UserInfoRequest extends FormRequest
             // user_infos table
             'height' => ["sometimes", "numeric", "between:120,210"],
             'weight' => ["sometimes", "numeric", "between:40,200"],
-            'ilness' => ["sometimes"],
+            'illnesses' => ["sometimes"],
             'allergies' => ["sometimes"],
             'disliked_food' => ["sometimes"],
             'active_days' => ["sometimes", "integer", "between:2,7"],

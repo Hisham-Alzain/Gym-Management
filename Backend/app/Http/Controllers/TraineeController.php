@@ -39,11 +39,11 @@ class TraineeController extends Controller
 
         // Update user birth_date and gender
         if (isset($validated['birth_date'])) {
-            $user->birthdate = $validated['birth_date'];
+            $user->birth_date = $validated['birth_date'];
             $user->save();
         }
         if (isset($validated['gender'])) {
-            $user->birthdate = $validated['gender'];
+            $user->gender = $validated['gender'];
             $user->save();
         }
 
@@ -52,6 +52,7 @@ class TraineeController extends Controller
 
         // Check userInfo
         if ($userInfo == null) {
+            $validated['user_id'] = $user->id;
             $userInfo = UserInfo::create($validated);
         } else {
             $userInfo->fill($validated);
