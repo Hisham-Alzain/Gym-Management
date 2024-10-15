@@ -79,7 +79,13 @@ class LoginView extends StatelessWidget {
                     child: OutlinedButton(
                       onPressed: () {
                         if (controller.formField.currentState?.validate() ==
-                            true) {}
+                            true) {
+                          controller.login(
+                            controller.emailController.text,
+                            controller.passwordController.text,
+                            controller.rememberMe,
+                          );
+                        }
                       },
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,10 +108,9 @@ class LoginView extends StatelessWidget {
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
                           Checkbox(
-                            value: controller.remeberMe,
+                            value: controller.rememberMe,
                             activeColor: Colors.red.shade900,
-                            onChanged: (value) => controller
-                                .toggleRemeberMe(controller.remeberMe),
+                            onChanged: (value) => controller.toggleRemeberMe(),
                           ),
                         ],
                       ),

@@ -1,20 +1,28 @@
+import 'dart:developer';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/customWidgets/custom_dialogs.dart';
+import 'package:mobile/main.dart';
 
 class LoginController extends GetxController {
   late GlobalKey<FormState> formField;
+  late Dio dio;
+  late CustomDialogs customDialogs;
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late bool passwordToggle;
-  late bool remeberMe;
+  late bool rememberMe;
 
   @override
   void onInit() {
     formField = GlobalKey<FormState>();
+    dio = Dio();
+    customDialogs = CustomDialogs();
     emailController = TextEditingController();
     passwordController = TextEditingController();
     passwordToggle = true;
-    remeberMe = true;
+    rememberMe = true;
     super.onInit();
   }
 
@@ -35,8 +43,49 @@ class LoginController extends GetxController {
     );
   }
 
-  void toggleRemeberMe(bool rememberMe) {
-    remeberMe = !remeberMe;
+  void toggleRemeberMe() {
+    rememberMe = !rememberMe;
     update();
+  }
+
+  Future<dynamic> login(
+    String email,
+    String password,
+    bool remember,
+  ) async {
+    customDialogs.showLoadingDialog();
+    try {
+      var response = await dio.post(
+        'http://192.168.43.23:8000/api/login',
+        data: {
+          "email": email,
+          "password": password,
+          "remember": remember,
+        },
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json',
+          },
+        ),
+      );
+      log(response.data.toString());
+      if (response.statusCode == 200) {
+        Get.back();
+        storage!.write('token', response.data['access_token']);
+        customDialogs.showSuccessDialog('Login successfull', '');
+        Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            Get.offAllNamed('/home');
+          },
+        );
+      }
+    } on DioException catch (e) {
+      customDialogs.showErrorDialog(
+        'Error',
+        e.response!.data['errors'].toString(),
+      );
+    }
   }
 }
