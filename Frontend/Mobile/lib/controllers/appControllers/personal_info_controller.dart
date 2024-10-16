@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
+import 'package:mobile/main.dart';
 
 class PersonalInfoController extends GetxController {
   late GlobalKey<FormState> formField;
@@ -33,16 +34,16 @@ class PersonalInfoController extends GetxController {
     genders = {'Male': 'MALE', 'Female': 'FEMALE'};
     selectedHeight = null;
     cmList = List.generate(
-      91,
+      132,
       (index) => (index + 120).toDouble(),
     );
     selectedWeight = null;
     kgList = List.generate(
-      161,
+      261,
       (index) => (index + 40).toDouble(),
     );
     activeDays = null;
-    daysList = List.generate(7, (index) => index + 1);
+    daysList = List.generate(6, (index) => index + 2);
     birthdate = DateTime.now();
     hasIllness = false;
     hasAllergies = false;
@@ -121,15 +122,16 @@ class PersonalInfoController extends GetxController {
     int activeDyas,
   ) async {
     customDialogs.showLoadingDialog();
+    String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/UpdateUserInfo',
+        'http://192.168.43.23:8000/api/trainee',
         data: {
           "birth_date": birthDate.toString().split(' ')[0],
           "gender": gender,
           "height": height,
           "weight": weight,
-          "ilness": hasIllness ? illness : null,
+          "illnesses": hasIllness ? illness : null,
           "allergies": hasAllergies ? allergies : null,
           "disliked_food": hasDislikedFood ? dislikedFood : null,
           "active_days": activeDyas
@@ -138,24 +140,34 @@ class PersonalInfoController extends GetxController {
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
             'Accept': 'application/json',
+            'Authorization': 'Bearer $token',
           },
         ),
       );
       log(response.data.toString());
-      // if (response.statusCode == 200) {
-      //   Get.back();
-      //   customDialogs.showSuccessDialog('Registered successfully', '');
-      //   Future.delayed(
-      //     const Duration(seconds: 1),
-      //     () {
-      //       Get.offAllNamed('/home');
-      //     },
-      //   );
-      // }
+      if (response.statusCode == 200) {
+        Get.back();
+        customDialogs.showSuccessDialog('Success', '');
+        Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            Get.offAllNamed('/home');
+          },
+        );
+      } else if (response.statusCode == 401) {
+        Get.back();
+        customDialogs.showSesionExpiredDialog();
+        Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            Get.offAllNamed('/login');
+          },
+        );
+      }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
         'Error',
-        e.response!.data['errors'].toString(),
+        e.response!.data.toString(),
       );
     }
   }

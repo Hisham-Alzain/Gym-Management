@@ -7,7 +7,7 @@ class CustomTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final String? labelText;
   final IconData icon;
-  final InkWell? inkWell;
+  final Widget? suffixIcon;
   final String? initialValue;
   final String? hintText;
   final void Function(String)? onChanged;
@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
     required this.icon,
     this.labelText,
     this.validator,
-    this.inkWell,
+    this.suffixIcon,
     this.initialValue,
     this.hintText,
     this.onChanged,
@@ -55,7 +55,7 @@ class CustomTextField extends StatelessWidget {
           color: Colors.red.shade900,
         ),
         prefixIconColor: Colors.red.shade900,
-        suffixIcon: inkWell,
+        suffixIcon: suffixIcon,
         suffixIconColor: Colors.red.shade900,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
