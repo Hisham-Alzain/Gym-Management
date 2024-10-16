@@ -97,7 +97,7 @@ class TraineeController extends Controller
         ], 200);
     }
 
-    public function ShowWorkoutPrograms(Request $request)
+    public function ShowWorkoutPrograms(Request $request,$user_id)
     {
         // Get user
         $user = Auth::user();
@@ -109,6 +109,14 @@ class TraineeController extends Controller
             ], 401);
         }
 
+        if($user->role=='Trainer') {
+            $user=User::where('id', $user_id)->first();
+            if ($user == null) {
+                return response()->json([
+                    'errors' => ['user' => 'Invalid user'],
+                ], 401);
+            }
+        }
         // Get programs
         $programs = WorkoutProgram::where('user_id', $user->id)
             ->orderBy('updated_at')->paginate(10);
