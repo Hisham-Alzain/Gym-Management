@@ -35,52 +35,74 @@ class ForgotPasswordView extends StatelessWidget {
               child: GetBuilder<ForgotPasswordController>(
                 builder: (controller) => Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        'Please Enter your email so we can send you a verification code',
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: CustomTextField(
-                        controller: controller.emailController,
-                        textInputType: TextInputType.emailAddress,
-                        obsecureText: false,
-                        icon: Icons.email,
-                        labelText: 'Email',
-                        validator: (p0) => CustomValidation().validateEmail(p0),
-                        maxLines: 1,
-                      ),
-                    ),
-                    OutlinedButton(
-                      onPressed: () {
-                        if (controller.formField.currentState?.validate() ==
-                            true) {}
-                      },
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    if (!controller.emailSent)
+                      Column(
                         children: [
-                          Text(
-                            'Send',
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              'Please Enter your email so we can send you a verification code',
+                              style: Theme.of(context).textTheme.headlineSmall,
+                            ),
                           ),
-                          Icon(Icons.arrow_forward_ios),
+                          Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: CustomTextField(
+                              controller: controller.emailController,
+                              textInputType: TextInputType.emailAddress,
+                              obsecureText: false,
+                              icon: Icons.email,
+                              labelText: 'Email',
+                              validator: (p0) =>
+                                  CustomValidation().validateEmail(p0),
+                              maxLines: 1,
+                            ),
+                          ),
+                          OutlinedButton(
+                            onPressed: () {
+                              if (controller.formField.currentState
+                                      ?.validate() ==
+                                  true) {
+                                controller
+                                    .sendEmail(controller.emailController.text);
+                              }
+                            },
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Send',
+                                ),
+                                Icon(Icons.arrow_forward_ios),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                    //TODO: add bool
-                    const SizedBox(
-                      height: 150,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: CustomVerificationCodeField(
-                        codeController: controller.codeController,
-                        correctCode: '',
-                        onSubmitted: (p0) {},
+                    if (controller.emailSent)
+                      Column(
+                        children: [
+                          const SizedBox(
+                            height: 200,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              'Verification code:',
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: CustomVerificationCodeField(
+                              length: 6,
+                              codeController: controller.codeController,
+                              correctCode: '',
+                              onSubmitted: (p0) {},
+                            ),
+                          ),
+                        ],
                       ),
-                    )
                   ],
                 ),
               ),
