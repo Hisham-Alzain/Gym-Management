@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -69,7 +68,6 @@ class LoginController extends GetxController {
           },
         ),
       );
-      log(response.data.toString());
       if (response.statusCode == 200) {
         Get.back();
         storage!.write('token', response.data['access_token']);

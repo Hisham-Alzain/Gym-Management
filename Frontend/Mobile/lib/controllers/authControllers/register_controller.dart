@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +83,6 @@ class RegisterController extends GetxController {
           },
         ),
       );
-      log(response.data.toString());
       if (response.statusCode == 201) {
         Get.back();
         storage!.write('token', response.data['access_token']);

@@ -3,12 +3,14 @@ import 'package:mobile/customWidgets/custom_validation.dart';
 import 'package:pinput/pinput.dart';
 
 class CustomVerificationCodeField extends StatelessWidget {
+  final int length;
   final TextEditingController codeController;
   final String correctCode;
   final void Function(String)? onSubmitted;
 
   const CustomVerificationCodeField({
     super.key,
+    required this.length,
     required this.codeController,
     required this.correctCode,
     this.onSubmitted,
@@ -19,7 +21,7 @@ class CustomVerificationCodeField extends StatelessWidget {
     return Pinput(
       controller: codeController,
       closeKeyboardWhenCompleted: true,
-      length: 5,
+      length: length,
       defaultPinTheme: PinTheme(
         width: 50,
         height: 50,

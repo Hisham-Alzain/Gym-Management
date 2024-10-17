@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -144,7 +143,6 @@ class PersonalInfoController extends GetxController {
           },
         ),
       );
-      log(response.data.toString());
       if (response.statusCode == 200) {
         Get.back();
         customDialogs.showSuccessDialog('Success', '');

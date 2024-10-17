@@ -120,7 +120,7 @@ class AuthController extends Controller
         // Validate request
         $validated = $request->validated();
         // Get User
-        $user = User::where("email", $validated->email)->first();
+        $user = User::where("email", $validated['email'])->first();
 
         // Check user
         if ($user == null) {

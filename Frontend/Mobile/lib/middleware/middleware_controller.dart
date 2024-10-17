@@ -33,7 +33,6 @@ class MiddlewareController extends GetxController {
             },
           ),
         );
-        log(response.statusCode.toString());
         if (response.statusCode == 200) {
           return MiddlewareCases.validToken;
         }
