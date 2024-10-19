@@ -16,6 +16,7 @@ use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
 use App\Http\Resources\WorkoutExerciseSetResource;
+use App\Policies\ProgramPloicy;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -98,7 +99,7 @@ class TraineeController extends Controller
         ], 200);
     }
 
-    public function ShowWorkoutPrograms(Request $request)
+    public function ShowWorkoutPrograms(Request $request, $user_id)
     {
         // Get user
         $user = Auth::user();
@@ -110,6 +111,14 @@ class TraineeController extends Controller
             ], 401);
         }
 
+        if ($user->role == 'Trainer') {
+            $user = User::where('id', $user_id)->first();
+            if ($user == null) {
+                return response()->json([
+                    'errors' => ['user' => 'Invalid user'],
+                ], 401);
+            }
+        }
         // Get programs
         $programs = WorkoutProgram::where('user_id', $user->id)
             ->orderBy('updated_at')->paginate(10);
@@ -148,9 +157,8 @@ class TraineeController extends Controller
             ], 401);
         }
 
-        // Get programs
-        $program = WorkoutProgram::where('id', $program_id)
-            ->where('user_id', $user->id)->first();
+        // Get program
+        $program = WorkoutProgram::where('id', $program_id)->first();
 
         // Check program
         if ($program == null) {
@@ -158,11 +166,20 @@ class TraineeController extends Controller
                 'errors' => ['program' => 'program was not found'],
             ], 404);
         } else {
-            // Response
-            return response()->json([
-                "message" => "program fetched",
-                "program" => new DietProgramResource($program),
-            ], 200);
+            // Check user_role
+            $policy = new ProgramPloicy();
+            if (!$policy->WorkoutPolicy(User::find($user->id), $program)) {
+                // Response
+                return response()->json([
+                    'errors' => ['user' => 'Invalid user'],
+                ], 401);
+            } else {
+                // Response
+                return response()->json([
+                    "message" => "program fetched",
+                    "program" => new WorkoutProgramResource($program),
+                ], 200);
+            }
         }
     }
 

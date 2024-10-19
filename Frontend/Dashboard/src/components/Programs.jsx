@@ -3,7 +3,7 @@ import SearchBar from "./SearchBar";
 import { FaDumbbell } from "react-icons/fa6";
 import { LoginContext } from '../utils/Contexts';
 import { useContext } from 'react';
-import { FetchWorkouts } from '../apis/WorkoutApis';
+import { FetchUserWorkouts } from '../apis/WorkoutApis';
 import Popup from 'reactjs-popup';
 import styles from '../styles/popup.module.css';
 
@@ -15,7 +15,8 @@ const Programs = ({ user }) => {
     const { accessToken } = useContext(LoginContext);
 
     useEffect(() => {
-        FetchWorkouts(accessToken).then((response) => {
+        FetchUserWorkouts(accessToken,user.id).then((response) => {
+            console.log(response,user.id);
             if (response.status === 200) {
                 setData(response.data.pagination_data);
                 setPrograms(response.data.programs);
@@ -36,15 +37,18 @@ const Programs = ({ user }) => {
                     <button className={styles.close} onClick={close}>
                         &times;
                     </button>
-                    <div className={styles.header}> {user.name} workouts </div>
+                    <div className={styles.header}>
+                            <div className={styles.name}>{user.name} workouts</div>
+                            <button className={styles.create_button}>Add workout</button>
+                         </div>
                     <div className={styles.workouts}>
                         {programs.map((program) => (
                             <div key={program.id} className={styles.CompetitorCard}>
                                 <div className={styles.CompetitorCardContent}>
                                     <div className={styles.info_container}>
-                                        <p className={styles.CompetitorDescription}>
+                                        <a className={styles.CompetitorDescription} href=''>
                                             from {program.start_date} to {program.end_date}
-                                        </p>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -20,7 +20,7 @@ Route::controller(TraineeController::class)->group(function () {
         Route::get('/trainee', 'GetUserInfo');
         Route::post('/trainee', 'UpdateUserInfo');
 
-        Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
+        Route::get('/trainee/workouts/{user_id}', 'ShowWorkoutPrograms');
         Route::get('/trainee/workout/{program_id}', 'ShowWorkoutProgram');
         Route::post('/trainee/workout/set', 'UpdateExerciseSet');
 
