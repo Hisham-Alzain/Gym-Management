@@ -28,7 +28,7 @@ class PersonalInfoView extends StatelessWidget {
           ),
         ),
         child: Form(
-          key: _personalInfoController.formField,
+          key: _personalInfoController.personalInfoForm,
           child: GetBuilder<PersonalInfoController>(
             builder: (controller) => SingleChildScrollView(
               child: Column(
@@ -269,7 +269,8 @@ class PersonalInfoView extends StatelessWidget {
                     ),
                   OutlinedButton(
                     onPressed: () {
-                      if (controller.formField.currentState?.validate() ==
+                      if (controller.personalInfoForm.currentState
+                              ?.validate() ==
                           true) {
                         controller.addPersonalInfo(
                           controller.birthdate,

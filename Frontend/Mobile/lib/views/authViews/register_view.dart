@@ -26,7 +26,7 @@ class RegisterView extends StatelessWidget {
           child: Center(
             child: SingleChildScrollView(
               child: Form(
-                key: _registerController.formField,
+                key: _registerController.registerForm,
                 child: GetBuilder<RegisterController>(
                   builder: (controller) => Column(
                     children: [
@@ -115,7 +115,8 @@ class RegisterView extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: OutlinedButton(
                           onPressed: () {
-                            if (controller.formField.currentState?.validate() ==
+                            if (controller.registerForm.currentState
+                                    ?.validate() ==
                                 true) {
                               controller.register(
                                 controller.nameController.text,

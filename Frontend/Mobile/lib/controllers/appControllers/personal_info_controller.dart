@@ -5,7 +5,7 @@ import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
 
 class PersonalInfoController extends GetxController {
-  late GlobalKey<FormState> formField;
+  late GlobalKey<FormState> personalInfoForm;
   late Dio dio;
   late CustomDialogs customDialogs;
   late String? selectedGender;
@@ -26,7 +26,7 @@ class PersonalInfoController extends GetxController {
 
   @override
   void onInit() {
-    formField = GlobalKey<FormState>();
+    personalInfoForm = GlobalKey<FormState>();
     dio = Dio();
     customDialogs = CustomDialogs();
     selectedGender = null;
@@ -124,7 +124,7 @@ class PersonalInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/trainee',
+        'http://192.168.0.106:8000/api/trainee',
         data: {
           "birth_date": birthDate.toString().split(' ')[0],
           "gender": gender,

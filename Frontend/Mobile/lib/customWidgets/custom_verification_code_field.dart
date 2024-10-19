@@ -6,14 +6,14 @@ class CustomVerificationCodeField extends StatelessWidget {
   final int length;
   final TextEditingController codeController;
   final String correctCode;
-  final void Function(String)? onSubmitted;
+  final void Function(String)? onChanged;
 
   const CustomVerificationCodeField({
     super.key,
     required this.length,
     required this.codeController,
     required this.correctCode,
-    this.onSubmitted,
+    this.onChanged,
   });
 
   @override
@@ -39,7 +39,7 @@ class CustomVerificationCodeField extends StatelessWidget {
       keyboardType: TextInputType.number,
       validator: (value) =>
           CustomValidation().validateVerificationCode(value, correctCode),
-      onSubmitted: onSubmitted,
+      onChanged: onChanged,
     );
   }
 }

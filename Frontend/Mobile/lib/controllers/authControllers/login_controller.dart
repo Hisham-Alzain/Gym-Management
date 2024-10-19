@@ -5,7 +5,7 @@ import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
 
 class LoginController extends GetxController {
-  late GlobalKey<FormState> formField;
+  late GlobalKey<FormState> loginForm;
   late Dio dio;
   late CustomDialogs customDialogs;
   late TextEditingController emailController;
@@ -15,7 +15,7 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    formField = GlobalKey<FormState>();
+    loginForm = GlobalKey<FormState>();
     dio = Dio();
     customDialogs = CustomDialogs();
     emailController = TextEditingController();
@@ -55,7 +55,7 @@ class LoginController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/login',
+        'http://192.168.0.106:8000/api/login',
         data: {
           "email": email,
           "password": password,

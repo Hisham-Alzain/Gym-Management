@@ -24,7 +24,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: '/auth',
+      initialRoute: '/splashScreen',
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

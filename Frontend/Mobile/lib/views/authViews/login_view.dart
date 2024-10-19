@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
             ),
           ),
           child: Form(
-            key: _loginController.formField,
+            key: _loginController.loginForm,
             child: GetBuilder<LoginController>(
               builder: (controller) => Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +69,7 @@ class LoginView extends StatelessWidget {
                                     color: Colors.red.shade900,
                                     decorationColor: Colors.red.shade900,
                                   )),
-                          onPressed: () => Get.toNamed('/forgotPassword'),
+                          onPressed: () => Get.offNamed('/forgotPassword'),
                         ),
                       ),
                     ],
@@ -78,7 +78,7 @@ class LoginView extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     child: OutlinedButton(
                       onPressed: () {
-                        if (controller.formField.currentState?.validate() ==
+                        if (controller.loginForm.currentState?.validate() ==
                             true) {
                           controller.login(
                             controller.emailController.text,
