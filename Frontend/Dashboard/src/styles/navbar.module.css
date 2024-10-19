@@ -2,7 +2,7 @@ nav {
   position: fixed;
   z-index: 99;
   width: 100%;
-  background: linear-gradient(90deg, #5d5d5d, #e11616, #000000);
+  background: linear-gradient(90deg, #5d5d5d, rgb(183, 28, 28), #000000);
 }
 
 .wrapper {

@@ -21,8 +21,8 @@ const PopUp = ({ user }) => {
                         <ul className={styles.list}>
                             <li>Height: {user.height} cm</li>
                             <li>Weight: {user.weight} kg</li>
-                            <li>Gender: {user.gender} kg</li>
-                            <li>Birth date: {user.birth_date} kg</li>
+                            <li>Gender: {user.gender} </li>
+                            <li>Birth date: {user.birth_date} </li>
                             <li>Active days: {user.active_days}</li>
                             <li>Illnesses: {user.illnesses}</li>
                             <li>Allergies: {user.allergies}</li>
