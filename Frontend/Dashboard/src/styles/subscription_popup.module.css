@@ -1,4 +1,4 @@
-.subscription_button{
+.subscription_button {
     padding: 10px 10px;
     border: none;
     border-radius: 5px;
@@ -12,6 +12,23 @@
 
 .subscription_button:hover {
     background-color: #31c823;
+}
+
+.sub_form {
+    width: 250px;
+    margin-block-start: 15px;
+    margin-inline-start: 10px;
+}
+
+.sub_form input {
+    width: 60px;
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.sub_form button {
+    padding: 5px 10px;
+    margin-inline-start: 10px;
 }
 
 .modal {

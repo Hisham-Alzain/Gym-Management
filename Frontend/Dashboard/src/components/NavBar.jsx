@@ -43,29 +43,6 @@ const NavBar = () => {
                             </li>
                         }
                         <li>
-                            <a href="/jobs/all" className={styles.desktop_item}>
-                                {t('components.nav_bar.li_jobs')}
-                            </a>
-                            <input type="checkbox" id="Jobs" className={styles.showDrop} />
-                            <label htmlFor="Jobs" className={styles.mobile_item}>
-                                {t('components.nav_bar.li_jobs')}
-                            </label>
-                            <ul className={styles.drop_menu}>
-                                <li className={styles.mobile_item2}>
-                                    <a href="/jobs/all">{t('components.nav_bar.all')}</a>
-                                </li>
-                                <li>
-                                    <a href="/workouts">{t('components.nav_bar.full_time')}</a>
-                                </li>
-                                <li>
-                                    <a href="/jobs/PartTime">{t('components.nav_bar.part_time')}</a>
-                                </li>
-                                <li>
-                                    <a href="/jobs/Freelancing">{t('components.nav_bar.freelancing')}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
                             <a href="/jobs/post">{t('components.nav_bar.post_job')}</a>
                         </li>
                     </div>

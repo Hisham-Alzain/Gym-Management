@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { FaCalendarDays } from "react-icons/fa6";
 import { LoginContext } from "../utils/Contexts";
-import { FetchSubscriptions } from "../apis/AuthApis";
+import { FetchSubscriptions, StartSubscription } from "../apis/AuthApis";
 import styles from '../styles/subscription_popup.module.css';
 
 const SubscriptionPopUp = ({ user_id, user_name }) => {
@@ -16,6 +16,7 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
     const initialized = useRef(false);
     const [isLoading, setIsLoading] = useState(true);
     const [subscriptions, setSubscriptions] = useState([]);
+    const [month, setMonth] = useState(1);
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -43,6 +44,18 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
             });
         }
     }, [currentPage]);
+
+    const handleSubscription = (event) => {
+        event.preventDefault();
+        StartSubscription(accessToken, user_id, parseInt(month)).then((response) => {
+            if (response.status == 201) {
+                console.log('Added Subscription successfully');
+                window.location.reload();
+            } else {
+                console.log(response.data)
+            }
+        })
+    }
 
     const columnStructure = [
         { key: "start_date", label: 'Start Date' },
@@ -96,6 +109,11 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
                                     </button>
                                 ))}
                             </div>
+                            <form onSubmit={handleSubscription} className={styles.sub_form}>
+                                <input type="number" min={1} max={12} required value={month}
+                                    onChange={(event) => setMonth(event.target.value)}></input>
+                                <button type='submit' className={styles.button}>Extend subscription</button>
+                            </form>
                         </div>
                     </>}
                 </div>

@@ -17,8 +17,8 @@ class SubscriptionResource extends JsonResource
         return [
             "user_id" => $this->user_id,
             "user_name" => $this->user->name,
-            "start_date" => $this->start_date,
-            "end_date" => $this->end_date
+            "start_date" => $this->start_date->format('Y-m-d'),
+            "end_date" => $this->end_date->format('Y-m-d')
         ];
     }
 }
