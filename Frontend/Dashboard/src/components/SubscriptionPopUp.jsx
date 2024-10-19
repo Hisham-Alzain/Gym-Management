@@ -4,10 +4,10 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { FaCalendarDays } from "react-icons/fa6";
 import { LoginContext } from "../utils/Contexts";
-import { FetchSubscription } from "../apis/AuthApis";
+import { FetchSubscriptions } from "../apis/AuthApis";
 import styles from '../styles/subscription_popup.module.css';
 
-const SubscriptionPopUp = ({ user_id, user_name}) => {
+const SubscriptionPopUp = ({ user_id, user_name }) => {
     // Translations
     const { t } = useTranslation('global');
     // Context
@@ -15,7 +15,7 @@ const SubscriptionPopUp = ({ user_id, user_name}) => {
     // Define states
     const initialized = useRef(false);
     const [isLoading, setIsLoading] = useState(true);
-    const [userData, setUserData] = useState([]);
+    const [subscriptions, setSubscriptions] = useState([]);
     const [data, setData] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -25,14 +25,14 @@ const SubscriptionPopUp = ({ user_id, user_name}) => {
         } else {
             setIsLoading(true);
 
-            FetchSubscription(accessToken, user_id, currentPage).then((response) => {
+            FetchSubscriptions(accessToken, user_id, currentPage).then((response) => {
                 if (response.status === 200) {
                     console.log(response.data);
                     setData(response.data.pagination_data);
-                    setUserData([]);
+                    setSubscriptions([]);
                     response.data.subscriptions.map((subscription) => {
-                        if (!userData.some(item => subscription.id === item.id)) {
-                            setUserData(response.data.users);
+                        if (!subscriptions.some(item => subscription.id === item.id)) {
+                            setSubscriptions(response.data.subscriptions);
                         }
                     });
                 } else {
@@ -48,12 +48,6 @@ const SubscriptionPopUp = ({ user_id, user_name}) => {
         { key: "start_date", label: 'Start Date' },
         { key: "end_date", label: 'End Date' },
     ];
-
-    const filteredUsers = userData
-        ? userData.filter(user =>
-            user.name) : [];
-
-            console.log(filteredUsers)
 
     return (
         <Popup
@@ -75,8 +69,8 @@ const SubscriptionPopUp = ({ user_id, user_name}) => {
                                         {columnStructure.map((column) => (<th key={column.key}>{column.label}</th>))}
                                     </tr>
                                 </thead>
-                                <tbody>{filteredUsers.length > 0 ? (
-                                    filteredUsers.map((subscription) => <tr key={subscription.user_id}>
+                                <tbody>{subscriptions.length > 0 ? (
+                                    subscriptions.map((subscription) => <tr key={subscription.user_id}>
                                         {columnStructure.map((column) => (
                                             <td key={column.key}>
                                                 {subscription[column.key]}

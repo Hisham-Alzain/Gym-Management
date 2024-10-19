@@ -88,7 +88,7 @@ export const FetchUsers = async (token) => {
   }
 };
 
-export const FetchSubscription = async (token, user_id) => {
+export const FetchSubscriptions = async (token, user_id) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/api/subscription/${user_id}`, {
       headers: {
