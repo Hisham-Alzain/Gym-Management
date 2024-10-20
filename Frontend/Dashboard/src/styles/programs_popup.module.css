@@ -1,37 +1,17 @@
-.subscription_button {
+.edit_button {
+    background-color: #ffc107;
+    color: #ffffff;
+    margin-inline-end: 5px;
     padding: 10px 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: 0.5s;
-    margin-inline: 5px;
-    margin-block-start: 1px;
-    background-color: #46dc35;
-    color: #ffffff;
+    transition: background-color 0.3s;
+    margin-inline-start: 5px;
 }
 
-.subscription_button:hover {
-    background-color: #31c823;
-}
-
-.sub_form {
-    width: 95%;
-    margin-block-start: 15px;
-    margin-inline-start: 10px;
-    display: flex;
-    justify-content: center;
-}
-
-.sub_form input {
-    width: 60px;
-    padding: 6px 12px;
-    font-size: 12px;
-    text-align: center;
-}
-
-.sub_form button {
-    padding: 5px 10px;
-    margin-inline-start: 10px;
+.edit_button:hover {
+    background-color: #e0a800;
 }
 
 .modal {
@@ -49,16 +29,17 @@
     padding: 5px;
 }
 
-.modal .content {
+.modal .workouts {
     width: 100%;
-    padding: 10px 5px;
+    max-height: 75vh;
+    overflow-y: scroll;
 }
 
-.modal .content .list {
+.modal .workouts .list {
     font-size: 15px;
 }
 
-.content .list li h4 {
+.workouts .list li h4 {
     margin-block: 6px;
 }
 
@@ -83,12 +64,57 @@
     border: 1px solid #cfcece;
 }
 
+.sub_form {
+    width: 250px;
+    margin-block-start: 15px;
+    margin-inline-start: 10px;
+}
+
+.sub_form input {
+    width: 60px;
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.sub_form button {
+    padding: 5px 10px;
+    margin-inline-start: 10px;
+}
+
+/* workout progrmas styles */
+.CompetitorCard {
+    border-radius: 5px;
+    margin: 10px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CompetitorCardContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.info_container {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.CompetitorDescription {
+    color: #777;
+}
+
 /* Table Styles */
 .users_table {
     width: 100%;
     position: relative;
     border-collapse: collapse;
-    margin-block-start: 20px;
 }
 
 .users_table th,
@@ -108,25 +134,4 @@
 
 .users_table tr:hover {
     background-color: var(--color-better_orange);
-}
-
-.pagination {
-    text-align: center;
-    margin-block-start: 10px;
-}
-
-.activePage {
-    margin: 3px 3px;
-    font-size: 1.2em;
-    border-radius: 5px;
-    color: var(--color-title);
-    background-color: var(--color-better_orange);
-}
-
-.page {
-    margin: 3px 3px;
-    border-radius: 5px;
-    background-color: var(--color-background);
-    color: var(--color-button);
-    border-color: var(--color-foreground);
 }
