@@ -8,24 +8,26 @@ import Popup from 'reactjs-popup';
 import styles from '../styles/programs_popup.module.css';
 
 const Programs = ({ user_id, user_name }) => {
-    const navigate = useNavigate();
+    // Context
+    const { accessToken } = useContext(LoginContext);
     // Define states
     const initialized = useRef(false);
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
 
     const [programs, setPrograms] = useState([]);
     const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    // Context
-    const { accessToken } = useContext(LoginContext);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         if (!initialized.current) {
             initialized.current = true;
         } else {
             setIsLoading(true);
+
             FetchUserWorkouts(accessToken, user_id).then((response) => {
-                console.log(response, user_id);
                 if (response.status === 200) {
+                    console.log(response.data.programs);
                     setData(response.data.pagination_data);
                     setPrograms([]);
                     response.data.programs.map((program) => {
@@ -40,7 +42,7 @@ const Programs = ({ user_id, user_name }) => {
                 setIsLoading(false);
             });
         }
-    }, []);
+    }, [currentPage]);
 
     const handleShowWorkout = (event) => {
         event.preventDefault();
@@ -66,13 +68,13 @@ const Programs = ({ user_id, user_name }) => {
                     <button className={styles.close} onClick={close}>
                         &times;
                     </button>
-                    <div className={styles.header}>
-                        <div className={styles.name}>{user_name} workouts</div>
-                        <button className={styles.create_button}>Add workout</button>
-                    </div>
-                    <div className={styles.workouts}>
-                        {programs.map((program) => (
-                            <div key={program.id} className={styles.CompetitorCard}>
+                    {isLoading ? <></> : <>
+                        <div className={styles.header}>
+                            <div className={styles.name}>{user_name} workouts</div>
+                            <button className={styles.create_button}>Add workout</button>
+                        </div>
+                        <div className={styles.workouts}>
+                            <div className={styles.CompetitorCard}>
                                 <div className={styles.CompetitorCardContent}>
                                     <div className={styles.info_container}>
                                         <table className={styles.users_table}>
@@ -105,8 +107,8 @@ const Programs = ({ user_id, user_name }) => {
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    </>}
                 </div>
             )}
         </Popup>
