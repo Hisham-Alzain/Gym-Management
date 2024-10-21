@@ -44,7 +44,6 @@ class WorkoutRequest extends FormRequest
             'days.*.exercises.*.sets' => ['required', 'array'],
             'days.*.exercises.*.sets.*.set_no' => ['required', 'integer'],
             'days.*.exercises.*.sets.*.exp_reps' => ['required', 'integer'],
-            'days.*.exercises.*.sets.*.exp_weight' => ['required', 'numeric'],
         ];
     }
 

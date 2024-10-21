@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserInfo;
 use App\Models\DietProgram;
 use App\Models\WorkoutExerciseSet;
+use App\Models\WorkoutExerciseRep;
 use App\Models\WorkoutProgram;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserInfoRequest;
@@ -199,8 +200,7 @@ class TraineeController extends Controller
         }
 
         // Get set
-        $set = WorkoutExerciseSet::where('id', $validated['set_id'])
-            ->where('workout_exercise_id', $validated['exercise_id'])->first();
+        $set = WorkoutExerciseSet::where('id', $validated['set_id'])->first();
 
         // Check set
         if ($set == null) {
@@ -210,8 +210,8 @@ class TraineeController extends Controller
         }
 
         // Update set
-        $set->fill($validated);
-        $set->save();
+        // Get rep
+        $rep = WorkoutExerciseRep::create($validated);
 
         // Response
         return response()->json([

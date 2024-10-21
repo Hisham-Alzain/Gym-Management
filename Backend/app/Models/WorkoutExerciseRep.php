@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\Belongsto;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkoutExerciseSet extends Model
+class WorkoutExerciseRep extends Model
 {
     use HasFactory;
 
@@ -17,10 +16,7 @@ class WorkoutExerciseSet extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'workout_exercise_id',
-        'set_number',
-        'expected_reps',
-        'expected_weight',
+        'set_id',
         'user_reps',
         'user_rep_weight'
     ];
@@ -43,13 +39,8 @@ class WorkoutExerciseSet extends Model
     }
 
     /* Relations */
-    public function workoutExercise(): BelongsTo
+    public function workoutExerciseSet(): BelongsTo
     {
-        return $this->belongsTo(WorkoutExercise::class, 'workout_exercise_id', 'id');
-    }
-
-    public function workoutExerciseReps(): HasMany
-    {
-        return $this->hasMany(WorkoutExerciseRep::class, 'set_id', 'id');
+        return $this->belongsTo(WorkoutExerciseSet::class, 'set_id', 'id');
     }
 }

@@ -24,8 +24,8 @@ class UserExerciseSetRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'exercise_id' => ['required'],
             'set_id' => ['required'],
+            'day_date' => ['required', 'date_format:Y-m-d'],
             'user_reps' => ['required'],
             'user_rep_weight' => ['required']
         ];

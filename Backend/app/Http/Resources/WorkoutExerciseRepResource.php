@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class WorkoutExerciseSetResource extends JsonResource
+class WorkoutExerciseRepResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,9 @@ class WorkoutExerciseSetResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'set_id' => $this->id,
-            'set_number' => $this->set_number,
-            'expected_reps' => $this->expected_reps,
-            'user_sets' => new WorkoutExerciseRepCollection($this->workoutExerciseReps)
+            'date' => $this->day_date,
+            'reps' => $this->user_reps,
+            'rep_weight' => $this->user_rep_weight,
         ];
     }
 }

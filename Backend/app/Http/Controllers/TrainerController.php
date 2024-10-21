@@ -222,7 +222,6 @@ class TrainerController extends Controller
                             'workout_exercise_id' => $exercise->id,
                             'set_number' => $S['set_no'],
                             'expected_reps' => $S['exp_reps'],
-                            'expected_weight' => $S['exp_weight'],
                         ]);
                     }
                 }
@@ -282,20 +281,11 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateExerciseSet(Request $request, $program_id)
-    {
+    public function CreateExerciseSet(Request $request, $program_id) {}
 
-    }
+    public function UpdateExerciseSet(Request $request, $program_id) {}
 
-    public function UpdateExerciseSet(Request $request, $program_id)
-    {
-
-    }
-
-    public function DeleteExerciseSet(Request $request, $program_id)
-    {
-
-    }
+    public function DeleteExerciseSet(Request $request, $program_id) {}
 
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {
