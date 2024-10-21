@@ -130,7 +130,7 @@ const Users = () => {
                                     <PopUp user={user} />
                                     <ImgPopUp user={user} />
                                     <SubscriptionPopUp user_id={user.id} user_name={user.name} />
-                                    <Programs user={user}/>
+                                    <Programs user_id={user.id} user_name={user.name}/>
                                     <button onClick={() => handleDiet(event, user)} className={styles.diet_button} title='Show diet programs' >
                                         <MdNoFood />
                                     </button>

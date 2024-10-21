@@ -77,6 +77,7 @@
     padding: 5px 10px;
     margin-inline-start: 10px;
 }
+
 /* workout progrmas styles */
 .CompetitorCard {
     border-radius: 5px;
@@ -85,21 +86,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .CompetitorCardContent {
+}
+
+.CompetitorCardContent {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
     width: 100%;
-  }
-  .info_container {
+}
+
+.info_container {
     flex: 1;
     align-items: center;
     justify-content: center;
-  }
-  .CompetitorDescription {
+}
+
+.CompetitorDescription {
     color: #777;
-  }
+}
