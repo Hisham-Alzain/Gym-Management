@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/enums/enums.dart';
 import 'package:mobile/middleware/middleware_controller.dart';
 import 'package:mobile/routes/routes.dart';
@@ -23,10 +24,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GeneralController generalController = Get.put(GeneralController());
     return GetMaterialApp(
-      initialRoute: '/splashScreen',
+      initialRoute: '/addPhotos',
       getPages: getPages,
       debugShowCheckedModeBanner: false,
+      onReady: () => generalController.requestPermissions(),
       theme: ThemeData(
         colorSchemeSeed: Colors.red.shade900,
         appBarTheme: AppBarTheme(
@@ -55,6 +58,22 @@ class MainApp extends StatelessWidget {
             ),
             fixedSize: const WidgetStatePropertyAll(
               Size(300, 50),
+            ),
+            foregroundColor: const WidgetStatePropertyAll(Colors.white),
+            textStyle:
+                WidgetStatePropertyAll(Theme.of(context).textTheme.bodyLarge),
+            iconColor: const WidgetStatePropertyAll(Colors.white),
+            overlayColor: const WidgetStatePropertyAll(Colors.red),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(Colors.red.shade900),
+            shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide.none,
+              ),
             ),
             foregroundColor: const WidgetStatePropertyAll(Colors.white),
             textStyle:

@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-class GreyContainer extends StatelessWidget {
+class RedContainer extends StatelessWidget {
   final Widget? child;
   final double? width;
+  final double? height;
   final EdgeInsetsGeometry? padding;
 
-  const GreyContainer({
+  const RedContainer({
     super.key,
     required this.child,
     this.width,
+    this.height,
     this.padding,
   });
 
@@ -16,6 +18,7 @@ class GreyContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
+      height: height,
       padding: padding,
       decoration: BoxDecoration(
         color: Colors.grey.shade900,

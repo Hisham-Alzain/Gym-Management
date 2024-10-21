@@ -7,6 +7,7 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  carousel_slider: ^5.0.0
   country_code_picker: ^3.0.0
   dio: ^5.7.0
   flutter:
@@ -14,6 +15,8 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
   google_fonts: ^6.2.1
+  image_picker: ^1.1.2
+  permission_handler: ^11.3.1
   pinput: ^5.0.0
 
 dev_dependencies:

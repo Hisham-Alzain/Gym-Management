@@ -124,7 +124,7 @@ class PersonalInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.0.106:8000/api/trainee',
+        'http://192.168.43.23:8000/api/trainee',
         data: {
           "birth_date": birthDate.toString().split(' ')[0],
           "gender": gender,

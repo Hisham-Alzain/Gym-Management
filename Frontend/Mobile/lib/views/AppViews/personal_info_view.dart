@@ -144,7 +144,7 @@ class PersonalInfoView extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        GreyContainer(
+                        RedContainer(
                           width: 300,
                           padding: const EdgeInsets.all(10),
                           child: Center(
