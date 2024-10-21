@@ -4,21 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserInfo;
+use App\Models\UserPhoto;
 use App\Models\DietProgram;
-use App\Models\WorkoutExerciseSet;
-use App\Models\WorkoutExerciseRep;
-use App\Models\WorkoutProgram;
 use Illuminate\Http\Request;
+use App\Models\WorkoutProgram;
+use App\Policies\ProgramPloicy;
+use App\Models\WorkoutExerciseRep;
+use App\Models\WorkoutExerciseSet;
+use App\Http\Requests\PhotosRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserInfoRequest;
-use App\Http\Requests\UserExerciseSetRequest;
 use App\Http\Resources\UserInfoResource;
 use App\Http\Resources\DietProgramResource;
+use App\Http\Requests\UserExerciseSetRequest;
 use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
 use App\Http\Resources\WorkoutExerciseSetResource;
-use App\Policies\ProgramPloicy;
-use Illuminate\Support\Facades\Auth;
 
 
 class TraineeController extends Controller
@@ -65,6 +67,40 @@ class TraineeController extends Controller
         return response()->json([
             "message" => "User info updated successfully",
         ], 200);
+    }
+
+    public function UploadPhotos(PhotosRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+        $user = User::find($user->id);
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user']
+            ], 401);
+        }
+        // Handle file uploads if present in the request
+        if ($request->hasFile('photos')) {
+            $photos = $request->file('photos');
+
+            foreach ($photos as $photo) {
+                $path = $photo->storeAs('usersPhotos/' . $user->id, $photo->getClientOriginalName());
+                $userInfo = UserInfo::where('id', $user->id)->first();
+                // Create and associate a new file instance with the portfolio
+                UserPhoto::create([
+                    'photo_path' => $path,
+                    'info_id' => $userInfo->id
+                ]);
+            }
+        }
+        return response()->json([
+            "message" => "Successfully uploaded photos"
+        ], 201);
     }
 
     public function GetUserInfo(Request $request)

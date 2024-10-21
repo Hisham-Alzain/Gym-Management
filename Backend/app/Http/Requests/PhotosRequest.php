@@ -2,13 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\Genders;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UserInfoRequest extends FormRequest
+class PhotosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,20 +24,10 @@ class UserInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // users table
-            'birth_date' => ['sometimes', 'date_format:Y-m-d'],
-            'gender' => ['sometimes', Rule::in(Genders::names())],
-
-            // user_infos table
-            'height' => ["sometimes", "numeric", "between:120,210"],
-            'weight' => ["sometimes", "numeric", "between:40,200"],
-            'illnesses' => ["sometimes"],
-            'allergies' => ["sometimes"],
-            'disliked_food' => ["sometimes"],
-            'active_days' => ["sometimes", "integer", "between:2,7"]
+            'photos' => ['sometimes', 'array', 'max:5'],
+            'photos.*' => ['image', 'max:2048'],
         ];
     }
-
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
