@@ -103,6 +103,20 @@ class TraineeController extends Controller
         ], 201);
     }
 
+    public function DeletePhoto(Request $request, $photo_id)
+    {
+        $photo = UserPhoto::where('id', $photo_id)->first();
+        if ($photo == null) {
+            return response()->json([
+                "errors" => "photo not found"
+            ], 404);
+        }
+        $photo->delete();
+        return response()->json([
+            "message" => "photo deleted successfully"
+        ], 204);
+    }
+
     public function GetUserInfo(Request $request)
     {
         // Get user

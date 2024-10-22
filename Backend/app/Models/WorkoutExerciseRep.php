@@ -18,7 +18,8 @@ class WorkoutExerciseRep extends Model
     protected $fillable = [
         'set_id',
         'user_reps',
-        'user_rep_weight'
+        'user_rep_weight',
+        'day_date'
     ];
 
     /**

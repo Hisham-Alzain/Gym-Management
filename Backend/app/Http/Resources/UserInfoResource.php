@@ -19,6 +19,7 @@ class UserInfoResource extends JsonResource
         if ($userInfo == null) {
             $userInfo = UserInfo::create(['user_id' => $this->id]);
         }
+        $photos=$userInfo->photos->last(5);
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -28,7 +29,7 @@ class UserInfoResource extends JsonResource
             'gender' => $this->gender,
             'height' => $userInfo->height,
             'weight' => $userInfo->weight,
-            'photos' => $userInfo->photos,
+            'photos' => $photos,
             'illnesses' => $userInfo->illnesses,
             'allergies' => $userInfo->allergies,
             'disliked_food' => $userInfo->disliked_food,

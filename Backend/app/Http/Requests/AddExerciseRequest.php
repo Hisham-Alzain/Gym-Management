@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\WorkoutMuscle;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PhotosRequest extends FormRequest
+class AddExerciseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,11 @@ class PhotosRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photos' => ['sometimes', 'array', 'max:5','min:5'],
-            'photos.*' => ['image', 'max:2048'],
+            'name'=>['required', 'string','unique:exercises'],
+            'muscle'=>['required',Rule::in(WorkoutMuscle::names())],
+            'description'=>['required'],
+            'video_path'=>['sometimes'],
+            'thumbnail_path'=>['sometimes','image','max:2048']
         ];
-    }
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'errors' => $validator->errors()
-        ], 422));
     }
 }
