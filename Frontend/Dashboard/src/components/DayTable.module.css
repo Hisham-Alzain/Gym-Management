@@ -1,0 +1,43 @@
+
+.exerciseTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.DayTable {
+    padding: 20px;
+    position: relative;
+    inset-block-start: 70px;
+    border-radius: 8px;
+}
+
+.tableTitle {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.exerciseTable th,
+.exerciseTable td {
+    border: 1px solid #b60000;
+    padding: 12px;
+    text-align: center;
+}
+
+.exerciseTable th {
+    background-color: #e02929;
+    color: #333;
+}
+
+.exerciseTable td {
+    background-color: #858080;
+}
+
+.exerciseTable tr:nth-child(even) {
+    background-color: #858080;
+}
+
+.exerciseTable tr:hover {
+    background-color: #f0f0f0;
+}
