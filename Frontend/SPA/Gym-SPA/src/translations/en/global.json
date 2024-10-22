@@ -1,3 +1,19 @@
 {
-    
+    "training": {
+        "h5_1": "Body Building",
+        "h5_2": "Muscle Gain",
+        "h5_3": "Weight Loss"
+    },
+    "gallery": {
+        "h3_before": "Before",
+        "h3_after": "After"
+    },
+    "contact": {
+        "h3_location": "Location",
+        "p_location": "Damascus, Syria",
+        "h3_phone": "Phone",
+        "p_phone": "(+963) 958 295 285",
+        "h3_email": "Email",
+        "p_email": "CoachAmr@gmail.com"
+    }
 }

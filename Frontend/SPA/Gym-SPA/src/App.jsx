@@ -10,13 +10,13 @@ import {
 } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
 import gym from './assets/gym.jpg'
-import cat1 from './assets/cat1.png';
-import cat2 from './assets/cat2.png';
-import coach from './assets/coach.jpg';
 import app from './assets/gym-app.jpg';
+import coach from './assets/coach.jpg';
 import team1 from './assets/team1.png';
 import team2 from './assets/team2.png';
 import team3 from './assets/team3.png';
+import before from './assets/before-all.png';
+import after from './assets/after-all.png';
 import './App.css';
 
 function App() {
@@ -63,13 +63,14 @@ function App() {
   ]
 
   const training = [
-    { img: cat1, h3: 'Personal traning', p: 'GG' },
-    { img: cat2, h3: 'Group traning', p: 'GG' }
+    { img: team1, h5: t('training.h5_1'), p: 'GG' },
+    { img: team2, h5: t('training.h5_1'), p: 'GG' },
+    { img: team3, h5: t('training.h5_1'), p: 'GG' }
   ]
+
   const gallery = [
-    { img: team1, h5: 'Body Building', p: 'GG' },
-    { img: team2, h5: 'Muscle Gain', p: 'GG' },
-    { img: team3, h5: 'Weight Loss', p: 'GG' }
+    { img: before, h3: t('gallery.h3_before'), p: 'GG' },
+    { img: after, h3: t('gallery.h3_after'), p: 'GG' }
   ]
 
   const pricing = [
@@ -112,9 +113,9 @@ function App() {
   ]
 
   const contact = [
-    { icon: <FaLocationDot className='icon' />, h3: 'Location', p: 'Damascus, Syria' },
-    { icon: <FaPhone className='icon' />, h3: 'Phone', p: '(+963) 958 295 285' },
-    { icon: <FaEnvelope className='icon' />, h3: 'Email', p: 'CoachAmr@gmail.com' }
+    { icon: <FaLocationDot className='icon' />, h3: t('contact.h3_location'), p: t('contact.p_location') },
+    { icon: <FaPhone className='icon' />, h3: t('contact.h3_phone'), p: t('contact.p_phone') },
+    { icon: <FaEnvelope className='icon' />, h3: t('contact.h3_email'), p: t('contact.p_email') }
   ]
 
   return (
@@ -154,8 +155,8 @@ function App() {
             <div className='row'>
               {about.map((a, i) => (
                 <div key={i} className='column'>
-                  <div className='sec'>
-                    <div className='sec-img'>
+                  <div className='sector'>
+                    <div className='sector-img'>
                       {a.img && <img src={a.img} alt="" />}
                     </div>
                     <div className='content-box'>
@@ -176,22 +177,19 @@ function App() {
           <div className='container'>
             <div className='row'>
               <div className="section-title">
-                <h2>Training</h2>
+                <h2>What I Offer</h2>
               </div>
             </div>
             <div className='row'>
               {training.map((t, i) => (
                 <div key={i} className='column'>
-                  <div className='topic'>
-                    <div className='topic-img'>
+                  <div className='box'>
+                    <div className='box-img'>
                       <img src={t.img} alt="" />
-                      <div className='content-box'>
-                        <div className='content'>
-                          <h3>{t.h3}</h3>
-                          <p>{t.p}</p>
-                          <a href="#" className='btn'>View Courses</a>
-                        </div>
-                      </div>
+                    </div>
+                    <div className='caption'>
+                      <h5>{t.h5}</h5>
+                      <p>{t.p}</p>
                     </div>
                   </div>
                 </div>
@@ -205,19 +203,22 @@ function App() {
           <div className='container'>
             <div className='row'>
               <div className="section-title">
-                <h2>What I Offer</h2>
+                <h2>Gallery</h2>
               </div>
             </div>
             <div className='row'>
               {gallery.map((g, i) => (
                 <div key={i} className='column'>
-                  <div className='box'>
-                    <div className='box-img'>
+                  <div className='topic'>
+                    <div className='topic-img'>
                       <img src={g.img} alt="" />
-                    </div>
-                    <div className='caption'>
-                      <h5>{g.h5}</h5>
-                      <p>{g.p}</p>
+                      <div className='content-box'>
+                        <div className='content'>
+                          <h3>{g.h3}</h3>
+                          {/* <p>{g.p}</p> */}
+                          {/* <a href="#" className='btn'>View Courses</a> */}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

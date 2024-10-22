@@ -1,3 +1,19 @@
 {
-    
+    "training": {
+        "h5_1": "بناء الجسم",
+        "h5_2": "اكتساب العضلات",
+        "h5_3": "خسارة الوزن"
+    },
+    "gallery": {
+        "h3_before": "قبل",
+        "h3_after": "بعد"
+    },
+    "contact": {
+        "h3_location": "العنوان",
+        "p_location": "دمشق، سوريا",
+        "h3_phone": "الهاتف",
+        "p_phone": "۲۸٥ ۲۹٥ ۹٥۸ (۹٦۳+)",
+        "h3_email": "الإيميل",
+        "p_email": "CoachAmr@gmail.com"
+    }
 }
