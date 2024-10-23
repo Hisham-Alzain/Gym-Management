@@ -33,3 +33,82 @@ class RedContainer extends StatelessWidget {
     );
   }
 }
+
+class EditContainer extends StatelessWidget {
+  final String? name;
+  final Widget? child;
+  final void Function()? onPressed;
+  final String? buttonText;
+  final IconData? icon;
+  final double? width;
+  final double? height;
+  final EdgeInsetsGeometry? padding;
+
+  const EditContainer({
+    super.key,
+    this.name,
+    required this.child,
+    this.onPressed,
+    this.buttonText,
+    this.icon,
+    this.width,
+    this.height,
+    this.padding,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: Colors.grey.shade900,
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(
+          color: Colors.red.shade900,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (name != null)
+                  Text(
+                    '$name:',
+                    style: Theme.of(context).textTheme.labelLarge,
+                  ),
+                if (buttonText != null)
+                  TextButton(
+                    onPressed: onPressed,
+                    child: Row(
+                      children: [
+                        Text(
+                          buttonText.toString(),
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(5),
+                          child: Icon(
+                            icon,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+            child: child,
+          )
+        ],
+      ),
+    );
+  }
+}

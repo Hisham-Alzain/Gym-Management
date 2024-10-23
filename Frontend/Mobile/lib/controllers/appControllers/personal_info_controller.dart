@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
 
 class PersonalInfoController extends GetxController {
+  late GeneralController generalController;
   late GlobalKey<FormState> personalInfoForm;
   late Dio dio;
   late CustomDialogs customDialogs;
@@ -26,6 +28,7 @@ class PersonalInfoController extends GetxController {
 
   @override
   void onInit() {
+    generalController = Get.find<GeneralController>();
     personalInfoForm = GlobalKey<FormState>();
     dio = Dio();
     customDialogs = CustomDialogs();
@@ -118,7 +121,7 @@ class PersonalInfoController extends GetxController {
     String illness,
     String allergies,
     String dislikedFood,
-    int activeDyas,
+    int activeDays,
   ) async {
     customDialogs.showLoadingDialog();
     String token = storage!.read('token');
@@ -133,7 +136,7 @@ class PersonalInfoController extends GetxController {
           "illnesses": hasIllness ? illness : null,
           "allergies": hasAllergies ? allergies : null,
           "disliked_food": hasDislikedFood ? dislikedFood : null,
-          "active_days": activeDyas
+          "active_days": activeDays
         },
         options: Options(
           headers: {
@@ -149,7 +152,7 @@ class PersonalInfoController extends GetxController {
         Future.delayed(
           const Duration(seconds: 1),
           () {
-            Get.offAllNamed('/home');
+            Get.offAllNamed('/addPhotos');
           },
         );
       } else if (response.statusCode == 401) {

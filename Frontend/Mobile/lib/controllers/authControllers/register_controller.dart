@@ -2,10 +2,12 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
 
 class RegisterController extends GetxController {
+  late GeneralController generalController;
   late GlobalKey<FormState> registerForm;
   late Dio dio;
   late CustomDialogs customDialogs;
@@ -19,6 +21,7 @@ class RegisterController extends GetxController {
 
   @override
   void onInit() {
+    generalController = Get.find<GeneralController>();
     registerForm = GlobalKey<FormState>();
     dio = Dio();
     customDialogs = CustomDialogs();
@@ -86,6 +89,7 @@ class RegisterController extends GetxController {
       if (response.statusCode == 201) {
         Get.back();
         storage!.write('token', response.data['access_token']);
+        generalController.inRegister = true;
         customDialogs.showSuccessDialog('Registered successfully', '');
         Future.delayed(
           const Duration(seconds: 1),
