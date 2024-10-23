@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { FaRegImages } from "react-icons/fa6";
 import { LoginContext } from "../utils/Contexts";
-import { FetchImage } from '../apis/AuthApis';
+import { FetchImage } from '../apis/UserViewApis';
 import styles from '../styles/img_popup.module.css';
 
 const ImgPopUp = ({ user }) => {

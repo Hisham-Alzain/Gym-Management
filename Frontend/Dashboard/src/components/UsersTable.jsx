@@ -5,7 +5,7 @@ import { BsTrash } from "react-icons/bs";
 import { FaDumbbell } from "react-icons/fa6";
 import { MdNoFood } from "react-icons/md";
 import { LoginContext } from "../utils/Contexts";
-import { FetchUsers, DeleteUser } from "../apis/AuthApis";
+import { FetchUsers, DeleteUser } from "../apis/UserViewApis";
 import PopUp from "./PopUp";
 import ImgPopUp from "./ImgPopUp";
 import SubscriptionPopUp from "./SubscriptionPopUp";
@@ -43,7 +43,7 @@ const Users = () => {
                         }
                     });
                 } else {
-                    console.log(response);
+                    console.log(response.data);
                 }
             }).then(() => {
                 setIsLoading(false);
@@ -130,7 +130,7 @@ const Users = () => {
                                     <PopUp user={user} />
                                     <ImgPopUp user={user} />
                                     <SubscriptionPopUp user_id={user.id} user_name={user.name} />
-                                    <Programs user_id={user.id} user_name={user.name}/>
+                                    <Programs user_id={user.id} user_name={user.name} />
                                     <button onClick={() => handleDiet(event, user)} className={styles.diet_button} title='Show diet programs' >
                                         <MdNoFood />
                                     </button>
