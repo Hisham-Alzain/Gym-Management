@@ -11,6 +11,7 @@ import Home from './components/Home.jsx';
 import Logout from './components/Logout.jsx';
 import ShowProgram from './components/ShowProgram.jsx';
 import DayTable from './components/DayTable.jsx';
+import Exercises from './components/Exercises.jsx';
 
 function App() {
   const initialized = useRef(false);
@@ -86,6 +87,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/ShowProgram/:program_id" element={<ShowProgram />} />
               <Route path="/ShowProgram/:program_id/:day_id" element={<DayTable />} />
+              <Route path="/Exercises" element={<Exercises/>} />
               <Route path='/logout' element={<Logout />} />
             </Route>
           </Routes>

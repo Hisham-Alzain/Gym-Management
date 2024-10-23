@@ -43,7 +43,7 @@ const NavBar = () => {
                             </li>
                         }
                         <li>
-                            <a href="/jobs/post">{t('components.nav_bar.post_job')}</a>
+                            <a href="/Exercises"> Show Exercises </a>
                         </li>
                     </div>
                     <div className={styles.nav_links_right}>

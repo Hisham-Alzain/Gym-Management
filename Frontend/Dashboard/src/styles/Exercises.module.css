@@ -1,4 +1,39 @@
+.screen {
+    inset-block-start: 75px;
+    display: flex;
+    position: relative;
+    margin-block-end: 100px;
+    min-height: 100vh;
+}
 
+.mid_container {
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise_card {
+    width: 90%;
+    border: 2px;
+    border-radius: 20px;
+    border-style: outset;
+    border-color: var(--color-foreground);
+    margin-block-start: 5px;
+    margin-inline-start: 5%;
+}
+
+.job_card a {
+    width: 95%;
+    text-decoration: none;
+}
+
+.done {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 /* Exercise card CSS */
