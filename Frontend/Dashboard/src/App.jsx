@@ -9,7 +9,6 @@ import Login from './components/Login.jsx';
 import { FetchProfile, CheckToken } from './apis/AuthApis.jsx';
 import Home from './components/Home.jsx';
 import Logout from './components/Logout.jsx';
-import Programs from './components/Programs.jsx';
 import ShowProgram from './components/ShowProgram.jsx';
 import DayTable from './components/DayTable.jsx';
 

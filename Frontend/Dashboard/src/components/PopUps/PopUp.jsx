@@ -1,10 +1,13 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { useTranslation } from 'react-i18next';
 import { FaCircleInfo } from "react-icons/fa6";
-import styles from '../styles/popup.module.css';
+import styles from '../../styles/popup.module.css';
 
 
 const PopUp = ({ user }) => {
+  // Translations
+  const { t } = useTranslation('global');
 
   return (
     <Popup
@@ -23,7 +26,7 @@ const PopUp = ({ user }) => {
           </button>
           <div className={styles.header}> {user.name} info </div>
           <div className={styles.content}>
-            <table className={styles.users_table}>
+            <table className={styles.table}>
               <tbody>
                 <tr>
                   <th>Height</th>

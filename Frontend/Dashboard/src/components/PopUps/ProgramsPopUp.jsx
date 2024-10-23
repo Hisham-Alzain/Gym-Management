@@ -1,13 +1,16 @@
 import { useEffect, useState, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Popup from 'reactjs-popup';
 import { FaDumbbell } from "react-icons/fa6";
-import { LoginContext } from '../utils/Contexts';
-import { FetchUserWorkouts } from '../apis/WorkoutApis';
-import styles from '../styles/programs_popup.module.css';
+import { LoginContext } from '../../utils/Contexts';
+import { FetchUserWorkouts } from '../../apis/WorkoutApis';
+import styles from '../../styles/programs_popup.module.css';
 
 
-const Programs = ({ user_id, user_name }) => {
+const ProgramsPopUp = ({ user_id, user_name }) => {
+  // Translations
+  const { t } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
@@ -43,9 +46,9 @@ const Programs = ({ user_id, user_name }) => {
     }
   }, [currentPage]);
 
-  const handleShowWorkout = (event) => {
+  const handleShowWorkout = (event, id) => {
     event.preventDefault();
-    navigate(`/trainee/workout/${user_id}/${user_name}`)
+    navigate(`/trainee/workout/${id}`);
   }
 
   const columnStructure = [
@@ -94,7 +97,7 @@ const Programs = ({ user_id, user_name }) => {
                       ))}
                       <td>
                         <button
-                          onClick={(event) => handleShowWorkout(event)}
+                          onClick={(event) => handleShowWorkout(event, program.id)}
                           className={styles.workout_button}
                           title='Show Workout program'
                         >
@@ -104,11 +107,23 @@ const Programs = ({ user_id, user_name }) => {
                     </tr>)
                   ) : (
                     <tr>
-                      <td colSpan={columnStructure.length + 1}>No subscription found</td>
+                      <td colSpan={columnStructure.length + 1}>No programs found</td>
                     </tr>
                   )}
                   </tbody>
                 </table>
+              </div>
+              {/* Pagination */}
+              <div className={styles.pagination}>
+                {data.pageNumbers.map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={currentPage === page ? styles.active_page : styles.page}
+                  >
+                    {page}
+                  </button>
+                ))}
               </div>
             </div>
           </>}
@@ -118,4 +133,4 @@ const Programs = ({ user_id, user_name }) => {
   );
 }
 
-export default Programs;
+export default ProgramsPopUp;

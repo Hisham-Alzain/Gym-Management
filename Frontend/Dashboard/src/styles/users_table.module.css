@@ -65,19 +65,19 @@ h1 {
 .users_table td {
     padding: 6px 8px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #dddddd;
 }
 
 .users_table th {
     background-color: var(--color-background);
 }
 
-.users_table tr:nth-child(even) {
+.users_table tr {
     background-color: var(--color-background);
 }
 
 .users_table tr:hover {
-    background-color: var(--color-better_orange);
+    background-color: var(--color-custom_grey);
 }
 
 /* Action Buttons */
@@ -97,21 +97,6 @@ h1 {
     background-color: #c82333;
 }
 
-.workout_button {
-    padding: 10px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s;
-    margin-inline: 5px;
-    margin-block-start: 1px;
-    background-color: #26ddda;
-    color: #ffffff;
-}
-
-.workout_button:hover {
-    background-color: #23c0c8;
-}
 
 .diet_button {
     padding: 10px 10px;
@@ -129,23 +114,28 @@ h1 {
     background-color: #2f2a2a;
 }
 
+
 .pagination {
     text-align: center;
     margin-block-start: 10px;
 }
 
-.activePage {
-    margin: 3px 3px;
-    font-size: 1.2em;
-    border-radius: 5px;
-    color: var(--color-title);
-    background-color: var(--color-better_orange);
+.active_page {
+    margin: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    color: var(--color-text);
+    background: var(--color-custom_red);
 }
 
 .page {
-    margin: 3px 3px;
-    border-radius: 5px;
-    background-color: var(--color-background);
-    color: var(--color-button);
-    border-color: var(--color-foreground);
+    margin: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    color: var(--color-text);
+    background: var(--color-custom_grey);
 }

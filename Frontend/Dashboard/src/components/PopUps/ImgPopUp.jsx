@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext, useRef } from 'react';
 import Popup from 'reactjs-popup';
 import { FaRegImages } from "react-icons/fa6";
-import { LoginContext } from "../utils/Contexts";
-import { FetchImage } from '../apis/UserViewApis';
-import styles from '../styles/img_popup.module.css';
+import { LoginContext } from "../../utils/Contexts";
+import { FetchImage } from '../../apis/UserViewApis';
+import styles from '../../styles/img_popup.module.css';
 
 
 const ImgPopUp = ({ user }) => {
