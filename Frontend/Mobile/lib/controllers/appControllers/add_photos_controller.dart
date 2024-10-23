@@ -36,10 +36,10 @@ class AddPhotosController extends GetxController {
 
   Future<void> addPhotos() async {
     images = (await generalController.pickPhotoFromGallery())!;
-    for (var i = 0; i < 5; i++) {
+    for (var image in images) {
       displayImages.add(
         Image.memory(
-          await images[i].readAsBytes(),
+          await image.readAsBytes(),
         ),
       );
     }
@@ -54,17 +54,26 @@ class AddPhotosController extends GetxController {
 
   Future<dynamic> uploadPhotos(List<XFile> images) async {
     customDialogs.showLoadingDialog();
+    final data = FormData.fromMap(
+      {},
+    );
     String token = storage!.read('token');
     final List<MultipartFile> imageFiles = [];
-    for (var i = 0; i < 5; i++) {
+    for (var image in images) {
       imageFiles.add(
-        await MultipartFile.fromFile(images[i].path),
+        await MultipartFile.fromFile(image.path),
       );
     }
+    for (int i = 0; i < imageFiles.length; i++) {
+      data.files.add(
+        MapEntry('photos[$i]', imageFiles[i]),
+      );
+    }
+
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/trainee/photos',
-        data: {'photos': imageFiles},
+        'http://192.168.52.51:8000/api/trainee/photos',
+        data: data,
         options: Options(
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -73,9 +82,9 @@ class AddPhotosController extends GetxController {
           },
         ),
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
         Get.back();
-        customDialogs.showSuccessDialog('Success', '');
+        customDialogs.showSuccessDialog('Success', response.data.toString());
         Future.delayed(
           const Duration(seconds: 1),
           () {

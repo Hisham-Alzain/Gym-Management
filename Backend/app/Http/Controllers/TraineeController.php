@@ -90,7 +90,7 @@ class TraineeController extends Controller
             $photos = $request->file('photos');
 
             foreach ($photos as $photo) {
-                $path = $photo->storeAs('usersPhotos/' . $user->id, $photo->getClientOriginalName());
+                $path = $photo->storeAs('usersPhotos/' . $user->id . '/' . now()->format('Y-m-d/H-i-s'), $photo->getClientOriginalName());
                 $userInfo = $user->userInfo;
 
                 // Create and associate a new file instance with the portfolio
