@@ -1,43 +1,46 @@
 .edit_button {
-    background-color: #ffc107;
     color: #ffffff;
-    margin-inline-end: 5px;
-    padding: 10px 10px;
+    background: #ffc107;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    padding: 10px 10px;
     margin-inline-start: 5px;
+    margin-inline-end: 5px;
+    transition: background-color 0.3s;
 }
 
 .edit_button:hover {
-    background-color: #e0a800;
+    background: #e0a800;
 }
 
 .modal {
-    font-size: 12px;
-    box-shadow: 0 0 12px rgba(255, 0, 0, 1);
+    background: var(--color-background);
+    box-shadow: 0 0 15px var(--color-custom_red);
 }
 
 .modal .header {
     width: 100%;
-    border-block-end: 1px solid gray;
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
-    padding: 5px;
+    border-block-end: 1px solid gray;
+    margin-block-end: 5px;
+    padding-block: 10px;
 }
 
-.modal .content {
-    width: 100%;
-    padding: 10px 5px;
-}
-
-.modal .content .list {
-    font-size: 15px;
-}
-
-.content .list li h4 {
-    margin-block: 6px;
+.modal .close {
+    position: absolute;
+    display: block;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 20px;
+    color: var(--color-text);
+    background: var(--color-custom_red);
+    border: 2px solid #cfcece;
+    border-radius: 18px;
+    padding: 2px 5px;
 }
 
 .modal .actions {
@@ -47,62 +50,35 @@
     text-align: center;
 }
 
-.modal .close {
-    cursor: pointer;
-    position: absolute;
-    display: block;
-    padding: 2px 5px;
-    line-height: 20px;
-    right: -10px;
-    top: -10px;
-    font-size: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    border: 1px solid #cfcece;
+.modal .content {
+    padding: 10px 5px;
 }
 
-.sub_form {
-    width: 250px;
-    margin-block-start: 15px;
-    margin-inline-start: 10px;
-}
-
-.sub_form input {
-    width: 60px;
-    padding: 6px 12px;
-    font-size: 12px;
-}
-
-.sub_form button {
-    padding: 5px 10px;
-    margin-inline-start: 10px;
-}
-
-/* workout progrmas styles */
-.CompetitorCard {
-    border-radius: 5px;
-    margin: 10px;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.CompetitorCardContent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+/* Table Styles */
+.users_table {
     width: 100%;
+    position: relative;
+    border-collapse: collapse;
+    margin-block-start: 20px;
 }
 
-.info_container {
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+.users_table th,
+.users_table td {
+    padding: 6px 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    color: var(--color-text);
 }
 
-.CompetitorDescription {
-    color: #777;
+.users_table th {
+    width: 50%;
+    background-color: var(--color-custom_grey);
+}
+
+.users_table td {
+    background-color: var(--color-custom_grey);
+}
+
+.users_table tr:hover {
+    background-color: var(--color-custom_red);
 }

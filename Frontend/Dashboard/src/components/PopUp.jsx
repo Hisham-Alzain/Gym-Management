@@ -23,16 +23,58 @@ const PopUp = ({ user }) => {
           </button>
           <div className={styles.header}> {user.name} info </div>
           <div className={styles.content}>
-            <ul className={styles.list}>
-              <li>Height: {user.height} cm</li>
-              <li>Weight: {user.weight} kg</li>
-              <li>Gender: {user.gender} </li>
-              <li>Birth date: {user.birth_date} </li>
-              <li>Active days: {user.active_days}</li>
-              <li>Illnesses: {user.illnesses}</li>
-              <li>Allergies: {user.allergies}</li>
-              <li>Disliked food: {user.disliked_food}</li>
-            </ul>
+            <table className={styles.users_table}>
+              <tbody>
+                <tr>
+                  <th>Height</th>
+                  <td>
+                    {user.height} cm
+                  </td>
+                </tr>
+                <tr>
+                  <th>Weight</th>
+                  <td>
+                    {user.weight} Kg
+                  </td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td>
+                    {user.gender}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Birth date</th>
+                  <td>
+                    {user.birth_date}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Active days</th>
+                  <td>
+                    {user.active_days}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Illnesses</th>
+                  <td>
+                    {user.illnesses}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Allergies</th>
+                  <td>
+                    {user.allergies}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Disliked food</th>
+                  <td>
+                    {user.disliked_food}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div className={styles.actions}></div>
         </div>
