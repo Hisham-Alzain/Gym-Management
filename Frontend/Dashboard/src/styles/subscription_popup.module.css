@@ -23,8 +23,7 @@
 }
 
 .sub_form input {
-    width: 60px;
-    padding: 6px 12px;
+    width: 40px;
     font-size: 12px;
     text-align: center;
 }
@@ -42,6 +41,8 @@
 }
 
 .modal .header {
+    font-weight: 500;
+    color: black;
     width: 100%;
     border-block-end: 1px solid gray;
     font-size: 20px;
@@ -106,6 +107,10 @@
     background-color: var(--color-background);
 }
 
+.users_table td {
+    color: black;
+}
+
 .users_table tr:hover {
     background-color: var(--color-better_orange);
 }
@@ -119,7 +124,7 @@
     margin: 3px 3px;
     font-size: 1.2em;
     border-radius: 5px;
-    color: var(--color-title);
+    color: rgb(0, 64, 148);
     background-color: var(--color-better_orange);
 }
 
@@ -127,6 +132,6 @@
     margin: 3px 3px;
     border-radius: 5px;
     background-color: var(--color-background);
-    color: var(--color-button);
+    color: rgb(41, 41, 41);
     border-color: var(--color-foreground);
 }
