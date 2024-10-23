@@ -33,9 +33,7 @@ const ImgPopUp = ({ user }) => {
     }
   }, [user]);
 
-  if (isLoading) {
-    return <></>;
-  }
+
   return (
     <Popup
       trigger={
@@ -46,12 +44,12 @@ const ImgPopUp = ({ user }) => {
       modal
       nested
     >
-      {close => (
+      {close => (isLoading ? <></> :
         <div className={styles.modal}>
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          <div className={styles.header}> {user.name} Photos </div>
+          <div className={styles.header}> {user.name} photos </div>
           <div className={styles.content}>
             {images.length > 0 ? images.map((image, i) => {
               return (
@@ -76,8 +74,7 @@ const ImgPopUp = ({ user }) => {
                   )}
                 </Popup>
               )
-            })
-              : <>No Images</>}
+            }) : <div className={styles.header}> No Images </div>}
           </div>
           <div className={styles.actions}></div>
         </div>
