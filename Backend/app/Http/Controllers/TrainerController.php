@@ -4,22 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\DietMeal;
+use App\Models\Exercise;
 use App\Models\WorkoutDay;
 use App\Models\DietProgram;
 use App\Models\Subscription;
-use Illuminate\Http\Request;
-use App\Policies\AdminPolicy;
 use App\Models\WorkoutProgram;
 use App\Models\WorkoutExercise;
+use App\Models\WorkoutExerciseSet;
+use App\Policies\AdminPolicy;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\DietRequest;
 use App\Http\Requests\MealRequest;
-use App\Models\WorkoutExerciseSet;
 use App\Http\Requests\U_MealRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\WorkoutRequest;
-use App\Http\Resources\DietMealResource;
 use App\Http\Requests\AddExerciseRequest;
 use App\Http\Requests\SubscriptionRequest;
+use App\Http\Resources\DietMealResource;
 use App\Http\Resources\UserInfoCollection;
 use App\Http\Resources\DietProgramResource;
 use App\Http\Resources\SubscriptionResource;
@@ -27,7 +28,7 @@ use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\SubscriptionCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
-use App\Models\Exercise;
+
 
 class TrainerController extends Controller
 {
@@ -315,7 +316,7 @@ class TrainerController extends Controller
 
     public function DeleteExercise(Request $request, $exercise_id)
     {
-        $exercise=Exercise::where('id', $exercise_id)->first();
+        $exercise = Exercise::where('id', $exercise_id)->first();
         // Get user
         $user = Auth::user();
 

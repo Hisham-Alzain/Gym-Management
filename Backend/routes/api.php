@@ -8,8 +8,9 @@ use App\Http\Controllers\TrainerController;
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/register', 'Register');
-    Route::post('/login', 'Login');
-    Route::post('/forgetPassword', 'ForgotPassword');
+    Route::post('/login/trainer', 'TrainerLogin');
+    Route::post('/login/trainee', 'TraineeLogin');
+    Route::post('/forgotPassword', 'ForgotPassword');
     Route::post('/changePassword', 'ChangePassword');
     Route::get('/isExpired', 'IsExpired')->middleware('auth:sanctum');
     Route::get('/logout', 'Logout')->middleware('auth:sanctum');
@@ -53,10 +54,13 @@ Route::controller(TrainerController::class)->group(function () {
     });
 });
 
-Route::get('/image/{user_id}/{image}', function (Request $request, $user_id, $image) {
-    $path = storage_path('app/' . $user_id . '/' . $image);
-    if ($path == null) {
-        return null;
+Route::get(
+    '/image/{folder}/{user_id}/{image}',
+    function (Request $request, $folder, $user_id, $image) {
+        $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $image);
+        if ($path == null) {
+            return null;
+        }
+        return response()->file($path);
     }
-    return response()->file($path);
-});
+);

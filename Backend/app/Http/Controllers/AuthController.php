@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ChangePasswordRequest;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Support\Arr;
@@ -13,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ForgetPasswordRequest;
-use Illuminate\Validation\ValidationException;
+use App\Http\Requests\ChangePasswordRequest;
 
 class AuthController extends Controller
 {
@@ -48,7 +47,7 @@ class AuthController extends Controller
         ], 201);
     }
 
-    public function Login(LoginRequest $request)
+    public function TrainerLogin(LoginRequest $request)
     {
         // Validate request
         $validated = $request->validated();
@@ -59,12 +58,14 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
+            // Response
             return response()->json([
-                "errors" => "Invalid email"
+                'errors' => ['email' => 'Invalid email']
             ], 422);
         } else if (!Hash::check($validated['password'], $user->password)) {
+            // Response
             return response()->json([
-                "errors" => "Invalid password"
+                'errors' => ['password' => 'Invalid password']
             ], 422);
         }
 
@@ -83,6 +84,44 @@ class AuthController extends Controller
                     'role' => $user->role
                 ],
             ], 200);
+        } else {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'User must be Trainee']
+            ], 422);
+        }
+    }
+
+    public function TraineeLogin(LoginRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+        $remember = $validated['remember'];
+        unset($validated['remember']);
+
+        // Check user
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            // Response
+            return response()->json([
+                'errors' => ['email' => 'Invalid email']
+            ], 422);
+        } else if (!Hash::check($validated['password'], $user->password)) {
+            // Response
+            return response()->json([
+                'errors' => ['password' => 'Invalid password']
+            ], 422);
+        }
+
+        // Prepare token
+        $token = $user->createToken("api_token")->plainTextToken;
+
+        if ($user->role == 'Trainer') {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'User must be Trainee']
+            ], 422);
         } else {
             // Check user_info
             $info = UserInfo::where('user_id', $user->id)->first();
@@ -126,6 +165,7 @@ class AuthController extends Controller
     {
         // Validate request
         $validated = $request->validated();
+
         // Get User
         $user = User::where("email", $validated['email'])->first();
 
@@ -136,32 +176,39 @@ class AuthController extends Controller
             ], 404);
         }
 
+        // Sent code
         $code = rand(100000, 999999);
         $user->notify(new ResetPassword($code));
 
+        // Response
         return response()->json([
             'message' => 'Reset Password code has been sent to your email',
             'code' => $code
         ], 200);
     }
+
     public function ChangePassword(ChangePasswordRequest $request)
     {
         // Validate request
         $validated = $request->validated();
+
         // Get user
         $user = User::where("email", $validated['email'])->first();
+
         // Check user
         if ($user == null) {
             return response()->json([
                 'errors' => ['email' => 'Email was not found']
             ], 404);
         }
+
         // Update user
         $validated['password'] = bcrypt($validated['password']);
         $user->update($validated);
 
         // Prepare token
         $token = $user->createToken("api_token")->plainTextToken;
+
         // Response
         return response()->json([
             "data" => $user,

@@ -27,6 +27,7 @@ class ForgetPasswordRequest extends FormRequest
             "email" => "required|email|exists:users,email"
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([

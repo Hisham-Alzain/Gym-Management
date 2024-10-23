@@ -27,6 +27,8 @@ const ImgPopUp = ({ user }) => {
             setIsLoading(false);
           });
         })
+      } else {
+        setIsLoading(false);
       }
     }
   }, [user]);
@@ -51,9 +53,10 @@ const ImgPopUp = ({ user }) => {
           </button>
           <div className={styles.header}> {user.name} Photos </div>
           <div className={styles.content}>
-            {images.map((image) => {
+            {images.length > 0 ? images.map((image, i) => {
               return (
                 <Popup
+                  key={i}
                   trigger={
                     <div className={styles.img_div}>
                       <img className={styles.image} src={URL.createObjectURL(image)} />
@@ -73,7 +76,8 @@ const ImgPopUp = ({ user }) => {
                   )}
                 </Popup>
               )
-            })}
+            })
+              : <>No Images</>}
           </div>
           <div className={styles.actions}></div>
         </div>
