@@ -51,6 +51,6 @@ class UserInfo extends Model
 
     public function photos(): HasMany
     {
-        return $this->hasMany(UserPhoto::class, 'info_id', 'id');
+        return $this->hasMany(UserPhoto::class, 'info_id', 'id')->latest();
     }
 }

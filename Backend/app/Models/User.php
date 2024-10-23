@@ -53,23 +53,23 @@ class User extends Authenticatable
     }
 
     /* Relations */
-    public function subscriptions(): HasMany
-    {
-        return $this->hasMany(Subscription::class, 'user_id', 'id');
-    }
-
     public function userInfo(): HasOne
     {
         return $this->hasOne(UserInfo::class, 'user_id', 'id');
     }
 
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Subscription::class, 'user_id', 'id')->latest();
+    }
+
     public function workoutPrograms(): HasMany
     {
-        return $this->hasMany(WorkoutProgram::class, 'user_id', 'id');
+        return $this->hasMany(WorkoutProgram::class, 'user_id', 'id')->latest();
     }
 
     public function dietPrograms(): HasMany
     {
-        return $this->hasMany(DietProgram::class, 'user_id', 'id');
+        return $this->hasMany(DietProgram::class, 'user_id', 'id')->latest();
     }
 }

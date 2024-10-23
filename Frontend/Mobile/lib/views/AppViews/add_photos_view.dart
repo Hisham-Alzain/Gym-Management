@@ -15,13 +15,14 @@ class AddPhotosView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            onPressed: () => Get.offAllNamed('/home'),
-            icon: Text(
-              'Skip',
-              style: Theme.of(context).textTheme.bodyLarge,
+          if (_addPhotosController.generalController.inRegister)
+            IconButton(
+              onPressed: () => _addPhotosController.skipAddingPhotos(),
+              icon: Text(
+                'Skip',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
             ),
-          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -91,21 +92,23 @@ class AddPhotosView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () => controller.removePhotos(),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.delete,
-                          ),
-                          Text(
-                            'Delete Photos',
-                            style: Theme.of(context).textTheme.labelLarge,
-                          )
-                        ],
+                    if (controller.images.isNotEmpty)
+                      ElevatedButton(
+                        //TODO:add remove api
+                        onPressed: () => controller.removePhotos(),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.delete,
+                            ),
+                            Text(
+                              'Delete Photos',
+                              style: Theme.of(context).textTheme.labelLarge,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -113,7 +116,7 @@ class AddPhotosView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () => controller.uploadPhotos(controller.images),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

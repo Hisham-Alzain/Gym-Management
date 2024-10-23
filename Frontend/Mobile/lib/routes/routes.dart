@@ -3,6 +3,7 @@ import 'package:mobile/middleware/middleware.dart';
 import 'package:mobile/views/AppViews/add_photos_view.dart';
 import 'package:mobile/views/AppViews/home_view.dart';
 import 'package:mobile/views/AppViews/personal_info_view.dart';
+import 'package:mobile/views/AppViews/profile_view.dart';
 import 'package:mobile/views/authViews/auth_view.dart';
 import 'package:mobile/views/authViews/change_password_view.dart';
 import 'package:mobile/views/authViews/forgot_passwrod_view.dart';
@@ -46,6 +47,10 @@ List<GetPage<dynamic>>? getPages = [
   ),
   GetPage(
     name: '/home',
-    page: () => const HomeView(),
+    page: () => HomeView(),
+  ),
+  GetPage(
+    name: '/profile',
+    page: () => ProfileView(),
   ),
 ];

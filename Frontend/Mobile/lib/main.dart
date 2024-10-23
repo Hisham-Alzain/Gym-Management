@@ -26,7 +26,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final GeneralController generalController = Get.put(GeneralController());
     return GetMaterialApp(
-      initialRoute: '/addPhotos',
+      initialRoute: '/splashScreen',
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       onReady: () => generalController.requestPermissions(),
@@ -40,6 +40,9 @@ class MainApp extends StatelessWidget {
           foregroundColor: Colors.white,
         ),
         scaffoldBackgroundColor: Colors.grey.shade900,
+        drawerTheme: DrawerThemeData(
+          backgroundColor: Colors.grey.shade900,
+        ),
         textTheme: TextTheme(
           titleLarge: GoogleFonts.oswald(color: Colors.white),
           titleSmall: GoogleFonts.oswald(color: Colors.white),

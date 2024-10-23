@@ -18,6 +18,17 @@ body {
 
 /* OUR CSS */
 /* Custom Themes */
+body {
+  --color-background: #212121;
+  --color-custom_grey: #424242;
+  --color-custom_red: #B71C1C;
+  --color-text: #fdf8f8;
+
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+/* 
 .theme-light {
   --color-types: #393939;
   --color-available: #252a2f;
@@ -60,4 +71,4 @@ body {
   --color-navbar: linear-gradient(90deg, #0084B9, #A95D32, #1E3D59);
   color: var(--color-foreground);
   background-color: var(--color-background);
-}
+} */

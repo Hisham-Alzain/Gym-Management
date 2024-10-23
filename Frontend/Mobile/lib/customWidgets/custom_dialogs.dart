@@ -97,4 +97,42 @@ class CustomDialogs {
       ),
     );
   }
+
+  Future<void> showLogoutDialog(void Function()? onTap) async {
+    Get.defaultDialog(
+      backgroundColor: Colors.grey.shade800,
+      title: 'Notice:',
+      titleStyle: const TextStyle(color: Colors.white),
+      content: const Text(
+        'Are you sure you want to logout?',
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      confirm: GestureDetector(
+        onTap: onTap,
+        child: const Padding(
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+          child: Text(
+            'Yes',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+      cancel: GestureDetector(
+        onTap: () => Get.back(),
+        child: const Padding(
+          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+          child: Text(
+            'No',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 }

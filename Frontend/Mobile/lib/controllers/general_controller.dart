@@ -3,10 +3,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class GeneralController extends GetxController {
+  late bool inRegister;
   late ImagePicker picker;
 
   @override
   void onInit() {
+    inRegister = false;
     picker = ImagePicker();
     super.onInit();
   }
