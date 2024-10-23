@@ -24,10 +24,11 @@ class PhotosRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photos' => ['sometimes', 'array', 'max:5','min:5'],
+            'photos' => ['sometimes', 'array', 'max:5', 'min:5'],
             'photos.*' => ['image', 'max:2048'],
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
