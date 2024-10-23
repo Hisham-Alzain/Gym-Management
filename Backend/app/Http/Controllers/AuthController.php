@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ForgetPasswordRequest;
@@ -111,14 +112,20 @@ class AuthController extends Controller
 
     public function Logout(Request $request)
     {
+        // Get User
+        $user = Auth::user();
+        $user = User::find($user->id);
+
         // Delete Token
-        $request->user()->token()->delete();
+        $user->currentAccessToken()->delete();
 
         // Response
         return response()->json([
             "message" => "Logged Out Successfully",
         ], 200);
     }
+
+
     public function ForgotPassword(ForgetPasswordRequest $request)
     {
         // Validate request

@@ -84,13 +84,15 @@ class TraineeController extends Controller
                 'errors' => ['user' => 'Invalid user']
             ], 401);
         }
+
         // Handle file uploads if present in the request
         if ($request->hasFile('photos')) {
             $photos = $request->file('photos');
 
             foreach ($photos as $photo) {
                 $path = $photo->storeAs('usersPhotos/' . $user->id, $photo->getClientOriginalName());
-                $userInfo = UserInfo::where('id', $user->id)->first();
+                $userInfo = $user->userInfo;
+
                 // Create and associate a new file instance with the portfolio
                 UserPhoto::create([
                     'photo_path' => $path,
@@ -98,23 +100,11 @@ class TraineeController extends Controller
                 ]);
             }
         }
+
+        // Response
         return response()->json([
             "message" => "Successfully uploaded photos"
         ], 201);
-    }
-
-    public function DeletePhoto(Request $request, $photo_id)
-    {
-        $photo = UserPhoto::where('id', $photo_id)->first();
-        if ($photo == null) {
-            return response()->json([
-                "errors" => "photo not found"
-            ], 404);
-        }
-        $photo->delete();
-        return response()->json([
-            "message" => "photo deleted successfully"
-        ], 204);
     }
 
     public function GetUserInfo(Request $request)
@@ -148,6 +138,27 @@ class TraineeController extends Controller
             "message" => "User retrieved successfully",
             "user" => new UserInfoResource($user)
         ], 200);
+    }
+
+    public function DeletePhoto(Request $request, $photo_id)
+    {
+        // Get photo
+        $photo = UserPhoto::find($photo_id);
+
+        // Check photo
+        if ($photo == null) {
+            return response()->json([
+                "errors" => "photo not found"
+            ], 404);
+        }
+
+        // Delete Photo
+        $photo->delete();
+
+        // Response
+        return response()->json([
+            "message" => "photo deleted successfully"
+        ], 204);
     }
 
     public function ShowWorkoutPrograms(Request $request, $user_id)
