@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -14,13 +15,28 @@ class GeneralController extends GetxController {
   }
 
   Future<void> requestPermissions() async {
-    const photoPermission = Permission.photos;
-    const storagePermission = Permission.manageExternalStorage;
-    if (await photoPermission.isDenied) {
-      await photoPermission.request();
-    }
-    if (await storagePermission.isDenied) {
-      await storagePermission.request();
+    if (Platform.isIOS) {
+      const photoPermission = Permission.photos;
+      const mediaPermission = Permission.mediaLibrary;
+      if (await photoPermission.isDenied) {
+        await photoPermission.request();
+      }
+      if (await mediaPermission.isDenied) {
+        await mediaPermission.request();
+      }
+    } else {
+      const photoPermission = Permission.photos;
+      const storagePermission = Permission.storage;
+      const externalStoragePermission = Permission.manageExternalStorage;
+      if (await photoPermission.isDenied) {
+        await photoPermission.request();
+      }
+      if (await storagePermission.isDenied) {
+        await storagePermission.request();
+      }
+      if (await externalStoragePermission.isDenied) {
+        await externalStoragePermission.request();
+      }
     }
   }
 
