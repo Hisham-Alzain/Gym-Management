@@ -45,5 +45,13 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<!-- Permission options for the `mediaLibrary` group -->
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Music!</string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>media</string>
+	 <!-- Permission options for the `photos` group -->
+	 <key>NSPhotoLibraryUsageDescription</key>
+	 <string>photos</string>
 </dict>
 </plist>

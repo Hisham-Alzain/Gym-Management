@@ -38,7 +38,7 @@ class AddPhotosView extends StatelessWidget {
               ),
               CarouselSlider(
                 options: CarouselOptions(
-                  aspectRatio: 1,
+                  height: 500,
                   enlargeCenterPage: true,
                   onPageChanged: (index, reason) {
                     current = index;
@@ -92,10 +92,10 @@ class AddPhotosView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    if (controller.images.isNotEmpty)
+                    //TODO:delete api
+                    if (controller.displayImages.isNotEmpty)
                       ElevatedButton(
-                        //TODO:add remove api
-                        onPressed: () => controller.removePhotos(),
+                        onPressed: () => controller.removePhotos(current),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -103,7 +103,7 @@ class AddPhotosView extends StatelessWidget {
                               Icons.delete,
                             ),
                             Text(
-                              'Delete Photos',
+                              'Delete Photo',
                               style: Theme.of(context).textTheme.labelLarge,
                             )
                           ],
