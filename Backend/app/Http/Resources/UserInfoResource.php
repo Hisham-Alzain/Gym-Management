@@ -19,7 +19,7 @@ class UserInfoResource extends JsonResource
         if ($userInfo == null) {
             $userInfo = UserInfo::create(['user_id' => $this->id]);
         }
-        $photos=$userInfo->photos->last(5);
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -29,13 +29,13 @@ class UserInfoResource extends JsonResource
             'gender' => $this->gender,
             'height' => $userInfo->height,
             'weight' => $userInfo->weight,
-            'photos' => $photos,
+            'photos' => $userInfo->photos->take(5),
             'illnesses' => $userInfo->illnesses,
             'allergies' => $userInfo->allergies,
             'disliked_food' => $userInfo->disliked_food,
             'active_days' => $userInfo->active_days,
             'subscription_plan' => new SubscriptionResource($this->subscriptions->last()),
-            'role'=> $this->role
+            'role' => $this->role
         ];
     }
 }
