@@ -39,6 +39,7 @@ Route::controller(TrainerController::class)->group(function () {
         Route::get('/workout_programs', 'ShowWorkoutPrograms');
         Route::post('/workouts/create', 'CreateWorkoutProgram');
         Route::get('/exercises', 'ShowExercises');
+        Route::delete('/exercises/{exercise_id}', 'DeleteExercise');
         Route::post('/exercise/create', 'AddExercise');
         Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
 
@@ -59,6 +60,17 @@ Route::get(
     '/image/{folder}/{user_id}/{image}',
     function (Request $request, $folder, $user_id, $image) {
         $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $image);
+        if ($path == null) {
+            return null;
+        }
+        return response()->file($path);
+    }
+);
+
+Route::get(
+    '/file/{folder}/{user_id}/{file}',
+    function (Request $request, $user_id, $folder, $file) {
+        $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $file);
         if ($path == null) {
             return null;
         }

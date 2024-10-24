@@ -35,3 +35,18 @@ export const AddExercise = async (token, name, muscle, description, video_path, 
         return error.response;
     }
 };
+
+export const DeleteExercise = async (token, exercise_id) => {
+    try {
+        const response = await axios.delete(`http://127.0.0.1:8000/api/exercises/${exercise_id}`, {
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Accept': "application/json",
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response;
+    } catch (error) {
+        return error.response;
+    }
+};

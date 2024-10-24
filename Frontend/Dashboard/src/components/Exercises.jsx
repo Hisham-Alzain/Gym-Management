@@ -90,7 +90,7 @@ const Exercises = () => {
                 ))}
                 {isLoading ? <></>
                     : isDone && <h5 className={styles.done}>
-                        {t('pages.jobs.done')}
+                        No more exercises to display
                     </h5>
                 }
             </div>

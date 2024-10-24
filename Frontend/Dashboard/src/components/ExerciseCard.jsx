@@ -1,12 +1,46 @@
-import React from 'react';
+import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import img_holder from '../assets/noImage.jpg';
+import { LoginContext } from "../utils/Contexts";
+import { FetchFile } from '../apis/UserViewApis';
+import { DeleteExercise } from '../apis/ExerciseApis';
 import styles from '../styles/Exercises.module.css';
 
 
 const ExerciseCard = ({ ExerciseData }) => {
     // Translations
     const { t } = useTranslation('global');
+    // Context
+    const { accessToken } = useContext(LoginContext);
+
+    const [files, setFiles] = useState(ExerciseData.video);
+
+    const handleFileChange = (event) => {
+        setFiles([]);
+        event.preventDefault();
+        const allowedFileTypes = ["video/mp4"];
+        if (event.target.files.length == 1) {
+            Array.from(event.target.files).forEach((file) => {
+                if (file && allowedFileTypes.includes(file.type)) {
+                    setFiles((prevState) => [...prevState, file]);
+                } else {
+                    console.log("Invalid file type. Please select a mp4 video.");
+                }
+            });
+        }
+    }
+
+    const handleDeleteExercise = (event, exercise_id) => {
+        event.preventDefault();
+        DeleteExercise(accessToken, exercise_id).then((response) => {
+            if (response.status == 204) {
+                console.log('Exercise deleted');
+                window.location.reload();
+            } else {
+                console.log('delete not working')
+            }
+        })
+    }
 
     return (
         <div className={styles.card}>
@@ -26,9 +60,17 @@ const ExerciseCard = ({ ExerciseData }) => {
                     <p>Description: {ExerciseData.description}</p>
                 </div>
                 <div className={styles.second_column}>
-                    <button className={styles.btn}>Upload video</button>
-                    <button className={styles.sbtn}>Show video</button>
-                    <button className={styles.delete_button}>Delete exercise</button>
+                    <input
+                        title="Upload video"
+                        id='files'
+                        type='file'
+                        placeholder='Upload video'
+                        accept='.mp4'
+                        onChange={handleFileChange}
+                        className={styles.btn}
+                    />
+                    <button className={styles.sbtn} onClick={async () => { FetchFile("", ExerciseData.video); }}>Show video</button>
+                    <button className={styles.delete_button} onClick={(event) => handleDeleteExercise(event, ExerciseData.exercise_id)}>Delete exercise</button>
                 </div>
             </div>
             }
