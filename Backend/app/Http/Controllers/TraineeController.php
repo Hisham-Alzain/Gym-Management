@@ -6,17 +6,17 @@ use App\Models\User;
 use App\Models\UserInfo;
 use App\Models\UserPhoto;
 use App\Models\DietProgram;
-use Illuminate\Http\Request;
 use App\Models\WorkoutProgram;
-use App\Policies\ProgramPloicy;
-use App\Models\WorkoutExerciseRep;
 use App\Models\WorkoutExerciseSet;
-use App\Http\Requests\PhotosRequest;
+use App\Models\WorkoutExerciseRep;
+use App\Policies\ProgramPloicy;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Http\Requests\PhotosRequest;
 use App\Http\Requests\UserInfoRequest;
+use App\Http\Requests\UserExerciseSetRequest;
 use App\Http\Resources\UserInfoResource;
 use App\Http\Resources\DietProgramResource;
-use App\Http\Requests\UserExerciseSetRequest;
 use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
@@ -87,13 +87,25 @@ class TraineeController extends Controller
 
         // Handle file uploads if present in the request
         if ($request->hasFile('photos')) {
+            // Get Uploaded photos
             $photos = $request->file('photos');
 
+            // Set destination
+            $destination = 'users_photos/' . $user->id;
+
             foreach ($photos as $photo) {
-                $path = $photo->storeAs('usersPhotos/' . $user->id . '/' . now()->format('Y-m-d/H-i-s'), $photo->getClientOriginalName());
+                // Get file name
+                $extension = $photo->getClientOriginalName();
+
+                // Set file name
+                $fileName = now()->format('Y_m_d_His') . $extension;
+
+                // Store file and get path
+                $path = $photo->storeAs($destination, $fileName);
+
+                // Create and associate path with user_info
                 $userInfo = $user->userInfo;
 
-                // Create and associate a new file instance with the portfolio
                 UserPhoto::create([
                     'photo_path' => $path,
                     'info_id' => $userInfo->id

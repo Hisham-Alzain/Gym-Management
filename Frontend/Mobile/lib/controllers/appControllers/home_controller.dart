@@ -22,7 +22,7 @@ class HomeController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.52.51:8000/api/logout',
+        'http://192.168.0.106:8000/api/logout',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

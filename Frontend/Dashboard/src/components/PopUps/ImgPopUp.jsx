@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext, useRef } from 'react';
 import Popup from 'reactjs-popup';
 import { FaRegImages } from "react-icons/fa6";
-import { LoginContext } from "../utils/Contexts";
-import { FetchImage } from '../apis/UserViewApis';
-import styles from '../styles/img_popup.module.css';
+import { LoginContext } from "../../utils/Contexts";
+import { FetchImage } from '../../apis/UserViewApis';
+import styles from '../../styles/img_popup.module.css';
 
 
 const ImgPopUp = ({ user }) => {
@@ -27,13 +27,13 @@ const ImgPopUp = ({ user }) => {
             setIsLoading(false);
           });
         })
+      } else {
+        setIsLoading(false);
       }
     }
   }, [user]);
 
-  if (isLoading) {
-    return <></>;
-  }
+
   return (
     <Popup
       trigger={
@@ -44,16 +44,17 @@ const ImgPopUp = ({ user }) => {
       modal
       nested
     >
-      {close => (
+      {close => (isLoading ? <></> :
         <div className={styles.modal}>
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          <div className={styles.header}> {user.name} Photos </div>
+          <div className={styles.header}> {user.name} photos </div>
           <div className={styles.content}>
-            {images.map((image) => {
+            {images.length > 0 ? images.map((image, i) => {
               return (
                 <Popup
+                  key={i}
                   trigger={
                     <div className={styles.img_div}>
                       <img className={styles.image} src={URL.createObjectURL(image)} />
@@ -73,7 +74,7 @@ const ImgPopUp = ({ user }) => {
                   )}
                 </Popup>
               )
-            })}
+            }) : <div className={styles.header}> No Images </div>}
           </div>
           <div className={styles.actions}></div>
         </div>

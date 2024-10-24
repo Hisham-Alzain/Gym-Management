@@ -1,4 +1,4 @@
-.edit_button {
+.info_button {
     color: #ffffff;
     background: #ffc107;
     border: none;
@@ -10,7 +10,7 @@
     transition: background-color 0.3s;
 }
 
-.edit_button:hover {
+.info_button:hover {
     background: #e0a800;
 }
 
@@ -45,9 +45,9 @@
 
 .modal .actions {
     width: 100%;
+    text-align: center;
     padding: 10px 5px;
     margin: auto;
-    text-align: center;
 }
 
 .modal .content {
@@ -55,30 +55,30 @@
 }
 
 /* Table Styles */
-.users_table {
+.table {
     width: 100%;
     position: relative;
     border-collapse: collapse;
     margin-block-start: 20px;
 }
 
-.users_table th,
-.users_table td {
+.table th,
+.table td {
     padding: 6px 8px;
     text-align: left;
     border: 1px solid #ddd;
     color: var(--color-text);
 }
 
-.users_table th {
+.table th {
     width: 50%;
     background-color: var(--color-custom_grey);
 }
 
-.users_table td {
+.table td {
     background-color: var(--color-custom_grey);
 }
 
-.users_table tr:hover {
+.table tr:hover {
     background-color: var(--color-custom_red);
 }

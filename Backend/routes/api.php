@@ -8,8 +8,9 @@ use App\Http\Controllers\TrainerController;
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/register', 'Register');
-    Route::post('/login', 'Login');
-    Route::post('/forgetPassword', 'ForgotPassword');
+    Route::post('/login/trainer', 'TrainerLogin');
+    Route::post('/login/trainee', 'TraineeLogin');
+    Route::post('/forgotPassword', 'ForgotPassword');
     Route::post('/changePassword', 'ChangePassword');
     Route::get('/isExpired', 'IsExpired')->middleware('auth:sanctum');
     Route::get('/logout', 'Logout')->middleware('auth:sanctum');
@@ -37,6 +38,8 @@ Route::controller(TrainerController::class)->group(function () {
 
         Route::get('/workout_programs', 'ShowWorkoutPrograms');
         Route::post('/workouts/create', 'CreateWorkoutProgram');
+        Route::get('/exercises', 'ShowExercises');
+        Route::delete('/exercises/{exercise_id}', 'DeleteExercise');
         Route::post('/exercise/create', 'AddExercise');
         Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
 
@@ -53,10 +56,24 @@ Route::controller(TrainerController::class)->group(function () {
     });
 });
 
-Route::get('/image/{user_id}/{image}', function (Request $request, $user_id, $image) {
-    $path = storage_path('app/' . $user_id . '/' . $image);
-    if ($path == null) {
-        return null;
+Route::get(
+    '/image/{folder}/{user_id}/{image}',
+    function (Request $request, $folder, $user_id, $image) {
+        $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $image);
+        if ($path == null) {
+            return null;
+        }
+        return response()->file($path);
     }
-    return response()->file($path);
-});
+);
+
+Route::get(
+    '/file/{folder}/{user_id}/{file}',
+    function (Request $request, $user_id, $folder, $file) {
+        $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $file);
+        if ($path == null) {
+            return null;
+        }
+        return response()->file($path);
+    }
+);

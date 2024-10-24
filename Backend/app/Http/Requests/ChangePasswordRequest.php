@@ -29,6 +29,7 @@ class ChangePasswordRequest extends FormRequest
             'confirm_password' => ['required', 'same:password']
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
