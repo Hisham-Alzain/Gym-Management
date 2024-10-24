@@ -85,7 +85,7 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route element={<AdminRoutes />}>
               <Route path="/home" element={<Home />} />
-              <Route path="/ShowProgram/:program_id" element={<ShowProgram />} />
+              <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
               <Route path="/ShowProgram/:program_id/:day_id" element={<DayTable />} />
               <Route path='/logout' element={<Logout />} />
             </Route>

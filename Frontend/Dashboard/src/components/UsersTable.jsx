@@ -7,7 +7,7 @@ import { MdNoFood } from "react-icons/md";
 import { LoginContext } from "../utils/Contexts";
 import { FetchUsers, DeleteUser } from "../apis/UserViewApis";
 import PopUp from "./PopUp";
-import ImgPopUp from "./ImgPopUp";
+//import ImgPopUp from "./ImgPopUp";
 import SubscriptionPopUp from "./SubscriptionPopUp";
 import styles from "../styles/users_table.module.css";
 import Programs from "./Programs";
@@ -128,7 +128,6 @@ const Users = () => {
                                 ))}
                                 <td>
                                     <PopUp user={user} />
-                                    <ImgPopUp user={user} />
                                     <SubscriptionPopUp user_id={user.id} user_name={user.name} />
                                     <Programs user_id={user.id} user_name={user.name} />
                                     <button onClick={() => handleDiet(event, user)} className={styles.diet_button} title='Show diet programs' >

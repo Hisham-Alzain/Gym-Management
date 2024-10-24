@@ -43,9 +43,9 @@ const Programs = ({ user_id, user_name }) => {
     }
   }, [currentPage]);
 
-  const handleShowWorkout = (event) => {
+  const handleShowWorkout = (event,program) => {
     event.preventDefault();
-    navigate(`/trainee/workout/${user_id}/${user_name}`)
+    navigate(`/trainee/workout/${program.id}/${user_name}`)
   }
 
   const columnStructure = [
@@ -94,7 +94,7 @@ const Programs = ({ user_id, user_name }) => {
                       ))}
                       <td>
                         <button
-                          onClick={(event) => handleShowWorkout(event)}
+                          onClick={(event) => handleShowWorkout(event,program)}
                           className={styles.workout_button}
                           title='Show Workout program'
                         >
