@@ -19,15 +19,16 @@ const ExerciseCard = ({ ExerciseData }) => {
                     )}
                 </div>
                 <div className={styles.info}>
-                    <h3 className={styles.title}>{ExerciseData.name}</h3>
-                    <p>Muscle: {ExerciseData.muscle}</p>
+                    <div className={styles.name_muscle}>
+                        <h3 className={styles.title}>{ExerciseData.name}</h3>
+                        <h3 className={styles.muscle}>Muscle: {ExerciseData.muscle}</h3>
+                    </div>
+                    <p>Description: {ExerciseData.description}</p>
                 </div>
                 <div className={styles.second_column}>
-                    <p> {t('pages.jobs.job_card.publish_date')}{' '}
-                    </p>
-                    {ExerciseData.deadline && <p>
-                        {t('pages.jobs.job_card.deadline')}{' '}{ExerciseData.deadline}
-                    </p>}
+                    <button className={styles.btn}>Upload video</button>
+                    <button className={styles.sbtn}>Show video</button>
+                    <button className={styles.delete_button}>Delete exercise</button>
                 </div>
             </div>
             }

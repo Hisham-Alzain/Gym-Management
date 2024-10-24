@@ -18,7 +18,7 @@ class ExerciseResource extends JsonResource
             "exercise_id" => $this->id,
             "name" => $this->name,
             "muscle" => $this->muscle,
-            "Description" => $this->description,
+            "description" => $this->description,
             "photo" => $this->thumbnail_path,
             "video" => $this->video_path,
         ];

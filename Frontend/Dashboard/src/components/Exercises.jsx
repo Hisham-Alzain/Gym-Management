@@ -35,7 +35,7 @@ const Exercises = () => {
                     }
                     response.data.exercises.map((exercise) => {
                         // Check if exercise is already in array
-                        if (!exercises.some(item => exercise.id === item.id)) {
+                        if (!exercises.some(item => exercise.exercise_id === item.exercise_id)) {
 
                             // if not add exercise
                             if (exercise.photo) {
@@ -82,12 +82,10 @@ const Exercises = () => {
         <div className={styles.screen}>
             <div className={styles.mid_container}>
                 {exercises.map((exercise) => (
-                    <div key={exercise.id}
+                    <div key={exercise.exercise_id}
                         className={styles.exercise_card}
                     >
-                        <Link to={`/exercise/${exercise.id}`}>
-                            <ExerciseCard ExerciseData={exercise} />
-                        </Link>
+                        <ExerciseCard ExerciseData={exercise} />
                     </div>
                 ))}
                 {isLoading ? <></>
