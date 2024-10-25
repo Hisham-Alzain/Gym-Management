@@ -59,31 +59,40 @@ Route::controller(TrainerController::class)->group(function () {
 });
 
 Route::get(
-    '/image/{folder}/{user_id}/{image}',
-    function (Request $request, $folder, $user_id, $image) {
-        $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $image);
-        if ($path == null) {
-            return null;
+    '/image/{folder}/{user_id?}/{file}',
+    function (Request $request, $folder, $user_id, $file) {
+        if ($user_id == null) {
+            $path = storage_path('app/private/' . $folder . '/' . $file);
+        } else {
+            $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $file);
         }
-        return response()->file($path);
+        if (!file_exists($path)) {
+            abort(404);
+        }
+        return response()->file($path, [
+            'Access-Control-Allow-Origin' => '*'
+        ]);
     }
-);
+)->middleware('auth:sanctum');
 
 Route::get(
-    '/video/{folder}/{video}',
-    function (Request $request, $folder, $video) {
-        $path = storage_path('app/private/' . $folder . '/' . $video);
-        if ($path == null) {
-            return null;
+    '/video/{folder}/{file}',
+    function (Request $request, $folder, $file) {
+        $path = storage_path('app/private/' . $folder . '/' . $file);
+        if (!file_exists($path)) {
+            abort(404);
         }
 
         return response()->stream(function () use ($path) {
             try {
-                $stream = fopen($path, 'r');
+                $stream = fopen($path, 'rb');
                 fpassthru($stream);
+                fclose($stream);
             } catch (Exception $e) {
                 Log::error($e);
             }
-        }, 200);
+        }, 200, [
+            'Access-Control-Allow-Origin' => '*'
+        ]);
     }
-);
+)->middleware('auth:sanctum');
