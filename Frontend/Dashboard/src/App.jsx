@@ -12,7 +12,6 @@ import Logout from './components/Logout.jsx';
 import ShowProgram from './components/ShowProgram.jsx';
 import DayTable from './components/DayTable.jsx';
 import Exercises from './components/Exercises.jsx';
-import Video from './components/Video.jsx';
 
 function App() {
   const initialized = useRef(false);
@@ -83,7 +82,6 @@ function App() {
       <ProfileContext.Provider value={{ profile, setProfile }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/GG" element={<Video />} />
             <Route path="/" element={<Login />} />
             <Route element={<AdminRoutes />}>
               <Route path="/home" element={<Home />} />

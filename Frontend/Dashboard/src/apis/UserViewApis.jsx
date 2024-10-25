@@ -71,6 +71,7 @@ export const FetchImage = async (token, imagePath) => {
             method: 'GET',
             responseType: 'blob', // important
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'image/*; charset=UTF-8',
                 'Accept': 'image/*'
@@ -97,12 +98,12 @@ export const FetchVideo = async (token, videoPath) => {
             method: 'GET',
             responseType: 'blob', // important
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'video/*; charset=UTF-8',
                 'Accept': 'video/*'
             }
         }).then((response) => {
-            console.log(response)
             // Create file from response data
             const video = new Blob(
                 [response.data],

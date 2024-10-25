@@ -1,9 +1,10 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import img_holder from '../assets/noImage.jpg';
 import { LoginContext } from "../utils/Contexts";
 import { FetchFile } from '../apis/UserViewApis';
 import { DeleteExercise } from '../apis/ExerciseApis';
+import VideoPopUp from './PopUps/VideoPopUp';
+import img_holder from '../assets/noImage.jpg';
 import styles from '../styles/Exercises.module.css';
 
 
@@ -69,7 +70,7 @@ const ExerciseCard = ({ ExerciseData }) => {
                         onChange={handleFileChange}
                         className={styles.btn}
                     />
-                    <button className={styles.sbtn} onClick={async () => { FetchFile("", ExerciseData.video); }}>Show video</button>
+                    <VideoPopUp Path={ExerciseData.video} />
                     <button className={styles.delete_button} onClick={(event) => handleDeleteExercise(event, ExerciseData.exercise_id)}>Delete exercise</button>
                 </div>
             </div>
