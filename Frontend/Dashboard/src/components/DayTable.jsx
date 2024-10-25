@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './DayTable.module.css';
 
-const DayTable = ({ exerciseDay }) => {
+const DayTable = ({ exerciseDay, handleBackButtonClick }) => {
     const uniqueDates = new Set();
 
     exerciseDay.exercises.forEach(exercise => {
@@ -15,6 +15,7 @@ const DayTable = ({ exerciseDay }) => {
 
     return (
         <div className={styles.DayTable}>
+            <button className={styles.backButton} onClick={handleBackButtonClick}>Back</button>
             <h1 className={styles.tableTitle}>{exerciseDay.muscle}</h1>
             <table className={styles.exerciseTable}>
                 <thead>

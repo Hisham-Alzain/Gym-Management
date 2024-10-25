@@ -35,6 +35,10 @@ const ShowProgram = () => {
     }
   }, [accessToken, program_id]);
 
+  const handleBackButtonClick = () => {
+    setSelectedMuscle(null);
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -46,7 +50,7 @@ const ShowProgram = () => {
           <p>Start Date: {program.start_date} | End Date: {program.end_date}</p>
         </div>
       )}{selectedMuscle ? (
-        <DayTable exerciseDay={program.days[0]} />
+        <DayTable exerciseDay={program.days[0]} handleBackButtonClick={handleBackButtonClick} />
       ) :
         <div className={styles.cardsContainer}>
           {exercisesData.map((data, index) => (
@@ -55,7 +59,7 @@ const ShowProgram = () => {
               <ul>
                 {console.log(data.exercises)}
                 {data.exercises.map((exercise, id) => (
-                  <li key={id}>{exercise.exercise.name}</li>
+                  <li key={id}>{exercise.exercise.name} sets:{exercise.exercise.no_sets}</li>
                 ))}
               </ul>
             </div>

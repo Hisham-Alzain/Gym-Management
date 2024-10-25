@@ -49,6 +49,20 @@
     background-color: #3f3d3d;
 }
 
+.backButton {
+    padding: 10px 20px;
+    background-color: #e02929;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.backButton:hover {
+    background-color: #b60000;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
 

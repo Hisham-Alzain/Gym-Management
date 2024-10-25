@@ -3,6 +3,7 @@
   position: relative;
   inset-block-start: 70px;
 }
+
 .header {
   text-align: center;
   background-color: #333;
@@ -34,6 +35,20 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+.card button {
+  font-size: large;
+  background-color: #FF5733;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #FF7F50;
 }
 
 ul {

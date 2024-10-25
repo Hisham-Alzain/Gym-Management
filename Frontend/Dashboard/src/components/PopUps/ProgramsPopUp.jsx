@@ -48,7 +48,7 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
 
   const handleShowWorkout = (event, id) => {
     event.preventDefault();
-    navigate(`/trainee/workout/${id}`);
+    navigate(`/trainee/workout/${id}/${user_name}`);
   }
 
   const columnStructure = [
