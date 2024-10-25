@@ -389,17 +389,11 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function CreateExerciseSet(Request $request, $program_id) {}
 
-    public function UpdateExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function UpdateExerciseSet(Request $request, $program_id) {}
 
-    public function DeleteExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function DeleteExerciseSet(Request $request, $program_id) {}
 
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {

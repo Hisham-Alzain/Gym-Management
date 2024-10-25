@@ -90,6 +90,33 @@ export const FetchImage = async (token, imagePath) => {
     }
 };
 
+export const FetchVideo = async (token, videoPath) => {
+    try {
+        const response = await axios({
+            url: `http://127.0.0.1:8000/api/video/${videoPath}`,
+            method: 'GET',
+            responseType: 'blob', // important
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'video/*; charset=UTF-8',
+                'Accept': 'video/*'
+            }
+        }).then((response) => {
+            console.log(response)
+            // Create file from response data
+            const video = new Blob(
+                [response.data],
+                { type: response.data.type }
+            );
+            // Return file
+            return (video);
+        });
+        return (response);
+    } catch (error) {
+        return error.response;
+    }
+};
+
 export const FetchFile = async (token, filePath) => {
     try {
         const response = await axios({
