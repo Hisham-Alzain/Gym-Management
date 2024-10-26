@@ -11,10 +11,10 @@ class CustomDialogs {
     );
   }
 
-  Future<void> showErrorDialog(String title, String content) async {
+  Future<void> showErrorDialog(String content) async {
     Get.defaultDialog(
       backgroundColor: Colors.grey.shade800,
-      title: title,
+      title: 'Error',
       titleStyle: const TextStyle(
         color: Colors.red,
         fontSize: 20,
@@ -40,12 +40,11 @@ class CustomDialogs {
   }
 
   Future<void> showSuccessDialog(
-    String title,
     String content,
   ) async {
     Get.defaultDialog(
       backgroundColor: Colors.grey.shade800,
-      title: title,
+      title: 'Success',
       titleStyle: const TextStyle(
         color: Colors.green,
         fontSize: 20,
@@ -102,7 +101,7 @@ class CustomDialogs {
     Get.defaultDialog(
       backgroundColor: Colors.grey.shade800,
       title: 'Notice:',
-      titleStyle: const TextStyle(color: Colors.white),
+      titleStyle: const TextStyle(color: Colors.red),
       content: const Text(
         'Are you sure you want to logout?',
         style: TextStyle(

@@ -1,17 +1,28 @@
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class GeneralController extends GetxController {
+  late CustomDialogs customDialogs;
   late bool inRegister;
   late ImagePicker picker;
 
   @override
   void onInit() {
+    customDialogs = CustomDialogs();
     inRegister = false;
     picker = ImagePicker();
     super.onInit();
+  }
+
+  void handleUnauthorized() {
+    Get.back();
+    customDialogs.showSesionExpiredDialog();
+    Future.delayed(const Duration(seconds: 1), () {
+      Get.offAllNamed('/login');
+    });
   }
 
   Future<void> requestPermissions() async {

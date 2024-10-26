@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
@@ -23,32 +22,22 @@ class ProfileView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10),
               child: RedContainer(
-                  height: 200,
-                  width: 200,
-                  child: IconButton(
-                    onPressed: () => Get.toNamed('/addPhotos'),
-                    icon: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.add_a_photo),
-                        Text(
-                          'Add photos',
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        )
-                      ],
-                    ),
-                  )
-                  // child: CarouselSlider(
-                  //   options: CarouselOptions(autoPlay: true),
-                  //   items: [
-                  //     Image.asset('assets/general_background.jpg'),
-                  //     Image.asset('assets/general_background.jpg'),
-                  //     Image.asset('assets/general_background.jpg'),
-                  //     Image.asset('assets/general_background.jpg'),
-                  //     Image.asset('assets/general_background.jpg'),
-                  //   ],
-                  // ),
+                height: 200,
+                width: 200,
+                child: IconButton(
+                  onPressed: () => Get.toNamed('/addPhotos'),
+                  icon: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.add_a_photo),
+                      Text(
+                        'Add photos',
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      )
+                    ],
                   ),
+                ),
+              ),
             ),
             const Padding(
               padding: EdgeInsets.all(10),

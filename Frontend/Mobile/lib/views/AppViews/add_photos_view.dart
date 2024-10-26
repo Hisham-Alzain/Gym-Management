@@ -1,7 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/appControllers/add_photos_controller.dart';
+import 'package:mobile/customWidgets/custom_containers.dart';
 
 class AddPhotosView extends StatelessWidget {
   final AddPhotosController _addPhotosController =
@@ -11,7 +11,6 @@ class AddPhotosView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int current = 0;
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -25,111 +24,105 @@ class AddPhotosView extends StatelessWidget {
             ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: RefreshIndicator(
+        key: _addPhotosController.refreshIndicatorKey,
+        onRefresh: () => _addPhotosController.getPhotos(),
         child: GetBuilder<AddPhotosController>(
-          builder: (controller) => Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Text(
-                  'Please add 5 photos as shown below',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              ),
-              CarouselSlider(
-                options: CarouselOptions(
-                  height: 500,
-                  enlargeCenterPage: true,
-                  onPageChanged: (index, reason) {
-                    current = index;
-                    controller.update();
-                  },
-                ),
-                items: controller.images.isEmpty
-                    ? controller.modelImages
-                    : controller.displayImages,
-              ),
-              SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  itemCount: controller.images.isEmpty
-                      ? controller.modelImages.length
-                      : controller.displayImages.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 10,
-                      height: 10,
-                      margin: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(
-                          current == index ? 0.9 : 0.5,
+          builder: (controller) => controller.loading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          'Please add up to 5 photos as shown below',
+                          style: Theme.of(context).textTheme.headlineSmall,
                         ),
                       ),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () => controller.addPhotos(),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.add_a_photo,
-                          ),
-                          Text(
-                            'Add Photos',
-                            style: Theme.of(context).textTheme.labelLarge,
-                          )
-                        ],
+                      SizedBox(
+                        height: 500,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: controller.displayPhotos.isEmpty
+                              ? controller.modelPhotos.length
+                              : controller.displayPhotos.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      RedContainer(
+                                        height: 400,
+                                        width: 200,
+                                        child: controller.displayPhotos.isEmpty
+                                            ? controller.modelPhotos[index]
+                                            : controller.displayPhotos[index],
+                                      ),
+                                    ],
+                                  ),
+                                  CircleContainer(
+                                    child: Text(
+                                      (index + 1).toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelLarge,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                    //TODO:delete api
-                    if (controller.displayImages.isNotEmpty)
-                      ElevatedButton(
-                        onPressed: () => controller.removePhotos(current),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Icon(
-                              Icons.delete,
+                            ElevatedButton(
+                              onPressed: () => controller.addPhotos(),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.add_a_photo,
+                                  ),
+                                  Text(
+                                    'Add Photos',
+                                    style:
+                                        Theme.of(context).textTheme.labelLarge,
+                                  ),
+                                ],
+                              ),
                             ),
-                            Text(
-                              'Delete Photo',
-                              style: Theme.of(context).textTheme.labelLarge,
-                            )
                           ],
                         ),
                       ),
-                  ],
-                ),
-              ),
-              if (controller.images.isNotEmpty)
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: OutlinedButton(
-                    onPressed: () => controller.uploadPhotos(controller.images),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Submit',
+                      if (controller.selectedPhotos.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: OutlinedButton(
+                            onPressed: () => controller.uploadPhotos(),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Submit',
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                ),
+                                const Icon(Icons.arrow_forward_ios),
+                              ],
+                            ),
+                          ),
                         ),
-                        Icon(Icons.arrow_forward_ios),
-                      ],
-                    ),
+                    ],
                   ),
                 ),
-            ],
-          ),
         ),
       ),
     );

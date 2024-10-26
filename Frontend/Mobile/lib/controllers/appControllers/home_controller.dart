@@ -22,7 +22,7 @@ class HomeController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.106:8000/api/logout',
+        'http://192.168.0.102:8000/api/logout',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -31,10 +31,10 @@ class HomeController extends GetxController {
           },
         ),
       );
+      Get.back();
       if (response.statusCode == 200) {
-        Get.back();
         storage!.remove('token');
-        customDialogs.showSuccessDialog('Logout successfull', '');
+        customDialogs.showSuccessDialog('Logging out...');
         Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -44,8 +44,7 @@ class HomeController extends GetxController {
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
-        'Error',
-        e.response!.data['errors'].toString(),
+        e.response?.data?['errors']?.toString() ?? 'An error occurred',
       );
     }
   }

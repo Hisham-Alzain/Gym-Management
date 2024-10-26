@@ -1,3 +1,5 @@
+import 'package:mobile/models/photo.dart';
+
 class User {
   final int id;
   final String name;
@@ -7,7 +9,7 @@ class User {
   final String gender;
   final double height;
   final double weight;
-  final List<String> photos;
+  final List<Photo> photos;
   final String? illnesses;
   final String? allergies;
   final String? dislikedFoods;
@@ -41,7 +43,9 @@ class User {
         gender = json['gender'] as String,
         height = double.parse(json['height']),
         weight = double.parse(json['weight']),
-        photos = [for (var photo in json['photos']) photo as String],
+        photos = [
+          for (var photo in json['photos']) (Photo.fromJson(photo)),
+        ],
         illnesses = json['illnesses'] as String?,
         allergies = json['allergies'] as String?,
         dislikedFoods = json['disliked_foods'] as String?,

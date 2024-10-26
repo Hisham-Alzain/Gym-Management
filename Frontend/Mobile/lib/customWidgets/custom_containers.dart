@@ -112,3 +112,28 @@ class EditContainer extends StatelessWidget {
     );
   }
 }
+
+class CircleContainer extends StatelessWidget {
+  final Widget? child;
+
+  const CircleContainer({
+    super.key,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(5),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: Colors.red,
+            width: 1,
+          ),
+        ),
+        child: child);
+  }
+}

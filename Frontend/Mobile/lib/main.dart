@@ -26,7 +26,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final GeneralController generalController = Get.put(GeneralController());
     return GetMaterialApp(
-      initialRoute: '/addPhotos',
+      initialRoute: '/splashScreen',
       getPages: getPages,
       debugShowCheckedModeBanner: false,
       onReady: () => generalController.requestPermissions(),

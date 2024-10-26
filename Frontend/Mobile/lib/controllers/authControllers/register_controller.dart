@@ -71,7 +71,7 @@ class RegisterController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.0.106:8000/api/register',
+        'http://192.168.0.102:8000/api/register',
         data: {
           "name": fullName,
           "email": email,
@@ -86,11 +86,11 @@ class RegisterController extends GetxController {
           },
         ),
       );
+      Get.back();
       if (response.statusCode == 201) {
-        Get.back();
         storage!.write('token', response.data['access_token']);
         generalController.inRegister = true;
-        customDialogs.showSuccessDialog('Registered successfully', '');
+        customDialogs.showSuccessDialog('Registering...');
         Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -100,8 +100,7 @@ class RegisterController extends GetxController {
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
-        'Error',
-        e.response!.data['errors'].toString(),
+        e.response?.data?['errors']?.toString() ?? 'An error occurred',
       );
     }
   }

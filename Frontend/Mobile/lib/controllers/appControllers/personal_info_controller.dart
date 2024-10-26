@@ -127,7 +127,7 @@ class PersonalInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.0.106:8000/api/trainee',
+        'http://192.168.0.102:8000/api/trainee',
         data: {
           "birth_date": birthDate.toString().split(' ')[0],
           "gender": gender,
@@ -146,9 +146,9 @@ class PersonalInfoController extends GetxController {
           },
         ),
       );
+      Get.back();
       if (response.statusCode == 200) {
-        Get.back();
-        customDialogs.showSuccessDialog('Success', '');
+        customDialogs.showSuccessDialog('Info added Successfully');
         Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -156,19 +156,11 @@ class PersonalInfoController extends GetxController {
           },
         );
       } else if (response.statusCode == 401) {
-        Get.back();
-        customDialogs.showSesionExpiredDialog();
-        Future.delayed(
-          const Duration(seconds: 1),
-          () {
-            Get.offAllNamed('/login');
-          },
-        );
+        generalController.handleUnauthorized();
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
-        'Error',
-        e.response!.data.toString(),
+        e.response?.data?['errors']?.toString() ?? 'An error occurred',
       );
     }
   }
