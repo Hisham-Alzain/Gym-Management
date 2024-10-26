@@ -109,6 +109,20 @@
     background: var(--color-custom_grey);
 }
 
+.create_button {
+    font-size: medium;
+    background-color: #FF5733;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.create_button:hover {
+    background-color: #FF7F50;
+}
+
 @media screen and (max-width: 970px) {
     .workout_button {
         margin-block: 2px;

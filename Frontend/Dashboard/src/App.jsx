@@ -13,6 +13,7 @@ import './App.css'
 import ShowProgram from './components/ShowProgram.jsx';
 import DayTable from './components/DayTable.jsx';
 import Exercises from './components/Exercises.jsx';
+import AddWorkout from './components/AddWorkout.jsx';
 
 
 function App() {
@@ -91,6 +92,7 @@ function App() {
               <Route path="/home" element={<Home />} />
 
               <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
+              <Route path="/trainee/workout/add/:user_id/:user_name" element={<AddWorkout />} />
               <Route path="/ShowProgram/:program_id/:day_id" element={<DayTable />} />
               <Route path="/Exercises" element={<Exercises />} />
 

@@ -51,6 +51,11 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
     navigate(`/trainee/workout/${id}/${user_name}`);
   }
 
+  const handleAddWorkout=(event)=>{
+    event.preventDefault();
+    navigate(`/trainee/workout/add/${user_id}/${user_name}`);
+  }
+
   const columnStructure = [
     { key: "id", label: 'Workout number' },
     { key: 'start_date', label: 'Start Date' },
@@ -75,7 +80,7 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
           {isLoading ? <></> : <>
             <div className={styles.header}>
               <div className={styles.name}>{user_name} workouts</div>
-              <button className={styles.create_button}>Add workout</button>
+              <button className={styles.create_button} onClick={handleAddWorkout}>Add workout</button>
             </div>
             <div className={styles.workouts}>
               <div className={styles.workout_table}>

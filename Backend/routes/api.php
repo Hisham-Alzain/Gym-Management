@@ -45,6 +45,7 @@ Route::controller(TrainerController::class)->group(function () {
 
         Route::get('/workout_programs', 'ShowWorkoutPrograms');
         Route::post('/workouts/create', 'CreateWorkoutProgram');
+        Route::post('/workouts/create/default', 'CreateDefaultWorkoutProgram');
         Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
 
         Route::get('/exercises', 'ShowExercises');

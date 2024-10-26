@@ -19,6 +19,7 @@ use App\Http\Requests\MealRequest;
 use App\Http\Requests\U_MealRequest;
 use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\AddExerciseRequest;
+use App\Http\Requests\DefaultWorkoutRequest;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Resources\DietMealResource;
 use App\Http\Resources\ExerciseCollection;
@@ -285,6 +286,31 @@ class TrainerController extends Controller
         }
     }
 
+    public function CreateDefaultWorkoutProgram(DefaultWorkoutRequest $request)
+    {
+        $validated=$request->validated();
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            //to be implented when defaultWorkout json is filled with data
+        }
+    }
+
     public function ShowExercises(Request $request)
     {
         // Get user
@@ -507,17 +533,11 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function CreateExerciseSet(Request $request, $program_id) {}
 
-    public function UpdateExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function UpdateExerciseSet(Request $request, $program_id) {}
 
-    public function DeleteExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function DeleteExerciseSet(Request $request, $program_id) {}
 
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {

@@ -1,0 +1,40 @@
+{
+    "repeat_days": 3,
+    "days": [
+        {
+            "muscle": "Chest",
+            "exercises": [
+                {
+                    "exercise_id": 1,
+                    "sets": [
+                        {
+                            "set_no": 1,
+                            "exp_reps": 12
+                        },
+                        {
+                            "set_no": 2,
+                            "exp_reps": 10
+                        },
+                        {
+                            "set_no": 3,
+                            "exp_reps": 8
+                        }
+                    ]
+                },
+                {
+                    "exercise_id": 2,
+                    "sets": [
+                        {
+                            "set_no": 1,
+                            "exp_reps": 15
+                        },
+                        {
+                            "set_no": 2,
+                            "exp_reps": 15
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
