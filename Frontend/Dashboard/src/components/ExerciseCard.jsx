@@ -1,9 +1,10 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginContext } from "../utils/Contexts";
-import { FetchFile } from '../apis/UserViewApis';
+import { UpdateExercise } from '../apis/ExerciseApis';
 import { DeleteExercise } from '../apis/ExerciseApis';
 import VideoPopUp from './PopUps/VideoPopUp';
+import UploadPopUp from './PopUps/UploadPopUp';
 import img_holder from '../assets/noImage.jpg';
 import styles from '../styles/Exercises.module.css';
 
@@ -14,21 +15,30 @@ const ExerciseCard = ({ ExerciseData }) => {
     // Context
     const { accessToken } = useContext(LoginContext);
 
-    const [files, setFiles] = useState(ExerciseData.video);
+    const [updating, setUpdating] = useState(false);
+    const [newDescription, setNewDescription] = useState('');
 
-    const handleFileChange = (event) => {
-        setFiles([]);
+    const handleDescription = (event) => {
         event.preventDefault();
-        const allowedFileTypes = ["video/mp4"];
-        if (event.target.files.length == 1) {
-            Array.from(event.target.files).forEach((file) => {
-                if (file && allowedFileTypes.includes(file.type)) {
-                    setFiles((prevState) => [...prevState, file]);
-                } else {
-                    console.log("Invalid file type. Please select a mp4 video.");
-                }
-            });
-        }
+        setNewDescription(event.target.value);
+    }
+
+    const handleUpdateDescription = (event, exercise_id) => {
+        event.preventDefault();
+        UpdateExercise(accessToken, exercise_id, newDescription).then((response) => {
+            if (response.status == 200) {
+                console.log('Exercise updated');
+                window.location.reload();
+            } else {
+                console.log(response);
+            }
+        });
+    }
+
+    const handleCancel = (event) => {
+        event.preventDefault();
+        setNewDescription('');
+        setUpdating(false);
     }
 
     const handleDeleteExercise = (event, exercise_id) => {
@@ -38,9 +48,9 @@ const ExerciseCard = ({ ExerciseData }) => {
                 console.log('Exercise deleted');
                 window.location.reload();
             } else {
-                console.log('delete not working')
+                console.log('delete not working');
             }
-        })
+        });
     }
 
     return (
@@ -61,16 +71,16 @@ const ExerciseCard = ({ ExerciseData }) => {
                     <p>Description: {ExerciseData.description}</p>
                 </div>
                 <div className={styles.second_column}>
-                    <input
-                        title="Upload video"
-                        id='files'
-                        type='file'
-                        placeholder='Upload video'
-                        accept='.mp4'
-                        onChange={handleFileChange}
-                        className={styles.btn}
-                    />
                     <VideoPopUp Path={ExerciseData.video} />
+                    <UploadPopUp exercise_id={ExerciseData.exercise_id} />
+                    {!updating && <button className={styles.update_button} onClick={() => setUpdating(true)}>Update description</button>}
+                    {updating &&
+                        <form className={styles.desc_form} onSubmit={(event) => handleUpdateDescription(event, ExerciseData.exercise_id)}>
+                            <input className={styles.description} id='newDescription' type='text' placeholder='New description' onChange={handleDescription} />
+                            <button className={styles.submit} type='submit'>Submit change</button>
+                            <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+                        </form>
+                    }
                     <button className={styles.delete_button} onClick={(event) => handleDeleteExercise(event, ExerciseData.exercise_id)}>Delete exercise</button>
                 </div>
             </div>

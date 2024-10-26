@@ -46,6 +46,8 @@ Route::controller(TrainerController::class)->group(function () {
 
         Route::get('/exercises', 'ShowExercises');
         Route::post('/exercise/create', 'AddExercise');
+        Route::post('/exercise/update', 'UpdateExercise');
+        Route::post('/exercise/video','UploadExerciseVideo');
         Route::delete('/exercises/{exercise_id}', 'DeleteExercise');
 
         Route::get('/diet_programs', 'ShowDietPrograms');

@@ -331,6 +331,82 @@ class TrainerController extends Controller
         }
     }
 
+    public function UploadExerciseVideo(Request $request)
+    {
+        // Validate request
+        $validated = $request->validate([
+            'exercise_id' => ['required'],
+            'video' => ['required', 'mimes:mp4,m4v,mkv,webm,flv,avi,wmv']
+        ]);
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get exercise
+            $exercise = Exercise::find($validated['exercise_id']);
+
+            // Check exercise
+            if ($exercise == null) {
+                return response()->json([
+                    'errors' => ['exercise' => 'exercise was not found'],
+                ], 404);
+            }
+
+            // Handle file uploads if present in the request
+            if ($request->hasFile('video')) {
+                // Get Uploaded photos
+                $video = $request->file('video');
+
+                // Set destination
+                $destination = 'exercises_videos';
+
+                // Get file name
+                $extension = $video->getClientOriginalName();
+
+                // Set file name
+                $fileName = now()->format('Y_m_d_His') . $extension;
+
+                // Check and delete previous video
+                $previous_path = $exercise->video_path;
+                if ($previous_path != null) {
+                    if (file_exists(storage_path('app/private/' . $previous_path))) {
+                        unlink(storage_path('app/private/' . $previous_path));
+                    }
+                }
+
+                // Store file and get path
+                $path = $video->storeAs($destination, $fileName);
+                $exercise->video_path = $path;
+                $exercise->save();
+            } else {
+                // Response
+                return response()->json([
+                    'errors' => ['video' => 'Invalid video'],
+                ], 401);
+            }
+
+            // Response
+            return response()->json([
+                "message" => "exercise video updated successfully"
+            ], 200);
+        }
+    }
+
     public function AddExercise(AddExerciseRequest $request)
     {
         // Validate request
@@ -358,6 +434,48 @@ class TrainerController extends Controller
             return response()->json([
                 "message" => "exercise created successfully"
             ], 201);
+        }
+    }
+
+    public function UpdateExercise(Request $request)
+    {
+        // Validate request
+        $validated = $request->validate([
+            'exercise_id' => ['required'],
+            'description' => ['required']
+        ]);
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+
+            $exercise = Exercise::find($validated['exercise_id']);
+            // Check exercise
+            if ($exercise == null) {
+                return response()->json([
+                    'errors' => ['exercise' => 'exercise was not found'],
+                ], 404);
+            }
+            $exercise->description = $validated['description'];
+            $exercise->save();
+            return response()->json([
+                "message" => "exercise updated successfully"
+            ], 200);
         }
     }
 
@@ -389,11 +507,17 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateExerciseSet(Request $request, $program_id) {}
+    public function CreateExerciseSet(Request $request, $program_id)
+    {
+    }
 
-    public function UpdateExerciseSet(Request $request, $program_id) {}
+    public function UpdateExerciseSet(Request $request, $program_id)
+    {
+    }
 
-    public function DeleteExerciseSet(Request $request, $program_id) {}
+    public function DeleteExerciseSet(Request $request, $program_id)
+    {
+    }
 
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {
