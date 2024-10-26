@@ -114,3 +114,9 @@
         margin-block: 2px;
     }
 }
+
+@media screen and (max-width: 485px) {
+    .workout_table {
+        display: block;
+    }
+}
