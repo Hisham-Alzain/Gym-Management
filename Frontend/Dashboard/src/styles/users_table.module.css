@@ -20,7 +20,7 @@
     padding: 20px;
 }
 
-h1 {
+.content_div h1 {
     font-size: 24px;
     text-align: center;
     margin-block-end: 16px;
@@ -139,6 +139,7 @@ h1 {
 }
 
 @media screen and (max-width: 970px) {
+
     .delete_button,
     .diet_button {
         margin-block: 2px;
