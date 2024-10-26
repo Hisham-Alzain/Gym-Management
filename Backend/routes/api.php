@@ -66,10 +66,14 @@ Route::get(
         } else {
             $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $file);
         }
+
         if (!file_exists($path)) {
             abort(404);
         }
+
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
         return response()->file($path, [
+            'Content-Type' => 'image/' . $ext,
             'Access-Control-Allow-Origin' => '*'
         ]);
     }
@@ -83,6 +87,7 @@ Route::get(
             abort(404);
         }
 
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
         return response()->stream(function () use ($path) {
             try {
                 $stream = fopen($path, 'rb');
@@ -92,6 +97,7 @@ Route::get(
                 Log::error($e);
             }
         }, 200, [
+            'Content-Type' => 'video/' . $ext,
             'Access-Control-Allow-Origin' => '*'
         ]);
     }

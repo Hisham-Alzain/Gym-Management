@@ -20,14 +20,25 @@ const VideoPopUp = ({ Path }) => {
     } else {
       setIsLoading(true);
 
-      FetchVideo(accessToken, Path).then((response) => {
-        const VideoURL = URL.createObjectURL(response);
-        setVideoData(VideoURL);
-      }).then(() => {
+      if (Path) {
+        FetchVideo(accessToken, Path).then((response) => {
+          if (response.status == 200) {
+            setVideoData({
+              URL: response.videoURL,
+              type: response.type,
+              size: response.size,
+            });
+          } else {
+            setIsLoading(false);
+          }
+        }).then(() => {
+          setIsLoading(false);
+        });
+      } else {
         setIsLoading(false);
-      });
+      }
     }
-  }, []);
+  }, [Path]);
 
   const handlePlayVideo = () => {
     vidRef.current.play();
@@ -36,7 +47,7 @@ const VideoPopUp = ({ Path }) => {
   return (
     <Popup
       trigger={
-        <button className={styles.video_button} title='Trainee images'>
+        <button className={styles.video_button} title='Video'>
           Show video
         </button>
       }
@@ -51,17 +62,19 @@ const VideoPopUp = ({ Path }) => {
           <div className={styles.header}> Exercise video </div>
           <div className={styles.content}>
             <div className={styles.video_div}>
-              <video ref={vidRef} controls>
-                <source src={videoData} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {Path && videoData ? (
+                <video ref={vidRef} controls>
+                  <source src={videoData.URL} type={videoData.type} />
+                  Your browser does not support the video tag.
+                </video>
+              ) : <div className={styles.header}> No Video </div>}
             </div>
           </div>
           <div className={styles.actions}></div>
         </div>
       )}
     </Popup>
-  )
+  );
 };
 
 export default VideoPopUp;

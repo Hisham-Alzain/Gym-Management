@@ -82,8 +82,13 @@ export const FetchImage = async (token, imagePath) => {
                 [response.data],
                 { type: response.data.type }
             );
-            // Return file
-            return (image);
+            // Return response
+            return ({
+                status: response.status,
+                imageURL: URL.createObjectURL(image),
+                type: image.type,
+                size: image.size,
+            });
         });
         return (response);
     } catch (error) {
@@ -109,8 +114,13 @@ export const FetchVideo = async (token, videoPath) => {
                 [response.data],
                 { type: response.data.type }
             );
-            // Return file
-            return (video);
+            // Return response
+            return ({
+                status: response.status,
+                videoURL: URL.createObjectURL(video),
+                type: video.type,
+                size: video.size,
+            });
         });
         return (response);
     } catch (error) {

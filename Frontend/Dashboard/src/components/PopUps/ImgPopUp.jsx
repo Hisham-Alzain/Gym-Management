@@ -22,7 +22,9 @@ const ImgPopUp = ({ user }) => {
       if (user.photos.length > 0) {
         user.photos.map((photo) => {
           FetchImage(accessToken, photo.photo_path).then((response) => {
-            setImages((prev) => [...prev, response]);
+            if (response.status === 200) {
+              setImages((prev) => [...prev, response.imageURL]);
+            }
           }).then(() => {
             setIsLoading(false);
           });
@@ -57,7 +59,7 @@ const ImgPopUp = ({ user }) => {
                   key={i}
                   trigger={
                     <div className={styles.img_div}>
-                      <img className={styles.image} src={URL.createObjectURL(image)} />
+                      <img className={styles.image} src={image} />
                     </div>}
                   modal
                   nested
@@ -68,7 +70,7 @@ const ImgPopUp = ({ user }) => {
                         &times;
                       </button>
                       <div className={styles.img_div2}>
-                        <img className={styles.image} src={URL.createObjectURL(image)} />
+                        <img className={styles.image} src={image} />
                       </div>
                     </div>
                   )}
@@ -80,7 +82,7 @@ const ImgPopUp = ({ user }) => {
         </div>
       )}
     </Popup>
-  )
+  );
 };
 
 export default ImgPopUp;
