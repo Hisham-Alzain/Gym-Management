@@ -3,9 +3,9 @@ import axios from 'axios';
 export const LoginAPI = async (email, password, rememberMe) => {
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/login/trainer', {
-      "email": "test@example.com",
-      "password": "password",
-      "remember": false,
+      "email": email,
+      "password": password,
+      "remember": rememberMe,
     }, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
