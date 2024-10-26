@@ -80,7 +80,7 @@ class EditContainer extends StatelessWidget {
                 if (name != null)
                   Text(
                     '$name:',
-                    style: Theme.of(context).textTheme.labelLarge,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 if (buttonText != null)
                   TextButton(

@@ -54,16 +54,12 @@ class AddPhotosView extends StatelessWidget {
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Row(
-                                    children: [
-                                      RedContainer(
-                                        height: 400,
-                                        width: 200,
-                                        child: controller.displayPhotos.isEmpty
-                                            ? controller.modelPhotos[index]
-                                            : controller.displayPhotos[index],
-                                      ),
-                                    ],
+                                  RedContainer(
+                                    height: 400,
+                                    width: 200,
+                                    child: controller.displayPhotos.isEmpty
+                                        ? controller.modelPhotos[index]
+                                        : controller.displayPhotos[index],
                                   ),
                                   CircleContainer(
                                     child: Text(

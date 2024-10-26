@@ -60,10 +60,10 @@ class HomeView extends StatelessWidget {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            Scaffold(),
-            Scaffold(),
+            const Scaffold(),
+            const Scaffold(),
             ProfileView(),
           ],
         ),

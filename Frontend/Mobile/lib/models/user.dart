@@ -41,8 +41,8 @@ class User {
         phoneNumber = json['phone_number'] as String,
         birthDate = DateTime.parse(json['birth_date']),
         gender = json['gender'] as String,
-        height = double.parse(json['height']),
-        weight = double.parse(json['weight']),
+        height = double.parse(json['height'].toString()),
+        weight = double.parse(json['weight'].toString()),
         photos = [
           for (var photo in json['photos']) (Photo.fromJson(photo)),
         ],

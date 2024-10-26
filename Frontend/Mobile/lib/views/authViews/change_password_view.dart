@@ -79,9 +79,10 @@ class ChangePasswordView extends StatelessWidget {
                                   ?.validate() ==
                               true) {
                             controller.changePasssword(
-                                controller.emailController.text,
-                                controller.newPasswordController.text,
-                                controller.newPasswordController.text);
+                              controller.emailController.text,
+                              controller.newPasswordController.text,
+                              controller.newPasswordController.text,
+                            );
                           }
                         },
                         child: const Row(
