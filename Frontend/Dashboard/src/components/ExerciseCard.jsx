@@ -68,7 +68,8 @@ const ExerciseCard = ({ ExerciseData }) => {
                         <h3 className={styles.title}>{ExerciseData.name}</h3>
                         <h3 className={styles.muscle}>Muscle: {ExerciseData.muscle}</h3>
                     </div>
-                    <p>Description: {ExerciseData.description}</p>
+                    {!updating && <p>Description: {ExerciseData.description}</p>}
+                    {updating && <input className={styles.description} id='newDescription' type='text' placeholder='New description' onChange={handleDescription} />}
                 </div>
                 <div className={styles.second_column}>
                     <VideoPopUp Path={ExerciseData.video} />
@@ -76,9 +77,10 @@ const ExerciseCard = ({ ExerciseData }) => {
                     {!updating && <button className={styles.update_button} onClick={() => setUpdating(true)}>Update description</button>}
                     {updating &&
                         <form className={styles.desc_form} onSubmit={(event) => handleUpdateDescription(event, ExerciseData.exercise_id)}>
-                            <input className={styles.description} id='newDescription' type='text' placeholder='New description' onChange={handleDescription} />
-                            <button className={styles.submit} type='submit'>Submit change</button>
-                            <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+                            <div className={styles.btn_holder}>
+                                <button className={styles.submit} type='submit'>Submit</button>
+                                <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+                            </div>
                         </form>
                     }
                     <button className={styles.delete_button} onClick={(event) => handleDeleteExercise(event, ExerciseData.exercise_id)}>Delete exercise</button>
