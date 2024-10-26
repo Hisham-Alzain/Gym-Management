@@ -69,6 +69,39 @@ class TraineeController extends Controller
         ], 200);
     }
 
+    public function GetUserInfo(Request $request)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user']
+            ], status: 401);
+        }
+
+        // Trainer
+        if ($user->role == 'Trainer') {
+            // Response
+            return response()->json([
+                "message" => "Coach info retrieved successfully",
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'role' => $user->role
+                ]
+            ], 200);
+        }
+
+        // Trainee
+        // Response
+        return response()->json([
+            "message" => "User retrieved successfully",
+            "user" => new UserInfoResource($user)
+        ], 200);
+    }
+
     public function UploadPhotos(PhotosRequest $request)
     {
         // Validate request
@@ -119,7 +152,7 @@ class TraineeController extends Controller
         ], 201);
     }
 
-    public function GetUserInfo(Request $request)
+    public function GetUserPhotos(Request $request)
     {
         // Get user
         $user = Auth::user();
@@ -131,24 +164,10 @@ class TraineeController extends Controller
             ], status: 401);
         }
 
-        // Trainer
-        if ($user->role == 'Trainer') {
-            // Response
-            return response()->json([
-                "message" => "Coach info retrieved successfully",
-                'user' => [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'role' => $user->role
-                ]
-            ], 200);
-        }
-
-        // Trainee
         // Response
         return response()->json([
-            "message" => "User retrieved successfully",
-            "user" => new UserInfoResource($user)
+            "message" => "Photos retrieved successfully",
+            'photos' => $user->userInfo->photos->take(5),
         ], 200);
     }
 
