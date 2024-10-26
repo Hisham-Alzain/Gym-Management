@@ -5,8 +5,7 @@
     border-radius: 4px;
     cursor: pointer;
     padding: 10px 10px;
-    margin-inline-start: 5px;
-    margin-inline-end: 5px;
+    margin-inline: 3px;
     transition: background-color 0.3s;
 }
 
@@ -83,4 +82,10 @@
     max-width: 600px;
     max-height: 600px;
     object-fit: contain;
+}
+
+@media screen and (max-width: 970px) {
+    .img_button {
+        margin-block: 2px;
+    }
 }

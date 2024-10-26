@@ -5,8 +5,7 @@
     border-radius: 4px;
     cursor: pointer;
     padding: 10px 10px;
-    margin-inline-start: 5px;
-    margin-inline-end: 5px;
+    margin-inline: 3px;
     transition: background-color 0.3s;
 }
 
@@ -81,4 +80,10 @@
 
 .table tr:hover {
     background-color: var(--color-custom_red);
+}
+
+@media screen and (max-width: 970px) {
+    .info_button {
+        margin-block: 2px;
+    }
 }

@@ -85,7 +85,7 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
                       {columnStructure.map((column) => (
                         <th key={column.key}>{column.label}</th>
                       ))}
-                      <th> Show Workout </th>
+                      <th style={{ width: '100px' }}> Show Workout </th>
                     </tr>
                   </thead>
                   <tbody>{programs.length > 0 ? (

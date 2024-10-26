@@ -5,8 +5,7 @@
     border-radius: 4px;
     cursor: pointer;
     padding: 10px 10px;
-    margin-inline-start: 5px;
-    margin-inline-end: 5px;
+    margin-inline: 3px;
     transition: background-color 0.3s;
 }
 
@@ -137,4 +136,10 @@
     border: 1px solid #ddd;
     color: var(--color-text);
     background: var(--color-custom_grey);
+}
+
+@media screen and (max-width: 970px) {
+    .subscription_button {
+        margin-block: 2px;
+    }
 }

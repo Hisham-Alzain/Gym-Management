@@ -31,49 +31,49 @@ const PopUp = ({ user }) => {
                 <tr>
                   <th>Height</th>
                   <td>
-                    {user.height ? `${user.height} cm` : ''}
+                    {user.height ? `${user.height} cm` : '-'}
                   </td>
                 </tr>
                 <tr>
                   <th>Weight</th>
                   <td>
-                    {user.weight ? `${user.weight} Kg` : ''}
+                    {user.weight ? `${user.weight} Kg` : '-'}
                   </td>
                 </tr>
                 <tr>
                   <th>Gender</th>
                   <td>
-                    {user.gender ? user.gender : ''}
+                    {user.gender ? user.gender : '-'}
                   </td>
                 </tr>
                 <tr>
                   <th>Birth date</th>
                   <td>
-                    {user.birth_date ? user.birth_date : ''}
+                    {user.birth_date ? user.birth_date : '-'}
                   </td>
                 </tr>
                 <tr>
                   <th>Active days</th>
                   <td>
-                    {user.active_days ? user.active_days : ''}
+                    {user.active_days ? user.active_days : '-'}
                   </td>
                 </tr>
                 <tr>
                   <th>Illnesses</th>
                   <td>
-                    {user.illnesses ? user.illnesses : ''}
+                    {user.illnesses ? user.illnesses : '-'}
                   </td>
                 </tr>
                 <tr>
                   <th>Allergies</th>
                   <td>
-                    {user.allergies ? user.allergies : ''}
+                    {user.allergies ? user.allergies : '-'}
                   </td>
                 </tr>
                 <tr>
                   <th>Disliked food</th>
                   <td>
-                    {user.disliked_food ? user.disliked_food : ''}
+                    {user.disliked_food ? user.disliked_food : '-'}
                   </td>
                 </tr>
               </tbody>
