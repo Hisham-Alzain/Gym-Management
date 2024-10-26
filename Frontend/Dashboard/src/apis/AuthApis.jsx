@@ -1,11 +1,6 @@
 import axios from 'axios';
 
-
-export const LoginAPI = async (
-  email,
-  password,
-  rememberMe
-) => {
+export const LoginAPI = async (email, password, rememberMe) => {
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/login/trainer', {
       "email": "test@example.com",
@@ -23,9 +18,7 @@ export const LoginAPI = async (
   }
 };
 
-export const CheckToken = async (
-  token
-) => {
+export const CheckToken = async (token) => {
   try {
     const response = await axios.get('http://127.0.0.1:8000/api/isExpired', {
       headers: {
@@ -55,18 +48,15 @@ export const FetchProfile = async (token) => {
   }
 };
 
-export const LogoutAPI = async (
-  token,
-) => {
+export const LogoutAPI = async (token) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/logout', {},
-      {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'Accept': "application/json",
-          'Authorization': `Bearer ${token}`
-        }
-      });
+    const response = await axios.get('http://127.0.0.1:8000/api/logout', {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
     return response;
   } catch (error) {
     return error.response;

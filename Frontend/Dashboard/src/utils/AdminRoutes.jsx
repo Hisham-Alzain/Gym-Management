@@ -10,7 +10,8 @@ const AdminRoutes = () => {
 
     // Routes that Appear when user is (The Admin)
     return (
-        loggedIn && profile.role == "Trainer" ? <> <NavBar /> <Outlet /></> : <Navigate to="/" replace />
+        loggedIn && profile.role == "Trainer" ?
+            <><NavBar /><Outlet /></> : <Navigate to="/" replace />
     );
 }
 

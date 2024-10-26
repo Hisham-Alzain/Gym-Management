@@ -5,10 +5,10 @@ import { LoginContext } from './Contexts';
 
 const AnonymousRoutes = () => {
   const { loggedIn } = useContext(LoginContext);
-  
+
   // Routes that Appear when user is not LoggedIn
   return (
-    loggedIn ? <Navigate to="/" replace /> : <Outlet />
+    loggedIn ? <Navigate to="/home" replace /> : <Outlet />
   );
 }
 
