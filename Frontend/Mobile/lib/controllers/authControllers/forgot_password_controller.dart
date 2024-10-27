@@ -63,7 +63,7 @@ class ForgotPasswordController extends GetxController {
     resendEmail = false;
     try {
       var response = await dio.post(
-        'http://192.168.0.102:8000/api/forgetPassword',
+        'http://192.168.137.51:8000/api/forgetPassword',
         data: {
           "email": email,
         },
@@ -114,7 +114,7 @@ class ForgotPasswordController extends GetxController {
 
     try {
       var response = await dio.post(
-        'http://192.168.0.102:8000/api/changePassword',
+        'http://192.168.137.51:8000/api/changePassword',
         data: {
           "email": email,
           "password": newPassword,

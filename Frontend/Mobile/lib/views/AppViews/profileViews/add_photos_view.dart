@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/controllers/appControllers/add_photos_controller.dart';
+import 'package:mobile/controllers/appControllers/profileControllers/add_photos_controller.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
 
 class AddPhotosView extends StatelessWidget {

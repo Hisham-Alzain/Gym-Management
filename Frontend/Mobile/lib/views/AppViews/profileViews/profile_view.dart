@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/components/text_componenet.dart';
-import 'package:mobile/controllers/appControllers/profile_controller.dart';
+import 'package:mobile/controllers/appControllers/profileControllers/profile_controller.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_image.dart';
 import 'package:mobile/main.dart';
@@ -120,7 +120,7 @@ class ProfileView extends StatelessWidget {
                               name: 'Gym Info',
                               buttonText: 'Edit',
                               icon: Icons.edit,
-                              onPressed: () {},
+                              onPressed: () => Get.toNamed('/editInfo'),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

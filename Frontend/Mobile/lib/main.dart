@@ -45,10 +45,10 @@ class MainApp extends StatelessWidget {
         ),
         textTheme: TextTheme(
           titleLarge: GoogleFonts.oswald(color: Colors.white),
-          titleSmall: GoogleFonts.oswald(color: Colors.white),
           headlineSmall: GoogleFonts.oswald(color: Colors.white),
-          labelLarge: GoogleFonts.afacad(color: Colors.white),
+          labelLarge: GoogleFonts.afacad(color: Colors.white, fontSize: 15),
           bodyLarge: GoogleFonts.afacad(color: Colors.white),
+          bodyMedium: GoogleFonts.afacad(color: Colors.white, fontSize: 18),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: ButtonStyle(

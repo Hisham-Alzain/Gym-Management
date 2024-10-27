@@ -29,7 +29,7 @@ class RedContainer extends StatelessWidget {
           Radius.circular(5),
         ),
       ),
-      child: child,
+      child: Center(child: child),
     );
   }
 }

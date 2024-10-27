@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/controllers/appControllers/personal_info_controller.dart';
+import 'package:mobile/controllers/appControllers/profileControllers/add_info_controller.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_drop_down_button.dart';
+import 'package:mobile/customWidgets/custom_radio_button.dart';
 import 'package:mobile/customWidgets/custom_text_field.dart';
 import 'package:mobile/customWidgets/custom_validation.dart';
 
-class PersonalInfoView extends StatelessWidget {
-  final PersonalInfoController _personalInfoController =
-      Get.put(PersonalInfoController());
+class AddInfoView extends StatelessWidget {
+  final AddInfoController _personalInfoController =
+      Get.put(AddInfoController());
 
-  PersonalInfoView({super.key});
+  AddInfoView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Personal Information'),
+        title: const Text('Add Information'),
       ),
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -29,7 +30,7 @@ class PersonalInfoView extends StatelessWidget {
         ),
         child: Form(
           key: _personalInfoController.personalInfoForm,
-          child: GetBuilder<PersonalInfoController>(
+          child: GetBuilder<AddInfoController>(
             builder: (controller) => SingleChildScrollView(
               child: Column(
                 children: [
@@ -163,21 +164,19 @@ class PersonalInfoView extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: RadioListTile<bool>(
-                          title: Text('No illness',
-                              style: Theme.of(context).textTheme.bodyLarge),
+                        child: CustomRadioButton(
+                          text: 'No illness',
                           value: false,
                           groupValue: controller.hasIllness,
-                          onChanged: (value) => controller.addIllness(value!),
+                          onChanged: (p0) => controller.addIllness(p0!),
                         ),
                       ),
                       Expanded(
-                        child: RadioListTile<bool>(
-                          title: Text('Illnesses',
-                              style: Theme.of(context).textTheme.bodyLarge),
+                        child: CustomRadioButton(
+                          text: 'Illnesses',
                           value: true,
                           groupValue: controller.hasIllness,
-                          onChanged: (value) => controller.addIllness(value!),
+                          onChanged: (p0) => controller.addIllness(p0!),
                         ),
                       ),
                     ],
@@ -198,21 +197,19 @@ class PersonalInfoView extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: RadioListTile<bool>(
-                          title: Text('No Allergies',
-                              style: Theme.of(context).textTheme.bodyLarge),
+                        child: CustomRadioButton(
+                          text: 'No allergies',
                           value: false,
                           groupValue: controller.hasAllergies,
-                          onChanged: (value) => controller.addAllergies(value!),
+                          onChanged: (p0) => controller.addAllergies(p0!),
                         ),
                       ),
                       Expanded(
-                        child: RadioListTile<bool>(
-                          title: Text('Allergies',
-                              style: Theme.of(context).textTheme.bodyLarge),
+                        child: CustomRadioButton(
+                          text: 'Allergies',
                           value: true,
                           groupValue: controller.hasAllergies,
-                          onChanged: (value) => controller.addAllergies(value!),
+                          onChanged: (p0) => controller.addAllergies(p0!),
                         ),
                       ),
                     ],
@@ -233,23 +230,19 @@ class PersonalInfoView extends StatelessWidget {
                   Row(
                     children: [
                       Expanded(
-                        child: RadioListTile<bool>(
-                          title: Text('No disliked foods',
-                              style: Theme.of(context).textTheme.bodyLarge),
+                        child: CustomRadioButton(
+                          text: 'No disliked foods',
                           value: false,
                           groupValue: controller.hasDislikedFood,
-                          onChanged: (value) =>
-                              controller.addDislikedFood(value!),
+                          onChanged: (p0) => controller.addDislikedFood(p0!),
                         ),
                       ),
                       Expanded(
-                        child: RadioListTile<bool>(
-                          title: Text('Disliked foods',
-                              style: Theme.of(context).textTheme.bodyLarge),
+                        child: CustomRadioButton(
+                          text: 'Disliked foods',
                           value: true,
                           groupValue: controller.hasDislikedFood,
-                          onChanged: (value) =>
-                              controller.addDislikedFood(value!),
+                          onChanged: (p0) => controller.addDislikedFood(p0!),
                         ),
                       ),
                     ],
@@ -272,7 +265,7 @@ class PersonalInfoView extends StatelessWidget {
                       if (controller.personalInfoForm.currentState
                               ?.validate() ==
                           true) {
-                        controller.addPersonalInfo(
+                        controller.addInfo(
                           controller.birthdate,
                           controller.selectedGender.toString(),
                           controller.selectedHeight!.toDouble(),

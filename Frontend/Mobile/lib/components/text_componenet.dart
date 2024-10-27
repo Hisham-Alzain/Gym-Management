@@ -21,9 +21,12 @@ class ProfileTextComponent extends StatelessWidget {
             icon,
             size: 30,
           ),
-        Text(
-          '$title: ',
-          style: Theme.of(context).textTheme.titleSmall,
+        Padding(
+          padding: const EdgeInsets.all(5),
+          child: Text(
+            '$title: ',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
         ),
         Flexible(
           child: Text(
