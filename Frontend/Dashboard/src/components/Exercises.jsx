@@ -20,8 +20,9 @@ const Exercises = () => {
   const [nextPage, setNextPage] = useState(1);
 
   const [exercises, setExercises] = useState([]);
-  const [checked, setChecked] = useState({});
-  const [searchExersicse, setSearchExercise] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  // const [checked, setChecked] = useState({});
+  // const [searchExersicse, setSearchExercise] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -72,6 +73,15 @@ const Exercises = () => {
     }
   };
 
+  const filteredExercises = exercises
+    ? exercises.filter(exercise =>
+      exercise.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ) : [];
+
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -79,21 +89,21 @@ const Exercises = () => {
     };
   }, [nextPage]);
 
-  const handleSearch = (event) => {
-    setSearchExercise(event.target.value);
-    SearchExercises(accessToken, event.target.value).then((response) => {
-      if (response.status === 200) {
-        setExercises(response.data.exercises);
-        response.data.exercises.forEach((exercise) => {
-          if (!checked[exercise.exercise_id]) {
-            setChecked((prevState) => ({ ...prevState, [exercise.exercise_id]: false }));
-          }
-        });
-      } else {
-        console.log(response.statusText);
-      }
-    });
-  }
+  // const handleSearch = (event) => {
+  //   setSearchExercise(event.target.value);
+  //   SearchExercises(accessToken, event.target.value).then((response) => {
+  //     if (response.status === 200) {
+  //       setExercises(response.data.exercises);
+  //       response.data.exercises.forEach((exercise) => {
+  //         if (!checked[exercise.exercise_id]) {
+  //           setChecked((prevState) => ({ ...prevState, [exercise.exercise_id]: false }));
+  //         }
+  //       });
+  //     } else {
+  //       console.log(response.statusText);
+  //     }
+  //   });
+  // }
 
   return (
     <div className={styles.screen}>
@@ -103,14 +113,14 @@ const Exercises = () => {
             className={styles.search_input}
             type="text"
             placeholder="Search exercise"
-            value={searchExersicse}
+            value={searchQuery}
             onChange={handleSearch}
           />
         </div>
         <NewExercisePopUp />
       </div>
       <div className={styles.mid_container}>
-        {exercises.map((exercise) => (
+        {filteredExercises.map((exercise) => (
           <div key={exercise.exercise_id}
             className={styles.exercise_card}
           >
