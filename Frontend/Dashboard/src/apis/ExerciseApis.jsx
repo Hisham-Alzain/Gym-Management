@@ -15,6 +15,21 @@ export const FetchExercises = async (token) => {
     }
 };
 
+export const SearchExercises = async (token, name) => {
+    try {
+        const response = await axios.get(`http://127.0.0.1:8000/api/exercises?name[like]=${name}`, {
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Accept': "application/json",
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response;
+    } catch (error) {
+        return error.response;
+    }
+};
+
 export const AddExercise = async (token, name, muscle, description, video_path, thumbnail_path) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/exercise/create`, {
@@ -36,10 +51,10 @@ export const AddExercise = async (token, name, muscle, description, video_path, 
     }
 };
 
-export const UpdateExercise = async (token, exercise_id,description) => {
+export const UpdateExercise = async (token, exercise_id, description) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/exercise/update`, {
-            "exercise_id":exercise_id,
+            "exercise_id": exercise_id,
             "description": description
         }, {
             headers: {

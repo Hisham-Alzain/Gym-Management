@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\ExerciseFilter;
 use App\Models\User;
 use App\Models\DietMeal;
 use App\Models\Exercise;
@@ -288,7 +289,7 @@ class TrainerController extends Controller
 
     public function CreateDefaultWorkoutProgram(DefaultWorkoutRequest $request)
     {
-        $validated=$request->validated();
+        $validated = $request->validated();
         // Get user
         $user = Auth::user();
 
@@ -331,29 +332,41 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            // Get all exercises
-            $exercises = Exercise::paginate(10);
+            // Filter skills based on type
+            $filter = new ExerciseFilter();
+            $queryItems = $filter->transform($request);
+
+            // Response
+            if (empty($queryItems)) {
+                // Get all exercises
+                $exercises = Exercise::paginate(10);
+
+                // Response
+                return response()->json([
+                    "message" => "exercises fetched",
+                    "exercises" => new ExerciseCollection($exercises),
+                    'pagination_data' => [
+                        'from' => $exercises->firstItem(),
+                        'to' => $exercises->lastItem(),
+                        'total' => $exercises->total(),
+                        'first_page' => 1,
+                        'current_page' => $exercises->currentPage(),
+                        'last_page' => $exercises->lastPage(),
+                        'pageNumbers' => $this->generateNumberArray(1, $exercises->lastPage()),
+                        'first_page_url' => $exercises->url(1),
+                        'current_page_url' => $exercises->url($exercises->currentPage()),
+                        'last_page_url' => $exercises->url($exercises->lastPage()),
+                        'next_page' => $exercises->nextPageUrl(),
+                        'prev_page' => $exercises->previousPageUrl(),
+                        'path' => $exercises->path(),
+                    ],
+                ]);
+            }
 
             // Response
             return response()->json([
-                "message" => "exercises fetched",
-                "exercises" => new ExerciseCollection($exercises),
-                'pagination_data' => [
-                    'from' => $exercises->firstItem(),
-                    'to' => $exercises->lastItem(),
-                    'total' => $exercises->total(),
-                    'first_page' => 1,
-                    'current_page' => $exercises->currentPage(),
-                    'last_page' => $exercises->lastPage(),
-                    'pageNumbers' => $this->generateNumberArray(1, $exercises->lastPage()),
-                    'first_page_url' => $exercises->url(1),
-                    'current_page_url' => $exercises->url($exercises->currentPage()),
-                    'last_page_url' => $exercises->url($exercises->lastPage()),
-                    'next_page' => $exercises->nextPageUrl(),
-                    'prev_page' => $exercises->previousPageUrl(),
-                    'path' => $exercises->path(),
-                ],
-            ]);
+                'exercises' => new ExerciseCollection(Exercise::where($queryItems)->get()->all()),
+            ], 200);
         }
     }
 
@@ -533,11 +546,17 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateExerciseSet(Request $request, $program_id) {}
+    public function CreateExerciseSet(Request $request, $program_id)
+    {
+    }
 
-    public function UpdateExerciseSet(Request $request, $program_id) {}
+    public function UpdateExerciseSet(Request $request, $program_id)
+    {
+    }
 
-    public function DeleteExerciseSet(Request $request, $program_id) {}
+    public function DeleteExerciseSet(Request $request, $program_id)
+    {
+    }
 
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {

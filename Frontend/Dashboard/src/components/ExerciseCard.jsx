@@ -15,7 +15,7 @@ const ExerciseCard = ({ ExerciseData }) => {
   const { accessToken } = useContext(LoginContext);
   // States
   const [updating, setUpdating] = useState(false);
-  const [newDescription, setNewDescription] = useState('');
+  const [newDescription, setNewDescription] = useState(ExerciseData.description);
 
   const handleDescription = (event) => {
     event.preventDefault();
@@ -68,7 +68,7 @@ const ExerciseCard = ({ ExerciseData }) => {
             <h3 className={styles.muscle}>Muscle: {ExerciseData.muscle}</h3>
           </div>
           {!updating && <p>Description: {ExerciseData.description}</p>}
-          {updating && <input className={styles.description} id='newDescription' type='text' placeholder='New description' onChange={handleDescription} />}
+          {updating && <input className={styles.description} id='newDescription' type='text' placeholder='New description' onChange={handleDescription} value={newDescription} />}
         </div>
         <div className={styles.second_column}>
           <VideoPopUp Path={ExerciseData.video} />

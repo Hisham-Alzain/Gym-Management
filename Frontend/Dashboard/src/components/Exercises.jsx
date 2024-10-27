@@ -1,8 +1,9 @@
 import { useEffect, useState, useContext, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginContext } from "../utils/Contexts";
-import { FetchExercises, AddExercise } from '../apis/ExerciseApis';
+import { FetchExercises, SearchExercises } from '../apis/ExerciseApis';
 import { FetchImage } from '../apis/UserViewApis';
+import NewExercisePopUp from './PopUps/NewExercisePopUp';
 import ExerciseCard from './ExerciseCard';
 import styles from '../styles/exercises.module.css';
 
@@ -19,6 +20,8 @@ const Exercises = () => {
   const [nextPage, setNextPage] = useState(1);
 
   const [exercises, setExercises] = useState([]);
+  const [checked, setChecked] = useState({});
+  const [searchExersicse, setSearchExercise] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -76,8 +79,36 @@ const Exercises = () => {
     };
   }, [nextPage]);
 
+  const handleSearch = (event) => {
+    setSearchExercise(event.target.value);
+    SearchExercises(accessToken, event.target.value).then((response) => {
+      if (response.status === 200) {
+        setExercises(response.data.exercises);
+        response.data.exercises.forEach((exercise) => {
+          if (!checked[exercise.exercise_id]) {
+            setChecked((prevState) => ({ ...prevState, [exercise.exercise_id]: false }));
+          }
+        });
+      } else {
+        console.log(response.statusText);
+      }
+    });
+  }
+
   return (
     <div className={styles.screen}>
+      <div className={styles.upper_div}>
+        <div className={styles.search} >
+          <input
+            className={styles.search_input}
+            type="text"
+            placeholder="Search exercise"
+            value={searchExersicse}
+            onChange={handleSearch}
+          />
+        </div>
+        <NewExercisePopUp />
+      </div>
       <div className={styles.mid_container}>
         {exercises.map((exercise) => (
           <div key={exercise.exercise_id}
