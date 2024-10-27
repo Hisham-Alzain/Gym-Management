@@ -1,18 +1,18 @@
 .upload_button {
     width: 121px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    transition: 0.5s;
-    background-color: var(--color-background);
-    border-color: white;
-    color: #3ea952;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
-    box-shadow: 0px 1px 3px rgb(28, 183, 69);
-    padding-block: 2px;
+    border-radius: 5px;
+    border-color: #ffffff;
+    color: #3ea952;
+    background-color: var(--color-background);
+    box-shadow: 0px 2px 5px #1cb745;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-block: 12px;
+    transition: 0.5s;
 }
 
 .upload_button:hover {
@@ -64,6 +64,44 @@
 .video_div {
     padding: 10px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.video_div button {
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+    color: var(--color-text);
+    background: var(--color-custom_red);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-block-start: 25px;
+    transition: background-color 0.3s;
+}
+
+.video_div button:hover {
+    background-color: #ee1f1f;
+}
+
+
+/* file upload button */
+input[type="file"]::file-selector-button {
+    height: 30px;
+    font-size: 15px;
+    color: #f1f1f1;
+    background-color: #FF5733;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    margin-inline: 20px;
+    transition: background-color 0.1s;
+}
+
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+    background-color: #FF7F50;
 }
