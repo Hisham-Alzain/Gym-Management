@@ -1,4 +1,5 @@
 import 'package:mobile/models/photo.dart';
+import 'package:mobile/models/subscription_plan.dart';
 
 class User {
   final int id;
@@ -14,7 +15,8 @@ class User {
   final String? allergies;
   final String? dislikedFoods;
   final int activeDays;
-  //TODO: final subscriptionPlan;
+  //TODO:make not nullable
+  final SubscriptionPlan? subscriptionPlan;
   final String role;
 
   User({
@@ -31,6 +33,7 @@ class User {
     required this.allergies,
     required this.dislikedFoods,
     required this.activeDays,
+    this.subscriptionPlan,
     required this.role,
   });
 
@@ -50,5 +53,8 @@ class User {
         allergies = json['allergies'] as String?,
         dislikedFoods = json['disliked_foods'] as String?,
         activeDays = json['active_days'] as int,
+        subscriptionPlan = json['subscription_plan'] != null
+            ? SubscriptionPlan.fromJson(json['subscription_plan'])
+            : null,
         role = json['role'] as String;
 }

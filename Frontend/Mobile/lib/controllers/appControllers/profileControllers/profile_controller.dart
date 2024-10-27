@@ -30,7 +30,7 @@ class ProfileController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.137.51:8000/api/trainee',
+        'http://192.168.0.100:8000/api/trainee',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

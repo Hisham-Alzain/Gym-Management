@@ -78,7 +78,7 @@ class AddPhotosController extends GetxController {
 
     try {
       var response = await dio.post(
-        'http://192.168.137.51:8000/api/trainee/photos',
+        'http://192.168.0.100:8000/api/trainee/photos',
         data: data,
         options: Options(
           headers: {
@@ -117,7 +117,7 @@ class AddPhotosController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.137.51:8000/api/trainee/photos',
+        'http://192.168.0.100:8000/api/trainee/photos',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

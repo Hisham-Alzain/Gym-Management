@@ -166,9 +166,22 @@ class ProfileView extends StatelessWidget {
                             child: EditContainer(
                               name: 'Subscription plan',
                               onPressed: () {},
-                              child: const Column(
+                              child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [],
+                                children: [
+                                  ProfileTextComponent(
+                                    icon: Icons.calendar_today,
+                                    title: 'Start date',
+                                    text:
+                                        ' ${controller.user.subscriptionPlan?.startDate.toString().split(' ')[0] ?? 'None'}',
+                                  ),
+                                  ProfileTextComponent(
+                                    icon: Icons.calendar_today,
+                                    title: 'End date',
+                                    text:
+                                        ' ${controller.user.subscriptionPlan?.endDate.toString().split(' ')[0] ?? 'None'}',
+                                  ),
+                                ],
                               ),
                             ),
                           ),
