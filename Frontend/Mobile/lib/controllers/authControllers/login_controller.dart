@@ -55,7 +55,7 @@ class LoginController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.0.102:8000/api/login/trainee',
+        'http://192.168.137.51:8000/api/login/trainee',
         data: {
           "email": email,
           "password": password,
@@ -71,7 +71,7 @@ class LoginController extends GetxController {
       Get.back();
       if (response.statusCode == 200) {
         storage!.write('token', response.data['access_token']);
-        customDialogs.showSuccessDialog('Loging in...');
+        customDialogs.showSuccessDialog('Logging in...');
         Future.delayed(
           const Duration(seconds: 1),
           () {

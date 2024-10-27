@@ -21,6 +21,7 @@ class CustomDropDownButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormField(
+      initialValue: value,
       validator: (value) => CustomValidation().validateRequiredDropDown(value),
       builder: (FormFieldState<dynamic> state) {
         return Column(
