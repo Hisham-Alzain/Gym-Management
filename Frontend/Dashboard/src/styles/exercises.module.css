@@ -1,46 +1,48 @@
 .screen {
-    inset-block-start: 75px;
     position: relative;
+    inset-block-start: 75px;
     margin-block-end: 100px;
     min-height: 100vh;
 }
 
 .mid_container {
     width: 100%;
-    padding: 10px 15px;
     display: flex;
     flex-direction: column;
+    padding-block-start: 10px;
 }
 
 .upper_div {
     display: flex;
     padding-block-start: 10px;
-    margin-inline-start: 40px;
+    margin-inline-start: 20px;
 }
 
 .search {
-    width: 33%;
+    width: 35%;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 .search_input {
-    background: #1a1a1a;
+    width: 75%;
+    cursor: text;
     font-size: 15px;
-    padding: 10px 15px;
-    border-radius: 25px;
-    border: 1px solid var(--color-titles);
-    text-decoration: inherit;
     font-weight: 600;
+    text-decoration: inherit;
+    border: 1px solid #292929;
+    border-radius: 15px;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    box-shadow: 0px 2px 2px #863333;
     display: flex;
     align-items: center;
-    width: 75%;
-    color: #ffffff;
-    box-shadow: 0px 2px 2px #863333;
-    cursor: text;
-    transition: .2s;
+    padding: 10px 15px;
+    transition: 0.25s;
 }
 
+/* TODO */
 /* Popup css */
 .add_button {
     display: flex;
@@ -160,8 +162,10 @@
     min-height: 25px;
     margin-block-start: 20px;
 }
+/* TODO */
 
-/* card css */
+
+/* Card css */
 .exercise_card {
     width: 90%;
     border: 2px;
@@ -184,17 +188,17 @@
     justify-content: center;
 }
 
-
 /* Exercise card CSS */
 .card {
-    height: 180px;
+    height: 200px;
+    border-width: 2px;
     border-radius: 20px;
     transition: 0.2s;
 }
 
 .card:hover {
-    transition: .2s;
-    box-shadow: 0px 2px 12px rgb(183, 28, 28);
+    transition: 0.2s;
+    box-shadow: 0px 2px 10px rgb(183, 28, 28);
 }
 
 .row {
@@ -206,7 +210,7 @@
 }
 
 .img_holder {
-    width: 25%;
+    width: 20%;
     position: relative;
     display: flex;
     align-items: center;
@@ -214,17 +218,17 @@
 }
 
 .image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     object-fit: fill;
     border-radius: 10px;
 }
 
 .info {
     width: 60%;
-    padding-block-start: 10px;
+    padding-block-start: 15px;
     padding-inline-start: 5px;
-    color: rgb(209, 209, 209);
+    color: #d1d1d1;
 }
 
 .name_muscle {
@@ -240,90 +244,83 @@
     overflow-y: auto;
 }
 
+.info .title,
 .info .muscle {
-    font-weight: 500;
-    max-height: 100px;
-    white-space: wrap;
-    overflow: hidden;
-    margin-block-end: 10px;
-    color: #3E6FA9;
-    margin-inline-start: 40px;
-}
-
-.title {
     padding: 5px;
     font-weight: 500;
     max-height: 100px;
-    white-space: wrap;
-    overflow: hidden;
-    margin-block-end: 10px;
     color: #3E6FA9;
+    overflow: hidden;
+    white-space: wrap;
+    margin-block-end: 10px;
 }
 
-.second_column {
-    width: 15%;
-    color: rgb(209, 209, 209);
-}
-
-.second_column p {
-    padding: 3px;
-    margin: 1px;
-}
-
-.update_button {
-    width: 121px;
-    border-radius: 5px;
-    transition: 0.5s;
-    background-color: var(--color-background);
-    border-color: white;
-    color: rgb(183, 118, 28);
-    font-size: 15px;
-    cursor: pointer;
-    box-shadow: 0px 2px 5px rgb(165, 183, 28);
-    padding: 2px;
-}
-
-.update_button:hover {
-    color: #f1f1f1;
-    background-color: rgb(183, 108, 28);
-}
-
-.btn_holder {
-    width: 121px;
-    display: flex;
-    justify-content: space-between;
-    margin-block: 12px;
-}
-
-.desc_form {
-    display: flex;
+.info .muscle {
+    margin-inline-start: 40px;
 }
 
 .description {
     width: 90%;
     height: 60%;
-    border: 2px outset;
-    border-color: #f0ffff;
-    border-radius: 5px;
-    background-color: var(--color-background);
     color: #ffffff;
+    border: 1px outset;
+    border-radius: 10px;
+    background-color: var(--color-background);
 }
 
 .description:hover {
-    box-shadow: 0px 2px 5px rgb(183, 108, 28);
+    box-shadow: 0px 1px 3px rgb(183, 108, 28);
 }
 
-.submit,
-.cancel {
-    width: 49%;
-    border-radius: 5px;
-    font-weight: 500;
+.column {
+    width: 20%;
+    padding-block-start: 10px;
+}
+
+.update_button {
+    width: 121px;
     font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border-color: #ffffff;
+    color: #b7761c;
+    background-color: var(--color-background);
+    box-shadow: 0px 1px 3px #a5b71c;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.5s;
+}
+
+.update_button:hover {
+    color: #f1f1f1;
+    background-color: #b76c1c;
+}
+
+.btn_holder {
+    width: 121px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 21px;
+    transition: 0.4s;
+}
+
+.btn_holder button {
+    width: 49%;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    border-color: #ffffff;
     color: #ffffff;
     background-color: var(--color-background);
-    border-color: white;
-    cursor: pointer;
+    box-shadow: 0px 2px 5px #ffffff;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
 }
 
 .submit:hover {
@@ -338,19 +335,22 @@
 
 .delete_button {
     width: 121px;
-    border-radius: 5px;
-    transition: 0.5s;
-    background-color: var(--color-background);
-    border-color: white;
-    color: #b71c1c;
     font-size: 15px;
     cursor: pointer;
-    box-shadow: 0px 2px 5px rgb(183, 28, 28);
+    border-radius: 5px;
+    border-color: #ffffff;
+    color: #b71c1c;
+    background-color: var(--color-background);
+    box-shadow: 0px 2px 5px #b71b1a;
     padding: 2px;
-    margin-block: 12px
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block: 12px;
+    transition: 0.5s;
 }
 
 .delete_button:hover {
     color: #f1f1f1;
-    background-color: rgb(183, 28, 28);
+    background-color: #b71c1c;
 }
