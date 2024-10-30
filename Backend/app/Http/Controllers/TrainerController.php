@@ -35,66 +35,6 @@ use App\Http\Resources\WorkoutProgramCollection;
 
 class TrainerController extends Controller
 {
-    public function StartSubscription(SubscriptionRequest $request)
-    {
-        // Validate request
-        $validated = $request->validated();
-
-        // Get user
-        $user = Auth::user();
-
-        // Check user
-        if ($user == null) {
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        }
-
-        // Check user_role
-        $policy = new AdminPolicy();
-        if (!$policy->Policy(User::find($user->id))) {
-            // Response
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        } else {
-            // Get Trainee
-            $trainee = User::where('id', $validated['user_id'])->first();
-
-            // Check Trainee
-            if ($trainee == null) {
-                // Response
-                return response()->json([
-                    'errors' => ['user' => 'user not found'],
-                ], 404);
-            } else {
-                $subscription = Subscription::where('user_id', $trainee->id)
-                    ->orderByDesc('end_date')->first();
-                if ($subscription == null || $subscription->end_date < today()->toDateString()) {
-                    // Create subscription
-                    $subscription = Subscription::create([
-                        'user_id' => $validated['user_id'],
-                        'start_date' => today()->toDateString(),
-                        'end_date' => today()->addMonths($validated['duration'])->toDateString()
-                    ]);
-                } else {
-                    // Create subscription
-                    $subscription = Subscription::create([
-                        'user_id' => $validated['user_id'],
-                        'start_date' => $subscription->end_date->toDateString(),
-                        'end_date' => $subscription->end_date->addMonths($validated['duration'])->toDateString()
-                    ]);
-                }
-
-                // Response
-                return response()->json([
-                    'message' => 'Added the subscription successfully',
-                    'subscription' => new SubscriptionResource($subscription)
-                ], 201);
-            }
-        }
-    }
-
     public function ShowUsers(Request $request)
     {
         // Get user
@@ -168,7 +108,7 @@ class TrainerController extends Controller
             if ($trainee == null) {
                 // Response
                 return response()->json([
-                    'errors' => ['user' => 'user was not found'],
+                    'errors' => ['user' => 'User was not found'],
                 ], 404);
             } else {
                 // Delete trainee
@@ -179,6 +119,112 @@ class TrainerController extends Controller
                     'message' => 'Successfully deleted user'
                 ], 204);
             }
+        }
+    }
+
+    public function StartSubscription(SubscriptionRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get Trainee
+            $trainee = User::where('id', $validated['user_id'])->first();
+
+            // Check Trainee
+            if ($trainee == null) {
+                // Response
+                return response()->json([
+                    'errors' => ['user' => 'User not found'],
+                ], 404);
+            } else {
+                $subscription = Subscription::where('user_id', $trainee->id)
+                    ->orderByDesc('end_date')->first();
+                if ($subscription == null || $subscription->end_date < today()->toDateString()) {
+                    // Create subscription
+                    $subscription = Subscription::create([
+                        'user_id' => $validated['user_id'],
+                        'start_date' => today()->toDateString(),
+                        'end_date' => today()->addMonths($validated['duration'])->toDateString()
+                    ]);
+                } else {
+                    // Create subscription
+                    $subscription = Subscription::create([
+                        'user_id' => $validated['user_id'],
+                        'start_date' => $subscription->end_date->toDateString(),
+                        'end_date' => $subscription->end_date->addMonths($validated['duration'])->toDateString()
+                    ]);
+                }
+
+                // Response
+                return response()->json([
+                    'message' => 'Added the subscription successfully',
+                    'subscription' => new SubscriptionResource($subscription)
+                ], 201);
+            }
+        }
+    }
+
+    public function ShowUserSubscriptions(Request $request, $user_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get all subscriptions
+            $subscriptions = Subscription::where('user_id', $user_id)->paginate(10);
+
+            // Response
+            return response()->json([
+                "message" => "Subscriptions fetched",
+                "subscriptions" => new SubscriptionCollection($subscriptions),
+                'pagination_data' => [
+                    'from' => $subscriptions->firstItem(),
+                    'to' => $subscriptions->lastItem(),
+                    'total' => $subscriptions->total(),
+                    'first_page' => 1,
+                    'current_page' => $subscriptions->currentPage(),
+                    'last_page' => $subscriptions->lastPage(),
+                    'pageNumbers' => $this->generateNumberArray(1, $subscriptions->lastPage()),
+                    'first_page_url' => $subscriptions->url(1),
+                    'current_page_url' => $subscriptions->url($subscriptions->currentPage()),
+                    'last_page_url' => $subscriptions->url($subscriptions->lastPage()),
+                    'next_page' => $subscriptions->nextPageUrl(),
+                    'prev_page' => $subscriptions->previousPageUrl(),
+                    'path' => $subscriptions->path(),
+                ],
+            ], 200);
         }
     }
 
@@ -241,7 +287,7 @@ class TrainerController extends Controller
         }
     }
 
-    public function ShowWorkoutPrograms(Request $request)
+    public function ShowWorkoutPrograms(Request $request, $user_id)
     {
         // Get user
         $user = Auth::user();
@@ -261,8 +307,17 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            // Get all programs
-            $programs = WorkoutProgram::paginate(10);
+            // Check user
+            $wantedUser = User::find($user_id);
+            if ($wantedUser == null) {
+                return response()->json([
+                    'errors' => ['user' => 'User was not user'],
+                ], 404);
+            }
+
+            // Get user programs
+            $programs = WorkoutProgram::where('user_id', $wantedUser->id)
+                ->orderBy('updated_at')->paginate(10);
 
             // Response
             return response()->json([
@@ -284,6 +339,44 @@ class TrainerController extends Controller
                     'path' => $programs->path(),
                 ],
             ]);
+        }
+    }
+
+    public function ShowWorkoutProgram(Request $request, $program_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get program
+            $program = WorkoutProgram::find($program_id);
+
+            // Check program
+            if ($program == null) {
+                return response()->json([
+                    'errors' => ['program' => 'program was not found'],
+                ], 404);
+            } else {
+                // Response
+                return response()->json([
+                    "message" => "program fetched",
+                    "program" => new WorkoutProgramResource($program),
+                ], 200);
+            }
         }
     }
 
@@ -402,7 +495,7 @@ class TrainerController extends Controller
             // Check exercise
             if ($exercise == null) {
                 return response()->json([
-                    'errors' => ['exercise' => 'exercise was not found'],
+                    'errors' => ['exercise' => 'Exercise was not found'],
                 ], 404);
             }
 
@@ -545,7 +638,7 @@ class TrainerController extends Controller
             // Check exercise
             if ($exercise == null) {
                 return response()->json([
-                    'errors' => ['exercise' => 'exercise was not found'],
+                    'errors' => ['exercise' => 'Exercise was not found'],
                 ], 404);
             }
             $exercise->description = $validated['description'];
@@ -584,17 +677,11 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function CreateExerciseSet(Request $request, $program_id) {}
 
-    public function UpdateExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function UpdateExerciseSet(Request $request, $program_id) {}
 
-    public function DeleteExerciseSet(Request $request, $program_id)
-    {
-    }
+    public function DeleteExerciseSet(Request $request, $program_id) {}
 
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {
@@ -616,17 +703,17 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            // Get trainee
+            // Get program
             $program = WorkoutProgram::find($program_id);
 
-            // Check Trainee
+            // Check program
             if ($program == null) {
                 // Response
                 return response()->json([
-                    'errors' => ['program' => 'program was not found'],
+                    'errors' => ['program' => 'Program was not found'],
                 ], 404);
             } else {
-                // Delete trainee
+                // Delete program
                 $program->delete();
 
                 // Response
@@ -685,7 +772,7 @@ class TrainerController extends Controller
         }
     }
 
-    public function ShowDietPrograms(Request $request)
+    public function ShowDietPrograms(Request $request, $user_id)
     {
         // Get user
         $user = Auth::user();
@@ -705,8 +792,17 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            // Get all programs
-            $programs = DietProgram::paginate(10);
+            // Check user
+            $wantedUser = User::find($user_id);
+            if ($wantedUser == null) {
+                return response()->json([
+                    'errors' => ['user' => 'User was not user'],
+                ], 404);
+            }
+
+            // Get user programs
+            $programs = DietProgram::where('user_id', $wantedUser->id)
+                ->orderBy('updated_at')->paginate(10);
 
             // Response
             return response()->json([
@@ -728,6 +824,44 @@ class TrainerController extends Controller
                     'path' => $programs->path(),
                 ],
             ]);
+        }
+    }
+
+    public function ShowDietProgram(Request $request, $program_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get program
+            $program = DietProgram::find($program_id);
+
+            // Check program
+            if ($program == null) {
+                return response()->json([
+                    'errors' => ['program' => 'program was not found'],
+                ], 404);
+            } else {
+                // Response
+                return response()->json([
+                    "message" => "program fetched",
+                    "program" => new DietProgramResource($program),
+                ], 200);
+            }
         }
     }
 
@@ -843,7 +977,7 @@ class TrainerController extends Controller
             if ($meal == null) {
                 // Response
                 return response()->json([
-                    'errors' => ['meal' => 'meal was not found'],
+                    'errors' => ['meal' => 'Meal was not found'],
                 ], 404);
             } else {
                 // Delete meal
@@ -884,7 +1018,7 @@ class TrainerController extends Controller
             if ($program == null) {
                 // Response
                 return response()->json([
-                    'errors' => ['program' => 'program was not found'],
+                    'errors' => ['program' => 'Program was not found'],
                 ], 404);
             } else {
                 // Delete program
@@ -895,52 +1029,6 @@ class TrainerController extends Controller
                     'message' => 'Successfully deleted program'
                 ], 204);
             }
-        }
-    }
-
-    public function ShowUserSubscriptions(Request $request, $user_id)
-    {
-        // Get user
-        $user = Auth::user();
-
-        // Check user
-        if ($user == null) {
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        }
-
-        // Check user_role
-        $policy = new AdminPolicy();
-        if (!$policy->Policy(User::find($user->id))) {
-            // Response
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        } else {
-            // Get all subscriptions
-            $subscriptions = Subscription::where('user_id', $user_id)->paginate(10);
-
-            // Response
-            return response()->json([
-                "message" => "Subscriptions fetched",
-                "subscriptions" => new SubscriptionCollection($subscriptions),
-                'pagination_data' => [
-                    'from' => $subscriptions->firstItem(),
-                    'to' => $subscriptions->lastItem(),
-                    'total' => $subscriptions->total(),
-                    'first_page' => 1,
-                    'current_page' => $subscriptions->currentPage(),
-                    'last_page' => $subscriptions->lastPage(),
-                    'pageNumbers' => $this->generateNumberArray(1, $subscriptions->lastPage()),
-                    'first_page_url' => $subscriptions->url(1),
-                    'current_page_url' => $subscriptions->url($subscriptions->currentPage()),
-                    'last_page_url' => $subscriptions->url($subscriptions->lastPage()),
-                    'next_page' => $subscriptions->nextPageUrl(),
-                    'prev_page' => $subscriptions->previousPageUrl(),
-                    'path' => $subscriptions->path(),
-                ],
-            ], 200);
         }
     }
 

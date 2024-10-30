@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\DietProgram;
 use App\Models\User;
+use App\Models\DietProgram;
 use App\Models\WorkoutProgram;
 
-class ProgramPloicy
+class ProgramPolicy
 {
     /**
      * Create a new policy instance.
@@ -15,6 +15,7 @@ class ProgramPloicy
     {
         //
     }
+
     public function WorkoutPolicy(User $user, WorkoutProgram $workoutProgram)
     {
         if ($user->role == 'Trainer' || $user->id == $workoutProgram->user_id) {
@@ -22,6 +23,7 @@ class ProgramPloicy
         }
         return false;
     }
+
     public function DietPolicy(User $user, DietProgram $dietProgram)
     {
         if ($user->role == 'Trainer' || $user->id == $dietProgram->user_id) {

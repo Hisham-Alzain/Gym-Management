@@ -17,6 +17,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'Logout')->middleware('auth:sanctum');
 });
 
+/* Trainee (Mobile Only) */
 Route::controller(TraineeController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/trainee', 'GetUserInfo');
@@ -26,7 +27,7 @@ Route::controller(TraineeController::class)->group(function () {
         Route::post('/trainee/photos', 'UploadPhotos');
         Route::delete('/trainee/photos/{photo_id}', 'DeletePhoto');
 
-        Route::get('/trainee/workouts/{user_id}', 'ShowWorkoutPrograms');
+        Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
         Route::get('/trainee/workout/{program_id}', 'ShowWorkoutProgram');
         Route::post('/trainee/workout/set', 'UpdateExerciseSet');
 
@@ -43,7 +44,8 @@ Route::controller(TrainerController::class)->group(function () {
         Route::get('/subscription/{user_id}', 'ShowUserSubscriptions');
         Route::post('/subscription/start', 'StartSubscription');
 
-        Route::get('/workout_programs', 'ShowWorkoutPrograms');
+        Route::get('/workouts/{user_id}', 'ShowWorkoutPrograms');
+        Route::get('/workout/{program_id}', 'ShowWorkoutProgram');
         Route::post('/workouts/create', 'CreateWorkoutProgram');
         Route::post('/workouts/create/default', 'CreateDefaultWorkoutProgram');
         Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
@@ -54,7 +56,8 @@ Route::controller(TrainerController::class)->group(function () {
         Route::post('/exercise/video', 'UploadExerciseVideo');
         Route::delete('/exercises/{exercise_id}', 'DeleteExercise');
 
-        Route::get('/diet_programs', 'ShowDietPrograms');
+        Route::get('/diets/{user_id}', 'ShowDietPrograms');
+        Route::get('/diet/{program_id}', 'ShowDietProgram');
         Route::post('/diets/create', 'CreateDietProgram');
         Route::delete('/diets/{program_id}', 'DeleteDietProgram');
 

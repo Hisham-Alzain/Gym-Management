@@ -2,14 +2,15 @@ import { useEffect, useState, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Popup from 'reactjs-popup';
-import { FaDumbbell, FaRegTrashCan } from "react-icons/fa6";
+import { MdNoFood } from "react-icons/md";
+import { FaRegTrashCan } from "react-icons/fa6";
 import { LoginContext } from '../../utils/Contexts';
-import { FetchUserWorkouts, DeleteWorkoutProgram } from '../../apis/WorkoutApis';
-import styles from '../../styles/programs_popup.module.css';
+import { FetchUserDiets, DeleteDietProgram } from '../../apis/DietsApis';
+import styles from '../../styles/diets_popup.module.css';
 import btn_style from '../../styles/users_table.module.css';
 
 
-const ProgramsPopUp = ({ user_id, user_name }) => {
+const DietsPopUp = ({ user_id, user_name }) => {
   // Translations
   const { t } = useTranslation('global');
   // Context
@@ -29,7 +30,7 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
     } else {
       setIsLoading(true);
 
-      FetchUserWorkouts(accessToken, user_id).then((response) => {
+      FetchUserDiets(accessToken, user_id).then((response) => {
         if (response.status === 200) {
           setData(response.data.pagination_data);
           setPrograms([]);
@@ -47,19 +48,19 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
     }
   }, [currentPage]);
 
-  const handleAddWorkout = (event) => {
+  const handleAddDiet = (event) => {
     event.preventDefault();
-    navigate(`/trainee/workout/add/${user_id}/${user_name}`);
+    navigate(`/trainee/diet/add/${user_id}/${user_name}`);
   }
 
-  const handleShowWorkout = (event, id) => {
+  const handleShowDiet = (event, id) => {
     event.preventDefault();
-    navigate(`/trainee/workout/${id}/${user_name}`);
+    navigate(`/trainee/diet/${id}/${user_name}`);
   }
 
-  const handleDeleteWorkout = (event, id) => {
+  const handleDeleteDiet = (event, id) => {
     event.preventDefault();
-    DeleteWorkoutProgram(accessToken, id).then((response) => {
+    DeleteDietProgram(accessToken, id).then((response) => {
       if (response.status === 204) {
         window.location.reload();
       } else {
@@ -69,7 +70,7 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
   }
 
   const columnStructure = [
-    { key: 'program_id', label: 'Workout number' },
+    { key: 'program_id', label: 'Diet number' },
     { key: 'start_date', label: 'Start Date' },
     { key: 'end_date', label: 'End Date' },
   ];
@@ -77,8 +78,8 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
   return (
     <Popup
       trigger={
-        <button className={styles.workout_button} title='Show workout programs'>
-          <FaDumbbell />
+        <button className={styles.diet_button} title='Show diet programs'>
+          <MdNoFood />
         </button>
       }
       modal
@@ -91,20 +92,20 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
           </button>
           {isLoading ? <></> : <>
             <div className={styles.header}>
-              <div className={styles.name}>{user_name} workouts</div>
-              <button className={styles.create_button} onClick={handleAddWorkout}>
-                Add workout
+              <div className={styles.name}>{user_name} diets</div>
+              <button className={styles.create_button} onClick={handleAddDiet}>
+                Add Diet
               </button>
             </div>
             <div className={styles.workouts}>
-              <div className={styles.workout_table}>
+              <div className={styles.diets_table}>
                 <table className={styles.table}>
                   <thead>
                     <tr>
                       {columnStructure.map((column) => (
                         <th key={column.key}>{column.label}</th>
                       ))}
-                      <th style={{ minWidth: '80px' }}> Show Workout </th>
+                      <th style={{ minWidth: '80px' }}> Show Diet </th>
                     </tr>
                   </thead>
                   <tbody>{programs.length > 0 ? (
@@ -116,16 +117,16 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
                       ))}
                       <td>
                         <button
-                          onClick={(event) => handleShowWorkout(event, program.program_id)}
-                          className={styles.workout_button}
-                          title='Show workout program'
+                          onClick={(event) => handleShowDiet(event, program.program_id)}
+                          className={styles.diet_button}
+                          title='Show diet program'
                         >
-                          <FaDumbbell />
+                          <MdNoFood />
                         </button>
                         <button
-                          onClick={(event) => handleDeleteWorkout(event, program.program_id)}
+                          onClick={(event) => handleDeleteDiet(event, program.program_id)}
                           className={btn_style.delete_button}
-                          title='Delete workout program'
+                          title='Delete diet program'
                         >
                           <FaRegTrashCan />
                         </button>
@@ -159,4 +160,4 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
   );
 }
 
-export default ProgramsPopUp;
+export default DietsPopUp;

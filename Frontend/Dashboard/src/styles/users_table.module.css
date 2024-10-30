@@ -80,39 +80,6 @@
     background-color: var(--color-custom_grey);
 }
 
-/* Action Buttons */
-.delete_button {
-    padding: 10px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s;
-    margin-inline: 3px;
-    background-color: #dc3545;
-    color: #ffffff;
-}
-
-.delete_button:hover {
-    background-color: #c82333;
-}
-
-
-.diet_button {
-    padding: 10px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s;
-    margin-inline: 3px;
-    background-color: #2f2525;
-    color: #ffffff;
-}
-
-.diet_button:hover {
-    background-color: #2f2a2a;
-}
-
-
 .pagination {
     text-align: center;
     margin-block-start: 10px;
@@ -138,10 +105,24 @@
     background: var(--color-custom_grey);
 }
 
-@media screen and (max-width: 970px) {
+/* Action Buttons */
+.delete_button {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-inline: 3px;
+    background-color: #dc3545;
+    color: #ffffff;
+}
 
-    .delete_button,
-    .diet_button {
+.delete_button:hover {
+    background-color: #c82333;
+}
+
+@media screen and (max-width: 970px) {
+    .delete_button {
         margin-block: 2px;
     }
 }

@@ -9,7 +9,6 @@ use App\Models\DietProgram;
 use App\Models\WorkoutProgram;
 use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutExerciseRep;
-use App\Policies\ProgramPloicy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\PhotosRequest;
@@ -192,7 +191,7 @@ class TraineeController extends Controller
         ], 204);
     }
 
-    public function ShowWorkoutPrograms(Request $request, $user_id)
+    public function ShowWorkoutPrograms(Request $request)
     {
         // Get user
         $user = Auth::user();
@@ -204,14 +203,6 @@ class TraineeController extends Controller
             ], 401);
         }
 
-        if ($user->role == 'Trainer') {
-            $user = User::where('id', $user_id)->first();
-            if ($user == null) {
-                return response()->json([
-                    'errors' => ['user' => 'Invalid user'],
-                ], 401);
-            }
-        }
         // Get programs
         $programs = WorkoutProgram::where('user_id', $user->id)
             ->orderBy('updated_at')->paginate(10);
@@ -251,7 +242,8 @@ class TraineeController extends Controller
         }
 
         // Get program
-        $program = WorkoutProgram::where('id', $program_id)->first();
+        $program = WorkoutProgram::where('id', $program_id)
+            ->where('user_id', $user->id)->first();
 
         // Check program
         if ($program == null) {
@@ -259,20 +251,11 @@ class TraineeController extends Controller
                 'errors' => ['program' => 'program was not found'],
             ], 404);
         } else {
-            // Check user_role
-            $policy = new ProgramPloicy();
-            if (!$policy->WorkoutPolicy(User::find($user->id), $program)) {
-                // Response
-                return response()->json([
-                    'errors' => ['user' => 'Invalid user'],
-                ], 401);
-            } else {
-                // Response
-                return response()->json([
-                    "message" => "program fetched",
-                    "program" => new WorkoutProgramResource($program),
-                ], 200);
-            }
+            // Response
+            return response()->json([
+                "message" => "program fetched",
+                "program" => new WorkoutProgramResource($program),
+            ], 200);
         }
     }
 
@@ -302,7 +285,6 @@ class TraineeController extends Controller
         }
 
         // Update set
-        // Get rep
         $rep = WorkoutExerciseRep::create($validated);
 
         // Response
