@@ -340,33 +340,29 @@ class TrainerController extends Controller
             if (empty($queryItems)) {
                 // Get all exercises
                 $exercises = Exercise::paginate(10);
-
-                // Response
-                return response()->json([
-                    "message" => "exercises fetched",
-                    "exercises" => new ExerciseCollection($exercises),
-                    'pagination_data' => [
-                        'from' => $exercises->firstItem(),
-                        'to' => $exercises->lastItem(),
-                        'total' => $exercises->total(),
-                        'first_page' => 1,
-                        'current_page' => $exercises->currentPage(),
-                        'last_page' => $exercises->lastPage(),
-                        'pageNumbers' => $this->generateNumberArray(1, $exercises->lastPage()),
-                        'first_page_url' => $exercises->url(1),
-                        'current_page_url' => $exercises->url($exercises->currentPage()),
-                        'last_page_url' => $exercises->url($exercises->lastPage()),
-                        'next_page' => $exercises->nextPageUrl(),
-                        'prev_page' => $exercises->previousPageUrl(),
-                        'path' => $exercises->path(),
-                    ],
-                ]);
+            } else {
+                $exercises = Exercise::where($queryItems)->paginate(10);
             }
-
             // Response
             return response()->json([
-                'exercises' => new ExerciseCollection(Exercise::where($queryItems)->get()->all()),
-            ], 200);
+                "message" => "exercises fetched",
+                "exercises" => new ExerciseCollection($exercises),
+                'pagination_data' => [
+                    'from' => $exercises->firstItem(),
+                    'to' => $exercises->lastItem(),
+                    'total' => $exercises->total(),
+                    'first_page' => 1,
+                    'current_page' => $exercises->currentPage(),
+                    'last_page' => $exercises->lastPage(),
+                    'pageNumbers' => $this->generateNumberArray(1, $exercises->lastPage()),
+                    'first_page_url' => $exercises->url(1),
+                    'current_page_url' => $exercises->url($exercises->currentPage()),
+                    'last_page_url' => $exercises->url($exercises->lastPage()),
+                    'next_page' => $exercises->nextPageUrl(),
+                    'prev_page' => $exercises->previousPageUrl(),
+                    'path' => $exercises->path(),
+                ],
+            ]);
         }
     }
 

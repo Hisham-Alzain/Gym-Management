@@ -19,10 +19,10 @@ const Exercises = () => {
   const [isDone, setIsDone] = useState(false);
   const [nextPage, setNextPage] = useState(1);
 
+  const [filterMuscle, setFilterMuscle] = useState('')
+  const [checked, setChecked] = useState({});
   const [exercises, setExercises] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  // const [checked, setChecked] = useState({});
-  // const [searchExersicse, setSearchExercise] = useState("");
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -89,21 +89,21 @@ const Exercises = () => {
     };
   }, [nextPage]);
 
-  // const handleSearch = (event) => {
-  //   setSearchExercise(event.target.value);
-  //   SearchExercises(accessToken, event.target.value).then((response) => {
-  //     if (response.status === 200) {
-  //       setExercises(response.data.exercises);
-  //       response.data.exercises.forEach((exercise) => {
-  //         if (!checked[exercise.exercise_id]) {
-  //           setChecked((prevState) => ({ ...prevState, [exercise.exercise_id]: false }));
-  //         }
-  //       });
-  //     } else {
-  //       console.log(response.statusText);
-  //     }
-  //   });
-  // }
+  const handleFilter = (event) => {
+    setFilterMuscle(event.target.value);
+    SearchExercises(accessToken, event.target.value).then((response) => {
+      if (response.status === 200) {
+        setExercises(response.data.exercises);
+        response.data.exercises.forEach((exercise) => {
+          if (!checked[exercise.exercise_id]) {
+            setChecked((prevState) => ({ ...prevState, [exercise.exercise_id]: false }));
+          }
+        });
+      } else {
+        console.log(response);
+      }
+    });
+  }
 
   return (
     <div className={styles.screen}>
@@ -117,7 +117,29 @@ const Exercises = () => {
             onChange={handleSearch}
           />
         </div>
-        <NewExercisePopUp />
+        <div className={styles.filter_div}>
+          <label>muscle filter:</label>
+          <select
+            defaultValue=""
+            value={filterMuscle}
+            onChange={handleFilter}
+            className={styles.filter}
+          >
+            <option value="" >All</option>
+            <option value="Chest">Chest</option>
+            <option value="Back">Back</option>
+            <option value="Shoulders">Shoulders</option>
+            <option value="Legs">Legs</option>
+            <option value="Arms">Arms</option>
+            <option value="Chest_Biceps">Chest Biceps</option>
+            <option value="Back_Triceps">Back Triceps</option>
+            <option value="Leg_Shoulders">Leg Shoulders</option>
+            <option value="Abs">Abs</option>
+          </select>
+        </div>
+        <div className={styles.buttun_div}>
+          <NewExercisePopUp />
+        </div>
       </div>
       <div className={styles.mid_container}>
         {filteredExercises.map((exercise) => (
