@@ -1,12 +1,12 @@
 import { useEffect, useState, useContext, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { BsTrash } from "react-icons/bs";
-import { MdNoFood } from "react-icons/md";
+import { FaRegTrashCan } from "react-icons/fa6";
 import { LoginContext } from "../utils/Contexts";
 import { FetchUsers, DeleteUser } from "../apis/UserViewApis";
 import PopUp from "./PopUps/PopUp";
 import ImgPopUp from "./PopUps/ImgPopUp";
+import DietsPopUp from './PopUps/DietsPopUp';
 import ProgramsPopUp from "./PopUps/ProgramsPopUp";
 import SubscriptionPopUp from "./PopUps/SubscriptionPopUp";
 import styles from "../styles/users_table.module.css";
@@ -52,25 +52,18 @@ const Users = () => {
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
-  };
-
-  const handleDiet = (event, user) => {
-    event.preventDefault();
-    console.log(user);
-    navigate(`/trainee/diet/${user.id}/${user.name}`);
-  };
+  }
 
   const handleDelete = (event, user_id) => {
     event.preventDefault();
     DeleteUser(accessToken, user_id).then((response) => {
-      if (response.status == 204) {
-        console.log('user deleted');
+      if (response.status === 204) {
         window.location.reload();
       } else {
-        console.log('delete not working')
+        console.log(response)
       }
-    })
-  };
+    });
+  }
 
   const columnStructure = [
     { key: "name", label: t('components.admin.users_table.column_structure.name') },
@@ -121,17 +114,13 @@ const Users = () => {
                   <ImgPopUp user={user} />
                   <SubscriptionPopUp user_id={user.id} user_name={user.name} />
                   <ProgramsPopUp user_id={user.id} user_name={user.name} />
-                  <button
-                    onClick={(event) => handleDiet(event, user)}
-                    className={styles.diet_button}
-                    title='Show diet programs'>
-                    <MdNoFood />
-                  </button>
+                  <DietsPopUp user_id={user.id} user_name={user.name} />
                   <button
                     onClick={(event) => handleDelete(event, user.id)}
                     className={styles.delete_button}
-                    title='Delete trainee'>
-                    <BsTrash />
+                    title='Delete trainee'
+                  >
+                    <FaRegTrashCan />
                   </button>
                 </td>
               </tr>)
