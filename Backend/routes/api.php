@@ -51,7 +51,7 @@ Route::controller(TrainerController::class)->group(function () {
         Route::get('/exercises', 'ShowExercises');
         Route::post('/exercise/create', 'AddExercise');
         Route::post('/exercise/update', 'UpdateExercise');
-        Route::post('/exercise/video','UploadExerciseVideo');
+        Route::post('/exercise/video', 'UploadExerciseVideo');
         Route::delete('/exercises/{exercise_id}', 'DeleteExercise');
 
         Route::get('/diet_programs', 'ShowDietPrograms');
@@ -73,6 +73,22 @@ Route::get(
             $path = storage_path('app/private/' . $folder . '/' . $user_id . '/' . $file);
         }
 
+        if (!file_exists($path)) {
+            abort(404);
+        }
+
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+        return response()->file($path, [
+            'Content-Type' => 'image/' . $ext,
+            'Access-Control-Allow-Origin' => '*'
+        ]);
+    }
+)->middleware('auth:sanctum');
+
+Route::get(
+    '/image/{folder}/{file}',
+    function (Request $request, $folder, $file) {
+        $path = storage_path('app/private/' . $folder . '/' . $file);
         if (!file_exists($path)) {
             abort(404);
         }

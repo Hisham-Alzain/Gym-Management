@@ -1,0 +1,130 @@
+/* Popup css */
+.add_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border-color: #b71c1c;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.add_button:hover {
+    color: #ffffff;
+    background-color: #b71c1c;
+    border-color: #ffffff;
+}
+
+.modal {
+    background: var(--color-background);
+    box-shadow: 0 0 15px var(--color-custom_red);
+    min-width: 300px;
+    min-height: 300px;
+}
+
+.modal .header {
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+    border-block-end: 1px solid gray;
+    margin-block-end: 5px;
+    padding-block: 10px;
+}
+
+.modal .close {
+    position: absolute;
+    display: block;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 20px;
+    color: var(--color-text);
+    background: var(--color-custom_red);
+    border: 2px solid #cfcece;
+    border-radius: 18px;
+    padding: 2px 5px;
+}
+
+.modal .actions {
+    width: 100%;
+    text-align: center;
+    padding: 10px 5px;
+    margin: auto;
+}
+
+.modal .content {
+    width: 100%;
+    height: 100%;
+}
+
+.add_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+}
+
+.custom_input {
+    width: 60%;
+    font-size: 15px;
+    font-weight: 600;
+    background: none;
+    color: var(--color-custom_red);
+    border: none;
+    border-block-end: 3px solid #A5A5A8;
+    padding-inline-start: 5px;
+    padding-block-end: 10px;
+    margin-block: 10px;
+    transition: 0.3s;
+}
+
+.custom_input:active,
+.custom_input:focus,
+.custom_input:hover {
+    outline: none;
+    border-block-end-color: #4F6E95;
+}
+
+.img_holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img_holder img {
+    width: 100px;
+    height: 100px;
+    border: dashed;
+    border-width: 1px;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+}
+
+.submit_div {
+    display: flex;
+    justify-content: center;
+}
+
+.submit_div .submit {
+    min-height: 25px;
+    margin-block-start: 20px;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: var(--color-custom_red);
+    cursor: pointer;
+}
+
+.submit:hover {
+    color: #ffffff;
+    background-color: #ff1a1a;
+}

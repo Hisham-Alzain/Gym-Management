@@ -7,7 +7,7 @@ class ExerciseFilter
 {
     protected $safeParms = [
         'name' => ['eq', 'like'],
-        'type' => ['eq'],
+        'muscle' => ['eq'],
     ];
 
     protected $operatorMap = [

@@ -43,7 +43,7 @@ const Exercises = () => {
 
               // if not add exercise
               if (exercise.photo) {
-                FetchImage("", exercise.photo).then((response) => {
+                FetchImage(accessToken, exercise.photo).then((response) => {
                   exercise.photo = response.imageURL;
                   setExercises((prevState) => ([...prevState, exercise]));
                 });

@@ -6,7 +6,7 @@ use App\Enums\WorkoutMuscle;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddExerciseRequest extends FormRequest
+class ExerciseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,11 @@ class AddExerciseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>['required', 'string','unique:exercises'],
-            'muscle'=>['required',Rule::in(WorkoutMuscle::names())],
-            'description'=>['required'],
-            'video_path'=>['sometimes'],
-            'thumbnail_path'=>['sometimes','image','max:2048']
+            'name' => ['required', 'string', 'unique:exercises'],
+            'muscle' => ['required', Rule::in(WorkoutMuscle::names())],
+            'description' => ['required'],
+            'video_path' => ['sometimes'],
+            'thumbnail_path' => ['sometimes', 'image', 'max:4096']
         ];
     }
 }

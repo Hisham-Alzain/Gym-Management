@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FaPlus } from "react-icons/fa6";
 import { AddExercise } from '../../apis/ExerciseApis';
 import img_holder from '../../assets/noImage.jpg';
-import styles from '../../styles/exercises.module.css';
+import styles from '../../styles/exercise_popup.module.css';
 
 
 const NewExercisePopUp = () => {
@@ -16,7 +16,7 @@ const NewExercisePopUp = () => {
     const { accessToken } = useContext(LoginContext);
 
     const [name, setName] = useState('');
-    const [muscle, setMuscle] = useState('Chest');
+    const [muscle, setMuscle] = useState('');
     const [description, setDescription] = useState('');
     const [thumbnailPath, setThumbnailPath] = useState('');
     const [videoPath, setVideoPath] = useState('');
@@ -79,54 +79,58 @@ const NewExercisePopUp = () => {
                     <div className={styles.header}> Add new exercise </div>
                     <div className={styles.content}>
                         <form className={styles.add_form} onSubmit={(event) => handleNewExercise(event)}>
+                            <input
+                                type='text'
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
+                                placeholder='Exercise name'
+                                className={styles.custom_input}
+                                required
+                            />
+                            <select
+                                defaultValue=""
+                                value={muscle}
+                                onChange={handleChange}
+                                className={styles.custom_input}
+                                required
+                            >
+                                <option value="" disabled>Choose Muscle</option>
+                                <option value="Chest">Chest</option>
+                                <option value="Back">Back</option>
+                                <option value="Shoulders">Shoulders</option>
+                                <option value="Legs">Legs</option>
+                                <option value="Arms">Arms</option>
+                                <option value="Chest_Biceps">Chest Biceps</option>
+                                <option value="Back_Triceps">Back Triceps</option>
+                                <option value="Leg_Shoulders">Leg Shoulders</option>
+                                <option value="Abs">Abs</option>
+                            </select>
+                            <textarea
+                                rows={7}
+                                value={description}
+                                onChange={(event) => setDescription(event.target.value)}
+                                placeholder='Exercise description'
+                                className={styles.custom_input}
+                                required
+                            />
+                            <label htmlFor='thumbnailPath' className={styles.img_holder}>
+                                {thumbnailPath ? (
+                                    <img src={URL.createObjectURL(thumbnailPath)} alt="Uploaded Photo" style={{ pointerEvents: 'none' }} />
+                                ) : (
+                                    <img src={img_holder} alt="Photo Placeholder" style={{ pointerEvents: 'none' }} />
+                                )}
+                            </label>
+                            <input
+                                id='thumbnailPath'
+                                type='file'
+                                placeholder='Photo'
+                                accept='.png,.jpg,.jpeg'
+                                onChange={handlePhotoChange}
+                                width="100px" height="100px"
+                                style={{ visibility: 'hidden' }}
+                            />
                             <div className={styles.row}>
-                                <div className={styles.name_muscle}>
-                                    <input
-                                        type='text'
-                                        className={styles.input}
-                                        placeholder='Exercise name'
-                                        value={name}
-                                        onChange={(event) => setName(event.target.value)}
-                                        required
-                                    />
-                                    <select value={muscle} onChange={handleChange} className={styles.drop_down}>
-                                        <option value="Chest">Chest</option>
-                                        <option value="Back">Back</option>
-                                        <option value="Shoulders">Shoulders</option>
-                                        <option value="Legs">Legs</option>
-                                        <option value="Arms">Arms</option>
-                                        <option value="Chest_Biceps">Chest Biceps</option>
-                                        <option value="Back_Triceps">Back Triceps</option>
-                                        <option value="Leg_Shoulders">Leg Shoulders</option>
-                                        <option value="Abs">Abs</option>
-                                    </select>
-                                </div>
-                                <label htmlFor='thumbnailPath' className={styles.img_holder}>
-                                    {thumbnailPath ? (
-                                        <img src={URL.createObjectURL(thumbnailPath)} alt="Uploaded Photo" style={{ pointerEvents: 'none' }} />
-                                    ) : (
-                                        <img src={img_holder} alt="Photo Placeholder" style={{ pointerEvents: 'none' }} />
-                                    )}
-                                </label>
-                                <input
-                                    id='thumbnailPath'
-                                    type='file'
-                                    placeholder='Photo'
-                                    accept='.png,.jpg,.jpeg'
-                                    onChange={handlePhotoChange}
-                                    width="100px" height="100px"
-                                    style={{ visibility: 'hidden' }}
-                                />
-                            </div>
-                            <div className={styles.row}>
-                                <input
-                                    type='text'
-                                    className={styles.input}
-                                    placeholder='Exercise description'
-                                    value={description}
-                                    onChange={(event) => setDescription(event.target.value)}
-                                    required
-                                />
+                                <label>Video: </label>
                                 <input
                                     id='file'
                                     type='file'

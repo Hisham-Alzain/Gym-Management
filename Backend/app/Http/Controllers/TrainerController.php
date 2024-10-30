@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Filters\ExerciseFilter;
 use App\Models\User;
 use App\Models\DietMeal;
 use App\Models\Exercise;
@@ -13,13 +12,14 @@ use App\Models\WorkoutProgram;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
 use App\Policies\AdminPolicy;
+use App\Filters\ExerciseFilter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\DietRequest;
 use App\Http\Requests\MealRequest;
 use App\Http\Requests\U_MealRequest;
 use App\Http\Requests\WorkoutRequest;
-use App\Http\Requests\AddExerciseRequest;
+use App\Http\Requests\ExerciseRequest;
 use App\Http\Requests\DefaultWorkoutRequest;
 use App\Http\Requests\SubscriptionRequest;
 use App\Http\Resources\DietMealResource;
@@ -446,7 +446,7 @@ class TrainerController extends Controller
         }
     }
 
-    public function AddExercise(AddExerciseRequest $request)
+    public function AddExercise(ExerciseRequest $request)
     {
         // Validate request
         $validated = $request->validated();
@@ -469,6 +469,44 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            // Handle file uploads if present in the request
+            if ($request->hasFile('thumbnail_path')) {
+                // Get Uploaded photos
+                $thumbnail = $request->file('thumbnail_path');
+
+                // Set destination
+                $thumbnail_destination = 'exercises_thumbnails';
+
+                // Get file name
+                $thumbnail_extension = $thumbnail->getClientOriginalName();
+
+                // Set file name
+                $photoName = now()->format('Y_m_d_His') . $thumbnail_extension;
+
+                // Store file and get path
+                $thumbnail_path = $thumbnail->storeAs($thumbnail_destination, $photoName);
+                $validated['thumbnail_path'] = $thumbnail_path;
+            }
+
+            // Handle file uploads if present in the request
+
+            if ($request->hasFile('video_path')) {
+                // Get Uploaded photos
+                $video = $request->file('video_path');
+
+                // Set destination
+                $video_destination = 'exercises_videos';
+
+                // Get file name
+                $video_extension = $video->getClientOriginalName();
+
+                // Set file name
+                $fileName = now()->format('Y_m_d_His') . $video_extension;
+
+                // Store file and get path
+                $video_path = $thumbnail->storeAs($video_destination, $fileName);
+                $validated['video_path'] = $video_path;
+            }
             Exercise::create($validated);
             return response()->json([
                 "message" => "exercise created successfully"

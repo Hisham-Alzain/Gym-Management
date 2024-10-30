@@ -30,7 +30,7 @@ export const SearchExercises = async (token, name) => {
     }
 };
 
-export const AddExercise = async (token, name, muscle, description, video_path, thumbnail_path) => {
+export const AddExercise = async (token, name, muscle, description, thumbnail_path, video_path) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/exercise/create`, {
             "name": name,
