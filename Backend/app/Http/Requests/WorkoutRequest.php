@@ -27,7 +27,7 @@ class WorkoutRequest extends FormRequest
     {
         return [
             // Workout_programs table
-            'user_id' => ['required'],
+            'user_id' => ['required', 'exists:users,id'],
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d', 'after:start_date'],
             'repeat_days' => ['required', 'integer', 'min:1', 'max:7'],
@@ -38,7 +38,7 @@ class WorkoutRequest extends FormRequest
 
             // Workout_excercises table
             'days.*.exercises' => ['required', 'array'],
-            'days.*.exercises.*.exercise_id' => ['required'],
+            'days.*.exercises.*.exercise_id' => ['required', 'exists:exercises,id'],
 
             // Workout_excercise_reps table
             'days.*.exercises.*.sets' => ['required', 'array'],

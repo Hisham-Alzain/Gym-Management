@@ -24,7 +24,7 @@ class SubscriptionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
+            'user_id' => 'required|exists:users,id',
             'duration' => 'required|numeric|min:1|max:12'
         ];
     }

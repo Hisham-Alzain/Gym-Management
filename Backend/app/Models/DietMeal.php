@@ -17,9 +17,10 @@ class DietMeal extends Model
      */
     protected $fillable = [
         'diet_program_id',
+        'meal_id',
         'meal_number',
-        'meal_name',
-        'description',
+        'quantity',
+        'details',
         'time_after'
     ];
 
@@ -37,12 +38,19 @@ class DietMeal extends Model
      */
     protected function casts(): array
     {
-        return [];
+        return [
+            'quantity' => 'decimal:2'
+        ];
     }
 
     /* Relations */
     public function dietProgram(): BelongsTo
     {
         return $this->belongsTo(DietProgram::class, 'diet_program_id', 'id');
+    }
+
+    public function meal(): BelongsTo
+    {
+        return $this->belongsTo(Meal::class, 'meal_id', 'id');
     }
 }

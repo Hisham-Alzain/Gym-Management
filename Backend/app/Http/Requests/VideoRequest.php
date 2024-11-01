@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class U_MealRequest extends FormRequest
+class VideoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class U_MealRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'meal_id' => ['required'],
-            'meal_number' => ['sometimes', 'integer'],
-            'meal_name' => ['sometimes'],
-            'description' => ['sometimes'],
-            'time_after' => ['sometimes', 'integer']
+            'exercise_id' => ['required', 'exists:exercises,id'],
+            'video' => ['required', 'mimes:mp4,m4v,mkv,webm,flv,avi,wmv']
         ];
     }
 

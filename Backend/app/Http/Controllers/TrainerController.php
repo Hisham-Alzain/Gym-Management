@@ -3,32 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\DietMeal;
-use App\Models\Exercise;
-use App\Models\WorkoutDay;
-use App\Models\DietProgram;
 use App\Models\Subscription;
-use App\Models\WorkoutProgram;
+use APP\Models\Meal;
+use App\Models\DietMeal;
+use App\Models\DietProgram;
+use App\Models\Exercise;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
+use App\Models\WorkoutDay;
+use App\Models\WorkoutProgram;
 use App\Policies\AdminPolicy;
 use App\Filters\ExerciseFilter;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use App\Http\Requests\SubscriptionRequest;
 use App\Http\Requests\DietRequest;
 use App\Http\Requests\MealRequest;
-use App\Http\Requests\U_MealRequest;
 use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\ExerciseRequest;
 use App\Http\Requests\DefaultWorkoutRequest;
-use App\Http\Requests\SubscriptionRequest;
-use App\Http\Resources\DietMealResource;
-use App\Http\Resources\ExerciseCollection;
+use App\Http\Requests\VideoRequest;
 use App\Http\Resources\UserInfoCollection;
-use App\Http\Resources\DietProgramResource;
 use App\Http\Resources\SubscriptionResource;
-use App\Http\Resources\DietProgramCollection;
 use App\Http\Resources\SubscriptionCollection;
+use App\Http\Resources\MealResource;
+use App\Http\Resources\MealCollection;
+use App\Http\Resources\DietProgramResource;
+use App\Http\Resources\DietProgramCollection;
+use App\Http\Resources\ExerciseResource;
+use App\Http\Resources\ExerciseCollection;
 use App\Http\Resources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutProgramCollection;
 
@@ -459,13 +463,10 @@ class TrainerController extends Controller
         }
     }
 
-    public function UploadExerciseVideo(Request $request)
+    public function UploadExerciseVideo(VideoRequest $request)
     {
         // Validate request
-        $validated = $request->validate([
-            'exercise_id' => ['required'],
-            'video' => ['required', 'mimes:mp4,m4v,mkv,webm,flv,avi,wmv']
-        ]);
+        $validated = $request->validated();
 
         // Get user
         $user = Auth::user();
@@ -578,7 +579,6 @@ class TrainerController extends Controller
             }
 
             // Handle file uploads if present in the request
-
             if ($request->hasFile('video_path')) {
                 // Get Uploaded photos
                 $video = $request->file('video_path');
@@ -596,9 +596,14 @@ class TrainerController extends Controller
                 $video_path = $thumbnail->storeAs($video_destination, $fileName);
                 $validated['video_path'] = $video_path;
             }
-            Exercise::create($validated);
+
+            // Create exercise
+            $exercise = Exercise::create($validated);
+
+            // Response
             return response()->json([
-                "message" => "exercise created successfully"
+                'message' => 'Exercise has been created successfully',
+                'exercise' => new ExerciseResource($exercise)
             ], 201);
         }
     }
@@ -629,25 +634,29 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-
+            // Get exercise
             $exercise = Exercise::find($validated['exercise_id']);
+
             // Check exercise
             if ($exercise == null) {
                 return response()->json([
                     'errors' => ['exercise' => 'Exercise was not found'],
                 ], 404);
             }
+
+            // Update exercise
             $exercise->description = $validated['description'];
             $exercise->save();
+
+            // Response
             return response()->json([
-                "message" => "exercise updated successfully"
+                "message" => "Exercise has been updated successfully"
             ], 200);
         }
     }
 
     public function DeleteExercise(Request $request, $exercise_id)
     {
-        $exercise = Exercise::where('id', $exercise_id)->first();
         // Get user
         $user = Auth::user();
 
@@ -666,18 +675,26 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            $exercise->delete();
-            return response()->json([
-                'message' => 'exercise deleted successfully',
-            ], 204);
+            // Get exercise
+            $exercise = Exercise::find('id', $exercise_id);
+
+            // Check exercise
+            if ($exercise == null) {
+                // Response
+                return response()->json([
+                    'errors' => ['exercise' => 'Exercise was not found'],
+                ], 404);
+            } else {
+                // Delete exercise
+                $exercise->delete();
+
+                // Response
+                return response()->json([
+                    'message' => 'Exercise has been deleted successfully',
+                ], 204);
+            }
         }
     }
-
-    public function CreateExerciseSet(Request $request, $program_id) {}
-
-    public function UpdateExerciseSet(Request $request, $program_id) {}
-
-    public function DeleteExerciseSet(Request $request, $program_id) {}
 
     public function DeleteWorkoutProgram(Request $request, $program_id)
     {
@@ -753,9 +770,10 @@ class TrainerController extends Controller
             foreach ($validated['meals'] as $M) {
                 $meal = DietMeal::create([
                     'diet_program_id' => $program->id,
+                    'meal_id' => $M['meal_id'],
                     'meal_number' => $M['meal_number'],
-                    'meal_name' => $M['meal_name'],
-                    'description' => $M['description'],
+                    'quantity' => $M['quantity'],
+                    'details' => $M['details'],
                     'time_after' => $M['time_after']
                 ]);
             }
@@ -861,7 +879,52 @@ class TrainerController extends Controller
         }
     }
 
-    public function CreateDietMeal(MealRequest $request)
+    public function ShowMeals(Request $request)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            $meals = Meal::paginate(10);
+
+            // Response
+            return response()->json([
+                "message" => "exercises fetched",
+                "exercises" => new MealCollection($meals),
+                'pagination_data' => [
+                    'from' => $meals->firstItem(),
+                    'to' => $meals->lastItem(),
+                    'total' => $meals->total(),
+                    'first_page' => 1,
+                    'current_page' => $meals->currentPage(),
+                    'last_page' => $meals->lastPage(),
+                    'pageNumbers' => $this->generateNumberArray(1, $meals->lastPage()),
+                    'first_page_url' => $meals->url(1),
+                    'current_page_url' => $meals->url($meals->currentPage()),
+                    'last_page_url' => $meals->url($meals->lastPage()),
+                    'next_page' => $meals->nextPageUrl(),
+                    'prev_page' => $meals->previousPageUrl(),
+                    'path' => $meals->path(),
+                ],
+            ]);
+        }
+    }
+
+    public function AddMeal(MealRequest $request)
     {
         // Validate request
         $validated = $request->validated();
@@ -885,26 +948,27 @@ class TrainerController extends Controller
             ], 401);
         } else {
             // Create meal
-            $meal = DietMeal::create([
-                'diet_program_id' => $validated['program_id'],
-                'meal_number' => $validated['meal_number'],
-                'meal_name' => $validated['meal_name'],
-                'description' => $validated['description'],
-                'time_after' => $validated['time_after']
-            ]);
+            $meal = Meal::create($validated);
 
             // Response
             return response()->json([
                 'message' => 'Meal has been created successfully',
-                'meal' => new DietMealResource($meal)
+                'meal' => new MealResource($meal)
             ], 201);
         }
     }
 
-    public function UpdateDietMeal(U_MealRequest $request)
+    public function UpdateMeal(Request $request)
     {
         // Validate request
-        $validated = $request->validated();
+        $validated = $request->validate([
+            'meal_id' => ['required'],
+            'description' => ['sometimes'],
+            'calories' => ['sometimes'],
+            'protein' => ['sometimes'],
+            'carbs' => ['sometimes'],
+            'fat' => ['sometimes']
+        ]);
 
         // Get user
         $user = Auth::user();
@@ -924,10 +988,10 @@ class TrainerController extends Controller
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            // Find meal
-            $meal = DietMeal::find($validated['meal_id']);
+            // Get Meal
+            $meal = Meal::find($validated['meal_id']);
 
-            // Check meal
+            // Check exercise
             if ($meal == null) {
                 return response()->json([
                     'errors' => ['meal' => 'Meal was not found'],
@@ -935,18 +999,18 @@ class TrainerController extends Controller
             }
 
             // Update meal
+            $validated = Arr::except($validated, 'meal_id');
             $meal->fill($validated);
             $meal->save();
 
             // Response
             return response()->json([
-                'message' => 'Meal has been updated successfully',
-                'meal' => new DietMealResource($meal)
+                "message" => "Meal has been updated successfully"
             ], 200);
         }
     }
 
-    public function DeleteDietMeal(Request $request, $meal_id)
+    public function DeleteMeal(Request $request, $meal_id)
     {
         // Get user
         $user = Auth::user();
@@ -967,7 +1031,7 @@ class TrainerController extends Controller
             ], 401);
         } else {
             // Get meal
-            $meal = DietMeal::find($meal_id);
+            $meal = Meal::find($meal_id);
 
             // Check meal
             if ($meal == null) {
@@ -981,7 +1045,7 @@ class TrainerController extends Controller
 
                 // Response
                 return response()->json([
-                    'message' => 'Successfully deleted meal'
+                    'message' => 'Meas has been deleted successfully'
                 ], 204);
             }
         }
@@ -1022,7 +1086,7 @@ class TrainerController extends Controller
 
                 // Response
                 return response()->json([
-                    'message' => 'Successfully deleted program'
+                    'message' => 'Program has been deleted successfully'
                 ], 204);
             }
         }

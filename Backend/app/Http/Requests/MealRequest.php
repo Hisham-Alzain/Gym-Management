@@ -24,11 +24,13 @@ class MealRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'program_id' => ['required'],
-            'meal_number' => ['required', 'integer'],
-            'meal_name' => ['required'],
+            'meal_name' => ['required', 'string', 'unique:meals'],
             'description' => ['required'],
-            'time_after' => ['required', 'integer']
+            'calories' => ['required', ' numeric'],
+            'protein' => ['required', ' numeric'],
+            'carbs' => ['required', ' numeric'],
+            'fat' => ['required', ' numeric'],
+            'thumbnail_path' => ['sometimes', 'image', 'max:4096']
         ];
     }
 

@@ -36,7 +36,9 @@ class WorkoutExerciseRep extends Model
      */
     protected function casts(): array
     {
-        return [];
+        return [
+            'user_rep_weight' => 'decimal:2'
+        ];
     }
 
     /* Relations */

@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
-class UserInfo extends Model
+class Meal extends Model
 {
     use HasFactory;
 
@@ -17,13 +16,13 @@ class UserInfo extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
-        'height',
-        'weight',
-        'illnesses',
-        'allergies',
-        'disliked_food',
-        'active_days'
+        'meal_name',
+        'description',
+        'calories',
+        'protein',
+        'carbs',
+        'fat',
+        'thumbnail_path'
     ];
 
     /**
@@ -41,19 +40,16 @@ class UserInfo extends Model
     protected function casts(): array
     {
         return [
-            'height' => 'decimal:2',
-            'weight' => 'decimal:2',
+            'calories' => 'decimal:2',
+            'protein' => 'decimal:2',
+            'carbs' => 'decimal:2',
+            'fat' => 'decimal:2'
         ];
     }
 
     /* Relations */
-    public function user(): BelongsTo
+    public function dietMeals(): HasMany
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
-
-    public function photos(): HasMany
-    {
-        return $this->hasMany(UserPhoto::class, 'info_id', 'id')->latest();
+        return $this->hasMany(DietMeal::class, 'meal_id', 'id');
     }
 }

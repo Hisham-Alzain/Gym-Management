@@ -25,7 +25,7 @@ class PhotosRequest extends FormRequest
     {
         return [
             'photos' => ['required', 'array', 'min:1', 'max:5'],
-            'photos.*' => ['image', 'max:2048'],
+            'photos.*' => ['image', 'max:4096'],
         ];
     }
 

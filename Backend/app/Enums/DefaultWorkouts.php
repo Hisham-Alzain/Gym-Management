@@ -2,10 +2,9 @@
 
 namespace App\Enums;
 
-enum DefaultWorkouts : string
+enum DefaultWorkouts: string
 {
-    case MALE = 'MALE';
-    case FEMALE = 'FEMALE';
+    case Default = 'Default';
 
     public static function names(): array
     {
@@ -14,9 +13,6 @@ enum DefaultWorkouts : string
 
     public static function values(): array
     {
-        return [
-            ['en' => 'Male', 'ar' => 'ذكر'],
-            ['en' => 'Female', 'ar' => 'انثى'],
-        ];
+        return [];
     }
 }

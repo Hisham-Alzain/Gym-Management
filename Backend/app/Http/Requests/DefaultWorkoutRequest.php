@@ -26,12 +26,13 @@ class DefaultWorkoutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['required','exists:users,id'],
+            'user_id' => ['required', 'exists:users,id'],
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d', 'after:start_date'],
-            'progrma_name'=>['required',Rule::in(DefaultWorkouts::names())]
+            'program_name' => ['required', Rule::in(DefaultWorkouts::names())]
         ];
     }
+
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([

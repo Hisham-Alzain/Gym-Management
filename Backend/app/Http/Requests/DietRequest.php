@@ -25,15 +25,16 @@ class DietRequest extends FormRequest
     {
         return [
             // Validate diet program
-            'user_id' => ['required'],
+            'user_id' => ['required', 'exists:users,id'],
             'start_date' => ['required', 'date_format:Y-m-d'],
             'end_date' => ['required', 'date_format:Y-m-d', 'after:start_date'],
 
             // Validate diet meals
             'meals' => ['required', 'array'],
+            'meals.*.meal_id' => ['required', 'exists:meals,id'],
             'meals.*.meal_number' => ['required', 'integer'],
-            'meals.*.meal_name' => ['required'],
-            'meals.*.description' => ['required'],
+            'meals.*.quantity' => ['required', 'numeric'],
+            'meals.*.details' => ['required', 'string'],
             'meals.*.time_after' => ['required', 'integer']
         ];
     }
