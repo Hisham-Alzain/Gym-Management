@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginContext } from "../utils/Contexts";
-import { FetchExercises, SearchExercises } from '../apis/ExerciseApis';
+import { FetchExercises, FetchExerciseMuscles } from '../apis/ExerciseApis';
 import { FetchImage } from '../apis/UserViewApis';
 import NewExercisePopUp from './PopUps/NewExercisePopUp';
 import ExerciseCard from './ExerciseCard';
@@ -14,24 +14,33 @@ const Exercises = () => {
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
+  const filtered = useRef(false);
   const initialized = useRef(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [nextPage, setNextPage] = useState(1);
 
   const [filterMuscle, setFilterMuscle] = useState('')
-  const [checked, setChecked] = useState({});
+  const [muscles, setMuscles] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
+  const [newFilter, setNewFilter] = useState(false);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-    }
-    else {
+    if (!filtered.current) {
+      filtered.current = true;
+
       setIsLoading(true);
-      FetchExercises(accessToken, nextPage, '').then((response) => {
+      FetchExerciseMuscles(accessToken).then((response) => {
+        if (response.status === 200) {
+          setMuscles(response.data.muscles);
+        } else {
+          console.log(response);
+        }
+      });
+
+      FetchExercises(accessToken, nextPage, filterMuscle).then((response) => {
         if (response.status === 200) {
           setData(response.data.pagination_data);
           if (!response.data.pagination_data.has_more_pages) {
@@ -57,9 +66,10 @@ const Exercises = () => {
         }
       }).then(() => {
         setIsLoading(false);
+        setNewFilter(false);
       });
     }
-  }, [nextPage]);
+  }, [nextPage, newFilter]);
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -89,20 +99,13 @@ const Exercises = () => {
     };
   }, [nextPage]);
 
-  const handleFilter = (event) => {
+  const handleFilterSubmit = (event) => {
     setFilterMuscle(event.target.value);
-    SearchExercises(accessToken, event.target.value).then((response) => {
-      if (response.status === 200) {
-        setExercises(response.data.exercises);
-        response.data.exercises.forEach((exercise) => {
-          if (!checked[exercise.exercise_id]) {
-            setChecked((prevState) => ({ ...prevState, [exercise.exercise_id]: false }));
-          }
-        });
-      } else {
-        console.log(response);
-      }
-    });
+    setExercises([]);
+    setNextPage(1);
+    setIsDone(false);
+    setNewFilter(true);
+    filtered.current = false;
   }
 
   return (
@@ -120,21 +123,20 @@ const Exercises = () => {
         <div className={styles.filter_div}>
           <label>muscle filter:</label>
           <select
-            defaultValue=""
             value={filterMuscle}
-            onChange={handleFilter}
+            onChange={handleFilterSubmit}
             className={styles.filter}
           >
             <option value="" >All</option>
-            <option value="Chest">Chest</option>
-            <option value="Back">Back</option>
-            <option value="Shoulders">Shoulders</option>
-            <option value="Legs">Legs</option>
-            <option value="Arms">Arms</option>
-            <option value="Chest_Biceps">Chest Biceps</option>
-            <option value="Back_Triceps">Back Triceps</option>
-            <option value="Leg_Shoulders">Leg Shoulders</option>
-            <option value="Abs">Abs</option>
+            {muscles.map((muscle) => (
+              <option
+                key={muscle.id}
+                value={muscle.name}
+              >
+                {muscle.value['en']}
+              </option>
+            ))
+            }
           </select>
         </div>
         <div className={styles.buttun_div}>
