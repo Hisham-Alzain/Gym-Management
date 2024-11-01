@@ -28,7 +28,7 @@ class ExerciseRequest extends FormRequest
             'muscle' => ['required', Rule::in(WorkoutMuscle::names())],
             'description' => ['required'],
             'video_path' => ['sometimes'],
-            'thumbnail_path' => ['sometimes', 'image', 'max:4096']
+            'thumbnail_path' => ['sometimes', 'max:4096']
         ];
     }
 }

@@ -1,10 +1,11 @@
-import { useState, useContext } from 'react';
+import { useEffect, useState, useContext, useRef } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { LoginContext } from "../../utils/Contexts";
 import { useTranslation } from 'react-i18next';
 import { FaPlus } from "react-icons/fa6";
 import { AddExercise } from '../../apis/ExerciseApis';
+import { FetchExerciseMuscles } from '../../apis/ExerciseApis';
 import img_holder from '../../assets/noImage.jpg';
 import styles from '../../styles/exercise_popup.module.css';
 
@@ -15,11 +16,31 @@ const NewExercisePopUp = () => {
     // Context
     const { accessToken } = useContext(LoginContext);
 
+    const initialized = useRef(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [name, setName] = useState('');
+    const [muscles, setMuscles] = useState([]);
     const [muscle, setMuscle] = useState('');
     const [description, setDescription] = useState('');
     const [thumbnailPath, setThumbnailPath] = useState('');
     const [videoPath, setVideoPath] = useState('');
+
+    useEffect(() => {
+        if (!initialized.current) {
+            initialized.current = true;
+
+            setIsLoading(true);
+            FetchExerciseMuscles(accessToken).then((response) => {
+                if (response.status === 200) {
+                    setMuscles(response.data.muscles);
+                } else {
+                    console.log(response);
+                }
+            }).then(() => {
+                setIsLoading(false);
+            });
+        }
+    }, []);
 
     const handleNewExercise = (event) => {
         event.preventDefault();
@@ -88,22 +109,21 @@ const NewExercisePopUp = () => {
                                 required
                             />
                             <select
-                                defaultValue=""
                                 value={muscle}
                                 onChange={handleChange}
                                 className={styles.custom_input}
                                 required
                             >
                                 <option value="" disabled>Choose Muscle</option>
-                                <option value="Chest">Chest</option>
-                                <option value="Back">Back</option>
-                                <option value="Shoulders">Shoulders</option>
-                                <option value="Legs">Legs</option>
-                                <option value="Arms">Arms</option>
-                                <option value="Chest_Biceps">Chest Biceps</option>
-                                <option value="Back_Triceps">Back Triceps</option>
-                                <option value="Leg_Shoulders">Leg Shoulders</option>
-                                <option value="Abs">Abs</option>
+                                {muscles.map((muscle) => (
+                                    <option
+                                        key={muscle.id}
+                                        value={muscle.name}
+                                    >
+                                        {muscle.value['en']}
+                                    </option>
+                                ))
+                                }
                             </select>
                             <textarea
                                 rows={7}

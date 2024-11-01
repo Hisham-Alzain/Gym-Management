@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const FetchExercises = async (token) => {
+export const FetchExerciseMuscles = async (token) => {
     try {
-        const response = await axios.get('http://127.0.0.1:8000/api/exercises', {
+        const response = await axios.get(`http://127.0.0.1:8000/api/exercise/muscles`, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Accept': "application/json",
@@ -15,9 +15,9 @@ export const FetchExercises = async (token) => {
     }
 };
 
-export const SearchExercises = async (token, muscle) => {
+export const FetchExercises = async (token, page, muscle) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/exercises?name[like]=${muscle}`, {
+        const response = await axios.get(`http://127.0.0.1:8000/api/exercises?muscle[eq]=${muscle}`, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Accept': "application/json",

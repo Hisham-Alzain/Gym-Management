@@ -51,6 +51,7 @@ Route::controller(TrainerController::class)->group(function () {
         Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
 
         Route::get('/exercises', 'ShowExercises');
+        Route::get('/exercise/muscles', 'ShowExerciseMuscles');
         Route::post('/exercise/create', 'AddExercise');
         Route::post('/exercise/update', 'UpdateExercise');
         Route::post('/exercise/video', 'UploadExerciseVideo');

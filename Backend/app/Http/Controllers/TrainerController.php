@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use App\Models\Subscription;
 use APP\Models\Meal;
@@ -12,6 +13,7 @@ use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutDay;
 use App\Models\WorkoutProgram;
+use App\Enums\WorkoutMuscle;
 use App\Policies\AdminPolicy;
 use App\Filters\ExerciseFilter;
 use Illuminate\Support\Facades\Auth;
@@ -409,6 +411,41 @@ class TrainerController extends Controller
         }
     }
 
+    public function ShowExerciseMuscles(Request $request)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get Muscles
+            $enumNames = WorkoutMuscle::names();
+            $enumValues = WorkoutMuscle::values();
+            $response = [];
+            for ($i = 0; $i < count($enumValues); $i++) {
+                array_push($response, ['id' => $i + 1, 'name' => $enumNames[$i], 'value' => $enumValues[$i]]);
+            }
+
+            // Response
+            return response()->json([
+                "muscles" => $response,
+            ], 200);
+        }
+    }
+
     public function ShowExercises(Request $request)
     {
         // Get user
@@ -436,13 +473,15 @@ class TrainerController extends Controller
             // Response
             if (empty($queryItems)) {
                 // Get all exercises
-                $exercises = Exercise::paginate(10);
+                $exercises = Exercise::where($queryItems)->paginate(10);
+                $message = 'idk but 1';
             } else {
                 $exercises = Exercise::where($queryItems)->paginate(10);
+                $message = 'idk but 2';
             }
             // Response
             return response()->json([
-                "message" => "exercises fetched",
+                "message" => $queryItems,
                 "exercises" => new ExerciseCollection($exercises),
                 'pagination_data' => [
                     'from' => $exercises->firstItem(),
