@@ -473,7 +473,7 @@ class TrainerController extends Controller
             // Response
             if (empty($queryItems)) {
                 // Get all exercises
-                $exercises = Exercise::where($queryItems)->paginate(10);
+                $exercises = Exercise::paginate(10);
                 $message = 'idk but 1';
             } else {
                 $exercises = Exercise::where($queryItems)->paginate(10);
@@ -490,6 +490,7 @@ class TrainerController extends Controller
                     'first_page' => 1,
                     'current_page' => $exercises->currentPage(),
                     'last_page' => $exercises->lastPage(),
+                    'has_more_pages' => $exercises->hasMorePages(),
                     'pageNumbers' => $this->generateNumberArray(1, $exercises->lastPage()),
                     'first_page_url' => $exercises->url(1),
                     'current_page_url' => $exercises->url($exercises->currentPage()),
