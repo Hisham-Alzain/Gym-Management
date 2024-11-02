@@ -15,7 +15,6 @@ const Exercises = () => {
   const { accessToken } = useContext(LoginContext);
   // States
   const filtered = useRef(false);
-  const initialized = useRef(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [nextPage, setNextPage] = useState(1);
@@ -154,7 +153,11 @@ const Exercises = () => {
             <ExerciseCard ExerciseData={exercise} />
           </div>
         ))}
-        {isLoading ? <>please wait loading </> : isDone &&
+        {isLoading ?
+          <h5 className={styles.done}>
+            Please wait
+          </h5>
+          : isDone &&
           <h5 className={styles.done}>
             No more exercises to display
           </h5>
