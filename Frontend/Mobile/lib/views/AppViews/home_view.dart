@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/appControllers/home_controller.dart';
 import 'package:mobile/customWidgets/custom_list_tiles.dart';
 import 'package:mobile/views/AppViews/profileViews/profile_view.dart';
+import 'package:mobile/views/AppViews/workouts_view.dart';
 
 class HomeView extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
@@ -35,34 +37,34 @@ class HomeView extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(2),
+        bottomNavigationBar: const Padding(
+          padding: EdgeInsets.all(2),
           child: TabBar(
             tabs: <Widget>[
-              const Tab(
+              Tab(
                 icon: Icon(
-                  Icons.fitness_center,
+                  FontAwesomeIcons.dumbbell,
                 ),
                 text: 'Workouts',
               ),
-              const Tab(
+              Tab(
                 icon: Icon(
                   Icons.fastfood,
                 ),
                 text: 'Food',
               ),
               Tab(
-                icon: const Icon(
+                icon: Icon(
                   Icons.person,
                 ),
-                text: 'Profile'.tr,
+                text: 'Profile',
               ),
             ],
           ),
         ),
         body: TabBarView(
           children: [
-            const Scaffold(),
+            WorkoutsView(),
             const Scaffold(),
             ProfileView(),
           ],

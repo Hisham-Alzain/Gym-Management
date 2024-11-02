@@ -100,7 +100,7 @@ class RegisterView extends StatelessWidget {
                           controller: controller.confirmPasswordController,
                           textInputType: TextInputType.visiblePassword,
                           obsecureText: controller.passwordToggle,
-                          icon: Icons.key,
+                          icon: Icons.lock,
                           labelText: 'Confrim Password',
                           validator: (p0) =>
                               CustomValidation().validateConfirmPassword(

@@ -118,6 +118,16 @@ class MainApp extends StatelessWidget {
         progressIndicatorTheme:
             ProgressIndicatorThemeData(color: Colors.red.shade900),
         iconTheme: IconThemeData(color: Colors.red.shade900),
+        cardTheme: CardTheme(
+          color: Colors.grey.shade900,
+          margin: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(
+              color: Colors.red.shade900,
+            ),
+          ),
+        ),
       ),
     );
   }

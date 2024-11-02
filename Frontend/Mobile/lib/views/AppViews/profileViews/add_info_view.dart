@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/appControllers/profileControllers/add_info_controller.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
@@ -71,7 +72,7 @@ class AddInfoView extends StatelessWidget {
                       ).toList(),
                       onChanged: (p0) => controller.selectGender(p0),
                       hintText: 'Gender',
-                      hintTcon: Icons.male,
+                      hintTcon: FontAwesomeIcons.venusMars,
                     ),
                   ),
                   Padding(
@@ -115,7 +116,7 @@ class AddInfoView extends StatelessWidget {
                           .toList(),
                       onChanged: (p0) => controller.selectWeight(p0),
                       hintText: 'Weight',
-                      hintTcon: Icons.monitor_weight_outlined,
+                      hintTcon: FontAwesomeIcons.weightScale,
                     ),
                   ),
                   Padding(

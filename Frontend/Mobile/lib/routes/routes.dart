@@ -5,6 +5,7 @@ import 'package:mobile/views/AppViews/home_view.dart';
 import 'package:mobile/views/AppViews/profileViews/edit_info_view.dart';
 import 'package:mobile/views/AppViews/profileViews/add_info_view.dart';
 import 'package:mobile/views/AppViews/profileViews/profile_view.dart';
+import 'package:mobile/views/AppViews/workouts_view.dart';
 import 'package:mobile/views/authViews/auth_view.dart';
 import 'package:mobile/views/authViews/change_password_view.dart';
 import 'package:mobile/views/authViews/forgot_passwrod_view.dart';
@@ -57,5 +58,9 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: '/editInfo',
     page: () => EditInfoView(),
+  ),
+  GetPage(
+    name: '/workouts',
+    page: () => WorkoutsView(),
   ),
 ];

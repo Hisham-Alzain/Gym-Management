@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class CustomDialogs {
@@ -23,7 +24,7 @@ class CustomDialogs {
       content: Column(
         children: [
           const Icon(
-            Icons.cancel_outlined,
+            FontAwesomeIcons.circleExclamation,
             color: Colors.red,
             size: 40,
           ),
@@ -53,7 +54,7 @@ class CustomDialogs {
       content: Column(
         children: [
           const Icon(
-            Icons.check_circle_outline,
+            FontAwesomeIcons.circleCheck,
             color: Colors.green,
             size: 40,
           ),

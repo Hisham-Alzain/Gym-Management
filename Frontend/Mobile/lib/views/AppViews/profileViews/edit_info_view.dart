@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/appControllers/profileControllers/edit_info_controller.dart';
 import 'package:mobile/customWidgets/custom_drop_down_button.dart';
@@ -77,7 +78,7 @@ class EditInfoView extends StatelessWidget {
                             .toList(),
                         onChanged: (p0) => controller.selectWeight(p0),
                         hintText: 'Weight',
-                        hintTcon: Icons.monitor_weight_outlined,
+                        hintTcon: FontAwesomeIcons.weightScale,
                       ),
                     ),
                     Padding(

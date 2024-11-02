@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ProfileTextComponent extends StatelessWidget {
+class TextComponent extends StatelessWidget {
   final IconData? icon;
   final String title;
   final String text;
 
-  const ProfileTextComponent({
+  const TextComponent({
     super.key,
     this.icon,
     required this.title,

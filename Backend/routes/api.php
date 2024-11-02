@@ -22,12 +22,11 @@ Route::controller(MainController::class)->group(function () {
 
 /* Trainee (Mobile Only) */
 Route::controller(TraineeMainController::class)->group(function () {
+    Route::post('/register', 'Register');
+    Route::post('/login/trainee', 'Login');
+    Route::post('/forgotPassword', 'ForgotPassword');
+    Route::post('/changePassword', 'ChangePassword');
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/register', 'Register');
-        Route::post('/login/trainee', 'Login');
-        Route::post('/forgotPassword', 'ForgotPassword');
-        Route::post('/changePassword', 'ChangePassword');
-
         Route::get('/trainee', 'GetUserInfo');
         Route::post('/trainee', 'UpdateUserInfo');
 

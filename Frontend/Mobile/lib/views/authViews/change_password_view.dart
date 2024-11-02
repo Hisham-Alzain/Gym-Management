@@ -48,7 +48,7 @@ class ChangePasswordView extends StatelessWidget {
                           controller: controller.newPasswordController,
                           textInputType: TextInputType.visiblePassword,
                           obsecureText: controller.passwordToggle,
-                          icon: Icons.lock,
+                          icon: Icons.key,
                           labelText: 'New password',
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mobile/components/text_componenet.dart';
 import 'package:mobile/controllers/appControllers/profileControllers/profile_controller.dart';
@@ -38,12 +39,16 @@ class ProfileView extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(10),
-                            child: RedContainer(
-                              height: 200,
-                              child: IconButton(
-                                onPressed: () => Get.toNamed('/addPhotos'),
-                                icon: controller.user.photos.isEmpty
-                                    ? Column(
+                            child: EditContainer(
+                              name: 'Photos',
+                              buttonText: 'Edit',
+                              icon: Icons.edit,
+                              onPressed: () => Get.toNamed('/addPhotos'),
+                              child: controller.user.photos.isEmpty
+                                  ? IconButton(
+                                      onPressed: () =>
+                                          Get.toNamed('/addPhotos'),
+                                      icon: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
@@ -55,8 +60,12 @@ class ProfileView extends StatelessWidget {
                                                 .bodyLarge,
                                           )
                                         ],
-                                      )
-                                    : ListView.builder(
+                                      ),
+                                    )
+                                  : SizedBox(
+                                      height: 200,
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
                                         scrollDirection: Axis.horizontal,
                                         itemCount:
                                             controller.user.photos.length,
@@ -73,7 +82,7 @@ class ProfileView extends StatelessWidget {
                                           );
                                         },
                                       ),
-                              ),
+                                    ),
                             ),
                           ),
                           Padding(
@@ -83,27 +92,27 @@ class ProfileView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.abc,
                                     title: 'Name',
                                     text: controller.user.name,
                                   ),
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.email,
                                     title: 'Email',
                                     text: controller.user.email,
                                   ),
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.phone,
                                     title: 'Phone number',
                                     text: controller.user.phoneNumber,
                                   ),
-                                  ProfileTextComponent(
-                                    icon: Icons.male,
+                                  TextComponent(
+                                    icon: FontAwesomeIcons.venusMars,
                                     title: 'Gender',
                                     text: controller.user.gender,
                                   ),
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.cake,
                                     title: 'Birthdate',
                                     text: controller.user.birthDate
@@ -124,35 +133,35 @@ class ProfileView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.height,
                                     title: 'Height',
                                     text: '${controller.user.height} cm',
                                   ),
-                                  ProfileTextComponent(
-                                    icon: Icons.monitor_weight,
+                                  TextComponent(
+                                    icon: FontAwesomeIcons.weightScale,
                                     title: 'Weight',
                                     text: '${controller.user.weight} kg',
                                   ),
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.healing,
                                     title: 'Illnesses',
                                     text:
                                         ' ${controller.user.illnesses ?? 'None'}',
                                   ),
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.sick,
                                     title: 'Allergies',
                                     text:
                                         ' ${controller.user.allergies ?? 'None'}',
                                   ),
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.no_food,
                                     title: 'Disliked foods',
                                     text:
                                         ' ${controller.user.dislikedFoods ?? 'None'}',
                                   ),
-                                  ProfileTextComponent(
+                                  TextComponent(
                                     icon: Icons.directions_run_rounded,
                                     title: 'Active days',
                                     text: ' ${controller.user.activeDays} days',
@@ -169,14 +178,14 @@ class ProfileView extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  ProfileTextComponent(
-                                    icon: Icons.calendar_today,
+                                  TextComponent(
+                                    icon: FontAwesomeIcons.calendarCheck,
                                     title: 'Start date',
                                     text:
                                         ' ${controller.user.subscriptionPlan?.startDate.toString().split(' ')[0] ?? 'None'}',
                                   ),
-                                  ProfileTextComponent(
-                                    icon: Icons.calendar_today,
+                                  TextComponent(
+                                    icon: FontAwesomeIcons.calendarXmark,
                                     title: 'End date',
                                     text:
                                         ' ${controller.user.subscriptionPlan?.endDate.toString().split(' ')[0] ?? 'None'}',
