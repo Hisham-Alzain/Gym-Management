@@ -79,6 +79,7 @@ const Exercises = () => {
       return;
     }
     if (scrollY + windowHeight >= documentHeight - 100) {
+      filtered.current = false;
       setNextPage(nextPage + 1);
     }
   };
@@ -111,7 +112,7 @@ const Exercises = () => {
   return (
     <div className={styles.screen}>
       <div className={styles.upper_div}>
-        <div className={styles.search} >
+        <div className={styles.search}>
           <input
             className={styles.search_input}
             type="text"
@@ -120,27 +121,29 @@ const Exercises = () => {
             onChange={handleSearch}
           />
         </div>
-        <div className={styles.filter_div}>
-          <label>muscle filter:</label>
-          <select
-            value={filterMuscle}
-            onChange={handleFilterSubmit}
-            className={styles.filter}
-          >
-            <option value="" >All</option>
-            {muscles.map((muscle) => (
-              <option
-                key={muscle.id}
-                value={muscle.name}
-              >
-                {muscle.value['en']}
-              </option>
-            ))
-            }
-          </select>
-        </div>
-        <div className={styles.buttun_div}>
-          <NewExercisePopUp />
+        <div className={styles.flex_some}>
+          <div className={styles.filter_div}>
+            <label>muscle filter:</label>
+            <select
+              value={filterMuscle}
+              onChange={handleFilterSubmit}
+              className={styles.filter}
+            >
+              <option value="" >All</option>
+              {muscles.map((muscle) => (
+                <option
+                  key={muscle.id}
+                  value={muscle.name}
+                >
+                  {muscle.value['en']}
+                </option>
+              ))
+              }
+            </select>
+          </div>
+          <div className={styles.buttun_div}>
+            <NewExercisePopUp />
+          </div>
         </div>
       </div>
       <div className={styles.mid_container}>
@@ -151,7 +154,7 @@ const Exercises = () => {
             <ExerciseCard ExerciseData={exercise} />
           </div>
         ))}
-        {isLoading ? <></> : isDone &&
+        {isLoading ? <>please wait loading </> : isDone &&
           <h5 className={styles.done}>
             No more exercises to display
           </h5>

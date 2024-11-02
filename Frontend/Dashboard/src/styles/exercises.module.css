@@ -42,6 +42,13 @@
     transition: 0.25s;
 }
 
+.flex_some {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .filter_div {
     width: 30%;
     margin-inline: 20px;
@@ -98,7 +105,6 @@
 
 /* Exercise card CSS */
 .card {
-    height: 200px;
     border-width: 2px;
     border-radius: 20px;
     transition: 0.2s;
@@ -186,14 +192,14 @@
 }
 
 .update_button {
-    width: 121px;
+    width: 150px;
     font-size: 15px;
     cursor: pointer;
     border-radius: 5px;
-    border-color: #ffffff;
-    color: #b7761c;
-    background-color: var(--color-background);
-    box-shadow: 0px 1px 3px #a5b71c;
+    border: none;
+    color: #d6d6d6;
+    background-color: var(--color-custom_grey);
+    box-shadow: 0px 1px 1px #a5b71c;
     padding: 2px;
     display: flex;
     align-items: center;
@@ -237,14 +243,14 @@
 }
 
 .delete_button {
-    width: 121px;
+    width: 150px;
     font-size: 15px;
     cursor: pointer;
+    border: none;
     border-radius: 5px;
-    border-color: #ffffff;
-    color: #b71c1c;
-    background-color: var(--color-background);
-    box-shadow: 0px 2px 5px #b71b1a;
+    color: #d6d6d6;
+    background-color: var(--color-custom_grey);
+    box-shadow: 0px 1px 1px #b71b1a;
     padding: 2px;
     display: flex;
     align-items: center;
@@ -256,4 +262,65 @@
 .delete_button:hover {
     color: #f1f1f1;
     background-color: #b71c1c;
+}
+
+.pagination {
+    text-align: center;
+    margin-block-start: 10px;
+}
+
+.active_page {
+    margin: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    color: var(--color-text);
+    background: var(--color-custom_red);
+}
+
+.page {
+    margin: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    color: var(--color-text);
+    background: var(--color-custom_grey);
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+    .row {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-block: 15px;
+    }
+
+    .column {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .upper_div {
+        flex-direction: column;
+    }
+
+    .filter_div {
+        width: 50%;
+    }
+
+    .search {
+        width: 90%;
+        margin-block-end: 10px;
+    }
+
+    .flex_some {
+        display: flex;
+        flex-direction: row;
+    }
 }

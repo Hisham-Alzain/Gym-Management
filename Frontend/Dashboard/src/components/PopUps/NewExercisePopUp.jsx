@@ -83,7 +83,7 @@ const NewExercisePopUp = () => {
     }
 
     return (
-        <Popup
+        <Popup contentStyle={{ width: '70%' }}
             trigger={
                 <button className={styles.add_button} title='Add exercise'>
                     <FaPlus /> Add exercise

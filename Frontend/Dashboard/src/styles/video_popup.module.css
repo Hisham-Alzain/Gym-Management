@@ -1,12 +1,12 @@
 .video_button {
-    width: 121px;
+    width: 150px;
     font-size: 15px;
     cursor: pointer;
     border-radius: 5px;
-    border-color: #ffffff;
-    color: #5b3fea;
-    background-color: var(--color-background);
-    box-shadow: 0px 2px 5px #3237d6;
+    border: none;
+    color: #d6d6d6;
+    background-color: var(--color-custom_grey);
+    box-shadow: 0px 1px 1px #3237d6;
     padding: 2px;
     display: flex;
     align-items: center;
