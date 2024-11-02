@@ -7,6 +7,8 @@ enum WorkoutMuscle: string
     case Chest = 'Chest';
     case Back = 'Back';
     case Shoulders = 'Shoulders';
+    case Biceps = 'Biceps';
+    case Triceps = 'Triceps';
     case Arms = 'Arms';
     case Legs = 'Legs';
     case Chest_Biceps = 'Chest_Biceps';
@@ -25,6 +27,8 @@ enum WorkoutMuscle: string
             ['en' => 'Chest', 'ar' => 'صدر'],
             ['en' => 'Back', 'ar' => 'ضهر'],
             ['en' => 'Shoulders', 'ar' => 'أكتاف'],
+            ['en' => 'Biceps', 'ar' => 'يدين أمامي'],
+            ['en' => 'Triceps', 'ar' => 'يدين خلفي'],
             ['en' => 'Arms', 'ar' => 'يدين'],
             ['en' => 'Legs', 'ar' => 'رجلين'],
             ['en' => 'Chest_Biceps', 'ar' => 'صدر و يدين أمامي'],

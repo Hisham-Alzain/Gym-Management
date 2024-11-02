@@ -22,6 +22,33 @@ use App\Http\Resources\DietsResources\DietProgramCollection;
 
 class DietsController extends MainController
 {
+    public function CreateDefaultDietProgram(Request $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            //to be implented when defaultDiet json is filled with data
+        }
+    }
+
     public function CreateDietProgram(DietRequest $request)
     {
         // Validate request
@@ -114,12 +141,13 @@ class DietsController extends MainController
                     'first_page' => 1,
                     'current_page' => $programs->currentPage(),
                     'last_page' => $programs->lastPage(),
+                    'has_more_pages' => $programs->hasMorePages(),
                     'pageNumbers' => $this->generateNumberArray(1, $programs->lastPage()),
                     'first_page_url' => $programs->url(1),
                     'current_page_url' => $programs->url($programs->currentPage()),
                     'last_page_url' => $programs->url($programs->lastPage()),
-                    'next_page' => $programs->nextPageUrl(),
-                    'prev_page' => $programs->previousPageUrl(),
+                    'next_page_url' => $programs->nextPageUrl(),
+                    'prev_page_url' => $programs->previousPageUrl(),
                     'path' => $programs->path(),
                 ],
             ]);
@@ -197,12 +225,13 @@ class DietsController extends MainController
                     'first_page' => 1,
                     'current_page' => $meals->currentPage(),
                     'last_page' => $meals->lastPage(),
+                    'has_more_pages' => $meals->hasMorePages(),
                     'pageNumbers' => $this->generateNumberArray(1, $meals->lastPage()),
                     'first_page_url' => $meals->url(1),
                     'current_page_url' => $meals->url($meals->currentPage()),
                     'last_page_url' => $meals->url($meals->lastPage()),
-                    'next_page' => $meals->nextPageUrl(),
-                    'prev_page' => $meals->previousPageUrl(),
+                    'next_page_url' => $meals->nextPageUrl(),
+                    'prev_page_url' => $meals->previousPageUrl(),
                     'path' => $meals->path(),
                 ],
             ]);
