@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\DietsResources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class WorkoutExerciseRepCollection extends ResourceCollection
+class DietMealCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

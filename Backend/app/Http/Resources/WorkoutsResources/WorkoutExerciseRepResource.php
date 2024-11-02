@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\WorkoutsResources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class WorkoutDayResource extends JsonResource
+class WorkoutExerciseRepResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +15,9 @@ class WorkoutDayResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'day_id' => $this->id,
-            'muscle' => $this->muscle,
-            'exercises' => new WorkoutExerciseCollection($this->workoutExercises)
+            'date' => $this->day_date,
+            'reps' => $this->user_reps,
+            'rep_weight' => number_format($this->user_rep_weight, 2, '.', ''),
         ];
     }
 }

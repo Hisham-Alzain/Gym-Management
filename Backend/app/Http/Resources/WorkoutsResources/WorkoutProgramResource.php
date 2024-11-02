@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\WorkoutsResources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DietProgramResource extends JsonResource
+class WorkoutProgramResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,10 +20,11 @@ class DietProgramResource extends JsonResource
                 'id' => $this->user->id,
                 'name' => $this->user->name,
             ],
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date,
-            'no_meals' => $this->meals()->count(),
-            'meals' => new DietMealCollection($this->meals)
+            'start_date' => $this->start_date->format('Y-m-d'),
+            'end_date' => $this->end_date->format('Y-m-d'),
+            'repeat_days' => $this->repeat_days,
+            'no_days' => $this->workoutDays()->count(),
+            'days' => new WorkoutDayCollection($this->workoutDays)
         ];
     }
 }

@@ -3,32 +3,56 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\TraineeController;
-use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\TraineeControllers\TraineeMainController;
+use App\Http\Controllers\TrainerControllers\TrainerMainController;
+use App\Http\Controllers\TraineeControllers\WorkoutsController as TraineeWorkoutsController;
+use App\Http\Controllers\TraineeControllers\DietsController as TraineeDietsController;
+use App\Http\Controllers\TrainerControllers\WorkoutsController as TrainerWorkoutsController;
+use App\Http\Controllers\TrainerControllers\DietsController as TrainerDietsController;
 
-Route::controller(AuthController::class)->group(function () {
-    Route::post('/register', 'Register');
-    Route::post('/login/trainer', 'TrainerLogin');
-    Route::post('/login/trainee', 'TraineeLogin');
-    Route::post('/forgotPassword', 'ForgotPassword');
-    Route::post('/changePassword', 'ChangePassword');
-    Route::get('/isExpired', 'IsExpired')->middleware('auth:sanctum');
-    Route::get('/logout', 'Logout')->middleware('auth:sanctum');
+
+Route::controller(MainController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/muscles', 'ShowMuscles');
+        Route::get('/isExpired', 'IsExpired');
+        Route::get('/logout', 'Logout');
+    });
 });
 
 /* Trainee (Mobile Only) */
-Route::controller(TraineeController::class)->group(function () {
+Route::controller(TraineeMainController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/register', 'Register');
+        Route::post('/login/trainee', 'Login');
+        Route::post('/forgotPassword', 'ForgotPassword');
+        Route::post('/changePassword', 'ChangePassword');
+
         Route::get('/trainee', 'GetUserInfo');
         Route::post('/trainee', 'UpdateUserInfo');
 
         Route::get('/trainee/photos', 'GetUserPhotos');
         Route::post('/trainee/photos', 'UploadPhotos');
         Route::delete('/trainee/photos/{photo_id}', 'DeletePhoto');
+    });
+});
 
+Route::controller(TrainerMainController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/login/trainer', 'Login');
+
+        Route::get('/users', 'ShowUsers');
+        Route::delete('/users/{user_id}', 'DeleteUser');
+
+        Route::get('/subscription/{user_id}', 'ShowUserSubscriptions');
+        Route::post('/subscription/start', 'StartSubscription');
+    });
+});
+
+Route::controller(TraineeWorkoutsController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
         Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
-        Route::get('/trainee/workout/{program_id}', 'ShowWorkoutProgram');
+        Route::get('/trainee/workout/{day_id}', 'ShowWorkoutDay');
         Route::post('/trainee/workout/set', 'UpdateExerciseSet');
 
         Route::get('/trainee/diets', 'ShowDietPrograms');
@@ -36,14 +60,15 @@ Route::controller(TraineeController::class)->group(function () {
     });
 });
 
-Route::controller(TrainerController::class)->group(function () {
+Route::controller(TraineeDietsController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
-        Route::get('/users', 'ShowUsers');
-        Route::delete('/users/{user_id}', 'DeleteUser');
+        Route::get('/trainee/diets', 'ShowDietPrograms');
+        Route::get('/trainee/diet/{program_id}', 'ShowDietProgram');
+    });
+});
 
-        Route::get('/subscription/{user_id}', 'ShowUserSubscriptions');
-        Route::post('/subscription/start', 'StartSubscription');
-
+Route::controller(TrainerWorkoutsController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
         Route::get('/workouts/{user_id}', 'ShowWorkoutPrograms');
         Route::get('/workout/{program_id}', 'ShowWorkoutProgram');
         Route::post('/workouts/create', 'CreateWorkoutProgram');
@@ -51,12 +76,15 @@ Route::controller(TrainerController::class)->group(function () {
         Route::delete('/workouts/{program_id}', 'DeleteWorkoutProgram');
 
         Route::get('/exercises', 'ShowExercises');
-        Route::get('/exercise/muscles', 'ShowExerciseMuscles');
         Route::post('/exercise/create', 'AddExercise');
         Route::post('/exercise/update', 'UpdateExercise');
         Route::post('/exercise/video', 'UploadExerciseVideo');
         Route::delete('/exercises/{exercise_id}', 'DeleteExercise');
+    });
+});
 
+Route::controller(TrainerDietsController::class)->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
         Route::get('/diets/{user_id}', 'ShowDietPrograms');
         Route::get('/diet/{program_id}', 'ShowDietProgram');
         Route::post('/diets/create', 'CreateDietProgram');
