@@ -19,7 +19,7 @@ use App\Http\Resources\SubscriptionCollection;
 
 class TrainerMainController extends MainController
 {
-    public function TrainerLogin(LoginRequest $request)
+    public function Login(LoginRequest $request)
     {
         // Validate request
         $validated = $request->validated();
