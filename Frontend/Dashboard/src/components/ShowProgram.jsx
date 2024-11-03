@@ -13,10 +13,10 @@ const ShowProgram = () => {
   const [exercisesData, setExercisesData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const initialized = useRef(false);
-  const [selectedMuscle, setSelectedMuscle] = useState(null);
+  const [selectedDay, setSelectedDay] = useState(null);
 
   const handleMuscleClick = (muscle) => {
-    setSelectedMuscle(muscle);
+    setSelectedDay(muscle);
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const ShowProgram = () => {
   }, [accessToken, program_id]);
 
   const handleBackButtonClick = () => {
-    setSelectedMuscle(null);
+    setSelectedDay(null);
   };
 
   if (isLoading) {
@@ -49,13 +49,14 @@ const ShowProgram = () => {
           <h1>{program.user.name}'s Workout Program</h1>
           <p>Start Date: {program.start_date} | End Date: {program.end_date}</p>
         </div>
-      )}{selectedMuscle ? (
-        <DayTable exerciseDay={program.days[0]} handleBackButtonClick={handleBackButtonClick} />
+      )}{selectedDay ? (
+        <DayTable exerciseDay={selectedDay} handleBackButtonClick={handleBackButtonClick} />
       ) :
         <div className={styles.cardsContainer}>
           {exercisesData.map((data, index) => (
             <div key={index} className={styles.card}>
-              <button onClick={() => handleMuscleClick(data.muscle)}>{data.muscle}</button>
+              {console.log(data)}
+              <button onClick={() => handleMuscleClick(data)}>{data.muscle}</button>
               <ul>
                 {console.log(data.exercises)}
                 {data.exercises.map((exercise, id) => (
