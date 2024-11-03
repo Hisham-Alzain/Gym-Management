@@ -128,6 +128,11 @@ class MainApp extends StatelessWidget {
             ),
           ),
         ),
+        expansionTileTheme: ExpansionTileThemeData(
+          iconColor: Colors.red.shade900,
+          collapsedIconColor: Colors.red.shade900,
+          tilePadding: const EdgeInsets.all(10),
+        ),
       ),
     );
   }

@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mobile/components/text_componenet.dart';
+import 'package:mobile/controllers/appControllers/workout_controller.dart';
 
 class WorkoutsView extends StatelessWidget {
-  const WorkoutsView({super.key});
+  final WorkoutController _workoutController = Get.put(WorkoutController());
+
+  WorkoutsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,53 +23,142 @@ class WorkoutsView extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: 2,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () => print('gg'),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Program ${index + 1}:',
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              const TextComponent(
-                                icon: FontAwesomeIcons.calendarCheck,
-                                title: 'Start date',
-                                text: '3/3/2003',
-                              ),
-                              const TextComponent(
-                                icon: FontAwesomeIcons.calendarXmark,
-                                title: 'End date',
-                                text: '3/3/2003',
-                              ),
-                              const TextComponent(
-                                icon: FontAwesomeIcons.repeat,
-                                title: 'Repeat days',
-                                text: '3',
-                              ),
-                            ],
+          child: RefreshIndicator(
+            key: _workoutController.refreshIndicatorKey,
+            onRefresh: () => _workoutController.refreshView(),
+            child: GetBuilder<WorkoutController>(
+              builder: (controller) => controller.loading
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : SingleChildScrollView(
+                      controller: controller.scrollController,
+                      child: Column(
+                        children: [
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: controller.programs.length,
+                            itemBuilder: (context, index) {
+                              return Card(
+                                child: ExpansionTile(
+                                  title: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Program ${index + 1}:',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge,
+                                            ),
+                                            TextComponent(
+                                              icon: FontAwesomeIcons
+                                                  .calendarCheck,
+                                              title: 'Start date',
+                                              text: controller
+                                                  .programs[index].startDate
+                                                  .toString()
+                                                  .split(' ')[0],
+                                            ),
+                                            TextComponent(
+                                              icon: FontAwesomeIcons
+                                                  .calendarXmark,
+                                              title: 'End date',
+                                              text: controller
+                                                  .programs[index].endDate
+                                                  .toString()
+                                                  .split(' ')[0],
+                                            ),
+                                            TextComponent(
+                                              icon:
+                                                  FontAwesomeIcons.calendarDays,
+                                              title: 'Number of days',
+                                              text: controller
+                                                  .programs[index].numberOfDays
+                                                  .toString(),
+                                            ),
+                                            TextComponent(
+                                              icon: FontAwesomeIcons.repeat,
+                                              title: 'Repeat days',
+                                              text: controller
+                                                  .programs[index].repeatDays
+                                                  .toString(),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Days:',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge,
+                                          ),
+                                          ListView.builder(
+                                            itemCount: controller
+                                                .programs[index].days.length,
+                                            shrinkWrap: true,
+                                            padding: const EdgeInsets.all(10),
+                                            itemBuilder: (context, index2) {
+                                              return Padding(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                child: OutlinedButton(
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                    'Day ${index2 + 1}: ${controller.programs[index].days[index2].muscle}',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .headlineSmall,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
-                        ),
-                        const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 40,
-                        )
-                      ],
+                          if (controller.paginationData.hasMorePages)
+                            const Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          else
+                            SingleChildScrollView(
+                              child: SizedBox(
+                                height: Get.height,
+                                child: Center(
+                                  child: Text(
+                                    controller.programs.isEmpty
+                                        ? 'No programs to show'.tr
+                                        : 'No more programs'.tr,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall,
+                                  ),
+                                ),
+                              ),
+                            )
+                        ],
+                      ),
                     ),
-                  ),
-                ),
-              );
-            },
+            ),
           ),
         ),
       ),
