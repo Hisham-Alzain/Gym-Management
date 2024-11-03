@@ -476,7 +476,7 @@ class WorkoutsController extends MainController
             ], 401);
         } else {
             // Get exercise
-            $exercise = Exercise::find('id', $exercise_id);
+            $exercise = Exercise::find($exercise_id);
 
             // Check exercise
             if ($exercise == null) {

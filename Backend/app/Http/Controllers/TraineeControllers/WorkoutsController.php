@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserExerciseSetRequest;
 use App\Http\Resources\WorkoutsResources\WorkoutDayResource;
-use App\Http\Resources\WorkoutsResources\WorkoutProgramResource2;
-use App\Http\Resources\WorkoutsResources\WorkoutProgramCollection2;
+use App\Http\Resources\WorkoutsResources\WorkoutProgram2Resource;
+use App\Http\Resources\WorkoutsResources\WorkoutProgram2Collection;
 use App\Http\Resources\WorkoutsResources\WorkoutExerciseSetResource;
 
 
@@ -38,7 +38,7 @@ class WorkoutsController extends MainController
         // Response
         return response()->json([
             "message" => "programs fetched",
-            "programs" => new WorkoutProgramCollection2($programs->items()),
+            "programs" => new WorkoutProgram2Collection($programs),
             'pagination_data' => [
                 'from' => $programs->firstItem(),
                 'to' => $programs->lastItem(),
@@ -71,7 +71,7 @@ class WorkoutsController extends MainController
         }
 
         // Get program day
-        $day = WorkoutDay::find('id', $day_id);
+        $day = WorkoutDay::find($day_id);
 
         // Check program day
         if ($day == null) {
@@ -81,7 +81,7 @@ class WorkoutsController extends MainController
         } else {
             // Response
             return response()->json([
-                "message" => "program fetched",
+                "message" => "day fetched",
                 "day" => new WorkoutDayResource($day),
             ], 200);
         }

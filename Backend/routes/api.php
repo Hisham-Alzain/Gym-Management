@@ -37,9 +37,8 @@ Route::controller(TraineeMainController::class)->group(function () {
 });
 
 Route::controller(TrainerMainController::class)->group(function () {
+    Route::post('/login/trainer', 'Login');
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/login/trainer', 'Login');
-
         Route::get('/users', 'ShowUsers');
         Route::delete('/users/{user_id}', 'DeleteUser');
 

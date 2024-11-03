@@ -5,7 +5,7 @@ namespace App\Http\Resources\WorkoutsResources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class WorkoutProgramCollection2 extends ResourceCollection
+class WorkoutProgram2Collection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
