@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/controllers/appControllers/profileControllers/profile_controller.dart';
+import 'package:mobile/controllers/profileControllers/profile_controller.dart';
 import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
@@ -107,7 +107,7 @@ class EditInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.0.107:8000/api/trainee',
+        'http://192.168.0.105:8000/api/trainee',
         data: {
           "height": height,
           "weight": weight,

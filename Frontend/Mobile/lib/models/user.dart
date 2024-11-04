@@ -15,7 +15,6 @@ class User {
   final String? allergies;
   final String? dislikedFoods;
   final int activeDays;
-  //TODO:make not nullable
   final SubscriptionPlan? subscriptionPlan;
   final String role;
 

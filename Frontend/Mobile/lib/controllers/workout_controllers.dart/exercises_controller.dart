@@ -2,54 +2,44 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
+import 'package:mobile/controllers/workout_controllers.dart/workouts_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
-import 'package:mobile/models/pagination_data.dart';
-import 'package:mobile/models/program.dart';
+import 'package:mobile/models/exercise.dart';
 
-class WorkoutController extends GetxController {
+class ExercisesController extends GetxController {
   late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
+  late WorkoutsController workoutsController;
   late Dio dio;
   late CustomDialogs customDialogs;
-  late PaginationData paginationData;
-  late ScrollController scrollController;
-
-  List<Program> programs = [];
+  List<Exercise> exercises = [];
   bool loading = true;
 
   @override
   Future<void> onInit() async {
     refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
+    workoutsController = Get.find<WorkoutsController>();
     dio = Dio();
     customDialogs = CustomDialogs();
-    await getPrograms(1);
-    scrollController = ScrollController()..addListener(scrollListener);
+    await getDay(workoutsController.dayId);
     loading = false;
     update();
     super.onInit();
   }
 
-  Future<void> refreshView() async {
-    programs.clear();
-    Future.delayed(const Duration(milliseconds: 100));
-    await getPrograms(1);
+  @override
+  void onClose() {
+    exercises.clear();
+    super.onClose();
   }
 
-  Future<void> scrollListener() async {
-    if (scrollController.position.pixels ==
-            scrollController.position.maxScrollExtent &&
-        paginationData.hasMorePages) {
-      await getPrograms(paginationData.currentPage + 1);
-    }
-  }
-
-  Future<dynamic> getPrograms(int page) async {
+  Future<dynamic> getDay(int id) async {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.107:8000/api/trainee/workouts?page=$page',
+        'http://192.168.0.105:8000/api/trainee/workout/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -59,13 +49,11 @@ class WorkoutController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
-        for (var program in response.data['programs']) {
-          programs.add(
-            Program.fromJson(program),
+        for (var exercise in response.data['day']['exercises']) {
+          exercises.add(
+            Exercise.fromJson(exercise),
           );
         }
-        paginationData =
-            PaginationData.fromJson(response.data['pagination_data']);
         update();
       } else if (response.statusCode == 401) {
         generalController.handleUnauthorized();

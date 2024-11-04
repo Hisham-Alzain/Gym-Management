@@ -33,10 +33,6 @@ class Exercise {
         sets = [
           for (var sets in json['exercise']['sets']) (Sets.fromJson(sets)),
         ],
-        videoPath = json['exercise']['video_path'] != null
-            ? json['exercise']['video_path'] as String
-            : null,
-        thumbnailPath = json['exercise']['thumbnail_path']! + null
-            ? json['exercise']['thumbnail_path']
-            : null;
+        videoPath = json['exercise']['video_path'],
+        thumbnailPath = json['exercise']['thumbnail_path'];
 }

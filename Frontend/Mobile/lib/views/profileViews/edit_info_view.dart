@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:mobile/controllers/appControllers/profileControllers/edit_info_controller.dart';
+import 'package:mobile/controllers/profileControllers/edit_info_controller.dart';
 import 'package:mobile/customWidgets/custom_drop_down_button.dart';
 import 'package:mobile/customWidgets/custom_radio_button.dart';
 import 'package:mobile/customWidgets/custom_text_field.dart';

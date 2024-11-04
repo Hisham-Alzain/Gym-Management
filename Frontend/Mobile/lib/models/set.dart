@@ -16,7 +16,7 @@ class Sets {
   Sets.fromJson(Map<String, dynamic> json)
       : setId = json['set_id'] as int,
         setNumber = json['set_number'] as int,
-        expectedReps = json['expected-reps'] as int,
+        expectedReps = json['expected_reps'] as int,
         userSets = [
           for (var userSet in json['user_sets']) (UserSet.fromJson(userSet)),
         ];

@@ -1,28 +1,36 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
+import 'package:mobile/models/user.dart';
 
-class HomeController extends GetxController {
+class ProfileController extends GetxController {
+  late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late Dio dio;
   late CustomDialogs customDialogs;
+  late User user;
+  bool loading = true;
 
   @override
-  void onInit() {
+  Future<void> onInit() async {
+    refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
     dio = Dio();
     customDialogs = CustomDialogs();
+    await getUserInfo();
+    loading = false;
+    update();
     super.onInit();
   }
 
-  Future<dynamic> logout() async {
-    customDialogs.showLoadingDialog();
-    String token = storage!.read('token');
+  Future<dynamic> getUserInfo() async {
+    String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.107:8000/api/logout',
+        'http://192.168.0.105:8000/api/trainee',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -31,20 +39,16 @@ class HomeController extends GetxController {
           },
         ),
       );
-      Get.back();
       if (response.statusCode == 200) {
-        storage!.remove('token');
-        customDialogs.showSuccessDialog('Logging out...');
-        Future.delayed(
-          const Duration(seconds: 1),
-          () {
-            Get.offAllNamed('/auth');
-          },
-        );
+        user = User.fromJson(response.data['user']);
+        update();
+      } else if (response.statusCode == 401) {
+        generalController.handleUnauthorized();
       }
     } on DioException catch (e) {
+      Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?['errors']?.toString() ?? 'An error occurred',
+        e.response?.data?.toString() ?? 'An error occurred',
       );
     }
   }

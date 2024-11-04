@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mobile/components/text_componenet.dart';
-import 'package:mobile/controllers/appControllers/workout_controller.dart';
+import 'package:mobile/controllers/workout_controllers.dart/workouts_controller.dart';
 
 class WorkoutsView extends StatelessWidget {
-  final WorkoutController _workoutController = Get.put(WorkoutController());
+  final WorkoutsController _workoutsController = Get.put(WorkoutsController());
 
   WorkoutsView({super.key});
 
@@ -24,9 +24,9 @@ class WorkoutsView extends StatelessWidget {
             ),
           ),
           child: RefreshIndicator(
-            key: _workoutController.refreshIndicatorKey,
-            onRefresh: () => _workoutController.refreshView(),
-            child: GetBuilder<WorkoutController>(
+            key: _workoutsController.refreshIndicatorKey,
+            onRefresh: () => _workoutsController.refreshView(),
+            child: GetBuilder<WorkoutsController>(
               builder: (controller) => controller.loading
                   ? const Center(
                       child: CircularProgressIndicator(),
@@ -115,13 +115,17 @@ class WorkoutsView extends StatelessWidget {
                                               return Padding(
                                                 padding:
                                                     const EdgeInsets.all(10),
-                                                child: OutlinedButton(
-                                                  onPressed: () {},
+                                                child: ElevatedButton(
+                                                  onPressed: () =>
+                                                      controller.viewDay(
+                                                    controller.programs[index]
+                                                        .days[index2],
+                                                  ),
                                                   child: Text(
                                                     'Day ${index2 + 1}: ${controller.programs[index].days[index2].muscle}',
                                                     style: Theme.of(context)
                                                         .textTheme
-                                                        .headlineSmall,
+                                                        .bodyLarge,
                                                   ),
                                                 ),
                                               );

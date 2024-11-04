@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 import 'package:mobile/middleware/middleware.dart';
-import 'package:mobile/views/AppViews/profileViews/add_photos_view.dart';
-import 'package:mobile/views/AppViews/home_view.dart';
-import 'package:mobile/views/AppViews/profileViews/edit_info_view.dart';
-import 'package:mobile/views/AppViews/profileViews/add_info_view.dart';
-import 'package:mobile/views/AppViews/profileViews/profile_view.dart';
-import 'package:mobile/views/AppViews/workouts_view.dart';
+import 'package:mobile/views/profileViews/add_photos_view.dart';
+import 'package:mobile/views/home_view.dart';
+import 'package:mobile/views/profileViews/edit_info_view.dart';
+import 'package:mobile/views/profileViews/add_info_view.dart';
+import 'package:mobile/views/profileViews/profile_view.dart';
+import 'package:mobile/views/workoutViews/exercises_view.dart';
+import 'package:mobile/views/workoutViews/workouts_view.dart';
 import 'package:mobile/views/authViews/auth_view.dart';
 import 'package:mobile/views/authViews/change_password_view.dart';
 import 'package:mobile/views/authViews/forgot_passwrod_view.dart';
@@ -62,5 +63,9 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: '/workouts',
     page: () => WorkoutsView(),
+  ),
+  GetPage(
+    name: '/exercises',
+    page: () => ExercisesView(),
   ),
 ];

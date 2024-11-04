@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:mobile/controllers/appControllers/home_controller.dart';
+import 'package:mobile/controllers/home_controller.dart';
 import 'package:mobile/customWidgets/custom_list_tiles.dart';
-import 'package:mobile/views/AppViews/profileViews/profile_view.dart';
-import 'package:mobile/views/AppViews/workouts_view.dart';
+import 'package:mobile/views/profileViews/profile_view.dart';
+import 'package:mobile/views/workoutViews/workouts_view.dart';
 
 class HomeView extends StatelessWidget {
   final HomeController _homeController = Get.put(HomeController());
