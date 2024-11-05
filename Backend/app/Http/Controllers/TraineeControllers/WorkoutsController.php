@@ -6,19 +6,17 @@ use App\Http\Controllers\MainController;
 
 use App\Models\WorkoutDay;
 use App\Models\WorkoutProgram;
+use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutExerciseRep;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserExerciseSetRequest;
-use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\WorkoutsResources\WorkoutDayResource;
 use App\Http\Resources\WorkoutsResources\WorkoutExerciseResource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgram2Resource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgram2Collection;
 use App\Http\Resources\WorkoutsResources\WorkoutExerciseSetResource;
-use App\Models\Exercise;
-use App\Models\WorkoutExercise;
 
 class WorkoutsController extends MainController
 {
@@ -90,6 +88,35 @@ class WorkoutsController extends MainController
         }
     }
 
+    public function GetExercise(Request $request, $exercise_id)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Get exercise
+        $workout_exercise = WorkoutExercise::find($exercise_id);
+
+        // Check exercise
+        if ($workout_exercise == null) {
+            return response()->json([
+                'errors' => ['workout_exercise' => 'Exercise was not found'],
+            ], 404);
+        }
+
+        // Response
+        return response()->json([
+            "exercise" => new WorkoutExerciseResource($workout_exercise),
+            "message" => 'Exercise has been fetched successfully'
+        ], 200);
+    }
+
     public function UpdateExerciseSet(UserExerciseSetRequest $request)
     {
         // Validate request
@@ -123,21 +150,5 @@ class WorkoutsController extends MainController
             'message' => 'Set has been Updated successfully',
             'set' => new WorkoutExerciseSetResource($set)
         ], 200);
-    }
-    public function GetExercise(Request $request,$workout_exercise_id){
-        // Get user
-        $user = Auth::user();
-
-        // Check user
-        if ($user == null) {
-            return response()->json([
-                'errors' => ['user' => 'Invalid user'],
-            ], 401);
-        }
-        // Get exercise
-        $workout_exercise=WorkoutExercise::where("id",$workout_exercise_id)->first();        return response()->json([
-            "exercise" => new WorkoutExerciseResource($workout_exercise),
-            "message" => 'Exercise has been fetched successfully'
-        ],200);
     }
 }

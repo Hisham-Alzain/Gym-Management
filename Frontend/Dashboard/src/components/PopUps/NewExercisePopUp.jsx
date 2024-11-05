@@ -30,7 +30,7 @@ const NewExercisePopUp = () => {
             initialized.current = true;
 
             setIsLoading(true);
-            FetchExerciseMuscles(accessToken,1).then((response) => {
+            FetchExerciseMuscles(accessToken, 1).then((response) => {
                 if (response.status === 200) {
                     setMuscles(response.data.muscles);
                 } else {

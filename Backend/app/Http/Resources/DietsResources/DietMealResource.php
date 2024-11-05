@@ -19,6 +19,22 @@ class DietMealResource extends JsonResource
         $total_carbs  = $this->quantity * $this->meal->carbs;
         $total_fat  = $this->quantity * $this->meal->fat;
 
+        // Calculate time
+        $time_after_hours = (int) ($this->time_after / 60);
+        $time_after_minutes = (int) ($this->time_after % 60);
+        if ($time_after_hours == 1) {
+            $time_after = '1 hour';
+        } else {
+            $time_after = $time_after_hours . ' hours ';
+        }
+
+        if ($time_after_minutes == 1) {
+            $time_after = $time_after . '1 minutes';
+        } else if ($time_after_minutes > 1) {
+            $time_after = $time_after . $time_after_minutes . ' minutes';
+        }
+
+
         return [
             'meal_id' => $this->id,
             'meal' => [
@@ -41,7 +57,7 @@ class DietMealResource extends JsonResource
                 'quantity' => number_format($this->quantity, 2, '.', ''),
                 'meal_number' => $this->meal_number,
                 'details' => $this->details,
-                'time_after' => $this->time_after
+                'time_after' => $time_after
             ]
         ];
     }

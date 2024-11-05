@@ -10,6 +10,8 @@ import Login from './components/Login.jsx';
 import Logout from './components/Logout.jsx';
 import './App.css'
 
+import ShowDiet from './components/ShowDiet.jsx';
+
 import ShowProgram from './components/ShowProgram.jsx';
 import DayTable from './components/DayTable.jsx';
 import Exercises from './components/Exercises.jsx';
@@ -90,6 +92,9 @@ function App() {
             </Route>
             <Route element={<AdminRoutes />}>
               <Route path="/home" element={<Home />} />
+
+
+              <Route path="/trainee/diet/:program_id/:user_name" element={<ShowDiet />} />
 
               <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
               <Route path="/trainee/workout/add/:user_id/:user_name" element={<AddWorkout />} />

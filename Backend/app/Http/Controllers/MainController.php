@@ -35,7 +35,7 @@ class MainController extends Controller
         ], 200);
     }
 
-    public function ShowMuscles(Request $request,$addingExercise)
+    public function ShowMuscles(Request $request, $addingExercise)
     {
         // Get user
         $user = Auth::user();
@@ -56,14 +56,17 @@ class MainController extends Controller
             ], 401);
         } else {
             // Get Muscles
-            $unwantedMuscles=[
-                'Arms','Chest_Biceps','Back_Triceps','Leg_Shoulders'
+            $unwantedMuscles = [
+                'Arms',
+                'Chest_Biceps',
+                'Back_Triceps',
+                'Leg_Shoulders'
             ];
             $enumNames = WorkoutMuscle::names();
             $enumValues = WorkoutMuscle::values();
             $response = [];
             for ($i = 0; $i < count($enumValues); $i++) {
-                if($addingExercise && in_array($enumNames[$i],$unwantedMuscles)){
+                if ($addingExercise && in_array($enumNames[$i], $unwantedMuscles)) {
                     continue;
                 }
                 array_push(

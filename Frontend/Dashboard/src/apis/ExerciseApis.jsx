@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const FetchExerciseMuscles = async (token,addingExercise=0) => {
+export const FetchExerciseMuscles = async (token, addingExercise = 0) => {
     try {
         const response = await axios.get(`http://127.0.0.1:8000/api/muscles/${addingExercise}`, {
             headers: {
