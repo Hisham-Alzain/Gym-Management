@@ -2,7 +2,7 @@ import { useEffect, useState, useContext, useRef } from 'react';
 import Popup from 'reactjs-popup';
 import { LoginContext } from "../../utils/Contexts";
 import { UploadExerciseVideo } from '../../apis/ExerciseApis';
-import styles from '../../styles/upload_popup.module.css';
+import styles from '../../styles/PopUps/upload_popup.module.css';
 
 
 const VideoPopUp = ({ exercise_id }) => {

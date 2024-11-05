@@ -6,7 +6,7 @@ import { MdNoFood } from "react-icons/md";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { LoginContext } from '../../utils/Contexts';
 import { FetchUserDiets, DeleteDietProgram } from '../../apis/DietsApis';
-import styles from '../../styles/diets_popup.module.css';
+import styles from '../../styles/PopUps/diets_popup.module.css';
 import btn_style from '../../styles/users_table.module.css';
 
 

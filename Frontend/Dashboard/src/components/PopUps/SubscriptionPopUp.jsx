@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 import { FaCalendarDays } from "react-icons/fa6";
 import { LoginContext } from "../../utils/Contexts";
 import { FetchSubscriptions, StartSubscription } from "../../apis/UserViewApis";
-import styles from '../../styles/subscription_popup.module.css';
+import styles from '../../styles/PopUps/subscription_popup.module.css';
 
 
 const SubscriptionPopUp = ({ user_id, user_name }) => {
