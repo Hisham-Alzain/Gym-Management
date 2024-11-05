@@ -102,10 +102,6 @@
     border: 1px solid #dddddd;
 }
 
-.table th {
-    background-color: var(--color-custom_grey);
-}
-
 .table tr {
     background-color: var(--color-custom_grey);
 }
