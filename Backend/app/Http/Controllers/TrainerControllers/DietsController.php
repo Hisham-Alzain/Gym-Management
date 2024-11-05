@@ -5,7 +5,7 @@ namespace App\Http\Controllers\TrainerControllers;
 use App\Http\Controllers\MainController;
 
 use App\Models\User;
-use APP\Models\Meal;
+use App\Models\Meal;
 use App\Models\DietMeal;
 use App\Models\DietProgram;
 use App\Policies\AdminPolicy;
@@ -216,8 +216,8 @@ class DietsController extends MainController
 
             // Response
             return response()->json([
-                "message" => "exercises fetched",
-                "exercises" => new MealCollection($meals),
+                "message" => "meals fetched",
+                "meals" => new MealCollection($meals),
                 'pagination_data' => [
                     'from' => $meals->firstItem(),
                     'to' => $meals->lastItem(),
@@ -261,6 +261,23 @@ class DietsController extends MainController
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            if ($request->hasFile('thumbnail_path')) {
+                // Get Uploaded photos
+                $thumbnail = $request->file('thumbnail_path');
+
+                // Set destination
+                $thumbnail_destination = 'meals_thumbnails';
+
+                // Get file name
+                $thumbnail_extension = $thumbnail->getClientOriginalName();
+
+                // Set file name
+                $photoName = now()->format('Y_m_d_His') . $thumbnail_extension;
+
+                // Store file and get path
+                $thumbnail_path = $thumbnail->storeAs($thumbnail_destination, $photoName);
+                $validated['thumbnail_path'] = $thumbnail_path;
+            }
             // Create meal
             $meal = Meal::create($validated);
 

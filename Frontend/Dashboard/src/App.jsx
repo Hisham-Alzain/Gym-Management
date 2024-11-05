@@ -11,10 +11,10 @@ import Logout from './components/Logout.jsx';
 import './App.css'
 
 import ShowDiet from './components/ShowDiet.jsx';
-
 import ShowProgram from './components/ShowProgram.jsx';
 import DayTable from './components/DayTable.jsx';
 import Exercises from './components/Exercises.jsx';
+import Meals from './components/Meals.jsx';
 import AddWorkout from './components/AddWorkout.jsx';
 
 
@@ -100,6 +100,7 @@ function App() {
               <Route path="/trainee/workout/add/:user_id/:user_name" element={<AddWorkout />} />
               <Route path="/ShowProgram/:program_id/:day_id" element={<DayTable />} />
               <Route path="/Exercises" element={<Exercises />} />
+              <Route path="/Meals" element={<Meals />} />
 
               <Route path='/logout' element={<Logout />} />
             </Route>

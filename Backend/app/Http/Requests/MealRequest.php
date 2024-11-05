@@ -30,7 +30,7 @@ class MealRequest extends FormRequest
             'protein' => ['required', ' numeric'],
             'carbs' => ['required', ' numeric'],
             'fat' => ['required', ' numeric'],
-            'thumbnail_path' => ['sometimes', 'image', 'max:4096']
+            'thumbnail_path' => ['sometimes', 'max:4096']
         ];
     }
 

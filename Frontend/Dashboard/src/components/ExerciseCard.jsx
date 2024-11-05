@@ -67,9 +67,10 @@ const ExerciseCard = ({ ExerciseData }) => {
             <h3 className={styles.title}>{ExerciseData.name}</h3>
             <h3 className={styles.muscle}>Muscle: {ExerciseData.muscle}</h3>
           </div>
-          {!updating && <p>Description: {ExerciseData.description}</p>}
-          {updating &&
-            <input
+          {!updating ? <p>Description: {ExerciseData.description}</p>
+            :
+            <textarea
+              rows={7}
               type='text'
               id='newDescription'
               className={styles.description}
