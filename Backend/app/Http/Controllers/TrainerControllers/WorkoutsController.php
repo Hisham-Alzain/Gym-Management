@@ -221,48 +221,64 @@ class WorkoutsController extends MainController
         // Check user_role
         $policy = new AdminPolicy();
         if (!$policy->Policy(User::find($user->id))) {
-            // Response
             return response()->json([
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
-        } else {
-            // Filter skills based on type
-            $filter = new ExerciseFilter();
-            $queryItems = $filter->transform($request);
-
-            // Response
-            if (empty($queryItems)) {
-                // Get all exercises
-                $exercises = Exercise::paginate(10);
-                $message = 'idk but 1';
-            } else {
-                $exercises = Exercise::where($queryItems)->paginate(10);
-                $message = 'idk but 2';
-            }
-            // Response
-            return response()->json([
-                "message" => $queryItems,
-                "exercises" => new ExerciseCollection($exercises),
-                'pagination_data' => [
-                    'from' => $exercises->firstItem(),
-                    'to' => $exercises->lastItem(),
-                    'total' => $exercises->total(),
-                    'first_page' => 1,
-                    'current_page' => $exercises->currentPage(),
-                    'last_page' => $exercises->lastPage(),
-                    'has_more_pages' => $exercises->hasMorePages(),
-                    'pageNumbers' => $this->generateNumberArray(1, $exercises->lastPage()),
-                    'first_page_url' => $exercises->url(1),
-                    'current_page_url' => $exercises->url($exercises->currentPage()),
-                    'last_page_url' => $exercises->url($exercises->lastPage()),
-                    'next_page_url' => $exercises->nextPageUrl(),
-                    'prev_page_url' => $exercises->previousPageUrl(),
-                    'path' => $exercises->path(),
-                ],
-            ]);
         }
-    }
 
+        // Filter exercises based on request parameters
+        $filter = new ExerciseFilter();
+        $queryItems = $filter->transform($request);
+        $exercises = [];
+
+        // Query exercises based on filter
+        if (empty($queryItems)) {
+            // Get all exercises if no filters are applied
+            $exercises = Exercise::paginate(10);
+        } else {
+            // Apply filters to the Exercise model
+            $query = Exercise::query();
+
+            if (!empty($queryItems)) {
+                $query->where(function ($q) use ($queryItems) {
+                    foreach ($queryItems as $queryItem) {
+                        if (count($queryItem) === 3) {
+                            $q->orWhere($queryItem[0], $queryItem[1], $queryItem[2]);
+                        }
+                    }
+                });
+            }
+            $exercises = $query->paginate(10);
+        }
+
+        if ($exercises->isEmpty()) {
+            return response()->json([
+                'message' => 'No exercises found.'
+            ], 404);
+        }
+
+        // Response
+        return response()->json([
+            "message" => $queryItems,
+            "exercises" => new ExerciseCollection($exercises),
+            'pagination_data' => [
+                'from' => $exercises->firstItem(),
+                'to' => $exercises->lastItem(),
+                'total' => $exercises->total(),
+                'first_page' => 1,
+                'current_page' => $exercises->currentPage(),
+                'last_page' => $exercises->lastPage(),
+                'has_more_pages' => $exercises->hasMorePages(),
+                'pageNumbers' => $this->generateNumberArray(1, $exercises->lastPage()),
+                'first_page_url' => $exercises->url(1),
+                'current_page_url' => $exercises->url($exercises->currentPage()),
+                'last_page_url' => $exercises->url($exercises->lastPage()),
+                'next_page_url' => $exercises->nextPageUrl(),
+                'prev_page_url' => $exercises->previousPageUrl(),
+                'path' => $exercises->path(),
+            ],
+        ]);
+    }
     public function UploadExerciseVideo(VideoRequest $request)
     {
         // Validate request

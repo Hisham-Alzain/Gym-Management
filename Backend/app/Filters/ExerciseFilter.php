@@ -36,12 +36,21 @@ class ExerciseFilter
                     if ($operator === 'like') {
                         $eleQuery[] = [$parm, $this->operatorMap[$operator], '%' . $query[$operator] . '%'];
                     } else {
-                        $eleQuery[] = [$parm, $this->operatorMap[$operator], $query[$operator]];
+                        if ($query[$operator] == 'Arms') {
+                            $muscles = ['Triceps', 'Biceps'];
+                            foreach ($muscles as $muscle) {
+                                $eleQuery[] = [$parm, $this->operatorMap[$operator], $muscle];
+                            }
+                            continue;
+                        }
+                        $muscles = explode('_', $query[$operator]);
+                        foreach ($muscles as $muscle) {
+                            $eleQuery[] = [$parm, $this->operatorMap[$operator], $muscle];
+                        }
                     }
                 }
             }
         }
-
         return $eleQuery;
     }
 }

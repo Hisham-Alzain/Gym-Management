@@ -56,10 +56,16 @@ class MainController extends Controller
             ], 401);
         } else {
             // Get Muscles
+            $unwantedMuscles=[
+                'Arms','Chest_Biceps','Back_Triceps','Legs_Shoulders'
+            ];
             $enumNames = WorkoutMuscle::names();
             $enumValues = WorkoutMuscle::values();
             $response = [];
             for ($i = 0; $i < count($enumValues); $i++) {
+                if(in_array($enumNames[$i],$unwantedMuscles)){
+                    continue;
+                }
                 array_push(
                     $response,
                     [
