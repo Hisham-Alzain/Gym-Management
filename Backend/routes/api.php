@@ -14,7 +14,7 @@ use App\Http\Controllers\TrainerControllers\DietsController as TrainerDietsContr
 
 Route::controller(MainController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
-        Route::get('/muscles', 'ShowMuscles');
+        Route::get('/muscles/{addingExercise}', 'ShowMuscles');
         Route::get('/isExpired', 'IsExpired');
         Route::get('/logout', 'Logout');
     });

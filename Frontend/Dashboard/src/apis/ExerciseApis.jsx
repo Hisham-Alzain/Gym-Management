@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const FetchExerciseMuscles = async (token) => {
+export const FetchExerciseMuscles = async (token,addingExercise=0) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/muscles`, {
+        const response = await axios.get(`http://127.0.0.1:8000/api/muscles/${addingExercise}`, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Accept': "application/json",
