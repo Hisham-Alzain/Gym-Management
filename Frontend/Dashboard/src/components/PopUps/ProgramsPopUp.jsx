@@ -5,7 +5,7 @@ import Popup from 'reactjs-popup';
 import { FaDumbbell, FaRegTrashCan } from "react-icons/fa6";
 import { LoginContext } from '../../utils/Contexts';
 import { FetchUserWorkouts, DeleteWorkoutProgram } from '../../apis/WorkoutApis';
-import styles from '../../styles/programs_popup.module.css';
+import styles from '../../styles/PopUps/workouts_popup.module.css';
 import btn_style from '../../styles/users_table.module.css';
 
 

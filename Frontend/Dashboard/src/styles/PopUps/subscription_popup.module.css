@@ -1,6 +1,6 @@
-.diet_button {
+.subscription_button {
     color: #ffffff;
-    background: #2f2525;
+    background: #46dc35;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -9,22 +9,8 @@
     transition: background-color 0.3s;
 }
 
-.diet_button:hover {
-    background: #2f2a2a;
-}
-
-.create_button {
-    font-size: medium;
-    color: #ffffff;
-    background-color: #FF5733;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 8px 16px;
-}
-
-.create_button:hover {
-    background-color: #FF7F50;
+.subscription_button:hover {
+    background: #31c823;
 }
 
 .modal {
@@ -56,20 +42,50 @@
     padding: 2px 5px;
 }
 
-.modal .workouts {
+.modal .actions {
     width: 100%;
-    min-height: 60vh;
-    max-height: 75vh;
-    overflow-y: auto;
+    text-align: center;
+    padding: 10px 5px;
+    margin: auto;
 }
 
-.diets_table {
-    margin: 1px;
+.modal .content {
+    padding: 10px 5px;
+}
+
+.sub_form {
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: var(--color-custom_grey);
-    border: 1px solid #cccccc;
+    margin-block-start: 15px;
+}
+
+.sub_form input {
+    width: 50px;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    color: var(--color-text);
+    background: var(--color-custom_grey);
+    padding: 5px 10px;
+}
+
+.sub_form label {
+    width: 48px;
+    font-size: 12px;
+    color: var(--color-text);
+    padding-block-start: 12px;
+    padding-inline-start: 2px;
+}
+
+.sub_form button {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    color: var(--color-text);
+    background: var(--color-custom_grey);
+    margin-inline-start: 10px;
 }
 
 /* Table Styles */
@@ -84,10 +100,6 @@
     padding: 6px 8px;
     text-align: left;
     border: 1px solid #dddddd;
-}
-
-.table th {
-    background-color: var(--color-custom_grey);
 }
 
 .table tr {
@@ -124,13 +136,7 @@
 }
 
 @media screen and (max-width: 970px) {
-    .workout_button {
+    .subscription_button {
         margin-block: 2px;
-    }
-}
-
-@media screen and (max-width: 485px) {
-    .diets_table {
-        display: block;
     }
 }

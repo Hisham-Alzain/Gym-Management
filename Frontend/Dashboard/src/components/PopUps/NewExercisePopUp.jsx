@@ -7,7 +7,7 @@ import { FaPlus } from "react-icons/fa6";
 import { AddExercise } from '../../apis/ExerciseApis';
 import { FetchExerciseMuscles } from '../../apis/ExerciseApis';
 import img_holder from '../../assets/noImage.jpg';
-import styles from '../../styles/exercise_popup.module.css';
+import styles from '../../styles/PopUps/exercise_popup.module.css';
 
 
 const NewExercisePopUp = () => {

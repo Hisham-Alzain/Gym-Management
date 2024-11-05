@@ -2,7 +2,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { useTranslation } from 'react-i18next';
 import { FaCircleInfo } from "react-icons/fa6";
-import styles from '../../styles/popup.module.css';
+import styles from '../../styles/PopUps/popup.module.css';
 
 
 const PopUp = ({ user }) => {

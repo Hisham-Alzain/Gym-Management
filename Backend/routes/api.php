@@ -51,7 +51,7 @@ Route::controller(TraineeWorkoutsController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
         Route::get('/trainee/workout/{day_id}', 'ShowWorkoutDay');
-        Route::get('/trainee/exercise/{exercise_id}', 'GetExercise');
+        Route::get('/trainee/exercise/{workout_exercise_id}', 'GetExercise');
         Route::post('/trainee/workout/set', 'UpdateExerciseSet');
 
         Route::get('/trainee/diets', 'ShowDietPrograms');

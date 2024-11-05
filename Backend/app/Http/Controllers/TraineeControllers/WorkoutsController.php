@@ -88,7 +88,7 @@ class WorkoutsController extends MainController
         }
     }
 
-    public function GetExercise(Request $request, $exercise_id)
+    public function GetExercise(Request $request, $workout_exercise_id)
     {
         // Get user
         $user = Auth::user();
@@ -101,7 +101,7 @@ class WorkoutsController extends MainController
         }
 
         // Get exercise
-        $workout_exercise = WorkoutExercise::find($exercise_id);
+        $workout_exercise = WorkoutExercise::find($workout_exercise_id);
 
         // Check exercise
         if ($workout_exercise == null) {

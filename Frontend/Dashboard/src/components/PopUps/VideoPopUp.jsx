@@ -2,7 +2,7 @@ import { useEffect, useState, useContext, useRef } from 'react';
 import Popup from 'reactjs-popup';
 import { LoginContext } from "../../utils/Contexts";
 import { FetchVideo } from '../../apis/UserViewApis';
-import styles from '../../styles/video_popup.module.css';
+import styles from '../../styles/PopUps/video_popup.module.css';
 
 
 const VideoPopUp = ({ Path }) => {
