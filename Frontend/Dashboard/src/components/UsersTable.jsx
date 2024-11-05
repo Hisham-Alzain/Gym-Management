@@ -66,9 +66,9 @@ const Users = () => {
   }
 
   const columnStructure = [
-    { key: "name", label: t('components.admin.users_table.column_structure.name') },
-    { key: "email", label: 'Email' },
-    { key: "phone_number", label: t('components.admin.users_table.column_structure.phone_number') },
+    { key: "name", label: t('components.users_table.column_structure.name') },
+    { key: "email", label: t('components.users_table.column_structure.email') },
+    { key: "phone_number", label: t('components.users_table.column_structure.phone_number') },
   ];
 
   const filteredUsers = userData
@@ -88,7 +88,7 @@ const Users = () => {
             <div className={styles.search_bar}>
               <input
                 type="text"
-                placeholder={t('components.admin.users_table.search')}
+                placeholder={t('components.users_table.search')}
                 value={searchQuery}
                 onChange={handleSearch}
                 className={styles.search_input}
@@ -99,7 +99,7 @@ const Users = () => {
             <thead>
               <tr>
                 {columnStructure.map((column) => (<th key={column.key}>{column.label}</th>))}
-                <th>{t('components.admin.users_table.actions')}</th>
+                <th>{t('components.users_table.actions')}</th>
               </tr>
             </thead>
             <tbody>{filteredUsers.length > 0 ? (
@@ -118,7 +118,7 @@ const Users = () => {
                   <button
                     onClick={(event) => handleDelete(event, user.id)}
                     className={styles.delete_button}
-                    title='Delete trainee'
+                    title={t('components.users_table.delete')}
                   >
                     <FaRegTrashCan />
                   </button>
@@ -126,7 +126,7 @@ const Users = () => {
               </tr>)
             ) : (
               <tr>
-                <td colSpan={columnStructure.length + 1}>{t('components.admin.users_table.no_users')}</td>
+                <td colSpan={columnStructure.length + 1}>{t('components.users_table.no_users')}</td>
               </tr>
             )}
             </tbody>
