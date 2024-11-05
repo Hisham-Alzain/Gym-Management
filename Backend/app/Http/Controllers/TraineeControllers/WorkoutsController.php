@@ -11,11 +11,12 @@ use App\Models\WorkoutExerciseRep;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserExerciseSetRequest;
+use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\WorkoutsResources\WorkoutDayResource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgram2Resource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgram2Collection;
 use App\Http\Resources\WorkoutsResources\WorkoutExerciseSetResource;
-
+use App\Models\Exercise;
 
 class WorkoutsController extends MainController
 {
@@ -120,5 +121,22 @@ class WorkoutsController extends MainController
             'message' => 'Set has been Updated successfully',
             'set' => new WorkoutExerciseSetResource($set)
         ], 200);
+    }
+    public function GetExercise(Request $request,$exercise_id){
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+        // Get exercise
+        $exercise=Exercise::where('id',$exercise_id)->first();
+        return response()->json([
+            "exercise" => new ExerciseResource($exercise),
+            "message" => 'Exercise has been fetched successfully'
+        ],200);
     }
 }

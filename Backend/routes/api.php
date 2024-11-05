@@ -52,6 +52,7 @@ Route::controller(TraineeWorkoutsController::class)->group(function () {
         Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
         Route::get('/trainee/workout/{day_id}', 'ShowWorkoutDay');
         Route::post('/trainee/workout/set', 'UpdateExerciseSet');
+        Route::get('/trainee/exercise/{exercise_id}', 'GetExercise');
 
         Route::get('/trainee/diets', 'ShowDietPrograms');
         Route::get('/trainee/diet/{program_id}', 'ShowDietProgram');
