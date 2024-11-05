@@ -2,60 +2,45 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
+import 'package:mobile/controllers/workout_controllers.dart/exercises_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
-import 'package:mobile/models/day.dart';
-import 'package:mobile/models/pagination_data.dart';
-import 'package:mobile/models/program.dart';
+import 'package:mobile/models/exercise.dart';
 
-class WorkoutsController extends GetxController {
+class ExerciseController extends GetxController {
   late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
+  late ExercisesController exercisesController;
   late Dio dio;
   late CustomDialogs customDialogs;
-  late PaginationData paginationData;
-  late ScrollController scrollController;
-  List<Program> programs = [];
-  int dayId = 0;
+  Exercise exercise = Exercise.empty();
+  // VideoPlayerController videoPlayerController =
+  //     VideoPlayerController.networkUrl(
+  //   Uri(
+  //     path:
+  //         "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
+  //   ),
+  // );
   bool loading = true;
 
   @override
   Future<void> onInit() async {
     refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
+    exercisesController = Get.find<ExercisesController>();
     dio = Dio();
     customDialogs = CustomDialogs();
-    await getPrograms(1);
-    scrollController = ScrollController()..addListener(scrollListener);
+    await getExercise(exercisesController.exerciseId);
     loading = false;
     update();
     super.onInit();
   }
 
-  Future<void> refreshView() async {
-    programs.clear();
-    Future.delayed(const Duration(milliseconds: 100));
-    await getPrograms(1);
-  }
-
-  Future<void> scrollListener() async {
-    if (scrollController.position.pixels ==
-            scrollController.position.maxScrollExtent &&
-        paginationData.hasMorePages) {
-      await getPrograms(paginationData.currentPage + 1);
-    }
-  }
-
-  void viewDay(Day day) {
-    dayId = day.dayId;
-    Get.toNamed('/exercises');
-  }
-
-  Future<dynamic> getPrograms(int page) async {
+  Future<dynamic> getExercise(int id) async {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.43.23:8000/api/trainee/workouts?page=$page',
+        'http://192.168.43.23:8000/api/trainee/exercise/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -64,14 +49,8 @@ class WorkoutsController extends GetxController {
           },
         ),
       );
+      print(response.data.toString());
       if (response.statusCode == 200) {
-        for (var program in response.data['programs']) {
-          programs.add(
-            Program.fromJson(program),
-          );
-        }
-        paginationData =
-            PaginationData.fromJson(response.data['pagination_data']);
         update();
       } else if (response.statusCode == 401) {
         generalController.handleUnauthorized();

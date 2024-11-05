@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:mobile/components/text_componenet.dart';
+import 'package:mobile/customWidgets/custom_texts.dart';
 import 'package:mobile/controllers/workout_controllers.dart/exercises_controller.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_image.dart';
+import 'package:mobile/main.dart';
 
 class ExercisesView extends StatelessWidget {
   final ExercisesController _exercisesController =
@@ -14,95 +14,101 @@ class ExercisesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: const Text('Exercises'),
-        ),
-        body: SizedBox(
-            height: Get.height,
-            width: Get.width,
-            child: DecoratedBox(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/exercises_background.JPG'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: RefreshIndicator(
-                key: _exercisesController.refreshIndicatorKey,
-                onRefresh: () => _exercisesController.getDay(
-                  _exercisesController.workoutsController.dayId,
-                ),
-                child: GetBuilder<ExercisesController>(
-                  builder: (controller) => controller.loading
-                      ? const Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : ListView.builder(
-                          itemCount: controller.exercises.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    controller.exercises[index].thumbnailPath ==
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: const Text('Exercises'),
+      ),
+      body: SizedBox(
+        height: Get.height,
+        width: Get.width,
+        child: DecoratedBox(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/exercises_background.JPG'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: RefreshIndicator(
+            key: _exercisesController.refreshIndicatorKey,
+            onRefresh: () => _exercisesController.getDay(
+              _exercisesController.workoutsController.dayId,
+            ),
+            child: GetBuilder<ExercisesController>(
+              builder: (controller) => controller.loading
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ListView.builder(
+                      itemCount: controller.exercises.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () => controller.viewExercise(
+                            controller.exercises[index],
+                          ),
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  RedContainer(
+                                    height: 150,
+                                    width: 100,
+                                    child: controller.exercises[index]
+                                                .thumbnailPath ==
                                             null
                                         ? const Icon(
                                             Icons.fitness_center,
-                                            size: 100,
+                                            size: 75,
                                           )
                                         : CustomImage(
+                                            height: 150,
                                             path: controller
                                                 .exercises[index].thumbnailPath
                                                 .toString(),
+                                            token: storage!.read('token'),
                                           ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          controller.exercises[index].name,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineSmall,
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              controller
-                                                  .exercises[index].muscle,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge
-                                                  ?.copyWith(
-                                                    color: Colors.white
-                                                        .withOpacity(0.5),
-                                                  ),
-                                            ),
-                                            Text(
-                                              "${controller.exercises[index].numberOfSets} sets",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge
-                                                  ?.copyWith(
-                                                    color: Colors.white
-                                                        .withOpacity(0.5),
-                                                  ),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        controller.exercises[index].name,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headlineSmall,
+                                      ),
+                                      Row(
+                                        children: [
+                                          OpacityTextComponent(
+                                            text: controller
+                                                .exercises[index].muscle,
+                                          ),
+                                          const OpacityTextComponent(
+                                            text: ' - ',
+                                          ),
+                                          OpacityTextComponent(
+                                            text:
+                                                "${controller.exercises[index].numberOfSets} sets",
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            );
-                          },
-                        ),
-                ),
-              ),
-            )));
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

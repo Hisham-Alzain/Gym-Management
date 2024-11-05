@@ -14,6 +14,7 @@ class ExercisesController extends GetxController {
   late Dio dio;
   late CustomDialogs customDialogs;
   List<Exercise> exercises = [];
+  int exerciseId = 0;
   bool loading = true;
 
   @override
@@ -35,11 +36,16 @@ class ExercisesController extends GetxController {
     super.onClose();
   }
 
+  void viewExercise(Exercise exercise) {
+    exerciseId = exercise.id;
+    Get.toNamed('/exercise');
+  }
+
   Future<dynamic> getDay(int id) async {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.105:8000/api/trainee/workout/$id',
+        'http://192.168.43.23:8000/api/trainee/workout/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
