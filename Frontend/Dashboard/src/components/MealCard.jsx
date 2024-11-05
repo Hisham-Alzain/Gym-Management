@@ -125,7 +125,7 @@ const MealCard = ({ MealData }) => {
           }
         </div>
         <div className={styles.column}>
-          {!updating && <button className={styles.update_button} onClick={() => setUpdating(true)}>Update description</button>}
+          {!updating && <button className={styles.update_button} onClick={() => setUpdating(true)}>Update meal</button>}
           {updating &&
             <form
               className={styles.btn_holder}
