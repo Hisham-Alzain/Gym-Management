@@ -35,4 +35,15 @@ class Exercise {
         ],
         videoPath = json['exercise']['video_path'],
         thumbnailPath = json['exercise']['thumbnail_path'];
+
+  Exercise.empty()
+      : exerciseId = 0,
+        id = 0,
+        name = '',
+        muscle = '',
+        description = '',
+        numberOfSets = 0,
+        sets = [],
+        videoPath = '',
+        thumbnailPath = '';
 }

@@ -73,7 +73,7 @@ class RegisterView extends StatelessWidget {
                                       controller.selectCountryCode(value),
                                 ),
                                 validator: (p0) =>
-                                    CustomValidation().validatePhoneNumber(p0),
+                                    CustomValidation().validateNumber(p0),
                                 maxLines: 1,
                               ),
                             ),

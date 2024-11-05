@@ -26,7 +26,7 @@ class CustomValidation {
     return null;
   }
 
-  String? validatePhoneNumber(String? value) {
+  String? validateNumber(String? value) {
     if (value!.isEmpty) {
       return 'Required Field'.tr;
     } else if (!value.isNum) {
