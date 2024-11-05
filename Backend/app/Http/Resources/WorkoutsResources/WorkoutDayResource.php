@@ -17,7 +17,11 @@ class WorkoutDayResource extends JsonResource
         return [
             'day_id' => $this->id,
             'muscle' => $this->muscle,
-            'exercises' => new WorkoutExerciseCollection($this->workoutExercises)
+            'exercises' => WorkoutExerciseResource::collection(
+                $this->workoutExercises->map(function ($workoutExercise) {
+                    return new WorkoutExerciseResource($workoutExercise, true); // Exclude sets
+                })
+            )
         ];
     }
 }

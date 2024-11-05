@@ -13,10 +13,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserExerciseSetRequest;
 use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\WorkoutsResources\WorkoutDayResource;
+use App\Http\Resources\WorkoutsResources\WorkoutExerciseResource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgram2Resource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgram2Collection;
 use App\Http\Resources\WorkoutsResources\WorkoutExerciseSetResource;
 use App\Models\Exercise;
+use App\Models\WorkoutExercise;
 
 class WorkoutsController extends MainController
 {
@@ -122,7 +124,7 @@ class WorkoutsController extends MainController
             'set' => new WorkoutExerciseSetResource($set)
         ], 200);
     }
-    public function GetExercise(Request $request,$exercise_id){
+    public function GetExercise(Request $request,$workout_exercise_id){
         // Get user
         $user = Auth::user();
 
@@ -133,9 +135,8 @@ class WorkoutsController extends MainController
             ], 401);
         }
         // Get exercise
-        $exercise=Exercise::where('id',$exercise_id)->first();
-        return response()->json([
-            "exercise" => new ExerciseResource($exercise),
+        $workout_exercise=WorkoutExercise::where("id",$workout_exercise_id)->first();        return response()->json([
+            "exercise" => new WorkoutExerciseResource($workout_exercise),
             "message" => 'Exercise has been fetched successfully'
         ],200);
     }
