@@ -5,10 +5,10 @@ import { LoginContext, ProfileContext } from './utils/Contexts.jsx';
 import { CheckToken, FetchProfile } from './apis/AuthApis.jsx';
 import AnonymousRoutes from './utils/AnonymousRoutes.jsx';
 import AdminRoutes from './utils/AdminRoutes.jsx';
-import Home from './components/Home.jsx';
 import Login from './components/Login.jsx';
 import Logout from './components/Logout.jsx';
-import './App.css'
+import Users from './components/UsersTable.jsx';
+import './App.css';
 
 import ShowDiet from './components/ShowDiet.jsx';
 import ShowProgram from './components/ShowProgram.jsx';
@@ -91,7 +91,7 @@ function App() {
               <Route path="/" element={<Login />} />
             </Route>
             <Route element={<AdminRoutes />}>
-              <Route path="/home" element={<Home />} />
+              <Route path="/home" element={<Users />} />
               <Route path="/meals" element={<Meals />} />
               <Route path="/exercises" element={<Exercises />} />
 
