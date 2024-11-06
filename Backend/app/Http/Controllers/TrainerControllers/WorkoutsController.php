@@ -90,9 +90,10 @@ class WorkoutsController extends MainController
                     'muscle' => $D['muscle']
                 ]);
                 foreach ($D['exercises'] as $E) {
+                    $exercise_fetched=Exercise::where( 'name',$E['exercise_name'])->first();
                     $exercise = WorkoutExercise::create([
                         'workout_day_id' => $day->id,
-                        'exercise_id' => $E['exercise_id'],
+                        'exercise_id' => $exercise_fetched->id,
                     ]);
                     foreach ($E['sets'] as $S) {
                         $set = WorkoutExerciseSet::create([

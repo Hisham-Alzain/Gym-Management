@@ -165,7 +165,7 @@ const AddWorkout = () => {
             days: exercises.map((dayExercises, dayIndex) => ({
                 muscle: selectedMuscles[dayIndex],
                 exercises: dayExercises.map(exercise => ({
-                    exercise_id: exercise.id,
+                    exercise_name: exercise.name,
                     sets: exercise.sets.map((set, setIndex) => ({
                         set_no: setIndex + 1,
                         exp_reps: exercise.reps[setIndex] // Assuming reps are stored in the same order
@@ -173,9 +173,9 @@ const AddWorkout = () => {
                 }))
             }))
         };
-
+        console.log(workoutData)
             CreateWorkout(accessToken,workoutData).then((response) => {
-            if (response.status === 200) {
+            if (response.status === 201) {
                 // Handle successful program creation
                 console.log('Workout program created successfully:', response.data);
                 setIsCreatingWorkout(false);
