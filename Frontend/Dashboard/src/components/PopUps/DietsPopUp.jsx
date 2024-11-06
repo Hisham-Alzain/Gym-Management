@@ -70,15 +70,16 @@ const DietsPopUp = ({ user_id, user_name }) => {
   }
 
   const columnStructure = [
-    { key: 'program_id', label: 'Diet number' },
-    { key: 'start_date', label: 'Start Date' },
-    { key: 'end_date', label: 'End Date' },
+    { key: 'program_id', label: t('components.pop_ups.diets_popup.label1') },
+    { key: 'start_date', label: t('components.pop_ups.diets_popup.label2') },
+    { key: 'end_date', label: t('components.pop_ups.diets_popup.label3') },
   ];
 
   return (
     <Popup
       trigger={
-        <button className={styles.diet_button} title='Show diet programs'>
+        <button className={styles.diet_button}
+          title={`${user_name} ${t('components.pop_ups.diets_popup.title1')}`}>
           <MdNoFood />
         </button>
       }
@@ -92,9 +93,11 @@ const DietsPopUp = ({ user_id, user_name }) => {
           </button>
           {isLoading ? <></> : <>
             <div className={styles.header}>
-              <div className={styles.name}>{user_name} diets</div>
+              <div className={styles.name}>
+                {`${user_name} ${t('components.pop_ups.diets_popup.name')}`}
+              </div>
               <button className={styles.create_button} onClick={handleAddDiet}>
-                Add Diet
+                {t('components.pop_ups.diets_popup.create_button')}
               </button>
             </div>
             <div className={styles.workouts}>
@@ -105,7 +108,9 @@ const DietsPopUp = ({ user_id, user_name }) => {
                       {columnStructure.map((column) => (
                         <th key={column.key}>{column.label}</th>
                       ))}
-                      <th style={{ minWidth: '80px' }}> Show Diet </th>
+                      <th style={{ minWidth: '80px' }}>
+                        {t('components.pop_ups.diets_popup.th')}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>{programs.length > 0 ? (
@@ -118,15 +123,15 @@ const DietsPopUp = ({ user_id, user_name }) => {
                       <td>
                         <button
                           onClick={(event) => handleShowDiet(event, program.program_id)}
+                          title={t('components.pop_ups.diets_popup.title2')}
                           className={styles.diet_button}
-                          title='Show diet program'
                         >
                           <MdNoFood />
                         </button>
                         <button
                           onClick={(event) => handleDeleteDiet(event, program.program_id)}
+                          title={t('components.pop_ups.diets_popup.title3')}
                           className={btn_style.delete_button}
-                          title='Delete diet program'
                         >
                           <FaRegTrashCan />
                         </button>
@@ -134,7 +139,9 @@ const DietsPopUp = ({ user_id, user_name }) => {
                     </tr>)
                   ) : (
                     <tr>
-                      <td colSpan={columnStructure.length + 1}>No programs found</td>
+                      <td colSpan={columnStructure.length + 1}>
+                        {t('components.pop_ups.diets_popup.no_programs')}
+                      </td>
                     </tr>
                   )}
                   </tbody>

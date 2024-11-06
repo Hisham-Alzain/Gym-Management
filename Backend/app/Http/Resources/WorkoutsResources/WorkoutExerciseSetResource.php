@@ -17,15 +17,16 @@ class WorkoutExerciseSetResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $user=Auth::user();
+        $user = Auth::user();
         // Check user_role
         $policy = new AdminPolicy();
         if (!$policy->Policy(User::find($user->id))) {
             $latestRep = $this->workoutExerciseReps()->latest()->first();
             $user_sets = $latestRep ? new WorkoutExerciseRepResource($latestRep) : null;
         } else {
-            $user_sets=new WorkoutExerciseRepCollection($this->workoutExerciseReps);
+            $user_sets = new WorkoutExerciseRepCollection($this->workoutExerciseReps);
         }
+
         return [
             'set_id' => $this->id,
             'set_number' => $this->set_number,

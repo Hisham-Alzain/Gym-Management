@@ -12,7 +12,8 @@ const PopUp = ({ user }) => {
   return (
     <Popup
       trigger={
-        <button className={styles.info_button} title='Trainee info'>
+        <button className={styles.info_button}
+          title={`${user.name} ${t('components.pop_ups.popup.title')}`}>
           <FaCircleInfo />
         </button>
       }
@@ -24,54 +25,56 @@ const PopUp = ({ user }) => {
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          <div className={styles.header}> {user.name} info </div>
+          <div className={styles.header}>
+            {`${user.name} ${t('components.pop_ups.popup.header')}`}
+          </div>
           <div className={styles.content}>
             <table className={styles.table}>
               <tbody>
                 <tr>
-                  <th>Height</th>
+                  <th>{t('components.pop_ups.popup.th1')}</th>
                   <td>
                     {user.height ? `${user.height} cm` : '-'}
                   </td>
                 </tr>
                 <tr>
-                  <th>Weight</th>
+                  <th>{t('components.pop_ups.popup.th2')}</th>
                   <td>
                     {user.weight ? `${user.weight} Kg` : '-'}
                   </td>
                 </tr>
                 <tr>
-                  <th>Gender</th>
+                  <th>{t('components.pop_ups.popup.th3')}</th>
                   <td>
                     {user.gender ? user.gender : '-'}
                   </td>
                 </tr>
                 <tr>
-                  <th>Birth date</th>
+                  <th>{t('components.pop_ups.popup.th4')}</th>
                   <td>
                     {user.birth_date ? user.birth_date : '-'}
                   </td>
                 </tr>
                 <tr>
-                  <th>Active days</th>
+                  <th>{t('components.pop_ups.popup.th5')}</th>
                   <td>
                     {user.active_days ? user.active_days : '-'}
                   </td>
                 </tr>
                 <tr>
-                  <th>Illnesses</th>
+                  <th>{t('components.pop_ups.popup.th6')}</th>
                   <td>
                     {user.illnesses ? user.illnesses : '-'}
                   </td>
                 </tr>
                 <tr>
-                  <th>Allergies</th>
+                  <th>{t('components.pop_ups.popup.th7')}</th>
                   <td>
                     {user.allergies ? user.allergies : '-'}
                   </td>
                 </tr>
                 <tr>
-                  <th>Disliked food</th>
+                  <th>{t('components.pop_ups.popup.th8')}</th>
                   <td>
                     {user.disliked_food ? user.disliked_food : '-'}
                   </td>

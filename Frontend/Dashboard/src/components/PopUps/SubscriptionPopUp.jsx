@@ -58,14 +58,15 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
   }
 
   const columnStructure = [
-    { key: 'start_date', label: 'Start Date' },
-    { key: 'end_date', label: 'End Date' },
+    { key: 'start_date', label: t('components.pop_ups.subscriptions_popup.label1') },
+    { key: 'end_date', label: t('components.pop_ups.subscriptions_popup.label2') },
   ];
 
   return (
     <Popup
       trigger={
-        <button className={styles.subscription_button} title='Trainee Subscriptions'>
+        <button className={styles.subscription_button}
+          title={`${user_name} ${t('components.pop_ups.subscriptions_popup.title')}`}>
           <FaCalendarDays />
         </button>
       }
@@ -78,7 +79,9 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
             &times;
           </button>
           {isLoading ? <></> : <>
-            <div className={styles.header}> {user_name} subscriptions </div>
+            <div className={styles.header}>
+              {`${user_name} ${t('components.pop_ups.subscriptions_popup.name')}`}
+            </div>
             <div className={styles.content}>
               <table className={styles.table}>
                 <thead>
@@ -96,7 +99,9 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
                   </tr>)
                 ) : (
                   <tr>
-                    <td colSpan={columnStructure.length + 1}>No subscriptions found</td>
+                    <td colSpan={columnStructure.length + 1}>
+                      {t('components.pop_ups.subscriptions_popup.no_subscriptions')}
+                    </td>
                   </tr>
                 )}
                 </tbody>
@@ -116,8 +121,10 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
               <form onSubmit={handleSubscription} className={styles.sub_form}>
                 <input type="number" min={1} max={12} required value={month}
                   onChange={(event) => setMonth(event.target.value)} />
-                <label>months</label>
-                <button type='submit' className={styles.button}>Extend subscription</button>
+                <label>{t('components.pop_ups.subscriptions_popup.label3')}</label>
+                <button type='submit' className={styles.button}>
+                  {t('components.pop_ups.subscriptions_popup.button')}
+                </button>
               </form>
             </div>
           </>}

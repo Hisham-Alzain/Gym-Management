@@ -1,11 +1,14 @@
-import { useEffect, useState, useContext, useRef } from 'react';
+import { useState, useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import Popup from 'reactjs-popup';
 import { LoginContext } from "../../utils/Contexts";
 import { UploadExerciseVideo } from '../../apis/ExerciseApis';
 import styles from '../../styles/PopUps/upload_popup.module.css';
 
 
-const VideoPopUp = ({ exercise_id }) => {
+const UploadPopUp = ({ exercise_id }) => {
+  // Translations
+  const { t } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // State
@@ -38,8 +41,9 @@ const VideoPopUp = ({ exercise_id }) => {
   return (
     <Popup
       trigger={
-        <button className={styles.upload_button} title='Video'>
-          Upload video
+        <button className={styles.upload_button}
+          title={t('components.pop_ups.upload_popup.title')}>
+          {t('components.pop_ups.upload_popup.trigger')}
         </button>
       }
       modal
@@ -50,7 +54,9 @@ const VideoPopUp = ({ exercise_id }) => {
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          <div className={styles.header}> Upload your video </div>
+          <div className={styles.header}>
+            {t('components.pop_ups.upload_popup.header')}
+          </div>
           <div className={styles.content}>
             <div className={styles.video_div}>
               <input
@@ -61,7 +67,7 @@ const VideoPopUp = ({ exercise_id }) => {
               />
               {file &&
                 <button onClick={handleFileUpload}>
-                  Upload
+                  {t('components.pop_ups.upload_popup.button')}
                 </button>
               }
             </div>
@@ -73,4 +79,4 @@ const VideoPopUp = ({ exercise_id }) => {
   );
 }
 
-export default VideoPopUp;
+export default UploadPopUp;

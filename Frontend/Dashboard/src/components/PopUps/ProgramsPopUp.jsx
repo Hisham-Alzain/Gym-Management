@@ -69,15 +69,16 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
   }
 
   const columnStructure = [
-    { key: 'program_id', label: 'Workout number' },
-    { key: 'start_date', label: 'Start Date' },
-    { key: 'end_date', label: 'End Date' },
+    { key: 'program_id', label: t('components.pop_ups.workouts_popup.label1') },
+    { key: 'start_date', label: t('components.pop_ups.workouts_popup.label2') },
+    { key: 'end_date', label: t('components.pop_ups.workouts_popup.label3') },
   ];
 
   return (
     <Popup
       trigger={
-        <button className={styles.workout_button} title='Show workout programs'>
+        <button className={styles.workout_button}
+          title={`${user_name} ${t('components.pop_ups.workouts_popup.title1')}`}>
           <FaDumbbell />
         </button>
       }
@@ -91,9 +92,11 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
           </button>
           {isLoading ? <></> : <>
             <div className={styles.header}>
-              <div className={styles.name}>{user_name} workouts</div>
+              <div className={styles.name}>
+                {`${user_name} ${t('components.pop_ups.workouts_popup.name')}`}
+              </div>
               <button className={styles.create_button} onClick={handleAddWorkout}>
-                Add workout
+                {t('components.pop_ups.workouts_popup.create_button')}
               </button>
             </div>
             <div className={styles.workouts}>
@@ -104,7 +107,9 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
                       {columnStructure.map((column) => (
                         <th key={column.key}>{column.label}</th>
                       ))}
-                      <th style={{ minWidth: '80px' }}> Show Workout </th>
+                      <th style={{ minWidth: '80px' }}>
+                        {t('components.pop_ups.workouts_popup.th')}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>{programs.length > 0 ? (
@@ -117,15 +122,15 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
                       <td>
                         <button
                           onClick={(event) => handleShowWorkout(event, program.program_id)}
+                          title={t('components.pop_ups.workouts_popup.title2')}
                           className={styles.workout_button}
-                          title='Show workout program'
                         >
                           <FaDumbbell />
                         </button>
                         <button
                           onClick={(event) => handleDeleteWorkout(event, program.program_id)}
+                          title={t('components.pop_ups.workouts_popup.title3')}
                           className={btn_style.delete_button}
-                          title='Delete workout program'
                         >
                           <FaRegTrashCan />
                         </button>
@@ -133,7 +138,9 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
                     </tr>)
                   ) : (
                     <tr>
-                      <td colSpan={columnStructure.length + 1}>No programs found</td>
+                      <td colSpan={columnStructure.length + 1}>
+                        {t('components.pop_ups.workouts_popup.no_programs')}
+                      </td>
                     </tr>
                   )}
                   </tbody>

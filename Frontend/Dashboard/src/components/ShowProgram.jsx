@@ -40,7 +40,7 @@ const ShowProgram = () => {
   };
 
   if (isLoading) {
-    return <div>{t('components.show_program.loading')}</div>;
+    return <></>;
   }
   return (
     <div className={styles.programs}>

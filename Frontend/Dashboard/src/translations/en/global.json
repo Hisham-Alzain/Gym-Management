@@ -1,15 +1,86 @@
 {
     "components": {
+        "pop_ups": {
+            "popup": {
+                "title": "info",
+                "header": "info",
+                "th1": "Height",
+                "th2": "Weight",
+                "th3": "Gender",
+                "th4": "Birth date",
+                "th5": "Active days",
+                "th6": "Illnesses",
+                "th7": "Allergies",
+                "th8": "Disliked food"
+            },
+            "img_popup": {
+                "title": "images",
+                "header": "photos",
+                "no_images": " No Images"
+            },
+            "subscriptions_popup": {
+                "name": "subscriptions",
+                "label1": "Start Date",
+                "label2": "End Date",
+                "title": "subscriptions",
+                "no_subscriptions": "No subscriptions found",
+                "label3": "months",
+                "button": "Extend subscription"
+            },
+            "workouts_popup": {
+                "name": "workouts",
+                "create_button": "Add workout",
+                "label1": "Workout number",
+                "label2": "Start Date",
+                "label3": "End Date",
+                "th": "Show Workout",
+                "title1": "workout programs",
+                "title2": "Show workout program",
+                "title3": "Delete workout program",
+                "no_programs": "No programs found"
+            },
+            "diets_popup": {
+                "name": "diets",
+                "create_button": "Add Diet",
+                "label1": "Diet number",
+                "label2": "Start Date",
+                "label3": "End Date",
+                "th": "Show Diet",
+                "title1": "diet programs",
+                "title2": "Show diet program",
+                "title3": "Delete diet program",
+                "no_programs": "No programs found"
+            },
+            "video_popup": {
+                "trigger": "Show video",
+                "title": "Show video",
+                "header": "Exercise video",
+                "no_video": "No Video",
+                "video_tag": "Your browser does not support the video tag."
+            },
+            "upload_popup": {
+                "trigger": "Upload video",
+                "title": "Upload video",
+                "header": "Upload your video",
+                "button": "Upload"
+            }
+        },
         "nav_bar": {
             "nav_logo": "Coach Amr",
+            "li_login": "Login",
             "li_home": "Home",
-            "li_login": "Login"
+            "li_meals": "Meals",
+            "li_exercises": "Exercises",
+            "logout": "Logout"
         },
-        "Login": {
+        "login": {
+            "h1": "Welcome to your Clients Dashboard",
+            "error": "Invalid email or password",
             "remember_me": "Remember me",
-            "error": "Invalid email or password"
+            "login": "Log-in"
         },
         "users_table": {
+            "h1": "Trainees",
             "search": "Name...",
             "actions": "Actions",
             "delete": "Delete trainee",
@@ -19,9 +90,6 @@
                 "email": "Email",
                 "phone_number": "Phone Number"
             }
-        },
-        "show_program":{
-            "loading": "Loading..."
         }
     }
 }

@@ -84,7 +84,7 @@ const Users = () => {
       <div className={styles.content}>
         <div className={styles.content_div}>
           <div>
-            <h1>Trainees</h1>
+            <h1>{t('components.users_table.h1')}</h1>
             <div className={styles.search_bar}>
               <input
                 type="text"
@@ -117,8 +117,8 @@ const Users = () => {
                   <DietsPopUp user_id={user.id} user_name={user.name} />
                   <button
                     onClick={(event) => handleDelete(event, user.id)}
-                    className={styles.delete_button}
                     title={t('components.users_table.delete')}
+                    className={styles.delete_button}
                   >
                     <FaRegTrashCan />
                   </button>
@@ -126,7 +126,9 @@ const Users = () => {
               </tr>)
             ) : (
               <tr>
-                <td colSpan={columnStructure.length + 1}>{t('components.users_table.no_users')}</td>
+                <td colSpan={columnStructure.length + 1}>
+                  {t('components.users_table.no_users')}
+                </td>
               </tr>
             )}
             </tbody>

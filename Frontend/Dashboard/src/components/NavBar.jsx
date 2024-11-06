@@ -41,7 +41,10 @@ const NavBar = () => {
                 <a href="/home">{t('components.nav_bar.li_home')}</a>
               </li>
               <li>
-                <a href="/Exercises"> Show Exercises </a>
+                <a href="/meals">{t('components.nav_bar.li_meals')}</a>
+              </li>
+              <li>
+                <a href="/exercises">{t('components.nav_bar.li_exercises')}</a>
               </li>
             </>}
           </div>
@@ -58,7 +61,7 @@ const NavBar = () => {
                   <span className={styles.logout_span}>
                     <span><FaDoorOpen size={23} /></span>
                     <label htmlFor="Logout" className={styles.mobile_item}>
-                      Logout
+                      {t('components.nav_bar.logout')}
                     </label>
                   </span>
                 </a>

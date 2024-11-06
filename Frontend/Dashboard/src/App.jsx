@@ -92,15 +92,15 @@ function App() {
             </Route>
             <Route element={<AdminRoutes />}>
               <Route path="/home" element={<Home />} />
-
+              <Route path="/meals" element={<Meals />} />
+              <Route path="/exercises" element={<Exercises />} />
 
               <Route path="/trainee/diet/:program_id/:user_name" element={<ShowDiet />} />
 
               <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
               <Route path="/trainee/workout/add/:user_id/:user_name" element={<AddWorkout />} />
               <Route path="/ShowProgram/:program_id/:day_id" element={<DayTable />} />
-              <Route path="/Exercises" element={<Exercises />} />
-              <Route path="/Meals" element={<Meals />} />
+
 
               <Route path='/logout' element={<Logout />} />
             </Route>

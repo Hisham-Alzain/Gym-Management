@@ -49,7 +49,7 @@ const Login = () => {
         navigate('/home');
       } else {
         if (response.data.errors) {
-          setMessage(t('pages.Login.error'));
+          setMessage(t('components.login.error'));
           setTimeout(() => {
             setMessage('');
           }, 5000);
@@ -75,13 +75,13 @@ const Login = () => {
       <div className={styles.row}>
         <div className={styles.column}>
           <div className={styles.left_content}>
-            <h1>Welcome to your Clients Dashboard</h1>
+            <h1>{t('components.login.h1')}</h1>
           </div>
         </div>
         <div className={styles.column}>
           <div className={styles.right_content}>
             <form onSubmit={handleSubmit} className={styles.login_form}>
-              <h1>Log-in</h1>
+              <h1>{t('components.login.login')}</h1>
               <div className={styles.input_field}>
                 <input
                   required
@@ -107,11 +107,11 @@ const Login = () => {
                   type="checkbox"
                   onChange={(event) => setRememberMe(event.target.checked)}
                 />
-                <label htmlFor="rememberMe">{t('pages.Login.remember_me')}</label>
+                <label htmlFor="rememberMe">{t('components.login.remember_me')}</label>
               </div>
               <div className={styles.button_container}>
                 <button className={styles.login_button}>
-                  Log-In
+                  {t('components.login.login')}
                 </button>
               </div>
             </form>
