@@ -21,7 +21,8 @@ class WorkoutExerciseSetResource extends JsonResource
         // Check user_role
         $policy = new AdminPolicy();
         if (!$policy->Policy(User::find($user->id))) {
-            $user_sets=[];
+            $latestRep = $this->workoutExerciseReps()->latest()->first();
+            $user_sets = $latestRep ? new WorkoutExerciseRepResource($latestRep) : null;
         } else {
             $user_sets=new WorkoutExerciseRepCollection($this->workoutExerciseReps);
         }

@@ -65,3 +65,24 @@ export const CreateDefaultWorkout = async (token, user_id, start_date, end_date,
     return error.response;
   }
 };
+
+export const CreateWorkout = async (token, user_id, start_date, end_date, repeat_days,days) => {
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/workouts/create/default', {
+      "user_id": user_id,
+      "start_date": start_date,
+      "end_date": end_date,
+      "repeat_days": repeat_days,
+      "days": days
+    }, {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
