@@ -55,6 +55,19 @@ nav input {
   padding-inline-start: 10px;
 }
 
+.lang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 10px;
+}
+
+.lang select {
+  cursor: pointer;
+  padding: 5px 25px;
+  margin-inline: 10px;
+}
+
 .nav_links {
   width: 90%;
   margin: 0;
@@ -121,6 +134,15 @@ nav input {
 @media screen and (max-width: 970px) {
   .wrapper .btn {
     display: block;
+  }
+
+  .lang {
+    display: block;
+  }
+
+  .lang select {
+    padding: 5px 50px;
+    margin-inline: 25px;
   }
 
   .nav_links {

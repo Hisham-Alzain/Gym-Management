@@ -8,11 +8,27 @@ import styles from '../styles/navbar.module.css';
 
 const NavBar = () => {
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
   // Context
   const { loggedIn, accessToken } = useContext(LoginContext);
   const { profile } = useContext(ProfileContext);
 
+  useEffect(() => {
+    localStorage.setItem('Lang', i18n.language);
+    document.documentElement.lang = i18n.language;
+    document.documentElement.dir = i18n.dir(i18n.language);
+  }, [i18n.language]);
+
+  const changeLanguage = (event) => {
+    if (event.target.value === 'en' || event.target.value === 'ar') {
+      i18n.changeLanguage(event.target.value);
+    }
+  };
+
+  const langs = [
+    { key: "en", value: "en", O: "English" },
+    { key: "ar", value: "ar", O: "العربية" }
+  ];
 
   return (
     <nav>
@@ -55,6 +71,15 @@ const NavBar = () => {
             >
               <FaTimes size={31} />
             </label>
+            <div className={styles.lang}>
+              <select onChange={changeLanguage} value={i18n.language}>
+                {langs.map((lang) => (
+                  <option key={lang.key} value={lang.value}>
+                    {lang.O}
+                  </option>
+                ))}
+              </select>
+            </div>
             {loggedIn ? (
               <li id='Logout'>
                 <a href="/logout" title='Logout'>

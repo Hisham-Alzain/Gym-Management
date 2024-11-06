@@ -64,12 +64,8 @@
 .users_table th,
 .users_table td {
     padding: 6px 8px;
-    text-align: left;
+    text-align: start;
     border: 1px solid #dddddd;
-}
-
-.users_table th {
-    background-color: var(--color-background);
 }
 
 .users_table tr {

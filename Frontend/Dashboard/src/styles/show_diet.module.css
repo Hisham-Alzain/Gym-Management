@@ -98,7 +98,7 @@
 .details_table td {
   width: 50%;
   padding: 6px 8px;
-  text-align: left;
+  text-align: start;
   word-wrap: break-word;
   color: var(--color-text);
   background-color: var(--color-custom_grey);
