@@ -1,15 +1,18 @@
 import { useEffect, useContext, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { LoginContext } from '../utils/Contexts';
-import { FetchImage } from '../apis/UserViewApis';
-import { FetchDietProgram } from '../apis/DietsApis';
-import img_holder from '../assets/noImage.jpg';
-import styles from '../styles/show_diet.module.css';
+import { useTranslation } from 'react-i18next';
+import { LoginContext } from '../../utils/Contexts';
+import { FetchImage } from '../../apis/UserViewApis';
+import { FetchDietProgram } from '../../apis/DietsApis';
+import img_holder from '../../assets/noImage.jpg';
+import styles from '../../styles/show_diet.module.css';
 
 
 const ShowDiet = () => {
   // Params
   const { program_id } = useParams();
+  // Translations
+  const { t } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
@@ -53,10 +56,12 @@ const ShowDiet = () => {
     <div className={styles.program}>
       {program && (
         <div className={styles.header}>
-          <h1>{program.user.name}'s Diet Program {program_id}</h1>
+          <h1>
+            {`${program.user.name} ${t('components.show_diet.header')} ${program_id}`}
+          </h1>
           <div>
-            <h3>Start Date: ${program.start_date}</h3>
-            <h3>End Date: ${program.end_date}</h3>
+            <h3>{`${t('components.show_diet.start_date')} ${program.start_date}`}</h3>
+            <h3>{`${t('components.show_diet.end_date')} ${program.end_date}`}</h3>
           </div>
         </div>
       )}
@@ -64,8 +69,8 @@ const ShowDiet = () => {
         <table className={styles.meals_table}>
           <caption>
             {program.no_meals === 1 ?
-              `${program.no_meals} meal` :
-              `${program.no_meals} meals`}
+              `${program.no_meals} ${t('components.show_diet.no_meals1')}` :
+              `${program.no_meals} ${t('components.show_diet.no_meals2')}`}
           </caption>
           <tbody>
             {meals.length > 0 && meals.map((meal) => (
@@ -92,55 +97,55 @@ const ShowDiet = () => {
                     </caption>
                     <tbody>
                       <tr>
-                        <th>Number</th>
+                        <th>{t('components.show_diet.th1')}</th>
                         <td>{meal.meal.meal_number}</td>
                       </tr>
                       <tr>
-                        <th>Quantity</th>
+                        <th>{t('components.show_diet.th2')}</th>
                         <td>{meal.meal.quantity}</td>
                       </tr>
                       <tr>
-                        <th>Calories 1g</th>
+                        <th>{t('components.show_diet.th3')}</th>
                         <td>{meal.meal.calories_gram}</td>
                       </tr>
                       <tr>
-                        <th>Protein 1g</th>
+                        <th>{t('components.show_diet.th4')}</th>
                         <td>{meal.meal.protein_gram}</td>
                       </tr>
                       <tr>
-                        <th>Carbs 1g</th>
+                        <th>{t('components.show_diet.th5')}</th>
                         <td>{meal.meal.carbs_gram}</td>
                       </tr>
                       <tr>
-                        <th>Fat 1g</th>
+                        <th>{t('components.show_diet.th6')}</th>
                         <td>{meal.meal.fat_gram}</td>
                       </tr>
                       <tr>
-                        <th>Total Calories</th>
+                        <th>{t('components.show_diet.th7')}</th>
                         <td>{meal.meal.calories_total}</td>
                       </tr>
                       <tr>
-                        <th>Total Protein</th>
+                        <th>{t('components.show_diet.th8')}</th>
                         <td>{meal.meal.protein_total}</td>
                       </tr>
                       <tr>
-                        <th>Total Carbs</th>
+                        <th>{t('components.show_diet.th9')}</th>
                         <td>{meal.meal.carbs_total}</td>
                       </tr>
                       <tr>
-                        <th>Total Fat</th>
+                        <th>{t('components.show_diet.th10')}</th>
                         <td>{meal.meal.fat_total}</td>
                       </tr>
                       <tr>
-                        <th>Next meal</th>
+                        <th>{t('components.show_diet.th11')}</th>
                         <td>{meal.meal.time_after}</td>
                       </tr>
                       <tr>
-                        <th>Details</th>
+                        <th>{t('components.show_diet.th12')}</th>
                         <td>{meal.meal.details}</td>
                       </tr>
                       <tr>
-                        <th>Description</th>
+                        <th>{t('components.show_diet.th13')}</th>
                         <td>{meal.meal.description}</td>
                       </tr>
                     </tbody>

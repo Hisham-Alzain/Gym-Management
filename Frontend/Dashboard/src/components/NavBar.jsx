@@ -82,7 +82,7 @@ const NavBar = () => {
             </div>
             {loggedIn ? (
               <li id='Logout'>
-                <a href="/logout" title='Logout'>
+                <a href="/logout" title={t('components.nav_bar.logout')}>
                   <span className={styles.logout_span}>
                     <span><FaDoorOpen size={23} /></span>
                     <label htmlFor="Logout" className={styles.mobile_item}>

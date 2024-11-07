@@ -90,6 +90,26 @@
                 "email": "Email",
                 "phone_number": "Phone Number"
             }
+        },
+        "show_diet": {
+            "header": "'s Diet Program",
+            "start_date": "Start Date:",
+            "end_date": "End Date:",
+            "no_meals1": "meal",
+            "no_meals2": "meals",
+            "th1": "Number",
+            "th2": "Quantity",
+            "th3": "Calories 1g",
+            "th4": "Protein 1g",
+            "th5": "Carbs 1g",
+            "th6": "Fat 1g",
+            "th7": "Total Calories",
+            "th8": "Total Protein",
+            "th9": "Total Carbs",
+            "th10": "Total Fat",
+            "th11": "Next meal",
+            "th12": "Details",
+            "th13": "Description"
         }
     }
 }

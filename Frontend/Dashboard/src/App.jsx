@@ -8,13 +8,14 @@ import AdminRoutes from './utils/AdminRoutes.jsx';
 import Login from './components/Login.jsx';
 import Logout from './components/Logout.jsx';
 import Users from './components/UsersTable.jsx';
+import Meals from './components/Meals.jsx';
+import Exercises from './components/Exercises.jsx';
+import ShowDiet from './components/Diets/ShowDiet.jsx';
 import './App.css';
 
-import ShowDiet from './components/ShowDiet.jsx';
+
 import ShowProgram from './components/ShowProgram.jsx';
 import DayTable from './components/DayTable.jsx';
-import Exercises from './components/Exercises.jsx';
-import Meals from './components/Meals.jsx';
 import AddWorkout from './components/AddWorkout.jsx';
 
 
@@ -94,8 +95,8 @@ function App() {
               <Route path="/home" element={<Users />} />
               <Route path="/meals" element={<Meals />} />
               <Route path="/exercises" element={<Exercises />} />
-
               <Route path="/trainee/diet/:program_id/:user_name" element={<ShowDiet />} />
+
 
               <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
               <Route path="/trainee/workout/add/:user_id/:user_name" element={<AddWorkout />} />
