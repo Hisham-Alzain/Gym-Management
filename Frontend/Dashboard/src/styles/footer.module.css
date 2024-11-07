@@ -1,0 +1,63 @@
+/* Footer */
+.footer .container .top {
+    padding-block-start: 80px;
+}
+
+.footer .container .top .row .column .caption {
+    text-align: center;
+    margin-block-end: 20px;
+}
+
+.footer .container .top .row .column .caption .f_logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block-end: 50px;
+}
+
+.footer .container .top .row .column .caption .f_logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.footer .container .top .row .column .social {
+    margin-block-start: 30px;
+}
+
+.footer .container .top .row .column .social a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+    font-size: 25px;
+    color: #ff0000;
+    line-height: 50px;
+    text-align: center;
+    display: inline-block;
+    background: rgba(255, 0, 0, 0.1);
+    margin-inline-end: 10px;
+}
+
+.footer .container .top .row .column .social a:hover {
+    color: #ffffff;
+    background: #ff0000;
+    transition: 0.1s;
+}
+
+.footer .container .bottom {
+    border-block-start: 2px solid #1f2024;
+    padding-block-start: 40px;
+    padding-block-end: 50px;
+    margin-inline: 30px;
+}
+
+.footer .container .bottom .row .column .copy_right {
+    font-size: 16px;
+    font-weight: 320;
+    color: #c4c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-block-end: 16px;
+}
