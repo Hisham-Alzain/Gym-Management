@@ -45,7 +45,6 @@ export const DeleteWorkoutProgram = async (token, program_id) => {
   }
 };
 
-
 export const CreateDefaultWorkout = async (token, user_id, start_date, end_date, program_name) => {
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/workouts/create/default', {
