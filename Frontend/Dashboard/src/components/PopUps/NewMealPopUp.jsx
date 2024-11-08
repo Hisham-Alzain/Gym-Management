@@ -13,7 +13,7 @@ const NewMealPopUp = () => {
   const { t } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
-
+  // States
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [calories, setCalories] = useState('');
@@ -44,6 +44,7 @@ const NewMealPopUp = () => {
   }
 
   const handlePhotoChange = (event) => {
+    setThumbnailPath(null);
     const image = event.target.files[0];
     const allowedImageTypes = ["image/png", "image/jpg", "image/jpeg"];
     if (image && allowedImageTypes.includes(image.type)) {

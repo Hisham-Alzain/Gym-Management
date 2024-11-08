@@ -39,16 +39,6 @@
                 "title3": "Delete workout program",
                 "no_programs": "No programs found"
             },
-            "meal_popup": {
-                "title": " Add meal",
-                "header": "New Meal",
-                "input1": "Name",
-                "input2": "Description",
-                "input3": "Calories 1g",
-                "input4": "Protein 1g",
-                "input5": "Carbs 1g",
-                "input6": "Fat 1g"
-            },
             "diets_popup": {
                 "name": "diets",
                 "create_button": "Add Diet",
@@ -60,6 +50,24 @@
                 "title2": "Show diet program",
                 "title3": "Delete diet program",
                 "no_programs": "No programs found"
+            },
+            "meal_popup": {
+                "title": " Add meal",
+                "header": "New Meal",
+                "input1": "Name",
+                "input2": "Description",
+                "input3": "Calories 1g",
+                "input4": "Protein 1g",
+                "input5": "Carbs 1g",
+                "input6": "Fat 1g"
+            },
+            "exercise_popup": {
+                "title": " Add exercise",
+                "header": "New Exercise",
+                "input1": "Name",
+                "input2": "Description",
+                "option": "Choose Muscle",
+                "label": "Video"
             },
             "video_popup": {
                 "trigger": "Show video",
