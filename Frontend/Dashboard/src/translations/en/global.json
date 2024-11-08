@@ -106,6 +106,13 @@
             "submit": "Submit",
             "cancel": "Cancel"
         },
+        "show_program": {
+            "header": "'s Workout Program",
+            "start_date": "Start Date:",
+            "end_date": "End Date:",
+            "no_sets1": "set",
+            "no_sets2": "sets"
+        },
         "meals": {
             "search": "Search meal",
             "loading": "Please wait",

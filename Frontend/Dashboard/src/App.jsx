@@ -9,14 +9,11 @@ import Login from './components/Login.jsx';
 import Logout from './components/Logout.jsx';
 import Users from './components/UsersTable.jsx';
 import Meals from './components/Diets/Meals.jsx';
-import Exercises from './components/Workouts/Exercises.jsx';
 import ShowDiet from './components/Diets/ShowDiet.jsx';
-import './App.css';
-
-
-import ShowProgram from './components/ShowProgram.jsx';
-import DayTable from './components/DayTable.jsx';
+import Exercises from './components/Workouts/Exercises.jsx';
+import ShowProgram from './components/Workouts/ShowProgram.jsx';
 import AddWorkout from './components/AddWorkout.jsx';
+import './App.css';
 
 
 function App() {
@@ -82,7 +79,6 @@ function App() {
   if (isLoading) {
     return <></>
   }
-
   return (
     <LoginContext.Provider value={{ loggedIn, setLoggedIn, accessToken, setAccessToken }}>
       <ProfileContext.Provider value={{ profile, setProfile }}>
@@ -96,13 +92,8 @@ function App() {
               <Route path="/meals" element={<Meals />} />
               <Route path="/exercises" element={<Exercises />} />
               <Route path="/trainee/diet/:program_id/:user_name" element={<ShowDiet />} />
-
-
               <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
               <Route path="/trainee/workout/add/:user_id/:user_name" element={<AddWorkout />} />
-              <Route path="/ShowProgram/:program_id/:day_id" element={<DayTable />} />
-
-
               <Route path='/logout' element={<Logout />} />
             </Route>
           </Routes>
