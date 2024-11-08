@@ -15,9 +15,9 @@ enum WorkoutMuscle: string
     case Back_Triceps = 'Back_Triceps';
     case Legs_Shoulders = 'Legs_Shoulders';
     case Abs = 'Abs';
-    case ALL='ALL';
+    case ALL = 'ALL';
     case Chest_Back_Triceps = 'Chest_Back_Triceps';
-    case Biceps_Legs_Shoulders = 'Biceps_Legs_Shoulders';
+    case Legs_Shoulders_Biceps = 'Legs_Shoulders_Biceps';
 
     public static function names(): array
     {
@@ -34,13 +34,13 @@ enum WorkoutMuscle: string
             ['en' => 'Triceps', 'ar' => 'يدين خلفي'],
             ['en' => 'Arms', 'ar' => 'يدين'],
             ['en' => 'Legs', 'ar' => 'رجلين'],
-            ['en' => 'Chest_Biceps', 'ar' => 'صدر و يدين أمامي'],
-            ['en' => 'Back_Triceps', 'ar' => 'ظهر و يدين خلفي'],
-            ['en' => 'Legs_Shoulders', 'ar' => 'رجلين و أكتاف'],
+            ['en' => 'Chest_Biceps', 'ar' => 'صدر ويدين أمامي'],
+            ['en' => 'Back_Triceps', 'ar' => 'ظهر ويدين خلفي'],
+            ['en' => 'Legs_Shoulders', 'ar' => 'رجلين وأكتاف'],
             ['en' => 'Abs', 'ar' => 'معدة'],
             ['en' => 'All', 'ar' => 'كل العضلات'],
-            ['en' => 'Chest_Back_Triceps', 'ar' => 'صدر و يدين خلفي و ظهر'],
-            ['en' => 'Biceps_Legs_Shoulders', 'ar' => 'رجلين و أكتاف ويدين أمامي'],
+            ['en' => 'Chest_Back_Triceps', 'ar' => 'صدر ويدين خلفي وظهر'],
+            ['en' => 'Legs_Shoulders_Biceps', 'ar' => 'رجلين وأكتاف ويدين أمامي'],
         ];
     }
 }

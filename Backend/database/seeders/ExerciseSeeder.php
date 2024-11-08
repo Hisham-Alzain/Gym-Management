@@ -140,6 +140,8 @@ class ExerciseSeeder extends Seeder
                 "description" => ""
             ]
         ];
+
+        // Create exercises
         foreach ($exercises as $exerciseData) {
             Exercise::create($exerciseData);
         }

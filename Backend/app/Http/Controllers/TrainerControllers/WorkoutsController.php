@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers\TrainerControllers;
 
-use App\Models\User;
+use App\Http\Controllers\MainController;
 
+use App\Models\User;
 use App\Models\Exercise;
-use App\Models\WorkoutDay;
-use Illuminate\Http\Request;
-use App\Policies\AdminPolicy;
-use App\Models\WorkoutProgram;
-use App\Filters\ExerciseFilter;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
-use App\Http\Requests\VideoRequest;
+use App\Models\WorkoutDay;
+use App\Models\WorkoutProgram;
+use App\Policies\AdminPolicy;
+use App\Filters\ExerciseFilter;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\WorkoutRequest;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
 use App\Http\Requests\ExerciseRequest;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\MainController;
+use App\Http\Requests\WorkoutRequest;
+use App\Http\Requests\DefaultWorkoutRequest;
+use App\Http\Requests\VideoRequest;
 use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\ExerciseCollection;
-use App\Http\Requests\DefaultWorkoutRequest;
 use App\Http\Resources\WorkoutsResources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgramCollection;
-use Illuminate\Support\Facades\File;
 
 class WorkoutsController extends MainController
 {
@@ -50,11 +49,14 @@ class WorkoutsController extends MainController
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
+            // Get json path
             $filePath = base_path('defaultWorkouts.json');
 
+            // Open json
             $jsonData = File::get($filePath);
-            $data= json_decode($jsonData, true);
-            $data=$data[$validated['program_name']];
+            $data = json_decode($jsonData, true);
+            $data = $data[$validated['program_name']];
+
             // Create program
             $program = WorkoutProgram::create([
                 'user_id' => $validated['user_id'],
@@ -62,6 +64,7 @@ class WorkoutsController extends MainController
                 'end_date' => $validated['end_date'],
                 'repeat_days' => $data['repeat_days'],
             ]);
+
             // Create days
             foreach ($data['days'] as $D) {
                 $day = WorkoutDay::create([
