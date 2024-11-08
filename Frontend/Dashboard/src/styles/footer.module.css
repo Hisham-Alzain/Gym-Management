@@ -1,63 +1,45 @@
-/* Footer */
-.footer .container .top {
-    padding-block-start: 80px;
+.footer .top {
+    padding-block-start: 30px;
 }
 
-.footer .container .top .row .column .caption {
+.footer .top .row .social {
     text-align: center;
-    margin-block-end: 20px;
-}
-
-.footer .container .top .row .column .caption .f_logo {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-block-end: 50px;
-}
-
-.footer .container .top .row .column .caption .f_logo img {
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-}
-
-.footer .container .top .row .column .social {
+    margin-block-end: 15px;
     margin-block-start: 30px;
 }
 
-.footer .container .top .row .column .social a {
+.footer .top .row .social a {
     width: 45px;
     height: 45px;
-    border-radius: 50px;
     font-size: 25px;
     color: #ff0000;
+    background: #ff00001a;
     line-height: 50px;
     text-align: center;
+    border-radius: 50px;
     display: inline-block;
-    background: rgba(255, 0, 0, 0.1);
     margin-inline-end: 10px;
 }
 
-.footer .container .top .row .column .social a:hover {
+.footer .top .row .social a:hover {
     color: #ffffff;
     background: #ff0000;
     transition: 0.1s;
 }
 
-.footer .container .bottom {
-    border-block-start: 2px solid #1f2024;
-    padding-block-start: 40px;
-    padding-block-end: 50px;
-    margin-inline: 30px;
+.footer .bottom {
+    border-block-start: 3px solid #333333;
+    padding-block-start: 15px;
+    padding-block-end: 30px;
+    margin-inline: 90px;
 }
 
-.footer .container .bottom .row .column .copy_right {
-    font-size: 16px;
-    font-weight: 320;
+.footer .bottom .row .copy_right {
+    font-size: 15px;
+    font-weight: 300;
     color: #c4c4c4;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-block-end: 16px;
+    margin-block-end: 15px;
 }

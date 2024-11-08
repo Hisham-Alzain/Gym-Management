@@ -325,7 +325,7 @@ function App() {
               <div className='row'>
                 <div className='column'>
                   <div className='copy-right'>
-                    Copyright ©<script>document.write(new Date().getFullYear());</script>2024 All rights reserved
+                    {`${t('footer.part1')}${year} ${t('footer.part2')}`}
                   </div>
                 </div>
               </div>

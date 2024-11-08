@@ -15,5 +15,9 @@
         "p_phone": "(+963) 958 295 285",
         "h3_email": "Email",
         "p_email": "CoachAmr@gmail.com"
+    },
+    "footer": {
+        "part1": "Copyright ©",
+        "part2": "All rights reserved"
     }
 }

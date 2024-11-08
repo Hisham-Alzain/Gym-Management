@@ -179,6 +179,10 @@
             "th11": "Next meal",
             "th12": "Details",
             "th13": "Description"
+        },
+        "footer": {
+            "part1": "Copyright ©",
+            "part2": "All rights reserved"
         }
     }
 }
