@@ -47,7 +47,7 @@ const Meals = () => {
           }
         });
       } else {
-        console.log(response.data);
+        console.log(response.statusText);
       }
     }).then(() => {
       setIsLoading(false);
@@ -65,7 +65,7 @@ const Meals = () => {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
-    if (isDone) {
+    if (isDone || nextPage >= data.last_page) {
       return;
     }
     if (scrollY + windowHeight >= documentHeight - 100) {

@@ -91,6 +91,21 @@
                 "phone_number": "رقم الهاتف"
             }
         },
+        "exercises": {
+            "search": "البحث عن تمرين",
+            "label": "فلتر العضلات:",
+            "loading": "الرجاء الانتظار",
+            "no_exercises": "لا يوجد تمارين لعرضها"
+        },
+        "exercises_card": {
+            "muscle": "العضلة:",
+            "p": "وصف التمرين:",
+            "input": "وصف التمرين",
+            "update_button": "تعديل الوصف",
+            "delete_button": "حذف التمرين",
+            "submit": "إرسال",
+            "cancel": "إالغاء"
+        },
         "meals": {
             "search": "البحث عن وجبة",
             "loading": "الرجاء الانتظار",

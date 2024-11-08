@@ -9,7 +9,7 @@ import Login from './components/Login.jsx';
 import Logout from './components/Logout.jsx';
 import Users from './components/UsersTable.jsx';
 import Meals from './components/Diets/Meals.jsx';
-import Exercises from './components/Exercises.jsx';
+import Exercises from './components/Workouts/Exercises.jsx';
 import ShowDiet from './components/Diets/ShowDiet.jsx';
 import './App.css';
 

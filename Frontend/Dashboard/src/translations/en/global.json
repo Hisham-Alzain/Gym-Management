@@ -91,6 +91,21 @@
                 "phone_number": "Phone Number"
             }
         },
+        "exercises": {
+            "search": "Search exercise",
+            "label": "Muscle filter:",
+            "loading": "Please wait",
+            "no_exercises": "No more exercises to display"
+        },
+        "exercises_card": {
+            "muscle": "Muscle:",
+            "p": "Description:",
+            "input": "Exercise description",
+            "update_button": "Update description",
+            "delete_button": "Delete exercise",
+            "submit": "Submit",
+            "cancel": "Cancel"
+        },
         "meals": {
             "search": "Search meal",
             "loading": "Please wait",

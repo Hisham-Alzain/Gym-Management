@@ -35,7 +35,7 @@ const MealCard = ({ MealData }) => {
       newFat
     ).then((response) => {
       if (response.status == 200) {
-        console.log('meal updated');
+        console.log('Meal updated');
         window.location.reload();
       } else {
         console.log(response);
@@ -57,7 +57,7 @@ const MealCard = ({ MealData }) => {
     event.preventDefault();
     DeleteMeal(accessToken, meal_id).then((response) => {
       if (response.status === 204) {
-        console.log('meal deleted');
+        console.log('Meal deleted');
         window.location.reload();
       } else {
         console.log('delete not working');
