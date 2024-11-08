@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
             'gender' => 'MALE',
             'role' => 'Trainer'
         ]);
+        $this->call(ExerciseSeeder::class);
     }
 }

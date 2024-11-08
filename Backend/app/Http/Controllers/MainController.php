@@ -60,7 +60,10 @@ class MainController extends Controller
                 'Arms',
                 'Chest_Biceps',
                 'Back_Triceps',
-                'Leg_Shoulders'
+                'Leg_Shoulders',
+                'Biceps_Legs_Shoulders',
+                'ALL',
+                'Chest_Back_Triceps'
             ];
             $enumNames = WorkoutMuscle::names();
             $enumValues = WorkoutMuscle::values();
