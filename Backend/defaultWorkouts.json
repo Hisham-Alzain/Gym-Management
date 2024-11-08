@@ -1,40 +1,778 @@
 {
-    "repeat_days": 3,
-    "days": [
-        {
-            "muscle": "Chest",
-            "exercises": [
-                {
-                    "exercise_id": 1,
-                    "sets": [
-                        {
-                            "set_no": 1,
-                            "exp_reps": 12
-                        },
-                        {
-                            "set_no": 2,
-                            "exp_reps": 10
-                        },
-                        {
-                            "set_no": 3,
-                            "exp_reps": 8
-                        }
-                    ]
-                },
-                {
-                    "exercise_id": 2,
-                    "sets": [
-                        {
-                            "set_no": 1,
-                            "exp_reps": 15
-                        },
-                        {
-                            "set_no": 2,
-                            "exp_reps": 15
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+    "beginner": {
+        "repeat_days": 1,
+        "days": [
+            {
+                "muscle": "ALL",
+                "exercises": [
+                    {
+                        "exercise_id": 1,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 2,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 3,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 4,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 5,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 6,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 7,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 8,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 9,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 10,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "semi_beginner": {
+        "repeat_days": 2,
+        "days": [
+            {
+                "muscle": "Chest_Back_Triceps",
+                "exercises": [
+                    {
+                        "exercise_id": 11,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 3,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 13,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 5,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 6,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 16,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 10,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "muscle": "Biceps_Legs_Shoulders",
+                "exercises": [
+                    {
+                        "exercise_id": 1,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 2,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 17,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 7,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 8,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 18,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 9,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "First_program": {
+        "repeat_days": 3,
+        "days": [
+            {
+                "muscle": "Chest_Biceps",
+                "exercises": [
+                    {
+                        "exercise_id": 11,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 14,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 3,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 15,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 9,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 19,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "muscle": "Back_Triceps",
+                "exercises": [
+                    {
+                        "exercise_id": 16,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 5,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 21,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 20,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 10,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 24,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "muscle": "Legs_Shoulders",
+                "exercises": [
+                    {
+                        "exercise_id": 1,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 10
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 2,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 22,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 24,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 7,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 8,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    },
+                    {
+                        "exercise_id": 25,
+                        "sets": [
+                            {
+                                "set_no": 1,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 2,
+                                "exp_reps": 15
+                            },
+                            {
+                                "set_no": 3,
+                                "exp_reps": 10
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
 }

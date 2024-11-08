@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers\TrainerControllers;
 
-use App\Http\Controllers\MainController;
-
 use App\Models\User;
+
 use App\Models\Exercise;
+use App\Models\WorkoutDay;
+use Illuminate\Http\Request;
+use App\Policies\AdminPolicy;
+use App\Models\WorkoutProgram;
+use App\Filters\ExerciseFilter;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
-use App\Models\WorkoutDay;
-use App\Models\WorkoutProgram;
-use App\Policies\AdminPolicy;
-use App\Filters\ExerciseFilter;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Http\Requests\ExerciseRequest;
-use App\Http\Requests\WorkoutRequest;
-use App\Http\Requests\DefaultWorkoutRequest;
 use App\Http\Requests\VideoRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\WorkoutRequest;
+use App\Http\Requests\ExerciseRequest;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\MainController;
 use App\Http\Resources\ExerciseResource;
 use App\Http\Resources\ExerciseCollection;
+use App\Http\Requests\DefaultWorkoutRequest;
 use App\Http\Resources\WorkoutsResources\WorkoutProgramResource;
 use App\Http\Resources\WorkoutsResources\WorkoutProgramCollection;
-
+use Illuminate\Support\Facades\File;
 
 class WorkoutsController extends MainController
 {
@@ -49,7 +50,44 @@ class WorkoutsController extends MainController
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
         } else {
-            //to be implented when defaultWorkout json is filled with data
+            $filePath = base_path('defaultWorkouts.json');
+
+            $jsonData = File::get($filePath);
+            $data= json_decode($jsonData, true);
+            $data=$data[$validated['program_name']];
+            // Create program
+            $program = WorkoutProgram::create([
+                'user_id' => $validated['user_id'],
+                'start_date' => $validated['start_date'],
+                'end_date' => $validated['end_date'],
+                'repeat_days' => $data['repeat_days'],
+            ]);
+            // Create days
+            foreach ($data['days'] as $D) {
+                $day = WorkoutDay::create([
+                    'workout_program_id' => $program->id,
+                    'muscle' => $D['muscle']
+                ]);
+                foreach ($D['exercises'] as $E) {
+                    $exercise = WorkoutExercise::create([
+                        'workout_day_id' => $day->id,
+                        'exercise_id' => $E['exercise_id'],
+                    ]);
+                    foreach ($E['sets'] as $S) {
+                        $set = WorkoutExerciseSet::create([
+                            'workout_exercise_id' => $exercise->id,
+                            'set_number' => $S['set_no'],
+                            'expected_reps' => $S['exp_reps'],
+                        ]);
+                    }
+                }
+            }
+
+            // Response
+            return response()->json([
+                'message' => 'Workout program has been created successfully',
+                'program' => new WorkoutProgramResource($program)
+            ], 201);
         }
     }
 

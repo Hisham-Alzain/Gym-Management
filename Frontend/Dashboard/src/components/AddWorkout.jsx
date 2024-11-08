@@ -6,7 +6,7 @@ import { CreateDefaultWorkout, CreateWorkout } from '../apis/WorkoutApis';
 import { FetchExercises } from '../apis/ExerciseApis';
 
 const defaultPrograms = [
-    "beginner", "semi-beginner", "first-program"
+    "beginner", "semi_beginner", "first_program"
 ];
 const muscleGroups = [
     "Chest", "Back", "Legs", "Shoulders", "Arms",
