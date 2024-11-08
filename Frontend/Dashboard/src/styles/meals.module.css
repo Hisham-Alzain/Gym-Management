@@ -5,65 +5,38 @@
     min-height: 100vh;
 }
 
+.upper_div {
+    display: flex;
+    padding-block-start: 10px;
+}
+
+.search_input {
+    width: 60%;
+    cursor: text;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: inherit;
+    color: #ffffff;
+    background-color: #1a1a1a;
+    box-shadow: 0px 1px 3px #863333;
+    border: 1px solid #292929;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-inline-start: 5%;
+    transition: 0.25s;
+}
+
+.popup_div {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
 .mid_container {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding-block-start: 10px;
-}
-
-.upper_div {
-    display: flex;
-    padding-block-start: 10px;
-    margin-inline-start: 20px;
-}
-
-.search {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-inline-start: 5%;
-}
-
-.search_input {
-    width: 75%;
-    cursor: text;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: inherit;
-    border: 1px solid #292929;
-    border-radius: 15px;
-    color: #ffffff;
-    background-color: #1a1a1a;
-    box-shadow: 0px 2px 2px #863333;
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    transition: 0.25s;
-}
-
-.buttun_div {
-    width: 30%;
-    margin-inline: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-/* Card css */
-.meal_card {
-    width: 90%;
-    border: 2px;
-    border-radius: 20px;
-    border-style: outset;
-    border-color: rgb(183, 28, 28);
-    margin-block-start: 5px;
-    margin-inline-start: 5%;
-}
-
-.meal_card a {
-    width: 95%;
-    text-decoration: none;
 }
 
 .done {
@@ -73,16 +46,20 @@
     justify-content: center;
 }
 
-/* Exercise card CSS */
-.card {
-    border-width: 2px;
-    border-radius: 20px;
-    transition: 0.2s;
+/* Meal Card CSS */
+.meal_card {
+    width: 90%;
+    border: 2px;
+    border-radius: 15px;
+    border-style: outset;
+    border-color: #b71c1c;
+    margin-block-start: 10px;
+    margin-inline-start: 5%;
 }
 
-.card:hover {
+.meal_card:hover {
     transition: 0.2s;
-    box-shadow: 0px 2px 10px rgb(183, 28, 28);
+    box-shadow: 0px 2px 10px #b71c1c;
 }
 
 .row {
@@ -103,29 +80,26 @@
 }
 
 .image {
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     object-fit: fill;
     border-radius: 10px;
 }
 
 .info {
-    width: 60%;
-    padding-block-start: 15px;
-    padding-inline-start: 5px;
+    width: 50%;
     color: #d1d1d1;
-}
-
-.info h3 {
-    margin: 0;
-    padding: 0;
+    padding-inline-end: 10px;
+    padding-block-start: 10px;
 }
 
 .info p {
-    overflow-y: auto;
+    margin: 0;
+    word-wrap: break-word;
 }
 
 .info .title {
+    margin: 0;
     padding: 5px;
     font-weight: 500;
     max-height: 100px;
@@ -140,21 +114,25 @@
     flex-direction: column;
 }
 
-.nutritions p {
-    margin: 0;
+.input_div {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .custom_input {
-    width: 60%;
+    width: 40%;
     font-size: 15px;
     font-weight: 600;
     background: none;
-    color: var(--color-custom_red);
+    color: var(--color-text);
     border: none;
     border-block-end: 3px solid #A5A5A8;
-    padding-inline-start: 5px;
-    padding-block-end: 10px;
-    margin-block: 5px;
+    padding-inline-start: 10px;
+    padding-block-end: 5px;
+    margin-inline: 10px;
+    margin-block: 15px;
     transition: 0.3s;
 }
 
@@ -168,33 +146,34 @@
 .description {
     width: 90%;
     color: #ffffff;
+    background-color: var(--color-background);
     border: 1px outset;
     border-radius: 10px;
-    background-color: var(--color-background);
+    padding: 10px;
 }
 
 .description:hover {
-    box-shadow: 0px 1px 3px rgb(183, 108, 28);
+    box-shadow: 0px 1px 3px #b76c1c;
 }
 
 .column {
     width: 20%;
-    padding-block-start: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    padding-block-start: 10px;
 }
 
 .update_button {
     width: 150px;
-    font-size: 15px;
     cursor: pointer;
-    border-radius: 5px;
-    border: none;
+    font-size: 15px;
     color: #d6d6d6;
     background-color: var(--color-custom_grey);
-    box-shadow: 0px 1px 1px #a5b71c;
-    padding: 2px;
+    box-shadow: 0px 0px 5px #a3b51c;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -219,16 +198,21 @@
     width: 49%;
     font-size: 15px;
     cursor: pointer;
-    border-radius: 4px;
-    border-color: #ffffff;
     color: #ffffff;
     background-color: var(--color-background);
-    box-shadow: 0px 2px 5px #ffffff;
-    padding: 2px;
+    box-shadow: 0px 0px 4px #ffffff;
+    border-radius: 4px;
+    border-color: #ffffff;
+    padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.5s;
+}
+
+.submit:hover {
+    color: #20d903;
+    background-color: #ffffff;
 }
 
 .cancel:hover {
@@ -238,14 +222,14 @@
 
 .delete_button {
     width: 150px;
-    font-size: 15px;
     cursor: pointer;
-    border: none;
-    border-radius: 5px;
+    font-size: 15px;
     color: #d6d6d6;
     background-color: var(--color-custom_grey);
-    box-shadow: 0px 1px 1px #b71b1a;
-    padding: 2px;
+    box-shadow: 0px 0px 5px #b71b1a;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -258,18 +242,14 @@
     background-color: #b71c1c;
 }
 
-.submit:hover {
-    color: #20d903;
-    background-color: #ffffff;
+@media screen and (max-width: 970px) {
+    .column {
+        width: 23%;
+    }
 }
 
 /* Responsive */
-@media screen and (max-width: 920px) {
-    .column{
-        width: 24%;
-    }
-}
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .row {
         flex-direction: column;
         justify-content: center;
@@ -280,28 +260,33 @@
     .column {
         width: 90%;
         display: flex;
-        flex-direction: row;
         flex-wrap: wrap;
+        flex-direction: row;
         align-items: center;
         justify-content: space-around;
     }
 
     .upper_div {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
-    .search {
-        width: 90%;
+    .search_input {
+        margin-inline: 0;
         margin-block-end: 10px;
     }
 
-    .flex_some {
-        display: flex;
-        flex-direction: row;
+    .popup_div {
+        min-height: 37px;
     }
 
     .title_div {
         display: flex;
         justify-content: center;
+    }
+
+    .custom_input {
+        width: 90%;
     }
 }

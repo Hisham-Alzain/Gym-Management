@@ -91,6 +91,27 @@
                 "phone_number": "Phone Number"
             }
         },
+        "meals": {
+            "search": "Search meal",
+            "loading": "Please wait",
+            "no_meals": "No more meals to display"
+        },
+        "meals_card": {
+            "p1": "Calories 1g:",
+            "p2": "Protein 1g:",
+            "p3": "Carbs 1g:",
+            "p4": "Fat 1g:",
+            "p5": "Description:",
+            "input1": "Meal Calories per gram",
+            "input2": "Meal Protein per gram",
+            "input3": "Meal Carbs per gram",
+            "input4": "Meal Fat per gram",
+            "input5": "Meal description",
+            "update_button": "Update meal",
+            "delete_button": "Delete meal",
+            "submit": "Submit",
+            "cancel": "Cancel"
+        },
         "show_diet": {
             "header": "'s Diet Program",
             "start_date": "Start Date:",

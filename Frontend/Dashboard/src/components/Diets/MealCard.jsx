@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LoginContext } from "../utils/Contexts";
-import { UpdateMeal, DeleteMeal } from '../apis/DietsApis';
-import img_holder from '../assets/noImage.jpg';
-import styles from '../styles/meals.module.css';
+import { LoginContext } from "../../utils/Contexts";
+import { UpdateMeal, DeleteMeal } from '../../apis/DietsApis';
+import img_holder from '../../assets/noImage.jpg';
+import styles from '../../styles/meals.module.css';
 
 
 const MealCard = ({ MealData }) => {
@@ -20,13 +20,20 @@ const MealCard = ({ MealData }) => {
   const [newFat, setNewFat] = useState(MealData.fat_per_gram);
 
   const handleDescription = (event) => {
-    event.preventDefault();
     setNewDescription(event.target.value);
   }
 
   const handleUpdateMeal = (event, meal_id) => {
     event.preventDefault();
-    UpdateMeal(accessToken, meal_id, newDescription, newCalories, newProtein, newCarbs, newFat).then((response) => {
+    UpdateMeal(
+      accessToken,
+      meal_id,
+      newDescription,
+      newCalories,
+      newProtein,
+      newCarbs,
+      newFat
+    ).then((response) => {
       if (response.status == 200) {
         console.log('meal updated');
         window.location.reload();
@@ -49,7 +56,7 @@ const MealCard = ({ MealData }) => {
   const handleDeleteMeal = (event, meal_id) => {
     event.preventDefault();
     DeleteMeal(accessToken, meal_id).then((response) => {
-      if (response.status == 204) {
+      if (response.status === 204) {
         console.log('meal deleted');
         window.location.reload();
       } else {
@@ -58,85 +65,110 @@ const MealCard = ({ MealData }) => {
     });
   }
 
+
   return (
-    <div className={styles.card}>
+    <div className={styles.meal_card}>
       {MealData && <div className={styles.row}>
         <div className={styles.img_holder}>
           {MealData.thumbnail_path ? (
-            <img src={MealData.thumbnail_path} alt="Uploaded Photo" style={{ pointerEvents: 'none' }} className={styles.image} />
+            <img src={MealData.thumbnail_path}
+              alt="Uploaded Photo"
+              style={{ pointerEvents: 'none' }}
+              className={styles.image}
+            />
           ) : (
-            <img src={img_holder} alt="Photo Placeholder" style={{ pointerEvents: 'none' }} className={styles.image} />
+            <img src={img_holder}
+              alt="Photo Placeholder"
+              style={{ pointerEvents: 'none' }}
+              className={styles.image}
+            />
           )}
         </div>
         <div className={styles.info}>
           <div className={styles.title_div}>
-            <h3 className={styles.title}>{MealData.meal_name}</h3>
+            <h3 className={styles.title}>
+              {MealData.meal_name}
+            </h3>
           </div>
           <div className={styles.nutritions}>
             {!updating ?
               <>
-                <p>calories per gram:  {MealData.calories_per_gram}g</p>
-                <p>protein per gram:  {MealData.protein_per_gram}g</p>
-                <p>carbs per gram:  {MealData.carbs_per_gram}g</p>
-                <p>fat per gram:  {MealData.fat_per_gram}g</p>
-              </> : <>
-                <input type="number"
+                <p>{`${t('components.meals_card.p1')} ${MealData.calories_per_gram}g`}</p>
+                <p>{`${t('components.meals_card.p2')} ${MealData.protein_per_gram}g`}</p>
+                <p>{`${t('components.meals_card.p3')} ${MealData.carbs_per_gram}g`}</p>
+                <p>{`${t('components.meals_card.p4')} ${MealData.fat_per_gram}g`}</p>
+              </> : <div className={styles.input_div}>
+                <input
+                  type="number"
                   value={newCalories}
                   onChange={(event) => setNewCalories(event.target.value)}
-                  placeholder='meal calories per gram'
+                  placeholder={t('components.meals_card.input1')}
                   step="0.01"
                   className={styles.custom_input}
                 />
-                <input type="number"
+                <input
+                  type="number"
                   value={newProtein}
                   onChange={(event) => setNewProtein(event.target.value)}
-                  placeholder='meal protein per gram'
+                  placeholder={t('components.meals_card.input2')}
                   step="0.01"
                   className={styles.custom_input}
                 />
-                <input type="number"
+                <input
+                  type="number"
                   value={newCarbs}
                   onChange={(event) => setNewCarbs(event.target.value)}
-                  placeholder='meal carbs per gram'
+                  placeholder={t('components.meals_card.input3')}
                   step="0.01"
                   className={styles.custom_input}
                 />
-                <input type="number"
+                <input
+                  type="number"
                   value={newFat}
                   onChange={(event) => setNewFat(event.target.value)}
-                  placeholder='meal fat per gram'
+                  placeholder={t('components.meals_card.input4')}
                   step="0.01"
                   className={styles.custom_input}
                 />
-              </>
+              </div>
             }
           </div>
-          {!updating ? <p>Description: {MealData.description}</p>
-            :
-            <textarea
+          {!updating ?
+            <p>{`${t('components.meals_card.p5')} ${MealData.description}g`}</p>
+            : <textarea
               rows={7}
               type='text'
-              id='newDescription'
-              className={styles.description}
-              placeholder='New description'
-              onChange={handleDescription}
               value={newDescription}
+              onChange={handleDescription}
+              placeholder={t('components.meals_card.input5')}
+              className={styles.description}
             />
           }
         </div>
         <div className={styles.column}>
-          {!updating && <button className={styles.update_button} onClick={() => setUpdating(true)}>Update meal</button>}
+          {!updating &&
+            <button
+              className={styles.update_button}
+              onClick={() => setUpdating(true)}>
+              {t('components.meals_card.update_button')}
+            </button>}
           {updating &&
             <form
               className={styles.btn_holder}
               onSubmit={(event) => handleUpdateMeal(event, MealData.meal_id)}
             >
-              <button className={styles.submit} type='submit'>Submit</button>
-              <button className={styles.cancel} onClick={handleCancel}>Cancel</button>
+              <button className={styles.submit} type='submit'>
+                {t('components.meals_card.submit')}
+              </button>
+              <button className={styles.cancel} onClick={handleCancel}>
+                {t('components.meals_card.cancel')}
+              </button>
             </form>
           }
-          <button className={styles.delete_button} onClick={(event) => handleDeleteMeal(event, MealData.meal_id)}>
-            Delete meal
+          <button
+            className={styles.delete_button}
+            onClick={(event) => handleDeleteMeal(event, MealData.meal_id)}>
+            {t('components.meals_card.delete_button')}
           </button>
         </div>
       </div>}
