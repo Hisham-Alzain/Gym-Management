@@ -85,7 +85,7 @@ const NavBar = () => {
                 <a href="/logout" title={t('components.nav_bar.logout')}>
                   <span className={styles.logout_span}>
                     <span><FaDoorOpen size={23} /></span>
-                    <label htmlFor="Logout" className={styles.mobile_item}>
+                    <label htmlFor='Logout' className={styles.mobile_item}>
                       {t('components.nav_bar.logout')}
                     </label>
                   </span>

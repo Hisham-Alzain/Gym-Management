@@ -5,65 +5,48 @@
     min-height: 100vh;
 }
 
-.mid_container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding-block-start: 10px;
-}
-
 .upper_div {
     display: flex;
     padding-block-start: 10px;
-    margin-inline-start: 20px;
-}
-
-.search {
-    width: 35%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .search_input {
-    width: 75%;
+    width: 30%;
     cursor: text;
     font-size: 15px;
     font-weight: 600;
     text-decoration: inherit;
-    border: 1px solid #292929;
-    border-radius: 15px;
     color: #ffffff;
     background-color: #1a1a1a;
-    box-shadow: 0px 2px 2px #863333;
-    display: flex;
-    align-items: center;
+    box-shadow: 0px 1px 3px #863333;
+    border: 1px solid #292929;
+    border-radius: 15px;
     padding: 10px 15px;
+    margin-inline-start: 5%;
     transition: 0.25s;
-}
-
-.flex_some {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .filter_div {
     width: 30%;
-    margin-inline: 20px;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
+.filter_div label {
+    width: 40%;
+    text-align: end;
+    padding-inline: 10px;
+}
+
 .filter {
-    width: 80%;
+    width: 50%;
+    cursor: pointer;
+    font-size: 15px;
     font-weight: 500;
-    font-size: 16px;
+    border: none;
     border-radius: 10px;
     color: var(--color-custom_red);
-    border: none;
-    cursor: pointer;
     background-color: #292929;
 }
 
@@ -73,27 +56,17 @@
     outline: none;
 }
 
-.buttun_div {
+.popup_div {
     width: 30%;
-    margin-inline: 20px;
     display: flex;
     justify-content: center;
 }
 
-/* Card css */
-.exercise_card {
-    width: 90%;
-    border: 2px;
-    border-radius: 20px;
-    border-style: outset;
-    border-color: rgb(183, 28, 28);
-    margin-block-start: 5px;
-    margin-inline-start: 5%;
-}
-
-.exercise_card a {
-    width: 95%;
-    text-decoration: none;
+.mid_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-block-start: 10px;
 }
 
 .done {
@@ -103,16 +76,21 @@
     justify-content: center;
 }
 
-/* Exercise card CSS */
-.card {
-    border-width: 2px;
-    border-radius: 20px;
-    transition: 0.2s;
+
+/* Exercise Card CSS */
+.exercise_card {
+    width: 90%;
+    border: 2px;
+    border-radius: 15px;
+    border-style: outset;
+    border-color: #b71c1c;
+    margin-block-start: 10px;
+    margin-inline-start: 5%;
 }
 
-.card:hover {
+.exercise_card:hover {
     transition: 0.2s;
-    box-shadow: 0px 2px 10px rgb(183, 28, 28);
+    box-shadow: 0px 2px 10px #b71c1c;
 }
 
 .row {
@@ -121,6 +99,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
+    padding-block: 10px;
 }
 
 .img_holder {
@@ -139,27 +118,25 @@
 }
 
 .info {
-    width: 60%;
-    padding-block-start: 15px;
-    padding-inline-start: 5px;
+    width: 50%;
     color: #d1d1d1;
+    padding-inline-end: 10px;
+    padding-block-start: 10px;
+}
+
+.info p {
+    margin: 0;
+    word-wrap: break-word;
 }
 
 .name_muscle {
     display: flex;
-}
-
-.info h3 {
-    margin: 0;
-    padding: 0;
-}
-
-.info p {
-    overflow-y: auto;
+    justify-content: space-between;
 }
 
 .info .title,
 .info .muscle {
+    margin: 0;
     padding: 5px;
     font-weight: 500;
     max-height: 100px;
@@ -169,41 +146,41 @@
     margin-block-end: 10px;
 }
 
-.info .muscle {
-    margin-inline-start: 40px;
-}
-
 .description {
     width: 90%;
-    height: 60%;
     color: #ffffff;
+    background-color: var(--color-background);
     border: 1px outset;
     border-radius: 10px;
-    background-color: var(--color-background);
+    padding: 10px;
 }
 
 .description:hover {
-    box-shadow: 0px 1px 3px rgb(183, 108, 28);
+    box-shadow: 0px 1px 3px #b76c1c;
 }
 
 .column {
     width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     padding-block-start: 10px;
 }
 
 .update_button {
     width: 150px;
-    font-size: 15px;
     cursor: pointer;
-    border-radius: 5px;
-    border: none;
+    font-size: 15px;
     color: #d6d6d6;
     background-color: var(--color-custom_grey);
-    box-shadow: 0px 1px 1px #a5b71c;
-    padding: 2px;
+    box-shadow: 0px 0px 5px #a3b51c;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-block: 10px;
     transition: 0.5s;
 }
 
@@ -225,16 +202,21 @@
     width: 49%;
     font-size: 15px;
     cursor: pointer;
-    border-radius: 4px;
-    border-color: #ffffff;
     color: #ffffff;
     background-color: var(--color-background);
-    box-shadow: 0px 2px 5px #ffffff;
-    padding: 2px;
+    box-shadow: 0px 0px 4px #ffffff;
+    border-radius: 4px;
+    border-color: #ffffff;
+    padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.5s;
+}
+
+.submit:hover {
+    color: #20d903;
+    background-color: #ffffff;
 }
 
 .cancel:hover {
@@ -244,18 +226,18 @@
 
 .delete_button {
     width: 150px;
-    font-size: 15px;
     cursor: pointer;
-    border: none;
-    border-radius: 5px;
+    font-size: 15px;
     color: #d6d6d6;
     background-color: var(--color-custom_grey);
-    box-shadow: 0px 1px 1px #b71b1a;
-    padding: 2px;
+    box-shadow: 0px 0px 5px #b71b1a;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-block: 12px;
+    margin-block: 10px;
     transition: 0.5s;
 }
 
@@ -264,13 +246,8 @@
     background-color: #b71c1c;
 }
 
-.submit:hover {
-    color: #20d903;
-    background-color: #ffffff;
-}
-
 /* Responsive */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .row {
         flex-direction: column;
         justify-content: center;
@@ -282,25 +259,34 @@
         width: 90%;
         display: flex;
         flex-wrap: wrap;
+        flex-direction: row;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 
     .upper_div {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
-    .filter_div {
-        width: 50%;
-    }
-
-    .search {
-        width: 90%;
+    .search_input {
+        width: 60%;
+        margin-inline: 0;
         margin-block-end: 10px;
     }
 
-    .flex_some {
-        display: flex;
-        flex-direction: row;
+    .filter_div {
+        width: 60%;
+        margin-block-end: 10px;
+    }
+
+    .filter_div label {
+        text-align: center;
+    }
+
+    .popup_div {
+        width: 60%;
+        min-height: 37px;
     }
 }

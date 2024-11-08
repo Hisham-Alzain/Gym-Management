@@ -2,9 +2,13 @@
   width: 40%;
   height: 50px;
   font-size: 23px;
-  border: 2px solid #ccc;
+  border: 2px solid #cccccc;
   border-radius: 15px;
   outline: none;
+}
+
+.search:hover {
+  cursor: text;
 }
 
 .search:focus {
