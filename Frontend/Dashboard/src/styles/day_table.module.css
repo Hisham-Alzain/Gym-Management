@@ -1,0 +1,84 @@
+.day_table {
+    position: relative;
+    border-radius: 10px;
+    background-color: #333333;
+    box-shadow: 0 2px 8px #0000001a;
+    margin-inline: 10px;
+    margin-block: 10px;
+    padding: 20px;
+}
+
+.back_button {
+    cursor: pointer;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    background-color: #e02929;
+    padding: 10px 25px;
+}
+
+.back_button:hover {
+    background-color: #b60000;
+}
+
+.exercise_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.exercise_table caption {
+    font-size: 40px;
+    color: #f9f9f9;
+    text-align: center;
+    margin-block-end: 10px;
+}
+
+.exercise_table th,
+.exercise_table td {
+    padding: 10px;
+    text-align: center;
+    color: var(--color-text);
+    border: 1px solid #b60000;
+    transition: background-color 0.3s ease;
+}
+
+.exercise_table th {
+    background-color: #e02929;
+}
+
+.exercise_table td {
+    background-color: #333333;
+}
+
+.exercise_table tr:nth-child(even) td {
+    background-color: #3c3c3c;
+}
+
+.exercise_table td:hover {
+    background-color: #5f5f5f;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .exercise_table caption {
+        font-size: 20px;
+    }
+
+    .exercise_table th,
+    .exercise_table td {
+        padding: 10px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 485px) {
+    .exercise_table caption {
+        font-size: 15px;
+    }
+
+    .exercise_table th,
+    .exercise_table td {
+        padding: 5px;
+        font-size: 10px;
+    }
+}

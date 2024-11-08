@@ -113,6 +113,14 @@
             "no_sets1": "set",
             "no_sets2": "sets"
         },
+        "day_table": {
+            "back": "Back",
+            "th1": "Exercise Name",
+            "th2": "Set Number",
+            "set": "Set",
+            "rep": "expected reps",
+            "kilo": "Kg"
+        },
         "meals": {
             "search": "Search meal",
             "loading": "Please wait",

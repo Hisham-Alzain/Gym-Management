@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LoginContext } from '../../utils/Contexts';
 import { FetchWorkoutProgram } from '../../apis/WorkoutApis';
-import DayTable from '../DayTable';
+import DayTable from './DayTable';
 import styles from '../../styles/show_program.module.css';
 
 
