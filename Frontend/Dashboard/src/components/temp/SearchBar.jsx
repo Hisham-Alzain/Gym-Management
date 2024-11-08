@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from '../styles/searchbar.module.css';
-
+import styles from './search_bar.module.css';
 
 const SearchBar = ({ placeholder, handleChange }) => {
   return (
