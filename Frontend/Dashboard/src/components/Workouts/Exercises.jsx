@@ -19,7 +19,7 @@ const Exercises = () => {
   const [isDone, setIsDone] = useState(false);
   const [nextPage, setNextPage] = useState(1);
 
-  const [filterMuscle, setFilterMuscle] = useState('');
+  const [filterMuscle, setFilterMuscle] = useState('ALL');
   const [muscles, setMuscles] = useState([]);
   const [exercises, setExercises] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -94,9 +94,9 @@ const Exercises = () => {
 
   const handleFilterSubmit = (event) => {
     setFilterMuscle(event.target.value);
+    setIsDone(false);
     setExercises([]);
     setNextPage(1);
-    setIsDone(false);
     filtered.current = false;
   }
 
@@ -127,7 +127,6 @@ const Exercises = () => {
             onChange={handleFilterSubmit}
             className={styles.filter}
           >
-            <option value="" disabled>All</option>
             {muscles.map((muscle) => (
               <option
                 key={muscle.id}

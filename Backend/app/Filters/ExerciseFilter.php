@@ -36,6 +36,9 @@ class ExerciseFilter
                     if ($operator === 'like') {
                         $eleQuery[] = [$parm, $this->operatorMap[$operator], '%' . $query[$operator] . '%'];
                     } else {
+                        if ($query[$operator] == 'ALL') {
+                            continue;
+                        }
                         if ($query[$operator] == 'Arms') {
                             $muscles = ['Triceps', 'Biceps'];
                             foreach ($muscles as $muscle) {

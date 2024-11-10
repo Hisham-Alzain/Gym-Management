@@ -281,22 +281,16 @@ class WorkoutsController extends MainController
             // Apply filters to the Exercise model
             $query = Exercise::query();
 
-            if (!empty($queryItems)) {
-                $query->where(function ($q) use ($queryItems) {
-                    foreach ($queryItems as $queryItem) {
-                        if (count($queryItem) === 3) {
-                            $q->orWhere($queryItem[0], $queryItem[1], $queryItem[2]);
-                        }
+            // Get exercise based on filter
+            $query->where(function ($q) use ($queryItems) {
+                foreach ($queryItems as $queryItem) {
+                    if (count($queryItem) === 3) {
+                        $q->orWhere($queryItem[0], $queryItem[1], $queryItem[2]);
                     }
-                });
-            }
-            $exercises = $query->paginate(10);
-        }
+                }
+            });
 
-        if ($exercises->isEmpty()) {
-            return response()->json([
-                'message' => 'No exercises found.'
-            ], 404);
+            $exercises = $query->paginate(10);
         }
 
         // Response
