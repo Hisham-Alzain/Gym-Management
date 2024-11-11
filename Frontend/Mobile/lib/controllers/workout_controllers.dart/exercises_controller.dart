@@ -37,7 +37,7 @@ class ExercisesController extends GetxController {
   }
 
   void viewExercise(Exercise exercise) {
-    exerciseId = exercise.id;
+    exerciseId = exercise.workoutExerciseId;
     Get.toNamed('/exercise');
   }
 
@@ -45,7 +45,7 @@ class ExercisesController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.43.23:8000/api/trainee/workout/$id',
+        'http://192.168.0.108:8000/api/trainee/workout/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -65,7 +65,6 @@ class ExercisesController extends GetxController {
         generalController.handleUnauthorized();
       }
     } on DioException catch (e) {
-      Get.back();
       customDialogs.showErrorDialog(
         e.response?.data?.toString() ?? 'An error occurred',
       );

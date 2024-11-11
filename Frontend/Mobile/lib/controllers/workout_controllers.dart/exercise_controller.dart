@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +7,7 @@ import 'package:mobile/controllers/workout_controllers.dart/exercises_controller
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
 import 'package:mobile/models/exercise.dart';
+import 'package:video_player/video_player.dart';
 
 class ExerciseController extends GetxController {
   late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
@@ -13,14 +15,8 @@ class ExerciseController extends GetxController {
   late ExercisesController exercisesController;
   late Dio dio;
   late CustomDialogs customDialogs;
-  Exercise exercise = Exercise.empty();
-  // VideoPlayerController videoPlayerController =
-  //     VideoPlayerController.networkUrl(
-  //   Uri(
-  //     path:
-  //         "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
-  //   ),
-  // );
+  late Exercise exercise;
+  late VideoPlayerController videoPlayerController;
   bool loading = true;
 
   @override
@@ -30,7 +26,16 @@ class ExerciseController extends GetxController {
     exercisesController = Get.find<ExercisesController>();
     dio = Dio();
     customDialogs = CustomDialogs();
+    exercise = Exercise.empty();
     await getExercise(exercisesController.exerciseId);
+    log(exercise.videoPath.toString());
+    videoPlayerController = VideoPlayerController.networkUrl(
+      Uri(
+        path: 'http://192.168.0.108:8000/api/video/${exercise.videoPath}',
+      ),
+    )..initialize().then((_) {
+        update();
+      });
     loading = false;
     update();
     super.onInit();
@@ -40,7 +45,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.43.23:8000/api/trainee/exercise/$id',
+        'http://192.168.0.108:8000/api/trainee/exercise/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -49,14 +54,50 @@ class ExerciseController extends GetxController {
           },
         ),
       );
-      print(response.data.toString());
       if (response.statusCode == 200) {
+        log(response.data.toString());
+        exercise = Exercise.fromJson(response.data['exercise']);
         update();
       } else if (response.statusCode == 401) {
         generalController.handleUnauthorized();
       }
     } on DioException catch (e) {
-      Get.back();
+      customDialogs.showErrorDialog(
+        e.response?.data?.toString() ?? 'An error occurred',
+      );
+    }
+  }
+
+  Future<dynamic> addSet(
+    int setId,
+    int reps,
+    double weight,
+  ) async {
+    String token = storage?.read('token');
+    try {
+      var response = await dio.post(
+        'http://192.168.0.108:8000/api/trainee/workout/set',
+        options: Options(
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer $token',
+          },
+        ),
+        data: {
+          "set_id": setId,
+          "day_date": DateTime.now().toString().split(' ')[0],
+          "user_reps": reps,
+          "user_rep_weight": weight,
+        },
+      );
+      if (response.statusCode == 200) {
+        refreshIndicatorKey.currentState!.show();
+        update();
+      } else if (response.statusCode == 401) {
+        generalController.handleUnauthorized();
+      }
+    } on DioException catch (e) {
       customDialogs.showErrorDialog(
         e.response?.data?.toString() ?? 'An error occurred',
       );

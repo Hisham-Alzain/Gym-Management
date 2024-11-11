@@ -4,7 +4,7 @@ class Sets {
   final int setId;
   final int setNumber;
   final int expectedReps;
-  final List<UserSet> userSets;
+  final UserSet? userSets;
 
   Sets({
     required this.setId,
@@ -17,7 +17,7 @@ class Sets {
       : setId = json['set_id'] as int,
         setNumber = json['set_number'] as int,
         expectedReps = json['expected_reps'] as int,
-        userSets = [
-          for (var userSet in json['user_sets']) (UserSet.fromJson(userSet)),
-        ];
+        userSets = json['user_sets'] != null
+            ? UserSet.fromJson(json['user_sets'])
+            : null;
 }

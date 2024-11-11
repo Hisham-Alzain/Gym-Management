@@ -1,8 +1,7 @@
 class UserSet {
-  //TODO;might delete later
   final DateTime date;
   final int reps;
-  final int repWeight;
+  final double repWeight;
 
   UserSet({
     required this.date,
@@ -13,5 +12,5 @@ class UserSet {
   UserSet.fromJson(Map<String, dynamic> json)
       : date = DateTime.parse(json['date']),
         reps = json['reps'] as int,
-        repWeight = json['rep_weight'] as int;
+        repWeight = double.parse(json['rep_weight']);
 }

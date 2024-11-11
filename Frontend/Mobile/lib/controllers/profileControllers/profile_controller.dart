@@ -30,7 +30,7 @@ class ProfileController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.43.23:8000/api/trainee',
+        'http://192.168.0.108:8000/api/trainee',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -46,7 +46,6 @@ class ProfileController extends GetxController {
         generalController.handleUnauthorized();
       }
     } on DioException catch (e) {
-      Get.back();
       customDialogs.showErrorDialog(
         e.response?.data?.toString() ?? 'An error occurred',
       );

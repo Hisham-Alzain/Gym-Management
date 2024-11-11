@@ -71,7 +71,7 @@ class RegisterController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/register',
+        'http://192.168.0.108:8000/api/register',
         data: {
           "name": fullName,
           "email": email,
@@ -99,6 +99,7 @@ class RegisterController extends GetxController {
         );
       }
     } on DioException catch (e) {
+      Get.back();
       customDialogs.showErrorDialog(
         e.response?.data?['errors']?.toString() ?? 'An error occurred',
       );

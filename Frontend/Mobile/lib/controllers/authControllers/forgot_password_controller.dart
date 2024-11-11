@@ -63,7 +63,7 @@ class ForgotPasswordController extends GetxController {
     resendEmail = false;
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/forgetPassword',
+        'http://192.168.0.108:8000/api/forgetPassword',
         data: {
           "email": email,
         },
@@ -99,6 +99,7 @@ class ForgotPasswordController extends GetxController {
         );
       }
     } on DioException catch (e) {
+      Get.back();
       customDialogs.showErrorDialog(
         e.response?.data?['errors']?.toString() ?? 'An error occurred',
       );
@@ -114,7 +115,7 @@ class ForgotPasswordController extends GetxController {
 
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/changePassword',
+        'http://192.168.0.108:8000/api/changePassword',
         data: {
           "email": email,
           "password": newPassword,
@@ -137,6 +138,7 @@ class ForgotPasswordController extends GetxController {
         );
       }
     } on DioException catch (e) {
+      Get.back();
       customDialogs.showErrorDialog(
         e.response?.data?['errors']?.toString() ?? 'An error occurred',
       );

@@ -1,7 +1,7 @@
 import 'package:mobile/models/set.dart';
 
 class Exercise {
-  final int exerciseId;
+  final int workoutExerciseId;
   final int id;
   final String name;
   final String muscle;
@@ -12,7 +12,7 @@ class Exercise {
   final String? thumbnailPath;
 
   Exercise({
-    required this.exerciseId,
+    required this.workoutExerciseId,
     required this.id,
     required this.name,
     required this.muscle,
@@ -24,7 +24,7 @@ class Exercise {
   });
 
   Exercise.fromJson(Map<String, dynamic> json)
-      : exerciseId = json['exercise_id'] as int,
+      : workoutExerciseId = json['workout_exercise_id'] as int,
         id = json['exercise']['id'] as int,
         name = json['exercise']['name'] as String,
         muscle = json['exercise']['muscle'] as String,
@@ -37,7 +37,7 @@ class Exercise {
         thumbnailPath = json['exercise']['thumbnail_path'];
 
   Exercise.empty()
-      : exerciseId = 0,
+      : workoutExerciseId = 0,
         id = 0,
         name = '',
         muscle = '',

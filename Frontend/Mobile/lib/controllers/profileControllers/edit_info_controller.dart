@@ -107,7 +107,7 @@ class EditInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/trainee',
+        'http://192.168.0.108:8000/api/trainee',
         data: {
           "height": height,
           "weight": weight,
@@ -132,6 +132,7 @@ class EditInfoController extends GetxController {
         generalController.handleUnauthorized();
       }
     } on DioException catch (e) {
+      Get.back();
       customDialogs.showErrorDialog(
         e.response?.data?['errors']?.toString() ?? 'An error occurred',
       );

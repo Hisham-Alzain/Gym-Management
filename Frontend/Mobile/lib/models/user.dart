@@ -56,4 +56,21 @@ class User {
             ? SubscriptionPlan.fromJson(json['subscription_plan'])
             : null,
         role = json['role'] as String;
+
+  User.empty()
+      : id = 0,
+        name = '',
+        email = '',
+        phoneNumber = '',
+        birthDate = DateTime.now(),
+        gender = '',
+        height = 0,
+        weight = 0,
+        photos = [],
+        illnesses = '',
+        allergies = '',
+        dislikedFoods = '',
+        activeDays = 0,
+        subscriptionPlan = null,
+        role = '';
 }
