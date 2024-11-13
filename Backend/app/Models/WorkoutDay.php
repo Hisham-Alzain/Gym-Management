@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Belongsto;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\WorkoutMuscle;
 
 class WorkoutDay extends Model
 {
@@ -35,7 +36,9 @@ class WorkoutDay extends Model
      */
     protected function casts(): array
     {
-        return [];
+        return [
+            'muscle' => WorkoutMuscle::class
+        ];
     }
 
     /* Relations */

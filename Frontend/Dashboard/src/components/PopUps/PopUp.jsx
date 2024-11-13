@@ -7,7 +7,7 @@ import styles from '../../styles/PopUps/popup.module.css';
 
 const PopUp = ({ user }) => {
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
 
   return (
     <Popup
@@ -46,7 +46,7 @@ const PopUp = ({ user }) => {
                 <tr>
                   <th>{t('components.pop_ups.popup.th3')}</th>
                   <td>
-                    {user.gender ? user.gender : '-'}
+                    {user.gender ? user.gender[i18n.language] : '-'}
                   </td>
                 </tr>
                 <tr>

@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 
 use App\Models\User;
 use App\Models\Exercise;
+use App\Models\ExerciseTranslation;
 use App\Models\WorkoutExercise;
 use App\Models\WorkoutExerciseSet;
 use App\Models\WorkoutDay;
@@ -451,6 +452,18 @@ class WorkoutsController extends MainController
 
             // Create exercise
             $exercise = Exercise::create($validated);
+            ExerciseTranslation::create([
+                "exercise_id" => $exercise->id,
+                "lang" => "en",
+                "name" => $validated['en_name'],
+                "description" => $validated['en_description']
+            ]);
+            ExerciseTranslation::create([
+                "exercise_id" => $exercise->id,
+                "lang" => "ar",
+                "name" => $validated['ar_name'],
+                "description" => $validated['ar_description']
+            ]);
 
             // Response
             return response()->json([
@@ -465,6 +478,7 @@ class WorkoutsController extends MainController
         // Validate request
         $validated = $request->validate([
             'exercise_id' => ['required'],
+            'lang' => ['required'],
             'description' => ['required']
         ]);
 
@@ -488,17 +502,19 @@ class WorkoutsController extends MainController
         } else {
             // Get exercise
             $exercise = Exercise::find($validated['exercise_id']);
+            $translation = ExerciseTranslation::where('exercise_id', $validated['exercise_id'])
+                ->where('lang', $validated['lang'])->first();
 
             // Check exercise
-            if ($exercise == null) {
+            if ($exercise == null || $translation == null) {
                 return response()->json([
                     'errors' => ['exercise' => 'Exercise was not found'],
                 ], 404);
             }
 
             // Update exercise
-            $exercise->description = $validated['description'];
-            $exercise->save();
+            $translation->description = $validated['description'];
+            $translation->save();
 
             // Response
             return response()->json([

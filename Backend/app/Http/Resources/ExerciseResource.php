@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\WorkoutMuscle;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -16,9 +17,8 @@ class ExerciseResource extends JsonResource
     {
         return [
             "exercise_id" => $this->id,
-            "name" => $this->name,
-            "muscle" => $this->muscle,
-            "description" => $this->description,
+            "translations" => new ExerciseTranslationsCollection($this->translations),
+            "muscle" => $this->muscle->value(),
             "photo" => $this->thumbnail_path,
             "video" => $this->video_path,
         ];

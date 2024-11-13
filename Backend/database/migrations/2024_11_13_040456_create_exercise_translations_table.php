@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\Languages;
 
 return new class extends Migration
 {
@@ -11,13 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('meals', function (Blueprint $table) {
+        Schema::create('exercise_translations', function (Blueprint $table) {
             $table->id();
-            $table->string('thumbnail_path')->nullable();
-            $table->decimal('calories'); # per 1 gram
-            $table->decimal('protein'); # per 1 gram
-            $table->decimal('carbs'); # per 1 gram
-            $table->decimal('fat'); # per 1 gram
+            $table->foreignId('exercise_id')->constrained('exercises')->cascadeOnDelete();
+            $table->enum('lang', Languages::names());
+            $table->string('name');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('meals');
+        Schema::dropIfExists('exercise_translations');
     }
 };

@@ -26,7 +26,8 @@ class UserInfoResource extends JsonResource
             'email' => $this->email,
             'phone_number' => $this->phone_number,
             'birth_date' => $this->birth_date,
-            'gender' => $this->gender,
+            'gender' => $this->gender == null ?
+                null : $this->gender->value(),
             'height' => number_format($userInfo->height, 2, '.', ''),
             'weight' => number_format($userInfo->weight, 2, '.', ''),
             'photos' => $userInfo->photos->take(5),

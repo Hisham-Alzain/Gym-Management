@@ -88,7 +88,7 @@ class WorkoutsController extends MainController
         }
     }
 
-    public function GetExercise(Request $request, $workout_exercise_id)
+    public function ShowWorkoutExercise(Request $request, $workout_exercise_id)
     {
         // Get user
         $user = Auth::user();

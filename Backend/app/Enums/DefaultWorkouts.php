@@ -13,6 +13,11 @@ enum DefaultWorkouts: string
         return array_column(self::cases(), 'name');
     }
 
+    // public static function values(): array
+    // {
+    //     return array_column(self::cases(), 'value');
+    // }
+
     public static function values(): array
     {
         return [
@@ -20,5 +25,14 @@ enum DefaultWorkouts: string
             ['en' => 'semi_beginner', 'ar' => 'نصف دائري'],
             ['en' => 'first_program', 'ar' => 'أول برنامج'],
         ];
+    }
+
+    public function value(): array
+    {
+        return match ($this) {
+            self::beginner => ['en' => 'beginner', 'ar' => 'دائري'],
+            self::semi_beginner => ['en' => 'semi_beginner', 'ar' => 'نصف دائري'],
+            self::first_program => ['en' => 'first_program', 'ar' => 'أول برنامج'],
+        };
     }
 }

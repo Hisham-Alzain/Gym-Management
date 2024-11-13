@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Policies\AdminPolicy;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Enums\WorkoutMuscle;
+use App\Enums\DefaultWorkouts;
+use Illuminate\Support\Facades\Auth;
 
 
 class MainController extends Controller
@@ -47,47 +47,71 @@ class MainController extends Controller
             ], 401);
         }
 
-        // Check user_role
-        $policy = new AdminPolicy();
-        if (!$policy->Policy(User::find($user->id))) {
-            // Response
+        // Get Muscles
+        $unwantedMuscles = [
+            'Arms',
+            'Chest_Biceps',
+            'Back_Triceps',
+            'Leg_Shoulders',
+            'Chest_Back_Triceps',
+            'Legs_Shoulders_Biceps',
+            'ALL'
+        ];
+
+        // Array
+        $enumNames = WorkoutMuscle::names();
+        $enumValues = WorkoutMuscle::values();
+        $response = [];
+        for ($i = 0; $i < count($enumValues); $i++) {
+            if ($addingExercise && in_array($enumNames[$i], $unwantedMuscles)) {
+                continue;
+            }
+            array_push(
+                $response,
+                [
+                    'id' => $i + 1,
+                    'name' => $enumNames[$i],
+                    'value' => $enumValues[$i]
+                ]
+            );
+        }
+
+        // Response
+        return response()->json([
+            "muscles" => $response,
+        ], 200);
+    }
+
+    public function DefaultWorkouts(Request $request)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
             return response()->json([
                 'errors' => ['user' => 'Invalid user'],
             ], 401);
-        } else {
-            // Get Muscles
-            $unwantedMuscles = [
-                'Arms',
-                'Chest_Biceps',
-                'Back_Triceps',
-                'Leg_Shoulders',
-                'Chest_Back_Triceps',
-                'Legs_Shoulders_Biceps',
-                'ALL'
-            ];
-
-            // Array
-            $enumNames = WorkoutMuscle::names();
-            $enumValues = WorkoutMuscle::values();
-            $response = [];
-            for ($i = 0; $i < count($enumValues); $i++) {
-                if ($addingExercise && in_array($enumNames[$i], $unwantedMuscles)) {
-                    continue;
-                }
-                array_push(
-                    $response,
-                    [
-                        'id' => $i + 1,
-                        'name' => $enumNames[$i],
-                        'value' => $enumValues[$i]
-                    ]
-                );
-            }
-
-            // Response
-            return response()->json([
-                "muscles" => $response,
-            ], 200);
         }
+
+        // Array
+        $enumNames = DefaultWorkouts::names();
+        $enumValues = DefaultWorkouts::values();
+        $response = [];
+        for ($i = 0; $i < count($enumValues); $i++) {
+            array_push(
+                $response,
+                [
+                    'id' => $i + 1,
+                    'name' => $enumNames[$i],
+                    'value' => $enumValues[$i]
+                ]
+            );
+        }
+
+        // Response
+        return response()->json([
+            "workouts" => $response,
+        ], 200);
     }
 }

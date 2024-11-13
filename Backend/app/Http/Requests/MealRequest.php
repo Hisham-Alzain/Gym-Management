@@ -24,8 +24,10 @@ class MealRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'meal_name' => ['required', 'string', 'unique:meals'],
-            'description' => ['required'],
+            'en_meal_name' => ['required', 'string', 'unique:meal_translations'],
+            'ar_meal_name' => ['required', 'string', 'unique:meal_translations'],
+            'en_description' => ['required'],
+            'ar_description' => ['required'],
             'calories' => ['required', ' numeric'],
             'protein' => ['required', ' numeric'],
             'carbs' => ['required', ' numeric'],

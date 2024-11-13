@@ -16,13 +16,11 @@ class Meal extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'meal_name',
-        'description',
+        'thumbnail_path',
         'calories',
         'protein',
         'carbs',
-        'fat',
-        'thumbnail_path'
+        'fat'
     ];
 
     /**
@@ -48,6 +46,11 @@ class Meal extends Model
     }
 
     /* Relations */
+    public function translations(): HasMany
+    {
+        return $this->hasMany(MealTranslation::class, 'meal_id', 'id');
+    }
+
     public function dietMeals(): HasMany
     {
         return $this->hasMany(DietMeal::class, 'meal_id', 'id');

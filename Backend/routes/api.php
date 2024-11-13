@@ -15,6 +15,7 @@ use App\Http\Controllers\TrainerControllers\DietsController as TrainerDietsContr
 Route::controller(MainController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/muscles/{addingExercise}', 'ShowMuscles');
+        Route::get('/workouts/default', 'DefaultWorkouts');
         Route::get('/isExpired', 'IsExpired');
         Route::get('/logout', 'Logout');
     });
@@ -51,7 +52,7 @@ Route::controller(TraineeWorkoutsController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/trainee/workouts', 'ShowWorkoutPrograms');
         Route::get('/trainee/workout/{day_id}', 'ShowWorkoutDay');
-        Route::get('/trainee/exercise/{workout_exercise_id}', 'GetExercise');
+        Route::get('/trainee/exercise/{workout_exercise_id}', 'ShowWorkoutExercise');
         Route::post('/trainee/workout/set', 'UpdateExerciseSet');
 
         Route::get('/trainee/diets', 'ShowDietPrograms');

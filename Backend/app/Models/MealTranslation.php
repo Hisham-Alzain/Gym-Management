@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\Belongsto;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\WorkoutMuscle;
+use App\Enums\Languages;
 
-class Exercise extends Model
+class MealTranslation extends Model
 {
     use HasFactory;
 
@@ -17,9 +17,9 @@ class Exercise extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'thumbnail_path',
-        'video_path',
-        'muscle'
+        'lang',
+        'meal_name',
+        'description'
     ];
 
     /**
@@ -37,18 +37,13 @@ class Exercise extends Model
     protected function casts(): array
     {
         return [
-            'muscle' => WorkoutMuscle::class
+            'lang' => Languages::class
         ];
     }
 
     /* Relations */
-    public function translations(): HasMany
+    public function meal(): BelongsTo
     {
-        return $this->hasMany(ExerciseTranslation::class, 'exercise_id', 'id');
-    }
-
-    public function workoutExercises(): HasMany
-    {
-        return $this->hasMany(WorkoutExercise::class, 'exercise_id', 'id');
+        return $this->belongsTo(Meal::class, 'meal_id', 'id');
     }
 }

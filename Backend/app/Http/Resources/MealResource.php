@@ -16,8 +16,7 @@ class MealResource extends JsonResource
     {
         return [
             "meal_id" => $this->id,
-            "meal_name" => $this->meal_name,
-            'description' => $this->description,
+            "translations" => new MealTranslationsCollection($this->translations),
             'calories_per_gram' => $this->calories,
             'protein_per_gram' => $this->protein,
             'carbs_per_gram' => $this->carbs,

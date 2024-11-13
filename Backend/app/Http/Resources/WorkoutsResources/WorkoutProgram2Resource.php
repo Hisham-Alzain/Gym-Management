@@ -18,7 +18,7 @@ class WorkoutProgram2Resource extends JsonResource
         foreach ($this->workoutDays as $day) {
             array_push($days, [
                 'day_id' => $day->id,
-                'muscle' => $day->muscle,
+                'muscle' => $day->muscle->value(),
             ]);
         }
 

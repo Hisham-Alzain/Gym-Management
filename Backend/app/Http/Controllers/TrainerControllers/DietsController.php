@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 
 use App\Models\User;
 use App\Models\Meal;
+use App\Models\MealTranslation;
 use App\Models\DietMeal;
 use App\Models\DietProgram;
 use App\Policies\AdminPolicy;
@@ -280,6 +281,18 @@ class DietsController extends MainController
             }
             // Create meal
             $meal = Meal::create($validated);
+            MealTranslation::create([
+                "meal_id" => $meal->id,
+                "lang" => "en",
+                "meal_name" => $validated['en_meal_name'],
+                "description" => $validated['en_description']
+            ]);
+            MealTranslation::create([
+                "meal_id" => $meal->id,
+                "lang" => "ar",
+                "meal_name" => $validated['ar_meal_name'],
+                "description" => $validated['ar_description']
+            ]);
 
             // Response
             return response()->json([
@@ -294,6 +307,7 @@ class DietsController extends MainController
         // Validate request
         $validated = $request->validate([
             'meal_id' => ['required'],
+            'lang' => ['required'],
             'description' => ['sometimes'],
             'calories' => ['sometimes'],
             'protein' => ['sometimes'],
@@ -321,9 +335,11 @@ class DietsController extends MainController
         } else {
             // Get Meal
             $meal = Meal::find($validated['meal_id']);
+            $translation = MealTranslation::where('meal_id', $meal->id)
+                ->where('lang', $validated['lang'])->first();
 
-            // Check exercise
-            if ($meal == null) {
+            // Check meal
+            if ($meal == null || $translation == null) {
                 return response()->json([
                     'errors' => ['meal' => 'Meal was not found'],
                 ], 404);
@@ -333,6 +349,11 @@ class DietsController extends MainController
             $validated = Arr::except($validated, 'meal_id');
             $meal->fill($validated);
             $meal->save();
+
+            if (isset($validated['description'])) {
+                $translation->description = $validated['description'];
+                $translation->save();
+            }
 
             // Response
             return response()->json([

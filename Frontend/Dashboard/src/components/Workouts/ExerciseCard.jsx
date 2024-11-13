@@ -10,7 +10,7 @@ import styles from '../../styles/exercises.module.css';
 
 const ExerciseCard = ({ ExerciseData }) => {
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
@@ -74,7 +74,7 @@ const ExerciseCard = ({ ExerciseData }) => {
           <div className={styles.name_muscle}>
             <h3 className={styles.title}>{ExerciseData.name}</h3>
             <h3 className={styles.muscle}>
-              {`${t('components.exercises_card.muscle')} ${ExerciseData.muscle}`}
+              {`${t('components.exercises_card.muscle')} ${ExerciseData.muscle[i18n.language]}`}
             </h3>
           </div>
           {!updating ?

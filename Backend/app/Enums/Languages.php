@@ -2,9 +2,10 @@
 
 namespace App\Enums;
 
-enum DefaultDiets: string
+enum Languages: string
 {
-    case Default = 'Default';
+    case en = 'en';
+    case ar = 'ar';
 
     public static function names(): array
     {

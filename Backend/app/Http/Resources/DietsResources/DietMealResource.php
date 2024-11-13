@@ -4,6 +4,7 @@ namespace App\Http\Resources\DietsResources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\MealTranslationsCollection;
 
 class DietMealResource extends JsonResource
 {
@@ -40,8 +41,7 @@ class DietMealResource extends JsonResource
             'meal' => [
                 // Meal Model
                 'id' => $this->meal->id,
-                'meal_name' => $this->meal->meal_name,
-                'description' => $this->meal->description,
+                "translations" => new MealTranslationsCollection($this->translations),
 
                 'calories_gram' => number_format($this->meal->calories, 2, '.', ''),
                 'protein_gram' => number_format($this->meal->protein, 2, '.', ''),
