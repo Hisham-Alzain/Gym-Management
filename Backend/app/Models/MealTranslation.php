@@ -17,6 +17,7 @@ class MealTranslation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'meal_id',
         'lang',
         'meal_name',
         'description'

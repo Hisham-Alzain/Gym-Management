@@ -17,6 +17,7 @@ class ExerciseTranslation extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'exercise_id',
         'lang',
         'name',
         'description'
