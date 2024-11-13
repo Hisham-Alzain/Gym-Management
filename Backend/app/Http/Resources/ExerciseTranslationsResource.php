@@ -15,7 +15,7 @@ class ExerciseTranslationsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            $this->lang => [
+            $this->lang->value() => [
                 'name' => $this->name,
                 'description' => $this->description
             ]

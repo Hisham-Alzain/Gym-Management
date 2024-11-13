@@ -15,7 +15,7 @@ class MealTranslationsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            $this->lang => [
+            $this->lang->value() => [
                 'meal_name' => $this->meal_name,
                 'description' => $this->description
             ]

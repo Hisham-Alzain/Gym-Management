@@ -16,4 +16,12 @@ enum Languages: string
     {
         return array_column(self::cases(), 'value');
     }
+
+    public function value(): string
+    {
+        return match ($this) {
+            self::en => 'en',
+            self::ar => 'ar',
+        };
+    }
 }
