@@ -15,10 +15,10 @@ class DietMealResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $total_calories  = $this->quantity * $this->meal->calories;
-        $total_protein  = $this->quantity * $this->meal->protein;
-        $total_carbs  = $this->quantity * $this->meal->carbs;
-        $total_fat  = $this->quantity * $this->meal->fat;
+        $total_calories = $this->quantity * $this->meal->calories;
+        $total_protein = $this->quantity * $this->meal->protein;
+        $total_carbs = $this->quantity * $this->meal->carbs;
+        $total_fat = $this->quantity * $this->meal->fat;
 
         // Calculate time
         $time_after_hours = (int) ($this->time_after / 60);
@@ -41,7 +41,7 @@ class DietMealResource extends JsonResource
             'meal' => [
                 // Meal Model
                 'id' => $this->meal->id,
-                "translations" => new MealTranslationsCollection($this->translations),
+                "translations" => new MealTranslationsCollection($this->meal->translations),
 
                 'calories_gram' => number_format($this->meal->calories, 2, '.', ''),
                 'protein_gram' => number_format($this->meal->protein, 2, '.', ''),

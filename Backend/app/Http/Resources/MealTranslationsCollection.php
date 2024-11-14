@@ -14,6 +14,16 @@ class MealTranslationsCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $translations = [];
+
+        foreach ($this->collection as $t) {
+            $translation = [
+                'meal_name' => $t->meal_name,
+                'description' => $t->description
+            ];
+            $translations = array_merge($translations, [$t->lang->value() => $translation]);
+        }
+
+        return $translations;
     }
 }

@@ -20,7 +20,7 @@ class WorkoutExerciseResource extends JsonResource
             'exercise' => [
                 'id' => $this->exercise->id,
                 'muscle' => $this->exercise->muscle->value(),
-                'translations' => new ExerciseTranslationsCollection($this->translations),
+                'translations' => new ExerciseTranslationsCollection($this->exercise->translations),
                 'no_sets' => $this->sets()->count(),
                 'sets' => new WorkoutExerciseSetCollection($this->sets),
                 'video_path' => $this->exercise->video_path,

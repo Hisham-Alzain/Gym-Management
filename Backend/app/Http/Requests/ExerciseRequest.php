@@ -24,9 +24,11 @@ class ExerciseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'unique:exercises'],
+            'en_name' => ['required', 'string', 'unique:exercises'],
+            'ar_name' => ['required', 'string', 'unique:exercises'],
             'muscle' => ['required', Rule::in(WorkoutMuscle::names())],
-            'description' => ['required'],
+            'en_description' => ['required'],
+            'ar_description' => ['required'],
             'video_path' => ['sometimes'],
             'thumbnail_path' => ['sometimes', 'max:4096']
         ];
