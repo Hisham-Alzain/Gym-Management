@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginContext } from "../../utils/Contexts";
 import { FetchMeals } from '../../apis/DietsApis';
@@ -14,6 +14,7 @@ const Meals = () => {
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
+  const initialized = useRef(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useState(false);
   const [nextPage, setNextPage] = useState(1);
@@ -23,35 +24,38 @@ const Meals = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
+    if (!initialized.current) {
+      initialized.current = true;
+      setIsLoading(true);
 
-    FetchMeals(accessToken, nextPage).then((response) => {
-      if (response.status === 200) {
-        setData(response.data.pagination_data);
-        if (!response.data.pagination_data.has_more_pages) {
-          setIsDone(true);
-        }
-        response.data.meals.map((meal) => {
-          // Check if meal is already in array
-          if (!meals.some(item => meal.meal_id === item.meal_id)) {
-
-            // if not add meal
-            if (meal.thumbnail_path) {
-              FetchImage(accessToken, meal.thumbnail_path).then((response) => {
-                meal.thumbnail_path = response.imageURL;
-                setMeals((prevState) => ([...prevState, meal]));
-              });
-            } else {
-              setMeals((prevState) => ([...prevState, meal]));
-            }
+      FetchMeals(accessToken, nextPage).then((response) => {
+        if (response.status === 200) {
+          setData(response.data.pagination_data);
+          if (!response.data.pagination_data.has_more_pages) {
+            setIsDone(true);
           }
-        });
-      } else {
-        console.log(response.statusText);
-      }
-    }).then(() => {
-      setIsLoading(false);
-    });
+          response.data.meals.map((meal) => {
+            // Check if meal is already in array
+            if (!meals.some(item => meal.meal_id === item.meal_id)) {
+
+              // if not add meal
+              if (meal.thumbnail_path) {
+                FetchImage(accessToken, meal.thumbnail_path).then((response) => {
+                  meal.thumbnail_path = response.imageURL;
+                  setMeals((prevState) => ([...prevState, meal]));
+                });
+              } else {
+                setMeals((prevState) => ([...prevState, meal]));
+              }
+            }
+          });
+        } else {
+          console.log(response.statusText);
+        }
+      }).then(() => {
+        setIsLoading(false);
+      });
+    }
   }, [nextPage]);
 
   useEffect(() => {
@@ -69,6 +73,7 @@ const Meals = () => {
       return;
     }
     if (scrollY + windowHeight >= documentHeight - 100) {
+      initialized.current = false;
       setNextPage(nextPage + 1);
     }
   };
