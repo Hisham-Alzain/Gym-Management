@@ -106,7 +106,7 @@ const Exercises = () => {
 
   const filteredExercises = exercises
     ? exercises.filter(exercise =>
-      exercise.name.toLowerCase().includes(searchQuery.toLowerCase())
+      exercise.translations[i18n.language].name.toLowerCase().includes(searchQuery.toLowerCase())
     ) : [];
 
 

@@ -10,7 +10,7 @@ import styles from '../../styles/meals.module.css';
 
 const Meals = () => {
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
@@ -79,7 +79,7 @@ const Meals = () => {
 
   const filteredMeals = meals
     ? meals.filter(meal =>
-      meal.meal_name.toLowerCase().includes(searchQuery.toLowerCase())
+      meal.translations[i18n.language].meal_name.toLowerCase().includes(searchQuery.toLowerCase())
     ) : [];
 
 

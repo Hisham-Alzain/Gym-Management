@@ -15,7 +15,7 @@ const ExerciseCard = ({ ExerciseData }) => {
   const { accessToken } = useContext(LoginContext);
   // States
   const [updating, setUpdating] = useState(false);
-  const [newDescription, setNewDescription] = useState(ExerciseData.description);
+  const [newDescription, setNewDescription] = useState(ExerciseData.translations[i18n.language].description);
 
   const handleDescription = (event) => {
     setNewDescription(event.target.value);
@@ -23,7 +23,7 @@ const ExerciseCard = ({ ExerciseData }) => {
 
   const handleUpdateDescription = (event, exercise_id) => {
     event.preventDefault();
-    UpdateExercise(accessToken, exercise_id, newDescription).then((response) => {
+    UpdateExercise(accessToken, exercise_id, newDescription, i18n.language).then((response) => {
       if (response.status == 200) {
         console.log('Exercise updated');
         window.location.reload();
@@ -35,7 +35,7 @@ const ExerciseCard = ({ ExerciseData }) => {
 
   const handleCancel = (event) => {
     event.preventDefault();
-    setNewDescription(ExerciseData.description);
+    setNewDescription(ExerciseData.translations[i18n.language].description);
     setUpdating(false);
   }
 
@@ -72,13 +72,13 @@ const ExerciseCard = ({ ExerciseData }) => {
         </div>
         <div className={styles.info}>
           <div className={styles.name_muscle}>
-            <h3 className={styles.title}>{ExerciseData.name}</h3>
+            <h3 className={styles.title}>{ExerciseData.translations[i18n.language].name}</h3>
             <h3 className={styles.muscle}>
               {`${t('components.exercises_card.muscle')} ${ExerciseData.muscle[i18n.language]}`}
             </h3>
           </div>
           {!updating ?
-            <p>{`${t('components.exercises_card.p')} ${ExerciseData.description}`}</p>
+            <p>{`${t('components.exercises_card.p')} ${ExerciseData.translations[i18n.language].description}`}</p>
             : <textarea
               rows={7}
               type='text'
@@ -95,7 +95,10 @@ const ExerciseCard = ({ ExerciseData }) => {
           {!updating &&
             <button
               className={styles.update_button}
-              onClick={() => setUpdating(true)}>
+              onClick={() => {
+                setUpdating(true)
+                setNewDescription(ExerciseData.translations[i18n.language].description);
+              }}>
               {t('components.exercises_card.update_button')}
             </button>}
           {updating &&

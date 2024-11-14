@@ -8,12 +8,12 @@ import styles from '../../styles/meals.module.css';
 
 const MealCard = ({ MealData }) => {
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
   const [updating, setUpdating] = useState(false);
-  const [newDescription, setNewDescription] = useState(MealData.description);
+  const [newDescription, setNewDescription] = useState(MealData.translations[i18n.language].description);
   const [newCalories, setNewCalories] = useState(MealData.calories_per_gram);
   const [newProtein, setNewProtein] = useState(MealData.protein_per_gram);
   const [newCarbs, setNewCarbs] = useState(MealData.carbs_per_gram);
@@ -32,7 +32,8 @@ const MealCard = ({ MealData }) => {
       newCalories,
       newProtein,
       newCarbs,
-      newFat
+      newFat,
+      i18n.language
     ).then((response) => {
       if (response.status == 200) {
         console.log('Meal updated');
@@ -45,7 +46,7 @@ const MealCard = ({ MealData }) => {
 
   const handleCancel = (event) => {
     event.preventDefault();
-    setNewDescription(MealData.description);
+    setNewDescription(MealData.translations[i18n.language].description);
     setNewCalories(MealData.calories_per_gram);
     setNewProtein(MealData.protein_per_gram);
     setNewCarbs(MealData.carbs_per_gram);
@@ -87,7 +88,7 @@ const MealCard = ({ MealData }) => {
         <div className={styles.info}>
           <div className={styles.title_div}>
             <h3 className={styles.title}>
-              {MealData.meal_name}
+              {MealData.translations[i18n.language].meal_name}
             </h3>
           </div>
           <div className={styles.nutritions}>
@@ -134,7 +135,7 @@ const MealCard = ({ MealData }) => {
             }
           </div>
           {!updating ?
-            <p>{`${t('components.meals_card.p5')} ${MealData.description}g`}</p>
+            <p>{`${t('components.meals_card.p5')} ${MealData.translations[i18n.language].description}`}</p>
             : <textarea
               rows={7}
               type='text'
@@ -149,7 +150,10 @@ const MealCard = ({ MealData }) => {
           {!updating &&
             <button
               className={styles.update_button}
-              onClick={() => setUpdating(true)}>
+              onClick={() => {
+                setUpdating(true);
+                setNewDescription(MealData.translations[i18n.language].description);
+              }}>
               {t('components.meals_card.update_button')}
             </button>}
           {updating &&

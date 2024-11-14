@@ -30,12 +30,14 @@ export const FetchExercises = async (token, page, muscle) => {
     }
 };
 
-export const AddExercise = async (token, name, muscle, description, thumbnail_path, video_path) => {
+export const AddExercise = async (token, en_name, ar_name, muscle, en_description, ar_description, thumbnail_path, video_path) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/exercise/create`, {
-            "name": name,
+            "en_name": en_name,
+            "ar_name": ar_name,
             "muscle": muscle,
-            "description": description,
+            "en_description": en_description,
+            "ar_description": ar_description,
             "video_path": video_path,
             "thumbnail_path": thumbnail_path
         }, {
@@ -51,11 +53,12 @@ export const AddExercise = async (token, name, muscle, description, thumbnail_pa
     }
 };
 
-export const UpdateExercise = async (token, exercise_id, description) => {
+export const UpdateExercise = async (token, exercise_id, description, lang) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/exercise/update`, {
             "exercise_id": exercise_id,
-            "description": description
+            "description": description,
+            "lang": lang
         }, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',

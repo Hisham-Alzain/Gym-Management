@@ -61,11 +61,13 @@ export const FetchMeals = async (token, page) => {
 };
 
 
-export const AddMeal = async (token, name, description, calories, protein, carbs, fat, thumbnail_path) => {
+export const AddMeal = async (token, en_name, en_description, ar_name, ar_description, calories, protein, carbs, fat, thumbnail_path) => {
   try {
     const response = await axios.post(`http://127.0.0.1:8000/api/meals/create`, {
-      "meal_name": name,
-      "description": description,
+      "en_meal_name": en_name,
+      "en_description": en_description,
+      "ar_meal_name": ar_name,
+      "ar_description": ar_description,
       "calories": calories,
       "protein": protein,
       "carbs": carbs,
@@ -84,7 +86,7 @@ export const AddMeal = async (token, name, description, calories, protein, carbs
   }
 };
 
-export const UpdateMeal = async (token, meal_id, description, calories, protein, carbs, fat) => {
+export const UpdateMeal = async (token, meal_id, description, calories, protein, carbs, fat, lang) => {
   try {
     const response = await axios.post(`http://127.0.0.1:8000/api/meals/update`, {
       "meal_id": meal_id,
@@ -92,7 +94,8 @@ export const UpdateMeal = async (token, meal_id, description, calories, protein,
       "calories": calories,
       "protein": protein,
       "carbs": carbs,
-      "fat": fat
+      "fat": fat,
+      "lang": lang
     }, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
