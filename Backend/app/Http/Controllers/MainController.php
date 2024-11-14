@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use App\Enums\WorkoutMuscle;
 use App\Enums\DefaultWorkouts;
@@ -17,10 +18,31 @@ class MainController extends Controller
         return $numbers;
     }
 
-    public function IsExpired()
+    public function CheckToken(Request $request)
     {
+        // Get user
+        $user = Auth::user();
+        $user = User::find($user->id);
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user']
+            ], 401);
+        }
+
+        // Check user_info
+        $info = UserInfo::where('user_id', $user->id)->first();
+
+        if ($info == null) {
+            $completed_info = false;
+        } else {
+            $completed_info = true;
+        }
+
         return response()->json([
             'message' => 'Token is valid',
+            "completed_info" => $completed_info,
         ], 200);
     }
 
