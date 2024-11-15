@@ -1,7 +1,7 @@
 nav {
-  position: fixed;
-  z-index: 99;
   width: 100%;
+  z-index: 99;
+  position: fixed;
   background: linear-gradient(90deg, #5d5d5d, rgb(183, 28, 28), #000000);
 }
 
@@ -66,6 +66,8 @@ nav input {
   cursor: pointer;
   padding: 5px 25px;
   margin-inline: 10px;
+  color: var(--color-text);
+  background: var(--color-custom_grey);
 }
 
 .nav_links {

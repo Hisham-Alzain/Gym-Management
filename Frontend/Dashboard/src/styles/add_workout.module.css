@@ -1,0 +1,341 @@
+.programs {
+    padding: 10px;
+    min-height: 100vh;
+    position: relative;
+    inset-block-start: 70px;
+}
+
+.header {
+    text-align: center;
+    border-radius: 10px;
+    color: var(--color-text);
+    background-color: var(--color-custom_grey);
+    margin-block-end: 10px;
+    margin-inline: 10px;
+    padding: 5px 15px;
+}
+
+.header .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-block-end: 10px;
+    margin-block-end: 10px;
+}
+
+.header .row .btn {
+    flex: 1;
+    font-size: 15px;
+    color: var(--color-text);
+    background-color: var(--color-custom_red);
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 5px 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.header .row .btn.active {
+    background-color: #FF5731;
+    font-weight: bold;
+}
+
+.header .row .btn:hover {
+    background-color: #CB0000;
+    transform: scale(1.01);
+}
+
+.header .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .column label {
+    font-size: 19px;
+    padding: 1px;
+}
+
+.date_wrapper {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: var(--color-text);
+    background-color: var(--color-custom_grey);
+}
+
+.date_input {
+    border: none;
+    text-align: center;
+    color: var(--color-text);
+    background-color: var(--color-custom_grey);
+    margin-inline-start: 20px;
+    margin-inline-end: 30px;
+}
+
+.date_input:focus {
+    outline: none;
+}
+
+.error {
+    color: red;
+}
+
+.container {
+    border-radius: 10px;
+    color: var(--color-text);
+    background-color: var(--color-custom_grey);
+    margin-block-end: 25px;
+    margin-inline: 10px;
+    padding: 20px 25px;
+}
+
+.container h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.repeat_days_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block: 20px;
+}
+
+.repeat_days_container label {
+    color: var(--color-text);
+    margin-block-end: 10px;
+}
+
+.repeat_days_container select {
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: var(--color-text);
+    background-color: #555555;
+    border: 1px solid #cccccc;
+    margin-inline-start: 10px;
+}
+
+.submit_button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-text);
+    background-color: #28a745;
+    margin-block-start: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit_button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.cards_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    width: calc(30% - 30px);
+    border-radius: 10px;
+    border: 1px solid #555;
+    background-color: #444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-block-end: 20px;
+    padding: 20px;
+}
+
+.card_label {
+    display: block;
+    margin-block: 10px;
+}
+
+.card select {
+    width: 100%;
+    color: var(--color-text);
+    background-color: #555;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-block-start: 5px;
+}
+
+.exercise_button {
+    width: 100%;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-text);
+    background-color: #007bff;
+    margin-block-start: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.exercise_button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.exercise_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block: 10px;
+}
+
+.exercise_label {
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    margin-block: 10px;
+}
+
+.sets_reps_container {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 1rem;
+}
+
+.reps_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-start: 5px;
+}
+
+.sets_label {
+    font-weight: bold;
+    text-align: center;
+    padding: 1%;
+}
+
+.reps_label {
+    text-align: center;
+}
+
+.sets_input,
+.reps_input {
+    flex: 1;
+    width: 60px;
+    padding: 5px;
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: #555555;
+    border: #333333;
+    margin-inline: 10px;
+}
+
+.sets_input:focus,
+.reps_input:focus {
+    outline: none;
+}
+
+.remove_button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-text);
+    background-color: #dc3545;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.remove_button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.program_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.program_button {
+    flex: 1;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: var(--color-text);
+    background-color: #e02929;
+    transition: background-color 0.3s, transform 0.2s;
+    ;
+}
+
+.program_button:hover {
+    background-color: #b60000;
+    transform: scale(1.02);
+}
+
+@media screen and (max-width: 970px) {
+    .card {
+        width: calc(43% - 17px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header .row {
+        flex-direction: column;
+    }
+
+    .header .row button {
+        width: 90%;
+    }
+
+    .header .column {
+        width: 100%;
+        margin-block: 10px;
+    }
+
+    .submit_button {
+        width: 70%;
+    }
+
+    .repeat_days_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards_container {
+        justify-content: center;
+    }
+
+    .card {
+        width: calc(70% - 35px);
+    }
+
+    .program_buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program_button {
+        width: 90%;
+        margin-block: 9px;
+    }
+}
+
+@media (max-width: 485px) {
+    .card {
+        width: calc(100% - 10px);
+    }
+
+    .submit_button {
+        width: 100%;
+    }
+
+    .program_button,
+    .exercise_button,
+    .card button {
+        padding: 10px;
+    }
+}

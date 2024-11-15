@@ -30,6 +30,26 @@ export const FetchExercises = async (token, page, muscle) => {
     }
 };
 
+export const UploadExerciseVideo = async (token, exercise_id, video) => {
+    try {
+        console.log(video);
+        const response = await axios.post(`http://127.0.0.1:8000/api/exercise/video`, {
+            "exercise_id": exercise_id,
+            "video": video,
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data; charset=UTF-8',
+                'Accept': "application/json;",
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response;
+    } catch (error) {
+        return error.response;
+    }
+};
+
+
 export const AddExercise = async (token, en_name, ar_name, muscle, en_description, ar_description, thumbnail_path, video_path) => {
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/exercise/create`, {
@@ -63,25 +83,6 @@ export const UpdateExercise = async (token, exercise_id, description, lang) => {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Accept': "application/json",
-                'Authorization': `Bearer ${token}`
-            }
-        });
-        return response;
-    } catch (error) {
-        return error.response;
-    }
-};
-
-export const UploadExerciseVideo = async (token, exercise_id, video) => {
-    try {
-        console.log(video);
-        const response = await axios.post(`http://127.0.0.1:8000/api/exercise/video`, {
-            "exercise_id": exercise_id,
-            "video": video,
-        }, {
-            headers: {
-                'Content-Type': 'multipart/form-data; charset=UTF-8',
-                'Accept': "application/json;",
                 'Authorization': `Bearer ${token}`
             }
         });

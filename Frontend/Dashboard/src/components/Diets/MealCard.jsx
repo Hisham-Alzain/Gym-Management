@@ -28,12 +28,12 @@ const MealCard = ({ MealData }) => {
     UpdateMeal(
       accessToken,
       meal_id,
+      i18n.language,
       newDescription,
       newCalories,
       newProtein,
       newCarbs,
-      newFat,
-      i18n.language
+      newFat
     ).then((response) => {
       if (response.status == 200) {
         console.log('Meal updated');

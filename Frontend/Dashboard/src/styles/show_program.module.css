@@ -1,5 +1,6 @@
 .program {
   padding: 10px;
+  min-height: 100vh;
   position: relative;
   inset-block-start: 70px;
 }

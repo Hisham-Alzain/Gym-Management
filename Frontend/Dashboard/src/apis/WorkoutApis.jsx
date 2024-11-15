@@ -45,6 +45,21 @@ export const DeleteWorkoutProgram = async (token, program_id) => {
   }
 };
 
+export const FetchDefaultWorkouts = async (token) => {
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/workouts/default`, {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const CreateDefaultWorkout = async (token, user_id, start_date, end_date, program_name) => {
   try {
     const response = await axios.post('http://127.0.0.1:8000/api/workouts/create/default', {
