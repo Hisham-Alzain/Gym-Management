@@ -26,9 +26,10 @@ class Exercise {
   Exercise.fromJson(Map<String, dynamic> json)
       : workoutExerciseId = json['workout_exercise_id'] as int,
         id = json['exercise']['id'] as int,
-        name = json['exercise']['name'] as String,
-        muscle = json['exercise']['muscle'] as String,
-        description = json['exercise']['description'] as String,
+        name = json['exercise']['translations']['en']['name'] as String,
+        muscle = json['exercise']['muscle']['en'] as String,
+        description =
+            json['exercise']['translations']['en']['description'] as String,
         numberOfSets = json['exercise']['no_sets'] as int,
         sets = [
           for (var sets in json['exercise']['sets']) (Sets.fromJson(sets)),

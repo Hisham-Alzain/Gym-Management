@@ -7,9 +7,9 @@ class TextComponent extends StatelessWidget {
 
   const TextComponent({
     super.key,
-    this.icon,
     required this.title,
     required this.text,
+    this.icon,
   });
 
   @override
@@ -39,18 +39,19 @@ class TextComponent extends StatelessWidget {
   }
 }
 
-class OpacityTextComponent extends StatelessWidget {
-  final String text;
+//Not used yet
+// class OpacityTextComponent extends StatelessWidget {
+//   final String text;
 
-  const OpacityTextComponent({super.key, required this.text});
+//   const OpacityTextComponent({super.key, required this.text});
 
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: Colors.white.withOpacity(0.5),
-          ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Text(
+//       text,
+//       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+//             color: Colors.white.withOpacity(0.9),
+//           ),
+//     );
+//   }
+// }

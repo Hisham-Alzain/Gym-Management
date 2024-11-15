@@ -41,25 +41,30 @@ class ProfileView extends StatelessWidget {
                             padding: const EdgeInsets.all(10),
                             child: EditContainer(
                               name: 'Photos',
-                              buttonText: 'Edit',
+                              buttonText: controller.user.photos.isEmpty
+                                  ? null
+                                  : 'Edit',
                               icon: Icons.edit,
                               onPressed: () => Get.toNamed('/addPhotos'),
                               child: controller.user.photos.isEmpty
-                                  ? IconButton(
-                                      onPressed: () =>
-                                          Get.toNamed('/addPhotos'),
-                                      icon: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Icon(Icons.add_a_photo),
-                                          Text(
-                                            'Add photos',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyLarge,
-                                          )
-                                        ],
+                                  ? Center(
+                                      child: IconButton(
+                                        onPressed: () =>
+                                            Get.toNamed('/addPhotos'),
+                                        icon: Column(
+                                          children: [
+                                            const Icon(
+                                              Icons.add_a_photo,
+                                              size: 40,
+                                            ),
+                                            Text(
+                                              'Add photos',
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     )
                                   : SizedBox(

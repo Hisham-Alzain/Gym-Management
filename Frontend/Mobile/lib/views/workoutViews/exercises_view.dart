@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/customWidgets/custom_texts.dart';
 import 'package:mobile/controllers/workout_controllers.dart/exercises_controller.dart';
-import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_image.dart';
 import 'package:mobile/main.dart';
 
@@ -51,53 +49,47 @@ class ExercisesView extends StatelessWidget {
                               padding: const EdgeInsets.all(10),
                               child: Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  RedContainer(
-                                    height: 150,
-                                    width: 100,
-                                    child: controller.exercises[index]
-                                                .thumbnailPath ==
-                                            null
-                                        ? const Icon(
-                                            Icons.fitness_center,
-                                            size: 75,
-                                          )
-                                        : CustomImage(
-                                            height: 150,
-                                            path: controller
-                                                .exercises[index].thumbnailPath
-                                                .toString(),
-                                            token: storage!.read('token'),
-                                          ),
-                                  ),
                                   Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        controller.exercises[index].name,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineSmall,
+                                      SizedBox(
+                                        height: 150,
+                                        width: 300,
+                                        child: controller.exercises[index]
+                                                    .thumbnailPath ==
+                                                null
+                                            ? const Icon(
+                                                Icons.fitness_center,
+                                                size: 75,
+                                              )
+                                            : CustomImage(
+                                                path: controller
+                                                    .exercises[index]
+                                                    .thumbnailPath
+                                                    .toString(),
+                                                token: storage!.read('token'),
+                                              ),
                                       ),
                                       Row(
                                         children: [
-                                          OpacityTextComponent(
-                                            text: controller
-                                                .exercises[index].muscle,
+                                          const Icon(
+                                            Icons.sports_gymnastics,
                                           ),
-                                          const OpacityTextComponent(
-                                            text: ' - ',
-                                          ),
-                                          OpacityTextComponent(
-                                            text:
-                                                "${controller.exercises[index].numberOfSets} sets",
+                                          Text(
+                                            'Exercise: ${controller.exercises[index].name}',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headlineSmall,
                                           ),
                                         ],
                                       ),
                                     ],
                                   ),
+                                  const Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 50,
+                                  )
                                 ],
                               ),
                             ),

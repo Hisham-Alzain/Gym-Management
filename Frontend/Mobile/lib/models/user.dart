@@ -42,7 +42,7 @@ class User {
         email = json['email'] as String,
         phoneNumber = json['phone_number'] as String,
         birthDate = DateTime.parse(json['birth_date']),
-        gender = json['gender'] as String,
+        gender = json['gender']['en'] as String,
         height = double.parse(json['height'].toString()),
         weight = double.parse(json['weight'].toString()),
         photos = [

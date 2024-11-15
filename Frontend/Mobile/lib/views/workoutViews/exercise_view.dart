@@ -6,7 +6,6 @@ import 'package:mobile/controllers/workout_controllers.dart/exercise_controller.
 import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_text_field.dart';
 import 'package:mobile/customWidgets/custom_validation.dart';
-import 'package:video_player/video_player.dart';
 
 class ExerciseView extends StatelessWidget {
   final ExerciseController _exerciseController = Get.put(ExerciseController());
@@ -39,45 +38,45 @@ class ExerciseView extends StatelessWidget {
                   : SingleChildScrollView(
                       child: Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10),
+                          const Padding(
+                            padding: EdgeInsets.all(10),
                             child: RedContainer(
                               height: 300,
                               child: Center(
-                                child: controller.videoPlayerController.value
-                                        .isInitialized
-                                    ? Stack(
-                                        children: [
-                                          AspectRatio(
-                                            aspectRatio: controller
-                                                .videoPlayerController
-                                                .value
-                                                .aspectRatio,
-                                            child: VideoPlayer(controller
-                                                .videoPlayerController),
-                                          ),
-                                          FloatingActionButton(
-                                            onPressed: () {
-                                              controller.videoPlayerController
-                                                      .value.isPlaying
-                                                  ? controller
-                                                      .videoPlayerController
-                                                      .pause()
-                                                  : controller
-                                                      .videoPlayerController
-                                                      .play();
-                                            },
-                                            child: Icon(
-                                              controller.videoPlayerController
-                                                      .value.isPlaying
-                                                  ? Icons.pause
-                                                  : Icons.play_arrow,
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    : const CircularProgressIndicator(),
-                              ),
+                                  // child: controller.videoPlayerController.value
+                                  //         .isInitialized
+                                  //     ? Stack(
+                                  //         children: [
+                                  //           // AspectRatio(
+                                  //           //   aspectRatio: controller
+                                  //           //       .videoPlayerController
+                                  //           //       .value
+                                  //           //       .aspectRatio,
+                                  //           //   child: VideoPlayer(controller
+                                  //           //       .videoPlayerController),
+                                  //           // ),
+                                  //           FloatingActionButton(
+                                  //             onPressed: () {
+                                  //               controller.videoPlayerController
+                                  //                       .value.isPlaying
+                                  //                   ? controller
+                                  //                       .videoPlayerController
+                                  //                       .pause()
+                                  //                   : controller
+                                  //                       .videoPlayerController
+                                  //                       .play();
+                                  //             },
+                                  //             child: Icon(
+                                  //               controller.videoPlayerController
+                                  //                       .value.isPlaying
+                                  //                   ? Icons.pause
+                                  //                   : Icons.play_arrow,
+                                  //             ),
+                                  //           ),
+                                  //         ],
+                                  //       )
+                                  //     : const CircularProgressIndicator(),
+                                  ),
                             ),
                           ),
                           Padding(
@@ -87,14 +86,17 @@ class ExerciseView extends StatelessWidget {
                               child: Column(
                                 children: [
                                   TextComponent(
+                                    icon: Icons.fitness_center,
                                     title: 'Muscle',
                                     text: controller.exercise.muscle,
                                   ),
                                   TextComponent(
+                                    icon: Icons.description,
                                     title: 'Description',
                                     text: controller.exercise.description,
                                   ),
                                   TextComponent(
+                                    icon: Icons.numbers,
                                     title: 'Number of sets',
                                     text:
                                         "${controller.exercise.numberOfSets} sets",

@@ -45,7 +45,7 @@ class ExercisesController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.108:8000/api/trainee/workout/$id',
+        'http://192.168.0.103:8000/api/trainee/workout/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -55,11 +55,10 @@ class ExercisesController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
-        for (var exercise in response.data['day']['exercises']) {
-          exercises.add(
+        exercises = [
+          for (var exercise in response.data['day']['exercises'])
             Exercise.fromJson(exercise),
-          );
-        }
+        ];
         update();
       } else if (response.statusCode == 401) {
         generalController.handleUnauthorized();

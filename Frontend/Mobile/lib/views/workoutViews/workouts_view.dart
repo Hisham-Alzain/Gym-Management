@@ -121,11 +121,21 @@ class WorkoutsView extends StatelessWidget {
                                                     controller.programs[index]
                                                         .days[index2],
                                                   ),
-                                                  child: Text(
-                                                    'Day ${index2 + 1}: ${controller.programs[index].days[index2].muscle}',
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyLarge,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      const Icon(
+                                                          FontAwesomeIcons
+                                                              .calendarDay),
+                                                      Text(
+                                                        'Day ${index2 + 1}: ${controller.programs[index].days[index2].muscle}',
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyLarge,
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               );

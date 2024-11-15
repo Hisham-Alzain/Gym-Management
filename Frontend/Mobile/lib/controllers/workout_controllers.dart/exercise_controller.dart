@@ -7,7 +7,6 @@ import 'package:mobile/controllers/workout_controllers.dart/exercises_controller
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
 import 'package:mobile/models/exercise.dart';
-import 'package:video_player/video_player.dart';
 
 class ExerciseController extends GetxController {
   late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
@@ -16,7 +15,7 @@ class ExerciseController extends GetxController {
   late Dio dio;
   late CustomDialogs customDialogs;
   late Exercise exercise;
-  late VideoPlayerController videoPlayerController;
+  // late VideoPlayerController videoPlayerController;
   bool loading = true;
 
   @override
@@ -29,13 +28,13 @@ class ExerciseController extends GetxController {
     exercise = Exercise.empty();
     await getExercise(exercisesController.exerciseId);
     log(exercise.videoPath.toString());
-    videoPlayerController = VideoPlayerController.networkUrl(
-      Uri(
-        path: 'http://192.168.0.108:8000/api/video/${exercise.videoPath}',
-      ),
-    )..initialize().then((_) {
-        update();
-      });
+    // videoPlayerController = VideoPlayerController.networkUrl(
+    //   Uri(
+    //     path: 'http://192.168.0.103:8000/api/video/${exercise.videoPath}',
+    //   ),
+    // )..initialize().then((_) {
+    //     update();
+    //   });
     loading = false;
     update();
     super.onInit();
@@ -45,7 +44,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.108:8000/api/trainee/exercise/$id',
+        'http://192.168.0.103:8000/api/trainee/exercise/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -76,7 +75,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.0.108:8000/api/trainee/workout/set',
+        'http://192.168.0.103:8000/api/trainee/workout/set',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
@@ -24,7 +23,7 @@ class MiddlewareController extends GetxController {
     if (token != null) {
       try {
         var response = await dio.get(
-          'http://192.168.0.108:8000/api/isExpired',
+          'http://192.168.0.103:8000/api/check_token',
           options: Options(
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',
@@ -34,7 +33,11 @@ class MiddlewareController extends GetxController {
           ),
         );
         if (response.statusCode == 200) {
-          return MiddlewareCases.validToken;
+          if (!response.data['completed_info']) {
+            return MiddlewareCases.incompleteInfo;
+          } else {
+            return MiddlewareCases.validToken;
+          }
         }
       } on DioException catch (e) {
         switch (e.type) {
