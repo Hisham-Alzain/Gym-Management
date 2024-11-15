@@ -9,6 +9,7 @@ import ImgPopUp from "./PopUps/ImgPopUp";
 import DietsPopUp from './PopUps/DietsPopUp';
 import ProgramsPopUp from "./PopUps/ProgramsPopUp";
 import SubscriptionPopUp from "./PopUps/SubscriptionPopUp";
+import LoadingBars from './LoadingBars';
 import styles from "../styles/users_table.module.css";
 
 
@@ -77,7 +78,7 @@ const Users = () => {
     ) : [];
 
   if (isLoading) {
-    return <></>;
+    return <LoadingBars />;
   }
   return (
     <div className={styles.screen}>
