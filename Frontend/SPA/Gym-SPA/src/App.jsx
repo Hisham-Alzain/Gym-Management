@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   FaBars, FaTimes, FaCheck,
   FaFacebookF, FaInstagram,
@@ -22,6 +22,8 @@ import './App.css';
 function App() {
   // Translations
   const { t, i18n } = useTranslation('global');
+
+  const [year, setYear] = useState(new Date().getFullYear());
 
   useEffect(() => {
     localStorage.setItem('Lang', i18n.language);
