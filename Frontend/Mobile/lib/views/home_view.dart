@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
                 MenuListTile(
                   title: 'Settings',
                   icon: Icons.settings,
-                  onTap: () {},
+                  onTap: () => Get.toNamed('/settings'),
                 ),
                 MenuListTile(
                   title: 'Logout',

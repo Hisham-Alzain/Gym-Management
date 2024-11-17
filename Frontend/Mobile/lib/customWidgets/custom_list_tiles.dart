@@ -31,3 +31,31 @@ class MenuListTile extends StatelessWidget {
     );
   }
 }
+
+class SettingsListTile extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final Widget? trailing;
+  const SettingsListTile({
+    super.key,
+    required this.title,
+    required this.icon,
+    this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.labelLarge,
+      ),
+      leading: Icon(
+        icon,
+        color: Colors.red.shade900,
+      ),
+      trailing: trailing,
+      onTap: () {},
+    );
+  }
+}

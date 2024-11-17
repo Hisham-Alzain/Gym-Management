@@ -6,6 +6,7 @@ import 'package:mobile/views/home_view.dart';
 import 'package:mobile/views/profileViews/edit_info_view.dart';
 import 'package:mobile/views/profileViews/add_info_view.dart';
 import 'package:mobile/views/profileViews/profile_view.dart';
+import 'package:mobile/views/settings_view.dart';
 import 'package:mobile/views/workoutViews/exercise_view.dart';
 import 'package:mobile/views/workoutViews/exercises_view.dart';
 import 'package:mobile/views/workoutViews/workouts_view.dart';
@@ -43,7 +44,7 @@ List<GetPage<dynamic>>? getPages = [
     page: () => ChangePasswordView(),
   ),
   GetPage(
-    name: '/personalInfo',
+    name: '/addInfo',
     page: () => AddInfoView(),
   ),
   GetPage(
@@ -77,5 +78,9 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: '/diets',
     page: () => DietsView(),
+  ),
+  GetPage(
+    name: '/settings',
+    page: () => SettingsView(),
   ),
 ];

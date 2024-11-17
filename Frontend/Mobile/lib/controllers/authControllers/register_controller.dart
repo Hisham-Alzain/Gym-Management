@@ -68,7 +68,7 @@ class RegisterController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.0.103:8000/api/register',
+        'http://192.168.0.102:8000/api/register',
         data: {
           "name": fullName,
           "email": email,
@@ -90,7 +90,7 @@ class RegisterController extends GetxController {
         Future.delayed(
           const Duration(seconds: 1),
           () {
-            Get.offAllNamed('/personalInfo');
+            Get.offAllNamed('/addInfo');
           },
         );
       }
