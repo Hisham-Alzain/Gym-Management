@@ -6,6 +6,7 @@ import { MdNoFood } from "react-icons/md";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { LoginContext } from '../../utils/Contexts';
 import { FetchUserDiets, DeleteDietProgram } from '../../apis/DietsApis';
+import LoadingBars from '../LoadingBars';
 import styles from '../../styles/PopUps/diets_popup.module.css';
 import btn_style from '../../styles/users_table.module.css';
 
@@ -91,7 +92,7 @@ const DietsPopUp = ({ user_id, user_name }) => {
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          {isLoading ? <></> : <>
+          {isLoading ? <LoadingBars /> : <>
             <div className={styles.header}>
               <div className={styles.name}>
                 {`${user_name} ${t('components.pop_ups.diets_popup.name')}`}

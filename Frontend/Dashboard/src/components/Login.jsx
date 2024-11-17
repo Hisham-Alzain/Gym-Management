@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Cookies from 'js-cookie';
 import { LoginContext, ProfileContext } from '../utils/Contexts';
 import { LoginAPI } from '../apis/AuthApis';
+import LoadingBars from './LoadingBars';
 import banner from '../assets/hero.png';
 import styles from '../styles/login.module.css';
 
@@ -65,7 +66,7 @@ const Login = () => {
   }
 
   if (isLoading) {
-    return <></>
+    return <LoadingBars />;
   }
   return (
     <div className={styles.page}>

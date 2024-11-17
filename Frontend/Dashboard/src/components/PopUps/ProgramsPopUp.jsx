@@ -5,6 +5,7 @@ import Popup from 'reactjs-popup';
 import { FaDumbbell, FaRegTrashCan } from "react-icons/fa6";
 import { LoginContext } from '../../utils/Contexts';
 import { FetchUserWorkouts, DeleteWorkoutProgram } from '../../apis/WorkoutApis';
+import LoadingBars from '../LoadingBars';
 import styles from '../../styles/PopUps/workouts_popup.module.css';
 import btn_style from '../../styles/users_table.module.css';
 
@@ -90,7 +91,7 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          {isLoading ? <></> : <>
+          {isLoading ? <LoadingBars /> : <>
             <div className={styles.header}>
               <div className={styles.name}>
                 {`${user_name} ${t('components.pop_ups.workouts_popup.name')}`}

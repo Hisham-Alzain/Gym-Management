@@ -2,14 +2,15 @@ import { useEffect, useState, useContext, useRef } from 'react';
 import { useParams } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { FaCalendarDays } from "react-icons/fa6";
-import { LoginContext } from '../utils/Contexts';
+import { LoginContext } from '../../utils/Contexts';
 import {
   FetchDefaultWorkouts, CreateDefaultWorkout, CreateWorkout
-} from '../apis/WorkoutApis';
-import { FetchExerciseMuscles, FetchExercises } from '../apis/ExerciseApis';
+} from '../../apis/WorkoutApis';
+import { FetchExerciseMuscles, FetchExercises } from '../../apis/ExerciseApis';
+import LoadingBars from '../LoadingBars';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import styles from "../styles/add_workout.module.css";
+import styles from "../../styles/add_workout.module.css";
 
 
 const AddWorkout = () => {
@@ -49,6 +50,8 @@ const AddWorkout = () => {
         } else {
           console.log(response);
         }
+      }).then(() => {
+        setIsLoading(false);
       });
 
       FetchDefaultWorkouts(accessToken).then((response) => {
@@ -57,6 +60,8 @@ const AddWorkout = () => {
         } else {
           console.log(response);
         }
+      }).then(() => {
+        setIsLoading(false);
       });
     }
   }, []);
@@ -197,6 +202,9 @@ const AddWorkout = () => {
     });
   }
 
+  if (isLoading) {
+    return <LoadingBars />;
+  }
   return (
     <div className={styles.programs}>
       <div className={styles.header}>

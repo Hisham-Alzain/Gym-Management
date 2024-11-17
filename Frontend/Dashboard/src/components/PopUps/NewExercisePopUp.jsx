@@ -4,6 +4,7 @@ import Popup from 'reactjs-popup';
 import { FaPlus } from "react-icons/fa6";
 import { LoginContext } from "../../utils/Contexts";
 import { FetchExerciseMuscles, AddExercise } from '../../apis/ExerciseApis';
+import LoadingBars from '../LoadingBars';
 import img_holder from '../../assets/noImage.jpg';
 import styles from '../../styles/PopUps/exercise_popup.module.css';
 
@@ -101,103 +102,105 @@ const NewExercisePopUp = () => {
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          <div className={styles.header}>
-            {t('components.pop_ups.exercise_popup.header')}
-          </div>
-          <div className={styles.content}>
-            <form
-              className={styles.add_form}
-              onSubmit={(event) => handleNewExercise(event)}
-            >
-              <input
-                type='text'
-                value={en_name}
-                onChange={(event) => setEn_name(event.target.value)}
-                placeholder={t('components.pop_ups.exercise_popup.input1')}
-                className={styles.custom_input}
-                required
-              />
-              <input
-                type='text'
-                value={ar_name}
-                onChange={(event) => setAr_name(event.target.value)}
-                placeholder={t('components.pop_ups.exercise_popup.input1_a')}
-                className={styles.custom_input}
-                required
-              />
-              <select
-                value={muscle}
-                onChange={(event) => setMuscle(event.target.value)}
-                className={styles.custom_input}
-                required
+          {isLoading ? <LoadingBars /> : <>
+            <div className={styles.header}>
+              {t('components.pop_ups.exercise_popup.header')}
+            </div>
+            <div className={styles.content}>
+              <form
+                className={styles.add_form}
+                onSubmit={(event) => handleNewExercise(event)}
               >
-                <option value="" disabled>
-                  {t('components.pop_ups.exercise_popup.option')}
-                </option>
-                {muscles.map((muscle) => (
-                  <option key={muscle.id} value={muscle.name}>
-                    {muscle.value[i18n.language]}
+                <input
+                  type='text'
+                  value={en_name}
+                  onChange={(event) => setEn_name(event.target.value)}
+                  placeholder={t('components.pop_ups.exercise_popup.input1')}
+                  className={styles.custom_input}
+                  required
+                />
+                <input
+                  type='text'
+                  value={ar_name}
+                  onChange={(event) => setAr_name(event.target.value)}
+                  placeholder={t('components.pop_ups.exercise_popup.input1_a')}
+                  className={styles.custom_input}
+                  required
+                />
+                <select
+                  value={muscle}
+                  onChange={(event) => setMuscle(event.target.value)}
+                  className={styles.custom_input}
+                  required
+                >
+                  <option value="" disabled>
+                    {t('components.pop_ups.exercise_popup.option')}
                   </option>
-                ))}
-              </select>
-              <textarea
-                rows={7}
-                value={en_description}
-                onChange={(event) => setEn_description(event.target.value)}
-                placeholder={t('components.pop_ups.exercise_popup.input2')}
-                className={styles.custom_input}
-                required
-              />
-              <textarea
-                rows={7}
-                value={ar_description}
-                onChange={(event) => setAr_description(event.target.value)}
-                placeholder={t('components.pop_ups.exercise_popup.input2_a')}
-                className={styles.custom_input}
-                required
-              />
-              <label htmlFor='thumbnailPath' className={styles.img_holder}>
-                {thumbnailPath ? (
-                  <img
-                    src={URL.createObjectURL(thumbnailPath)}
-                    alt="Uploaded Photo"
-                    style={{ pointerEvents: 'none' }}
-                  />
-                ) : (
-                  <img
-                    src={img_holder}
-                    alt="Photo Placeholder"
-                    style={{ pointerEvents: 'none' }}
-                  />
-                )}
-              </label>
-              <input
-                id='thumbnailPath'
-                type='file'
-                placeholder='Photo'
-                accept='.png,.jpg,.jpeg'
-                onChange={handlePhotoChange}
-                width="100px" height="100px"
-                style={{ visibility: 'hidden' }}
-              />
-              <div className={styles.row}>
-                <label>
-                  {t('components.pop_ups.exercise_popup.label')}
+                  {muscles.map((muscle) => (
+                    <option key={muscle.id} value={muscle.name}>
+                      {muscle.value[i18n.language]}
+                    </option>
+                  ))}
+                </select>
+                <textarea
+                  rows={7}
+                  value={en_description}
+                  onChange={(event) => setEn_description(event.target.value)}
+                  placeholder={t('components.pop_ups.exercise_popup.input2')}
+                  className={styles.custom_input}
+                  required
+                />
+                <textarea
+                  rows={7}
+                  value={ar_description}
+                  onChange={(event) => setAr_description(event.target.value)}
+                  placeholder={t('components.pop_ups.exercise_popup.input2_a')}
+                  className={styles.custom_input}
+                  required
+                />
+                <label htmlFor='thumbnailPath' className={styles.img_holder}>
+                  {thumbnailPath ? (
+                    <img
+                      src={URL.createObjectURL(thumbnailPath)}
+                      alt="Uploaded Photo"
+                      style={{ pointerEvents: 'none' }}
+                    />
+                  ) : (
+                    <img
+                      src={img_holder}
+                      alt="Photo Placeholder"
+                      style={{ pointerEvents: 'none' }}
+                    />
+                  )}
                 </label>
                 <input
-                  id='file'
+                  id='thumbnailPath'
                   type='file'
-                  accept='.mp4,.m4v,.mkv,.webm,.flv,.avi,.wmv'
-                  onChange={handleFileChange}
+                  placeholder='Photo'
+                  accept='.png,.jpg,.jpeg'
+                  onChange={handlePhotoChange}
+                  width="100px" height="100px"
+                  style={{ visibility: 'hidden' }}
                 />
-              </div>
-              <div className={styles.submit_div}>
-                <button className={styles.submit} type='submit'>
-                  {t('components.pop_ups.exercise_popup.title')}
-                </button>
-              </div>
-            </form>
-          </div>
+                <div className={styles.row}>
+                  <label>
+                    {t('components.pop_ups.exercise_popup.label')}
+                  </label>
+                  <input
+                    id='file'
+                    type='file'
+                    accept='.mp4,.m4v,.mkv,.webm,.flv,.avi,.wmv'
+                    onChange={handleFileChange}
+                  />
+                </div>
+                <div className={styles.submit_div}>
+                  <button className={styles.submit} type='submit'>
+                    {t('components.pop_ups.exercise_popup.title')}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </>}
           <div className={styles.actions}></div>
         </div>
       )}

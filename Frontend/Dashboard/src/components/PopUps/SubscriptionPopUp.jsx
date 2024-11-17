@@ -4,6 +4,7 @@ import Popup from 'reactjs-popup';
 import { FaCalendarDays } from "react-icons/fa6";
 import { LoginContext } from "../../utils/Contexts";
 import { FetchSubscriptions, StartSubscription } from "../../apis/UserViewApis";
+import LoadingBars from '../LoadingBars';
 import styles from '../../styles/PopUps/subscription_popup.module.css';
 
 
@@ -78,7 +79,7 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          {isLoading ? <></> : <>
+          {isLoading ? <LoadingBars /> : <>
             <div className={styles.header}>
               {`${user_name} ${t('components.pop_ups.subscriptions_popup.name')}`}
             </div>

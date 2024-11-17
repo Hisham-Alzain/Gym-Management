@@ -12,7 +12,8 @@ import Meals from './components/Diets/Meals.jsx';
 import ShowDiet from './components/Diets/ShowDiet.jsx';
 import Exercises from './components/Workouts/Exercises.jsx';
 import ShowProgram from './components/Workouts/ShowProgram.jsx';
-import AddWorkout from './components/AddWorkout.jsx';
+import AddWorkout from './components/Workouts/AddWorkout.jsx';
+import LoadingBars from './components/LoadingBars.jsx';
 import './App.css';
 
 
@@ -76,8 +77,9 @@ function App() {
     }
   }, [loggedIn]);
 
+
   if (isLoading) {
-    return <></>
+    return <LoadingBars />;
   }
   return (
     <LoginContext.Provider value={{ loggedIn, setLoggedIn, accessToken, setAccessToken }}>

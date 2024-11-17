@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { LoginContext, ProfileContext } from '../utils/Contexts.jsx';
 import { LogoutAPI } from '../apis/AuthApis.jsx';
+import LoadingBars from './LoadingBars.jsx';
+
 
 const Logout = () => {
   const { setLoggedIn, accessToken, setAccessToken } = useContext(LoginContext);
@@ -34,7 +36,7 @@ const Logout = () => {
     }
   }, []);
 
-  return <div>Loading</div>
+  return <LoadingBars />;
 };
 
 export default Logout;

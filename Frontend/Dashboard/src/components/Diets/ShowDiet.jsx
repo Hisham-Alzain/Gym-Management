@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { LoginContext } from '../../utils/Contexts';
 import { FetchImage } from '../../apis/UserViewApis';
 import { FetchDietProgram } from '../../apis/DietsApis';
+import LoadingBars from '../LoadingBars';
 import img_holder from '../../assets/noImage.jpg';
 import styles from '../../styles/show_diet.module.css';
 
@@ -50,7 +51,7 @@ const ShowDiet = () => {
 
 
   if (isLoading) {
-    return <></>;
+    return <LoadingBars />;
   }
   return (
     <div className={styles.program}>

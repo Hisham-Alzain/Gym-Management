@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import Popup from 'reactjs-popup';
 import { LoginContext } from "../../utils/Contexts";
 import { FetchVideo } from '../../apis/UserViewApis';
+import LoadingBars from '../LoadingBars';
 import styles from '../../styles/PopUps/video_popup.module.css';
 
 
@@ -58,30 +59,32 @@ const VideoPopUp = ({ Path }) => {
       modal
       nested
     >
-      {close => (isLoading ? <></> :
+      {close =>
         <div className={styles.modal}>
           <button className={styles.close} onClick={close}>
             &times;
           </button>
-          <div className={styles.header}>
-            {t('components.pop_ups.video_popup.header')}
-          </div>
-          <div className={styles.content}>
-            <div className={styles.video_div}>
-              {Path && videoData ?
-                <video ref={vidRef} controls>
-                  <source src={videoData.URL} type={videoData.type} />
-                  {t('components.pop_ups.video_popup.video_tag')}
-                </video>
-                : <div className={styles.header}>
-                  {t('components.pop_ups.video_popup.no_video')}
-                </div>
-              }
+          {isLoading ? <LoadingBars /> : <>
+            <div className={styles.header}>
+              {t('components.pop_ups.video_popup.header')}
             </div>
-          </div>
+            <div className={styles.content}>
+              <div className={styles.video_div}>
+                {Path && videoData ?
+                  <video ref={vidRef} controls>
+                    <source src={videoData.URL} type={videoData.type} />
+                    {t('components.pop_ups.video_popup.video_tag')}
+                  </video>
+                  : <div className={styles.header}>
+                    {t('components.pop_ups.video_popup.no_video')}
+                  </div>
+                }
+              </div>
+            </div>
+          </>}
           <div className={styles.actions}></div>
         </div>
-      )}
+      }
     </Popup>
   );
 };
