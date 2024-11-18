@@ -17,10 +17,10 @@ class MealResource extends JsonResource
         return [
             "meal_id" => $this->id,
             "translations" => new MealTranslationsCollection($this->translations),
-            'calories_per_gram' => $this->calories,
-            'protein_per_gram' => $this->protein,
-            'carbs_per_gram' => $this->carbs,
-            'fat_per_gram' => $this->fat,
+            'calories_per_gram' => number_format($this->calories, 2, '.', ''),
+            'protein_per_gram' => number_format($this->protein, 2, '.', ''),
+            'carbs_per_gram' => number_format($this->carbs, 2, '.', ''),
+            'fat_per_gram' => number_format($this->fat, 2, '.', ''),
             'GI' => $this->GI->value(),
             'thumbnail_path' => $this->thumbnail_path
         ];

@@ -13,7 +13,7 @@ const ShowDiet = () => {
   // Params
   const { program_id } = useParams();
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
@@ -94,7 +94,7 @@ const ShowDiet = () => {
                 <td className={styles.td2}>
                   <table className={styles.details_table}>
                     <caption>
-                      {meal.meal.meal_name}
+                      {meal.meal.translations[i18n.language].meal_name}
                     </caption>
                     <tbody>
                       <tr>
@@ -147,7 +147,7 @@ const ShowDiet = () => {
                       </tr>
                       <tr>
                         <th>{t('components.show_diet.th13')}</th>
-                        <td>{meal.meal.description}</td>
+                        <td>{meal.meal.translations[i18n.language].description}</td>
                       </tr>
                     </tbody>
                   </table>

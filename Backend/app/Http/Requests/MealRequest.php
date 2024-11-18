@@ -34,7 +34,7 @@ class MealRequest extends FormRequest
             'protein' => ['required', ' numeric'],
             'carbs' => ['required', ' numeric'],
             'fat' => ['required', ' numeric'],
-            'GI' => ['sometimes', Rule::in(GI::names())],
+            'GI' => ['required', Rule::in(GI::names())],
             'thumbnail_path' => ['sometimes', 'max:4096']
         ];
     }

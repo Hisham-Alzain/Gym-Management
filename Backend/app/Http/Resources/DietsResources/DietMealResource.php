@@ -41,7 +41,7 @@ class DietMealResource extends JsonResource
             'meal' => [
                 // Meal Model
                 'id' => $this->meal->id,
-                'GI' => $this->GI->value(),
+                'GI' => $this->meal->GI->value(),
                 "translations" => new MealTranslationsCollection($this->meal->translations),
 
                 'calories_gram' => number_format($this->meal->calories, 2, '.', ''),
