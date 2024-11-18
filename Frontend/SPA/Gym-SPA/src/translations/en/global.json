@@ -1,4 +1,10 @@
 {
+    "about": {
+        "name": "Coach Amr:",
+        "aboutMe": "A Pharmacist Personal Trainer with certificates in nutritions and bodybuilding.\n I offer muscle gain and weight loss , Health consultations, Therapeutic nutrition and curing nutritions desaeases.",
+        "app": "My app",
+        "app_description": "special app designed to give professional advices workout plans and it also provides many nutritional programs to give you the best experince and results"
+    },
     "training": {
         "h5_1": "Body Building",
         "h5_2": "Muscle Gain",

@@ -9,6 +9,9 @@ import {
   FaPhone, FaEnvelope
 } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
+import Typed from 'typed.js';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import gym from './assets/gym.jpg'
 import app from './assets/gym-app.jpg';
 import coach from './assets/coach.jpg';
@@ -22,12 +25,34 @@ import './App.css';
 function App() {
   // Translations
   const { t, i18n } = useTranslation('global');
+  const year = new Date().getFullYear();
+  const typedRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem('Lang', i18n.language);
     document.documentElement.lang = i18n.language;
     document.documentElement.dir = i18n.dir(i18n.language);
   }, [i18n.language]);
+
+  useEffect(() => {
+    const options = {
+      strings: ["Pharmacist", "Fitness Coach", "Body building Coach"],
+      typeSpeed: 50,
+      backSpeed: 50,
+      loop: true,
+    };
+
+    const typed = new Typed(typedRef.current, options);
+
+    return () => {
+      typed.destroy(); // Cleanup on unmount
+    };
+  }, []);
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   const changeLanguage = (event) => {
     if (event.target.value === 'en' || event.target.value === 'ar') {
@@ -52,20 +77,20 @@ function App() {
   const about = [
     { img: coach },
     {
-      h3: 'Coach Amr:',
-      p: 'a trustworthy coach with a certificate in human organs and chemical effects in the body specialize in reforming the body to the desired shape.'
+      h3: t('about.name'),
+      p: t('about.aboutMe'),
     },
     { img: app },
     {
-      h3: 'My app:',
-      p: 'special app designed to give professional advices and workout plans and it also provides many nutritional programs to give you the best experince and results.'
+      h3: t('about.app'),
+      p: t('about.app_description'),
     }
   ]
 
   const training = [
-    { img: team1, h5: t('training.h5_1'), p: 'GG' },
-    { img: team2, h5: t('training.h5_1'), p: 'GG' },
-    { img: team3, h5: t('training.h5_1'), p: 'GG' }
+    { img: team1, h5: t('training.h5_1') },
+    { img: team2, h5: t('training.h5_2') },
+    { img: team3, h5: t('training.h5_3') }
   ]
 
   const gallery = [
@@ -76,38 +101,22 @@ function App() {
   const pricing = [
     {
       plan: '1 Month',
-      price: '$50/M',
-      span_txt: '(Single class)',
+      price: '$150/M',
       features: [
-        'Free riding',
-        'Unlimited equipments',
-        'Personal trainer',
+        'Fittness training',
         'Weight losing classes',
-        'Month to mouth'
+        'bodybuilding training',
+        'health consulting'
       ]
     },
     {
       plan: '3 Months',
-      price: '$40/M',
-      span_txt: '(Single class)',
+      price: '$100/M',
       features: [
-        'Free riding',
-        'Unlimited equipments',
-        'Personal trainer',
+        'Fittness training',
         'Weight losing classes',
-        'Month to mouth'
-      ]
-    },
-    {
-      plan: '6 Months',
-      price: '$30/M',
-      span_txt: '(Single class)',
-      features: [
-        'Free riding',
-        'Unlimited equipments',
-        'Personal trainer',
-        'Weight losing classes',
-        'Month to mouth'
+        'bodybuilding training',
+        'health consulting'
       ]
     }
   ]
@@ -143,9 +152,13 @@ function App() {
       <main>
         {/* Home */}
         <section id='home'>
-          <div className="caption">
-            <span>Hi This is Amr Khalaf</span>
-            <h1>Gym Trainer</h1>
+          <div
+            className="caption"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <h1>I am Amr Khalaf</h1>
+            <span ref={typedRef}></span>
           </div>
         </section>
 
