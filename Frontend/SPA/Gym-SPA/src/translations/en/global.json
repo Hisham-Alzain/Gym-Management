@@ -1,4 +1,16 @@
 {
+    "headers":{
+        "head_1":"What I offer",
+        "head_2":"Gallery",
+        "head_3":"Pricing",
+        "head_4":"Contact"
+    },
+    "hero":{
+        "name":"I am Coach Amr",
+        "typed_1":"Pharmacist",
+        "typed_2":"Fitness Coach",
+        "typed_3":"Body building Coach"
+    },
     "about": {
         "name": "Coach Amr:",
         "aboutMe": "A Pharmacist Personal Trainer with certificates in nutritions and bodybuilding.\n I offer muscle gain and weight loss , Health consultations, Therapeutic nutrition and curing nutritions desaeases.",
@@ -13,6 +25,12 @@
     "gallery": {
         "h3_before": "Before",
         "h3_after": "After"
+    },
+    "pricing":{
+        "feature_1":"Fittness training",
+        "feature_2":"Weight losing classes",
+        "feature_3":"bodybuilding training",
+        "feature_4":"health consulting"
     },
     "contact": {
         "h3_location": "Location",

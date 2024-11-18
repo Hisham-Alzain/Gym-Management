@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     const options = {
-      strings: ["Pharmacist", "Fitness Coach", "Body building Coach"],
+      strings: [t('hero.typed_1'), t('hero.typed_2'), t('hero.typed_3')],
       typeSpeed: 50,
       backSpeed: 50,
       loop: true,
@@ -103,20 +103,20 @@ function App() {
       plan: '1 Month',
       price: '$150/M',
       features: [
-        'Fittness training',
-        'Weight losing classes',
-        'bodybuilding training',
-        'health consulting'
+        t('pricing.feature_1'),
+        t('pricing.feature_2'),
+        t('pricing.feature_3'),
+        t('pricing.feature_4')
       ]
     },
     {
       plan: '3 Months',
       price: '$100/M',
       features: [
-        'Fittness training',
-        'Weight losing classes',
-        'bodybuilding training',
-        'health consulting'
+        t('pricing.feature_1'),
+        t('pricing.feature_2'),
+        t('pricing.feature_3'),
+        t('pricing.feature_4')
       ]
     }
   ]
@@ -157,7 +157,7 @@ function App() {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <h1>I am Amr Khalaf</h1>
+            <h1>{t('hero.name')}</h1>
             <span ref={typedRef}></span>
           </div>
         </section>
@@ -190,7 +190,7 @@ function App() {
           <div className='container'>
             <div className='row'>
               <div className="section-title">
-                <h2>What I Offer</h2>
+                <h2>{t('headers.head_1')}</h2>
               </div>
             </div>
             <div className='row'>
@@ -216,7 +216,7 @@ function App() {
           <div className='container'>
             <div className='row'>
               <div className="section-title">
-                <h2>Gallery</h2>
+                <h2>{t('headers.head_2')}</h2>
               </div>
             </div>
             <div className='row'>
@@ -245,7 +245,7 @@ function App() {
           <div className='container'>
             <div className='row'>
               <div className='section-title'>
-                <h2>Pricing</h2>
+                <h2>{t('headers.head_3')}</h2>
               </div>
             </div>
             <div className='row'>
