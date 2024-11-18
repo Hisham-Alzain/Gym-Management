@@ -21,6 +21,7 @@ class MealResource extends JsonResource
             'protein_per_gram' => $this->protein,
             'carbs_per_gram' => $this->carbs,
             'fat_per_gram' => $this->fat,
+            'GI' => $this->GI->value(),
             'thumbnail_path' => $this->thumbnail_path
         ];
     }

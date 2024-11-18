@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\GI;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -32,6 +34,7 @@ class MealRequest extends FormRequest
             'protein' => ['required', ' numeric'],
             'carbs' => ['required', ' numeric'],
             'fat' => ['required', ' numeric'],
+            'GI' => ['sometimes', Rule::in(GI::names())],
             'thumbnail_path' => ['sometimes', 'max:4096']
         ];
     }

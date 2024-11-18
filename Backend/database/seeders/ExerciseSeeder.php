@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Exercise;
+use App\Models\ExerciseTranslation;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,135 +16,396 @@ class ExerciseSeeder extends Seeder
     {
         $exercises = [
             [
-                "name" => "Leg Extension",
                 "muscle" => "Legs",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Leg Extension",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Leg curls",
                 "muscle" => "Legs",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Leg curls",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Machine Chest Press",
                 "muscle" => "Chest",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Machine Chest Press",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Chest Fly",
                 "muscle" => "Chest",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Chest Fly",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Lat Pulldown",
                 "muscle" => "Back",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Lat Pulldown",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Rows",
                 "muscle" => "Back",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Rows",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Shoulder Press Machine",
                 "muscle" => "Shoulders",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Shoulder Press Machine",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Lateral Raise",
                 "muscle" => "Shoulders",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Lateral Raise",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Dumbell curl",
                 "muscle" => "Biceps",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Dumbell curl",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Push down",
                 "muscle" => "Triceps",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Push down",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Incline bench press",
                 "muscle" => "Chest",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Incline bench press",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Dumbell Chest Press",
                 "muscle" => "Chest",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Dumbell Chest Press",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Flat Dumbell Fly",
                 "muscle" => "Chest",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Flat Dumbell Fly",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Incline Dumbell Fly",
                 "muscle" => "Chest",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Incline Dumbell Fly",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Dips",
                 "muscle" => "Chest",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Dips",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Roman Chair",
                 "muscle" => "Back",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Roman Chair",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Dumbel Squat V",
                 "muscle" => "Legs",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Dumbel Squat V",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Pec deck",
                 "muscle" => "Shoulders",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Pec deck",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Biceps Hammer",
                 "muscle" => "Biceps",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Biceps Hammer",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Lat Pulldown triangle grip",
                 "muscle" => "Back",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Lat Pulldown triangle grip",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Hammer Row",
                 "muscle" => "Back",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Hammer Row",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Bar Squat",
                 "muscle" => "Legs",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Bar Squat",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Over head extention",
                 "muscle" => "Triceps",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Over head extention",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Calfs",
                 "muscle" => "Legs",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Calfs",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ],
             [
-                "name" => "Front Lateral Raise",
                 "muscle" => "Shoulders",
-                "description" => ""
+                "translations" => [
+                    [
+                        "lang" => "en",
+                        "name" => "Front Lateral Raise",
+                        "description" => ""
+                    ],
+                    [
+                        "lang" => "ar",
+                        "name" => "",
+                        "description" => ""
+                    ]
+                ],
             ]
         ];
 
         // Create exercises
         foreach ($exercises as $exerciseData) {
-            Exercise::create($exerciseData);
+            $exercise = Exercise::create([
+                "muscle" => $exerciseData["muscle"]
+            ]);
+
+            foreach ($exerciseData['translations'] as $translation) {
+                ExerciseTranslation::create([
+                    'exercise_id' => $exercise->id,
+                    "lang" => $translation["lang"],
+                    "name" => $translation["name"],
+                    "description" => $translation["description"]
+                ]);
+            }
         }
     }
 }

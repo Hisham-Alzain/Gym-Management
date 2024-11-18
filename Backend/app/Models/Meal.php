@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\GI;
 
 class Meal extends Model
 {
@@ -20,7 +21,8 @@ class Meal extends Model
         'calories',
         'protein',
         'carbs',
-        'fat'
+        'fat',
+        "GI"
     ];
 
     /**
@@ -41,7 +43,8 @@ class Meal extends Model
             'calories' => 'decimal:2',
             'protein' => 'decimal:2',
             'carbs' => 'decimal:2',
-            'fat' => 'decimal:2'
+            'fat' => 'decimal:2',
+            'GI' => GI::class
         ];
     }
 
