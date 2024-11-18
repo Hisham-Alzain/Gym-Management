@@ -4,19 +4,17 @@ import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
-import 'package:mobile/models/day.dart';
+import 'package:mobile/models/diet_program.dart';
 import 'package:mobile/models/pagination_data.dart';
-import 'package:mobile/models/workout_program.dart';
 
-class WorkoutsController extends GetxController {
+class DietsController extends GetxController {
   late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late Dio dio;
   late CustomDialogs customDialogs;
   late PaginationData paginationData;
   late ScrollController scrollController;
-  List<WorkoutProgram> programs = [];
-  int dayId = 0;
+  List<DietProgram> programs = [];
   bool loading = true;
 
   @override
@@ -46,16 +44,11 @@ class WorkoutsController extends GetxController {
     }
   }
 
-  void viewDay(Day day) {
-    dayId = day.dayId;
-    Get.toNamed('/exercises');
-  }
-
   Future<dynamic> getPrograms(int page) async {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.102:8000/api/trainee/workouts?page=$page',
+        'http://192.168.0.102:8000/api/trainee/diets?page=$page',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -67,7 +60,7 @@ class WorkoutsController extends GetxController {
       if (response.statusCode == 200) {
         for (var program in response.data['programs']) {
           programs.add(
-            WorkoutProgram.fromJson(program),
+            DietProgram.fromJson(program),
           );
         }
         paginationData =
