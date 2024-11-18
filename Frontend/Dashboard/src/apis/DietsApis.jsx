@@ -45,6 +45,21 @@ export const DeleteDietProgram = async (token, program_id) => {
   }
 };
 
+export const FetchMealGi = async (token) => {
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/meal/GI`, {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const FetchMeals = async (token, page) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/api/meals?page=${page}`, {
@@ -60,7 +75,7 @@ export const FetchMeals = async (token, page) => {
   }
 };
 
-export const AddMeal = async (token, en_name, ar_name, en_description, ar_description, calories, protein, carbs, fat, thumbnail_path) => {
+export const AddMeal = async (token, en_name, ar_name, en_description, ar_description, calories, protein, carbs, fat, gi, thumbnail_path) => {
   try {
     const response = await axios.post(`http://127.0.0.1:8000/api/meals/create`, {
       "en_meal_name": en_name,
@@ -71,6 +86,7 @@ export const AddMeal = async (token, en_name, ar_name, en_description, ar_descri
       "protein": protein,
       "carbs": carbs,
       "fat": fat,
+      "GI": gi,
       "thumbnail_path": thumbnail_path
     }, {
       headers: {

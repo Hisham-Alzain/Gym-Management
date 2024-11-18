@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\UserInfo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Enums\WorkoutMuscle;
 use App\Enums\DefaultWorkouts;
-use Illuminate\Support\Facades\Auth;
+use App\Enums\GI;
 
 
 class MainController extends Controller
@@ -134,6 +135,39 @@ class MainController extends Controller
         // Response
         return response()->json([
             "workouts" => $response,
+        ], 200);
+    }
+
+    public function MealGIs(Request $request)
+    {
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Array
+        $enumNames = GI::names();
+        $enumValues = GI::values();
+        $response = [];
+        for ($i = 0; $i < count($enumValues); $i++) {
+            array_push(
+                $response,
+                [
+                    'id' => $i + 1,
+                    'name' => $enumNames[$i],
+                    'value' => $enumValues[$i]
+                ]
+            );
+        }
+
+        // Response
+        return response()->json([
+            "gis" => $response,
         ], 200);
     }
 }

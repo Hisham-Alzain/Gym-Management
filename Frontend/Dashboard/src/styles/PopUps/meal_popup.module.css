@@ -111,6 +111,28 @@
     border-block-end-color: #4F6E95;
 }
 
+.radio_div {
+    margin: 5px 10px;
+}
+
+.radio_div input {
+    display: none;
+}
+
+.radio_div label {
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: var(--color-text);
+    background-color: var(--color-custom_grey);
+    padding: 5px 10px;
+}
+
+.radio_div input:checked~label {
+    background-color: var(--color-custom_red);
+}
+
 .img_holder {
     display: flex;
     align-items: center;

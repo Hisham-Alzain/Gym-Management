@@ -12,7 +12,7 @@ class Middleware extends GetMiddleware {
       case MiddlewareCases.validToken:
         return const RouteSettings(name: '/home');
       case MiddlewareCases.incompleteInfo:
-        return const RouteSettings(name: '/personalInfo');
+        return const RouteSettings(name: '/addInfo');
       case MiddlewareCases.invalidToken:
         return const RouteSettings(name: '/auth');
       default:

@@ -2,19 +2,46 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
+import 'package:mobile/main.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class GeneralController extends GetxController {
+  late String selectedLang;
+  late Map<String, String> langs;
   late CustomDialogs customDialogs;
   late bool inRegister;
   late ImagePicker picker;
 
   @override
   void onInit() {
+    if (storage?.read("lang") != null) {
+      if (storage?.read("lang") == "en") {
+        //locale = const Locale("en");
+        selectedLang = 'en';
+      } else {
+        //locale = const Locale("ar");
+        selectedLang = 'ar';
+      }
+    } else {
+      //locale = const Locale('en');
+      selectedLang = 'en';
+    }
+    langs = {
+      'English': 'en',
+      'العربية': 'ar',
+    };
     customDialogs = CustomDialogs();
     inRegister = false;
     picker = ImagePicker();
     super.onInit();
+  }
+
+  Future<void> changeLang(String lang) async {
+    //Locale locale = Locale(lang);
+    selectedLang = lang;
+    storage?.write("lang", lang);
+    //await Get.updateLocale(locale);
+    update();
   }
 
   void handleUnauthorized() {

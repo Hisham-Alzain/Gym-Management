@@ -6,7 +6,7 @@ class CustomDropDownButton extends StatelessWidget {
   final dynamic value;
   final void Function(dynamic) onChanged;
   final List<DropdownMenuItem<dynamic>>? items;
-  final String hintText;
+  final String? hintText;
   final IconData? hintTcon;
 
   const CustomDropDownButton({
@@ -14,7 +14,7 @@ class CustomDropDownButton extends StatelessWidget {
     this.value,
     this.items,
     required this.onChanged,
-    required this.hintText,
+    this.hintText,
     this.hintTcon,
   });
 
@@ -41,7 +41,7 @@ class CustomDropDownButton extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      hintText,
+                      hintText.toString(),
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     Icon(hintTcon)
