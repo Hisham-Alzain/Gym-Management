@@ -16,6 +16,7 @@ Route::controller(MainController::class)->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('/muscles/{addingExercise}', 'ShowMuscles');
         Route::get('/workouts/default', 'DefaultWorkouts');
+        Route::get('/meal/GI', 'MealGIs');
         Route::get('/check_token', 'CheckToken');
         Route::get('/logout', 'Logout');
     });
