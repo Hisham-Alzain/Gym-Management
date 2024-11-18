@@ -121,21 +121,14 @@ class WorkoutsView extends StatelessWidget {
                                                     controller.programs[index]
                                                         .days[index2],
                                                   ),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      const Icon(
-                                                          FontAwesomeIcons
-                                                              .calendarDay),
-                                                      Text(
-                                                        'Day ${index2 + 1}: ${controller.programs[index].days[index2].muscle}',
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .bodyLarge,
-                                                      ),
-                                                    ],
+                                                  child: TextComponent(
+                                                    icon: FontAwesomeIcons
+                                                        .calendarDay,
+                                                    title: 'Day ${index2 + 1}',
+                                                    text: controller
+                                                        .programs[index]
+                                                        .days[index2]
+                                                        .muscle,
                                                   ),
                                                 ),
                                               );
@@ -161,7 +154,7 @@ class WorkoutsView extends StatelessWidget {
                                   child: Text(
                                     controller.programs.isEmpty
                                         ? 'No programs to show'.tr
-                                        : 'No more programs'.tr,
+                                        : 'No more workouts'.tr,
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineSmall,
