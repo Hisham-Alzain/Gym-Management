@@ -23,7 +23,7 @@ class TrainerMainController extends MainController
     {
         // Validate request
         $validated = $request->validated();
-        $remember = $validated['remember'];
+        $rememberMe = $validated['remember'];
         unset($validated['remember']);
 
         // Check user
@@ -41,8 +41,12 @@ class TrainerMainController extends MainController
             ], 422);
         }
 
-        // Prepare token
-        $token = $user->createToken("api_token")->plainTextToken;
+        // Handle Remember Me functionality
+        if ($rememberMe) {
+            $token = $user->createToken(name: 'auth_token', expiresAt: now()->addMonth())->plainTextToken;
+        } else {
+            $token = $user->createToken(name: 'auth_token', expiresAt: now()->addDay())->plainTextToken;
+        }
 
         if ($user->role == 'Trainer') {
             // Response

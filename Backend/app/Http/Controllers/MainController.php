@@ -38,7 +38,16 @@ class MainController extends Controller
         if ($info == null) {
             $completed_info = false;
         } else {
-            $completed_info = true;
+            if (
+                $user->gender == null
+                || $user->birthdate == null
+                || $info->height == null
+                || $info->weight == null
+            ) {
+                $completed_info = false;
+            } else {
+                $completed_info = true;
+            }
         }
 
         return response()->json([

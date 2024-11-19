@@ -57,7 +57,7 @@ class TraineeMainController extends MainController
     {
         // Validate request
         $validated = $request->validated();
-        $remember = $validated['remember'];
+        $rememberMe = $validated['remember'];
         unset($validated['remember']);
 
         // Check user
@@ -75,8 +75,12 @@ class TraineeMainController extends MainController
             ], 422);
         }
 
-        // Prepare token
-        $token = $user->createToken("api_token")->plainTextToken;
+        // Handle Remember Me functionality
+        if ($rememberMe) {
+            $token = $user->createToken(name: 'auth_token', expiresAt: now()->addMonth())->plainTextToken;
+        } else {
+            $token = $user->createToken(name: 'auth_token', expiresAt: now()->addDay())->plainTextToken;
+        }
 
         if ($user->role == 'Trainer') {
             // Response
@@ -90,7 +94,16 @@ class TraineeMainController extends MainController
             if ($info == null) {
                 $completed_info = false;
             } else {
-                $completed_info = true;
+                if (
+                    $user->gender == null
+                    || $user->birthdate == null
+                    || $info->height == null
+                    || $info->weight == null
+                ) {
+                    $completed_info = false;
+                } else {
+                    $completed_info = true;
+                }
             }
 
             // Response
