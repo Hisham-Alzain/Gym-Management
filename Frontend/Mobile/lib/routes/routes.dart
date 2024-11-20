@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:mobile/middleware/middleware.dart';
 import 'package:mobile/views/dietViews/diets_view.dart';
+import 'package:mobile/views/dietViews/meal_view.dart';
 import 'package:mobile/views/profileViews/add_photos_view.dart';
 import 'package:mobile/views/home_view.dart';
 import 'package:mobile/views/profileViews/edit_info_view.dart';
@@ -78,6 +79,10 @@ List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: '/diets',
     page: () => DietsView(),
+  ),
+  GetPage(
+    name: '/meal',
+    page: () => const MealView(),
   ),
   GetPage(
     name: '/settings',

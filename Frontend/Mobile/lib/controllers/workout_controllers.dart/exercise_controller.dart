@@ -30,7 +30,7 @@ class ExerciseController extends GetxController {
     log(exercise.videoPath.toString());
     // videoPlayerController = VideoPlayerController.networkUrl(
     //   Uri(
-    //     path: 'http://192.168.0.102:8000/api/video/${exercise.videoPath}',
+    //     path: 'http://192.168.0.101:8000/api/video/${exercise.videoPath}',
     //   ),
     // )..initialize().then((_) {
     //     update();
@@ -44,7 +44,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.102:8000/api/trainee/exercise/$id',
+        'http://192.168.0.101:8000/api/trainee/exercise/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -75,7 +75,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.0.102:8000/api/trainee/workout/set',
+        'http://192.168.0.101:8000/api/trainee/workout/set',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

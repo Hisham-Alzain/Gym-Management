@@ -121,7 +121,7 @@ class WorkoutsView extends StatelessWidget {
                                                     controller.programs[index]
                                                         .days[index2],
                                                   ),
-                                                  child: TextComponent(
+                                                  child: CenterTextComponent(
                                                     icon: FontAwesomeIcons
                                                         .calendarDay,
                                                     title: 'Day ${index2 + 1}',

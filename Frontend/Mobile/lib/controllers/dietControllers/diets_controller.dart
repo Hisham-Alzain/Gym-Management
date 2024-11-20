@@ -5,6 +5,7 @@ import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
 import 'package:mobile/main.dart';
 import 'package:mobile/models/diet_program.dart';
+import 'package:mobile/models/meal.dart';
 import 'package:mobile/models/pagination_data.dart';
 
 class DietsController extends GetxController {
@@ -16,6 +17,7 @@ class DietsController extends GetxController {
   late ScrollController scrollController;
   List<DietProgram> programs = [];
   bool loading = true;
+  Meal selectedMeal = Meal.empty();
 
   @override
   Future<void> onInit() async {
@@ -44,11 +46,16 @@ class DietsController extends GetxController {
     }
   }
 
+  void viewMeal(Meal meal) {
+    selectedMeal = meal;
+    Get.toNamed('/meal');
+  }
+
   Future<dynamic> getPrograms(int page) async {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.102:8000/api/trainee/diets?page=$page',
+        'http://192.168.0.101:8000/api/trainee/diets?page=$page',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

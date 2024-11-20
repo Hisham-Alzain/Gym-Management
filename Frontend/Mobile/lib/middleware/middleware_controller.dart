@@ -23,7 +23,7 @@ class MiddlewareController extends GetxController {
     if (token != null) {
       try {
         var response = await dio.get(
-          'http://192.168.0.102:8000/api/check_token',
+          'http://192.168.0.101:8000/api/check_token',
           options: Options(
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',
@@ -33,6 +33,7 @@ class MiddlewareController extends GetxController {
           ),
         );
         if (response.statusCode == 200) {
+          log(response.data.toString());
           if (!response.data['completed_info']) {
             return MiddlewareCases.incompleteInfo;
           } else {

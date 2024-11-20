@@ -12,7 +12,7 @@ class Meal {
   final double totalProtein;
   final double totalCarbs;
   final double totalFat;
-  final String thumbnailPath;
+  final String? thumbnailPath;
   final double quantity;
   final int mealNumber;
   final String details;
@@ -59,4 +59,24 @@ class Meal {
         mealNumber = json['meal']['meal_number'] as int,
         details = json['meal']['details'] as String,
         timeAfter = json['meal']['time_after'] as String;
+
+  Meal.empty()
+      : mealId = 0,
+        id = 0,
+        gi = '',
+        mealName = '',
+        description = '',
+        caloriesPerGram = 0,
+        proteinPerGram = 0,
+        carbsPerGram = 0,
+        fatPerGram = 0,
+        totalCalories = 0,
+        totalProtein = 0,
+        totalCarbs = 0,
+        totalFat = 0,
+        thumbnailPath = '',
+        quantity = 0,
+        mealNumber = 0,
+        details = '',
+        timeAfter = '';
 }

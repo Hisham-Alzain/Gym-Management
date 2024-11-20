@@ -107,8 +107,12 @@ class DietsView extends StatelessWidget {
                                                 padding:
                                                     const EdgeInsets.all(10),
                                                 child: ElevatedButton(
-                                                  onPressed: () {},
-                                                  child: TextComponent(
+                                                  onPressed: () =>
+                                                      controller.viewMeal(
+                                                    controller.programs[index]
+                                                        .meals[index2],
+                                                  ),
+                                                  child: CenterTextComponent(
                                                     icon: FontAwesomeIcons
                                                         .bowlFood,
                                                     title: 'Meal ${index2 + 1}',
