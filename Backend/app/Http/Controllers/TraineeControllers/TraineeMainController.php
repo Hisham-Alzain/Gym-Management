@@ -96,9 +96,10 @@ class TraineeMainController extends MainController
             } else {
                 if (
                     $user->gender == null
-                    || $user->birthdate == null
+                    || $user->birth_date == null
                     || $info->height == null
                     || $info->weight == null
+                    || $info->active_days == null
                 ) {
                     $completed_info = false;
                 } else {
