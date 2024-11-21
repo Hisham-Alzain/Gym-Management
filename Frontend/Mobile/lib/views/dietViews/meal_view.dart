@@ -36,7 +36,7 @@ class MealView extends StatelessWidget {
                       height: 200,
                       child: controller.selectedMeal.thumbnailPath == null
                           ? const Icon(
-                              Icons.fitness_center,
+                              Icons.image,
                               size: 75,
                             )
                           : CustomImage(
@@ -92,6 +92,11 @@ class MealView extends StatelessWidget {
                       name: 'Nutrition Facts',
                       child: Column(
                         children: [
+                          TextComponent(
+                            icon: FontAwesomeIcons.a,
+                            title: 'GI',
+                            text: controller.selectedMeal.gi,
+                          ),
                           TextComponent(
                             icon: FontAwesomeIcons.a,
                             title: 'Total Calories',

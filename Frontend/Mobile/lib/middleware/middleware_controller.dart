@@ -33,7 +33,6 @@ class MiddlewareController extends GetxController {
           ),
         );
         if (response.statusCode == 200) {
-          log(response.data.toString());
           if (!response.data['completed_info']) {
             return MiddlewareCases.incompleteInfo;
           } else {

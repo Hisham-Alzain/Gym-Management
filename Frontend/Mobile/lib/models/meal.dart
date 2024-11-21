@@ -4,18 +4,18 @@ class Meal {
   final String gi;
   final String mealName;
   final String description;
-  final double caloriesPerGram;
-  final double proteinPerGram;
-  final double carbsPerGram;
-  final double fatPerGram;
-  final double totalCalories;
-  final double totalProtein;
-  final double totalCarbs;
-  final double totalFat;
+  final double caloriesPerGram; // cal
+  final double proteinPerGram; //g
+  final double carbsPerGram; //g
+  final double fatPerGram; //g
+  final double totalCalories; //cal
+  final double totalProtein; //g
+  final double totalCarbs; //g
+  final double totalFat; //g
   final String? thumbnailPath;
   final double quantity;
   final int mealNumber;
-  final String details;
+  final String details; //specail for user
   final String timeAfter;
 
   Meal({
