@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/dietControllers/diets_controller.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
@@ -36,7 +35,7 @@ class MealView extends StatelessWidget {
                       height: 200,
                       child: controller.selectedMeal.thumbnailPath == null
                           ? const Icon(
-                              Icons.image,
+                              Icons.fastfood,
                               size: 75,
                             )
                           : CustomImage(
@@ -53,22 +52,22 @@ class MealView extends StatelessWidget {
                       child: Column(
                         children: [
                           TextComponent(
-                            icon: FontAwesomeIcons.spoon,
+                            icon: Icons.local_restaurant,
                             title: 'Name',
                             text: controller.selectedMeal.mealName,
                           ),
                           TextComponent(
-                            icon: Icons.production_quantity_limits,
+                            icon: Icons.balance,
                             title: 'Quantity',
                             text: "${controller.selectedMeal.quantity} g",
                           ),
                           TextComponent(
-                            icon: Icons.format_list_numbered,
+                            icon: Icons.numbers,
                             title: 'Meal Number',
-                            text: "${controller.selectedMeal.mealNumber} ",
+                            text: "${controller.selectedMeal.mealNumber}",
                           ),
                           TextComponent(
-                            icon: Icons.timer,
+                            icon: Icons.timelapse,
                             title: 'After Time:',
                             text: controller.selectedMeal.timeAfter,
                           ),
@@ -77,9 +76,18 @@ class MealView extends StatelessWidget {
                             title: 'Description',
                             text: controller.selectedMeal.description,
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: EditContainer(
+                      child: Column(
+                        children: [
                           TextComponent(
                             icon: Icons.info,
-                            title: 'Details',
+                            title: 'Special Details',
                             text: controller.selectedMeal.details,
                           ),
                         ],
@@ -93,56 +101,42 @@ class MealView extends StatelessWidget {
                       child: Column(
                         children: [
                           TextComponent(
-                            icon: FontAwesomeIcons.a,
-                            title: 'GI',
-                            text: controller.selectedMeal.gi,
-                          ),
-                          TextComponent(
-                            icon: FontAwesomeIcons.a,
                             title: 'Total Calories',
                             text:
                                 "${controller.selectedMeal.totalCalories} cal",
                           ),
                           TextComponent(
-                            icon: FontAwesomeIcons.a,
-                            title: 'Total Protein',
-                            text: "${controller.selectedMeal.totalProtein} g",
-                          ),
-                          TextComponent(
-                            icon: FontAwesomeIcons.a,
-                            title: 'Total Carbs',
-                            text: "${controller.selectedMeal.totalCarbs} g",
-                          ),
-                          TextComponent(
-                            icon: FontAwesomeIcons.a,
-                            title: 'Total Fat',
-                            text: "${controller.selectedMeal.totalFat} g",
-                          ),
-                          TextComponent(
-                            icon: FontAwesomeIcons.a,
                             title: 'Calories Per Gram',
                             text:
                                 "${controller.selectedMeal.caloriesPerGram} cal",
                           ),
                           TextComponent(
-                            icon: FontAwesomeIcons.a,
+                            title: 'Total Protein',
+                            text: "${controller.selectedMeal.totalProtein} g",
+                          ),
+                          TextComponent(
                             title: 'Protein Per Gram',
                             text: "${controller.selectedMeal.proteinPerGram} g",
                           ),
                           TextComponent(
-                            icon: FontAwesomeIcons.a,
+                            title: 'Total Carbs',
+                            text: "${controller.selectedMeal.totalCarbs} g",
+                          ),
+                          TextComponent(
                             title: 'Carbs Per Gram',
                             text: "${controller.selectedMeal.carbsPerGram} g",
                           ),
                           TextComponent(
-                            icon: FontAwesomeIcons.a,
+                            title: 'Total Fat',
+                            text: "${controller.selectedMeal.totalFat} g",
+                          ),
+                          TextComponent(
                             title: 'Fat Per Gram',
                             text: "${controller.selectedMeal.fatPerGram} g",
                           ),
                           TextComponent(
-                            icon: FontAwesomeIcons.a,
-                            title: 'Fat Per Gram',
-                            text: "${controller.selectedMeal.fatPerGram} g",
+                            title: 'GI',
+                            text: controller.selectedMeal.gi,
                           ),
                         ],
                       ),
