@@ -50,7 +50,7 @@ class HomeView extends StatelessWidget {
               ),
               Tab(
                 icon: Icon(
-                  Icons.fastfood,
+                  Icons.restaurant,
                 ),
                 text: 'Diet',
               ),

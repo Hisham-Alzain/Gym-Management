@@ -68,7 +68,7 @@ class RegisterController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.0.101:8000/api/register',
+        'http://192.168.0.105:8000/api/register',
         data: {
           "name": fullName,
           "email": email,

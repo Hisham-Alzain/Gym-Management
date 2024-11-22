@@ -15,7 +15,7 @@ class Meal {
   final String? thumbnailPath;
   final double quantity;
   final int mealNumber;
-  final String details; //specail for user
+  final String details; //special for user
   final String timeAfter;
 
   Meal({

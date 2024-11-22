@@ -113,8 +113,7 @@ class DietsView extends StatelessWidget {
                                                         .meals[index2],
                                                   ),
                                                   child: CenterTextComponent(
-                                                    icon: FontAwesomeIcons
-                                                        .bowlFood,
+                                                    icon: Icons.fastfood,
                                                     title: 'Meal ${index2 + 1}',
                                                     text: controller
                                                         .programs[index]
