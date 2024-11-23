@@ -138,3 +138,23 @@ export const DeleteMeal = async (token, meal_id) => {
     return error.response;
   }
 };
+
+export const CreateDietProgram = async (token, dietData) => {
+  try {
+    const response = await axios.post('http://127.0.0.1:8000/api/diets/create', {
+      "user_id": dietData.user_id,
+      "start_date": dietData.startDate,
+      "end_date": dietData.endDate,
+      "meals": dietData.meals
+    }, {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};

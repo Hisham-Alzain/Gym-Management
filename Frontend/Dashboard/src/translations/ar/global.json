@@ -88,7 +88,7 @@
             }
         },
         "nav_bar": {
-            "nav_logo": "الكوتش عمر",
+            "nav_logo": "الكوتش عمرو",
             "li_login": "تسجيل الدخول",
             "li_home": "الصفحة الرئيسية",
             "li_meals": "الوجبات",
@@ -152,6 +152,29 @@
             "button6": "حذف التمرين",
             "h2_2": "اختر برنامج تمرين جاهز",
             "error": "فشل إنشاء برنامج التمرين. يرجى المحاولة مرة أخرى."
+        },"add_diet": {
+            "h1": "Create Diet Program for",
+            "button1": "Choose Existing Diet",
+            "button2": "Create New Diet",
+            "label1": "Start Date",
+            "p1": "Difference:",
+            "p2": "day",
+            "p3": "days",
+            "label2": "End Date",
+            "h2_1": "Create New Diet",
+            "button3": "Create Diet",
+            "label4": "Select Muscle Group for Day",
+            "option1": "Select Muscle",
+            "label5": "Select Exercises",
+            "option2": "Select Exercise",
+            "button4": "Add Exercise",
+            "button5": "Load More",
+            "label6": "Exercise",
+            "label7": "Sets:",
+            "label8": "Reps for Set",
+            "button6": "Remove",
+            "h2_2": "Choose Existing Diet",
+            "error": "Failed to create Diet. Please try again."
         },
         "show_program": {
             "header": "برنامج تمرين",
