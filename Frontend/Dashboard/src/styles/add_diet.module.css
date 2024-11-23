@@ -235,6 +235,7 @@
     background-color: #004085;
     transform: translateY(0);
 }
+
 .program_buttons {
     display: flex;
     flex-wrap: wrap;
@@ -256,6 +257,35 @@
 .program_button:hover {
     background-color: #b60000;
     transform: scale(1.02);
+}
+
+.nutrition_info {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #9b0707;
+}
+
+.nutrition_info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.totals {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #9b0707;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.totals_info p {
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
 }
 
 @media screen and (max-width: 970px) {
