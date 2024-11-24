@@ -9,13 +9,13 @@ import Login from './components/Login.jsx';
 import Logout from './components/Logout.jsx';
 import Users from './components/UsersTable.jsx';
 import Meals from './components/Diets/Meals.jsx';
+import AddDiet from './components/Diets/AddDiet.jsx';
 import ShowDiet from './components/Diets/ShowDiet.jsx';
 import Exercises from './components/Workouts/Exercises.jsx';
-import ShowProgram from './components/Workouts/ShowProgram.jsx';
 import AddWorkout from './components/Workouts/AddWorkout.jsx';
+import ShowProgram from './components/Workouts/ShowProgram.jsx';
 import LoadingBars from './components/LoadingBars.jsx';
 import './App.css';
-import AddDiet from './components/Diets/AddDiet.jsx';
 
 
 function App() {
@@ -95,8 +95,8 @@ function App() {
               <Route path="/meals" element={<Meals />} />
               <Route path="/exercises" element={<Exercises />} />
               <Route path="/trainee/diet/:program_id/:user_name" element={<ShowDiet />} />
-              <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
               <Route path="/trainee/diet/add/:user_id/:user_name" element={<AddDiet />} />
+              <Route path="/trainee/workout/:program_id/:user_name" element={<ShowProgram />} />
               <Route path="/trainee/workout/add/:user_id/:user_name" element={<AddWorkout />} />
               <Route path='/logout' element={<Logout />} />
             </Route>

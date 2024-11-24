@@ -143,7 +143,7 @@ const AddWorkout = () => {
 
   const handleCreateProgram = (program) => {
     if (!startDate || !endDate) {
-      setError('Please enter both start and end dates before creating a workout.');
+      setError(t('components.add_workout.error2'))
       return;
     } else {
       setError('');
@@ -154,6 +154,9 @@ const AddWorkout = () => {
         console.log(response.data);
       } else {
         console.log('Error creating workout', response);
+        if (response.data.errors && response.data.errors.end_date) {
+          setError(response.data.errors.end_date);
+        }
       }
     });
   }
@@ -161,17 +164,19 @@ const AddWorkout = () => {
   const handleSubmit = async () => {
     // Validate dates
     if (!startDate || !endDate) {
-      setError('Please enter both start and end dates.');
+      setError(t('components.add_workout.error3'))
       return;
     }
 
     // Validate that there are exercises for each day
     for (let i = 0; i < repeatDays; i++) {
       if (exercises[i].length === 0) {
-        setError(`Please add at least one exercise for Day ${i + 1}.`);
+        setError(`${t('components.add_workout.error4')} ${i + 1}.`);
         return;
       }
     }
+
+    setError('');
 
     // Prepare the workout data
     const workoutData = {
@@ -197,7 +202,7 @@ const AddWorkout = () => {
         setIsCreatingWorkout(false);
       } else {
         console.log('Error creating workout', response);
-        setError(t('components.add_workout.error'));
+        setError(t('components.add_workout.error1'));
       }
     });
   }

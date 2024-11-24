@@ -87,7 +87,7 @@ const Login = () => {
                 <input
                   required
                   type="text"
-                  placeholder="Email"
+                  placeholder={t('components.login.i1')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -96,7 +96,7 @@ const Login = () => {
                 <input
                   required
                   type="password"
-                  placeholder="Password"
+                  placeholder={t('components.login.i2')}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />

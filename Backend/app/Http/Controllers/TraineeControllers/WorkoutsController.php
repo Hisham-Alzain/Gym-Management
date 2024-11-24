@@ -142,17 +142,14 @@ class WorkoutsController extends MainController
             ], 404);
         }
 
-        //updating the same set
-        $prev_rep=WorkoutExerciseRep::where('set_id', $set->id)->latest()->first();
-        if($prev_rep!=null && $prev_rep['day_date']==$validated['day_date']){
+        // Update the same set and rep
+        $prev_rep = WorkoutExerciseRep::where('set_id', $set->id)->latest()->first();
+        if ($prev_rep != null && $prev_rep['day_date'] == $validated['day_date']) {
             $prev_rep->update($validated);
-            return response()->json([
-                'message' => 'Set has been Updated updated successfully',
-                'set' => new WorkoutExerciseSetResource($set)
-            ], 200);
+        } else {
+            // Update set by creating a new rep
+            $rep = WorkoutExerciseRep::create($validated);
         }
-        // Update set
-        $rep = WorkoutExerciseRep::create($validated);
 
         // Response
         return response()->json([

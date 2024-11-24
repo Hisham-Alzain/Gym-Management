@@ -6,12 +6,11 @@ import { LoginContext } from '../../utils/Contexts';
 import {
   FetchDefaultWorkouts, CreateDefaultWorkout, CreateWorkout
 } from '../../apis/WorkoutApis';
-import { FetchExerciseMuscles, FetchExercises } from '../../apis/ExerciseApis';
+import { CreateDietProgram, FetchMeals } from '../../apis/DietsApis';
+import LoadingBars from '../LoadingBars';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/add_diet.module.css";
-import { CreateDietProgram, FetchMeals } from '../../apis/DietsApis';
-import LoadingBars from '../LoadingBars';
 
 
 const AddDiet = () => {
@@ -31,12 +30,9 @@ const AddDiet = () => {
   const [dateDifference, setDateDifference] = useState('');
   const [error, setError] = useState('');
 
-  const [repeatDays, setRepeatDays] = useState(1);
   const [mealsNo, setMealsNo] = useState(1);
   const [availableMeals, setAvailableMeals] = useState([]);
   const [meals, setMeals] = useState(Array.from({ length: mealsNo }, () => []));
-  const [currentPage, setCurrentPage] = useState(Array.from({ length: repeatDays }, () => 1));
-  const [totalPages, setTotalPages] = useState(Array.from({ length: repeatDays }, () => 1));
 
   useEffect(() => {
     if (!initialized.current) {
@@ -46,11 +42,11 @@ const AddDiet = () => {
       FetchMeals(accessToken).then((response) => {
         if (response.status === 200) {
           setAvailableMeals(response.data.meals);
-          console.log(response.data.meals);
-          setIsLoading(false);
         } else {
           console.log(response);
         }
+      }).then(() => {
+        setIsLoading(false);
       });
 
       FetchDefaultWorkouts(accessToken).then((response) => {
@@ -59,9 +55,11 @@ const AddDiet = () => {
         } else {
           console.log(response);
         }
+      }).then(() => {
+        setIsLoading(false);
       });
     }
-  }, [accessToken]);
+  }, []);
 
   useEffect(() => {
     setMeals((prevMeals) => {
@@ -95,11 +93,11 @@ const AddDiet = () => {
 
       return updatedMeals;
     });
-  };
+  }
 
   const handleCreateProgram = (program) => {
     if (!startDate || !endDate) {
-      setError('Please enter both start and end dates before creating a workout.');
+      setError(t('components.add_diet.error_missing_dates'));
       return;
     } else {
       setError('');
@@ -110,11 +108,13 @@ const AddDiet = () => {
         console.log(response.data);
       } else {
         console.log('Error creating workout', response);
+        setError(response.data.errors)
       }
     });
   }
 
   const handleSubmit = async () => {
+    // Validate dates
     if (!startDate || !endDate) {
       setError(t('components.add_diet.error_missing_dates'));
       return;
@@ -131,6 +131,7 @@ const AddDiet = () => {
 
     setError('');
 
+    // Prepare the diet data
     const dietData = {
       user_id,
       startDate,
@@ -143,7 +144,7 @@ const AddDiet = () => {
         time_after: meal.time_after
       })),
     };
-    console.log(dietData)
+
     CreateDietProgram(accessToken, dietData).then((response) => {
       if (response.status === 201) {
         console.log(response.data);
@@ -158,7 +159,6 @@ const AddDiet = () => {
   if (isLoading) {
     return <LoadingBars />;
   }
-
   return (
     <div className={styles.programs}>
       <div className={styles.header}>
