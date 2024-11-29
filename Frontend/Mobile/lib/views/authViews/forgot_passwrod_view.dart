@@ -15,8 +15,8 @@ class ForgotPasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Forgot Password',
+        title: Text(
+          '32'.tr,
         ),
         leading: IconButton(
           onPressed: () => Get.offNamed('/auth'),
@@ -44,7 +44,7 @@ class ForgotPasswordView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            'Please Enter your email so we can send you a verification code',
+                            '33'.tr,
                             style: Theme.of(context).textTheme.headlineSmall,
                           ),
                         ),
@@ -55,7 +55,7 @@ class ForgotPasswordView extends StatelessWidget {
                             textInputType: TextInputType.emailAddress,
                             obsecureText: false,
                             icon: Icons.email,
-                            labelText: 'Email',
+                            labelText: '34'.tr,
                             validator: (p0) =>
                                 CustomValidation().validateEmail(p0),
                             maxLines: 1,
@@ -69,13 +69,13 @@ class ForgotPasswordView extends StatelessWidget {
                                   .sendEmail(controller.emailController.text);
                             }
                           },
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Send',
+                                '35'.tr,
                               ),
-                              Icon(Icons.arrow_forward_ios),
+                              const Icon(Icons.arrow_forward_ios),
                             ],
                           ),
                         ),
@@ -87,7 +87,7 @@ class ForgotPasswordView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: Text(
-                            'Verification code:',
+                            '${'36'.tr}:',
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
@@ -110,7 +110,7 @@ class ForgotPasswordView extends StatelessWidget {
                                   .sendEmail(controller.emailController.text)
                               : null,
                           child: Text(
-                            'Resend email (${controller.seconds}) S',
+                            '${'37'.tr} (${controller.seconds}) S',
                             style:
                                 Theme.of(context).textTheme.bodyLarge?.copyWith(
                                       decoration: TextDecoration.underline,

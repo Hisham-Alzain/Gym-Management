@@ -30,7 +30,7 @@ class ProfileController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.43.23:8000/api/trainee',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -47,7 +47,7 @@ class ProfileController extends GetxController {
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
-        e.response?.data?.toString() ?? 'An error occurred',
+        e.response?.data?.toString(),
       );
     }
   }

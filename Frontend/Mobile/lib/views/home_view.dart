@@ -23,12 +23,12 @@ class HomeView extends StatelessWidget {
             child: ListView(
               children: [
                 MenuListTile(
-                  title: 'Settings',
+                  title: '109'.tr,
                   icon: Icons.settings,
                   onTap: () => Get.toNamed('/settings'),
                 ),
                 MenuListTile(
-                  title: 'Logout',
+                  title: '110'.tr,
                   icon: Icons.logout,
                   onTap: () => _homeController.customDialogs.showLogoutDialog(
                     () => _homeController.logout(),
@@ -38,27 +38,27 @@ class HomeView extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const Padding(
-          padding: EdgeInsets.all(2),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(2),
           child: TabBar(
             tabs: <Widget>[
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   FontAwesomeIcons.dumbbell,
                 ),
-                text: 'Workouts',
+                text: '111'.tr,
               ),
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.restaurant,
                 ),
-                text: 'Diet',
+                text: '112'.tr,
               ),
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.person,
                 ),
-                text: 'Profile',
+                text: '113'.tr,
               ),
             ],
           ),

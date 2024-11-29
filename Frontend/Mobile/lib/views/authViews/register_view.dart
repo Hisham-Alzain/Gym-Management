@@ -37,7 +37,7 @@ class RegisterView extends StatelessWidget {
                           textInputType: TextInputType.emailAddress,
                           obsecureText: false,
                           icon: Icons.abc,
-                          labelText: 'Full Name',
+                          labelText: '41'.tr,
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
                           maxLines: 1,
@@ -50,7 +50,7 @@ class RegisterView extends StatelessWidget {
                           textInputType: TextInputType.emailAddress,
                           obsecureText: false,
                           icon: Icons.email,
-                          labelText: 'Email',
+                          labelText: '34'.tr,
                           validator: (p0) =>
                               CustomValidation().validateEmail(p0),
                           maxLines: 1,
@@ -66,7 +66,7 @@ class RegisterView extends StatelessWidget {
                                 controller: controller.phoneNumberController,
                                 textInputType: TextInputType.phone,
                                 obsecureText: false,
-                                labelText: 'Phone Number',
+                                labelText: '42'.tr,
                                 icon: Icons.phone,
                                 suffixIcon: CustomCodePicker(
                                   onChanged: (value) =>
@@ -87,7 +87,7 @@ class RegisterView extends StatelessWidget {
                           textInputType: TextInputType.visiblePassword,
                           obsecureText: controller.passwordToggle,
                           icon: Icons.key,
-                          labelText: 'Password',
+                          labelText: '38'.tr,
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
                           suffixIcon: controller.passwordInkwell(),
@@ -101,7 +101,7 @@ class RegisterView extends StatelessWidget {
                           textInputType: TextInputType.visiblePassword,
                           obsecureText: controller.passwordToggle,
                           icon: Icons.lock,
-                          labelText: 'Confrim Password',
+                          labelText: '43'.tr,
                           validator: (p0) =>
                               CustomValidation().validateConfirmPassword(
                             p0,
@@ -127,13 +127,13 @@ class RegisterView extends StatelessWidget {
                               );
                             }
                           },
-                          child: const Row(
+                          child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Register',
+                                '44'.tr,
                               ),
-                              Icon(Icons.arrow_forward_ios),
+                              const Icon(Icons.arrow_forward_ios),
                             ],
                           ),
                         ),

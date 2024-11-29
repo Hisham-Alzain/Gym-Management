@@ -1,5 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomCodePicker extends StatelessWidget {
   final void Function(CountryCode)? onChanged;
@@ -32,7 +33,7 @@ class CustomCodePicker extends StatelessWidget {
             color: Colors.red.shade900,
           ),
         ),
-        labelText: 'Search',
+        labelText: '9'.tr,
         labelStyle: Theme.of(context).textTheme.bodyLarge,
       ),
       showDropDownButton: true,

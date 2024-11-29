@@ -11,7 +11,7 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text('109'.tr),
       ),
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -31,15 +31,15 @@ class SettingsView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: Text(
-                        'General',
+                        '114'.tr,
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const SettingsListTile(
-                          title: 'Language',
+                        SettingsListTile(
+                          title: '115'.tr,
                           icon: Icons.language,
                         ),
                         CustomDropDownButton(

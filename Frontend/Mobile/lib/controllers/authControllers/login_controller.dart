@@ -55,7 +55,7 @@ class LoginController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/login/trainee',
+        'https://olive-salmon-530757.hostingersite.com/api/login/trainee',
         data: {
           "email": email,
           "password": password,
@@ -71,7 +71,7 @@ class LoginController extends GetxController {
       Get.back();
       if (response.statusCode == 200) {
         storage!.write('token', response.data['access_token']);
-        customDialogs.showSuccessDialog('Logging in...');
+        customDialogs.showSuccessDialog('2'.tr);
         Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -86,7 +86,7 @@ class LoginController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?['errors']?.toString() ?? 'An error occurred',
+        e.response?.data?['errors']?.toString(),
       );
     }
   }

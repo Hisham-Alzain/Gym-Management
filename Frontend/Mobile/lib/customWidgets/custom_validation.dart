@@ -3,50 +3,50 @@ import 'package:get/get.dart';
 class CustomValidation {
   String? validateRequiredField(String? value) {
     if (value!.isEmpty) {
-      return 'Required Field';
+      return '20'.tr;
     }
     return null;
   }
 
   String? validateEmail(String? value) {
     if (value!.isEmpty) {
-      return 'Required Field';
+      return '20'.tr;
     } else if (!value.isEmail) {
-      return 'Invalid Email';
+      return '21'.tr;
     }
     return null;
   }
 
   String? validateConfirmPassword(String? value, String? value2) {
     if (value!.isEmpty) {
-      return 'Required Field';
+      return '20'.tr;
     } else if (value != value2) {
-      return "Confirm Passsword doesn't match Password";
+      return "22".tr;
     }
     return null;
   }
 
   String? validateNumber(String? value) {
     if (value!.isEmpty) {
-      return 'Required Field'.tr;
+      return '20'.tr;
     } else if (!value.isNum) {
-      return 'Invalid NUmber'.tr;
+      return '23'.tr;
     }
     return null;
   }
 
   String? validateRequiredDropDown(dynamic value) {
     if (value == null) {
-      return 'Required Field';
+      return '20'.tr;
     }
     return null;
   }
 
   String? validateVerificationCode(dynamic value, dynamic value2) {
     if (value == null) {
-      return 'Required Field';
+      return '20'.tr;
     } else if (value != value2) {
-      return 'Wrong code';
+      return '24'.tr;
     }
     return null;
   }

@@ -40,10 +40,10 @@ class ProfileView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: EditContainer(
-                              name: 'Photos',
+                              name: '91'.tr,
                               buttonText: controller.user.photos.isEmpty
                                   ? null
-                                  : 'Edit',
+                                  : '92'.tr,
                               icon: Icons.edit,
                               onPressed: () => Get.toNamed('/addPhotos'),
                               child: controller.user.photos.isEmpty
@@ -58,7 +58,7 @@ class ProfileView extends StatelessWidget {
                                               size: 40,
                                             ),
                                             Text(
-                                              'Add photos',
+                                              '89'.tr,
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyLarge,
@@ -93,33 +93,33 @@ class ProfileView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: EditContainer(
-                              name: 'Basic Info',
+                              name: '93'.tr,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextComponent(
                                     icon: Icons.abc,
-                                    title: 'Name',
+                                    title: '41'.tr,
                                     text: controller.user.name,
                                   ),
                                   TextComponent(
                                     icon: Icons.email,
-                                    title: 'Email',
+                                    title: '34'.tr,
                                     text: controller.user.email,
                                   ),
                                   TextComponent(
                                     icon: Icons.phone,
-                                    title: 'Phone number',
+                                    title: '42'.tr,
                                     text: controller.user.phoneNumber,
                                   ),
                                   TextComponent(
                                     icon: FontAwesomeIcons.venusMars,
-                                    title: 'Gender',
+                                    title: '74'.tr,
                                     text: controller.user.gender,
                                   ),
                                   TextComponent(
                                     icon: Icons.cake,
-                                    title: 'Birthdate',
+                                    title: '80'.tr,
                                     text: controller.user.birthDate
                                         .toString()
                                         .split(' ')[0],
@@ -131,8 +131,8 @@ class ProfileView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: EditContainer(
-                              name: 'Gym Info',
-                              buttonText: 'Edit',
+                              name: '94'.tr,
+                              buttonText: '92'.tr,
                               icon: Icons.edit,
                               onPressed: () => Get.toNamed('/editInfo'),
                               child: Column(
@@ -140,36 +140,39 @@ class ProfileView extends StatelessWidget {
                                 children: [
                                   TextComponent(
                                     icon: Icons.height,
-                                    title: 'Height',
-                                    text: '${controller.user.height} cm',
+                                    title: '76'.tr,
+                                    text:
+                                        '${controller.user.height} ${'75'.tr}',
                                   ),
                                   TextComponent(
                                     icon: FontAwesomeIcons.weightScale,
-                                    title: 'Weight',
-                                    text: '${controller.user.weight} kg',
+                                    title: '78'.tr,
+                                    text:
+                                        '${controller.user.weight} ${'77'.tr}',
                                   ),
                                   TextComponent(
                                     icon: Icons.healing,
-                                    title: 'Illnesses',
+                                    title: '81'.tr,
                                     text:
-                                        ' ${controller.user.illnesses ?? 'None'}',
+                                        ' ${controller.user.illnesses} ?? ${'95'.tr}',
                                   ),
                                   TextComponent(
                                     icon: Icons.sick,
-                                    title: 'Allergies',
+                                    title: '83'.tr,
                                     text:
-                                        ' ${controller.user.allergies ?? 'None'}',
+                                        ' ${controller.user.allergies} ?? ${'95'.tr}',
                                   ),
                                   TextComponent(
                                     icon: Icons.no_food,
-                                    title: 'Disliked foods',
+                                    title: '85'.tr,
                                     text:
-                                        ' ${controller.user.dislikedFoods ?? 'None'}',
+                                        ' ${controller.user.dislikedFoods} ?? ${'95'.tr}',
                                   ),
                                   TextComponent(
                                     icon: Icons.directions_run_rounded,
-                                    title: 'Active days',
-                                    text: ' ${controller.user.activeDays} days',
+                                    title: '79'.tr,
+                                    text:
+                                        ' ${controller.user.activeDays} ${'49'.tr}',
                                   ),
                                 ],
                               ),
@@ -178,20 +181,20 @@ class ProfileView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: EditContainer(
-                              name: 'Subscription plan',
+                              name: '96'.tr,
                               onPressed: () {},
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   TextComponent(
                                     icon: FontAwesomeIcons.calendarCheck,
-                                    title: 'Start date',
+                                    title: '46'.tr,
                                     text:
                                         ' ${controller.user.subscriptionPlan?.startDate.toString().split(' ')[0] ?? 'None'}',
                                   ),
                                   TextComponent(
                                     icon: FontAwesomeIcons.calendarXmark,
-                                    title: 'End date',
+                                    title: '47'.tr,
                                     text:
                                         ' ${controller.user.subscriptionPlan?.endDate.toString().split(' ')[0] ?? 'None'}',
                                   ),

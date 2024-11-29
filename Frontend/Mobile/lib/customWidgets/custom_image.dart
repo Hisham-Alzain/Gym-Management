@@ -17,7 +17,7 @@ class CustomImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.network(
-      'http://192.168.43.23:8000/api/image/$path',
+      'https://olive-salmon-530757.hostingersite.com/api/image/$path',
       errorBuilder: (context, error, stackTrace) {
         return Text(
           error.toString(),

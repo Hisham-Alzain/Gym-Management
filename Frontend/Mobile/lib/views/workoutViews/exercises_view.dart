@@ -14,7 +14,7 @@ class ExercisesView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Exercises'),
+        title: Text('104'.tr),
       ),
       body: SizedBox(
         height: Get.height,
@@ -77,7 +77,7 @@ class ExercisesView extends StatelessWidget {
                                             Icons.sports_gymnastics,
                                           ),
                                           Text(
-                                            'Exercise: ${controller.exercises[index].name}',
+                                            '${'97'.tr}: ${controller.exercises[index].name}',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .headlineSmall,

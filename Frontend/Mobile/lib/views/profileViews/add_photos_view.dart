@@ -18,7 +18,7 @@ class AddPhotosView extends StatelessWidget {
             IconButton(
               onPressed: () => _addPhotosController.skipAddingPhotos(),
               icon: Text(
-                'Skip',
+                '87'.tr,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
@@ -48,7 +48,7 @@ class AddPhotosView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: Text(
-                              'Please add up to 5 photos as shown below',
+                              '88'.tr,
                               style: Theme.of(context).textTheme.headlineSmall,
                             ),
                           ),
@@ -99,7 +99,7 @@ class AddPhotosView extends StatelessWidget {
                                         Icons.add_a_photo,
                                       ),
                                       Text(
-                                        'Add Photos',
+                                        '89'.tr,
                                         style: Theme.of(context)
                                             .textTheme
                                             .labelLarge,
@@ -120,7 +120,7 @@ class AddPhotosView extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Submit',
+                                      '31'.tr,
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelLarge,

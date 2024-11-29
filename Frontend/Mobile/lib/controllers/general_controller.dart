@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
@@ -6,6 +7,7 @@ import 'package:mobile/main.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class GeneralController extends GetxController {
+  late Locale locale;
   late String selectedLang;
   late Map<String, String> langs;
   late CustomDialogs customDialogs;
@@ -16,14 +18,14 @@ class GeneralController extends GetxController {
   void onInit() {
     if (storage?.read("lang") != null) {
       if (storage?.read("lang") == "en") {
-        //locale = const Locale("en");
+        locale = const Locale("en");
         selectedLang = 'en';
       } else {
-        //locale = const Locale("ar");
+        locale = const Locale("ar");
         selectedLang = 'ar';
       }
     } else {
-      //locale = const Locale('en');
+      locale = const Locale('en');
       selectedLang = 'en';
     }
     langs = {
@@ -37,10 +39,10 @@ class GeneralController extends GetxController {
   }
 
   Future<void> changeLang(String lang) async {
-    //Locale locale = Locale(lang);
+    Locale locale = Locale(lang);
     selectedLang = lang;
     storage?.write("lang", lang);
-    //await Get.updateLocale(locale);
+    await Get.updateLocale(locale);
     update();
   }
 

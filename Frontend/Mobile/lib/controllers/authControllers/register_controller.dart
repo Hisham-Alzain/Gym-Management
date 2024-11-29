@@ -68,7 +68,7 @@ class RegisterController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/register',
+        'https://olive-salmon-530757.hostingersite.com/api/register',
         data: {
           "name": fullName,
           "email": email,
@@ -86,7 +86,7 @@ class RegisterController extends GetxController {
       Get.back();
       if (response.statusCode == 201) {
         storage!.write('token', response.data['access_token']);
-        customDialogs.showSuccessDialog('Registering...');
+        customDialogs.showSuccessDialog('3'.tr);
         Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -97,7 +97,7 @@ class RegisterController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?['errors']?.toString() ?? 'An error occurred',
+        e.response?.data?['errors']?.toString(),
       );
     }
   }

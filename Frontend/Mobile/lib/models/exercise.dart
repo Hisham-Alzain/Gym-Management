@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:mobile/models/set.dart';
 
 class Exercise {
@@ -26,10 +27,10 @@ class Exercise {
   Exercise.fromJson(Map<String, dynamic> json)
       : workoutExerciseId = json['workout_exercise_id'] as int,
         id = json['exercise']['id'] as int,
-        name = json['exercise']['translations']['en']['name'] as String,
-        muscle = json['exercise']['muscle']['en'] as String,
+        name = json['exercise']['translations']['1'.tr]['name'] as String,
+        muscle = json['exercise']['muscle']['1'.tr] as String,
         description =
-            json['exercise']['translations']['en']['description'] as String,
+            json['exercise']['translations']['1'.tr]['description'] as String,
         numberOfSets = json['exercise']['no_sets'] as int,
         sets = [
           for (var sets in json['exercise']['sets']) (Sets.fromJson(sets)),

@@ -50,7 +50,7 @@ class WorkoutsView extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Program ${index + 1}:',
+                                              '${'45'.tr} ${index + 1}:',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .titleLarge,
@@ -58,7 +58,7 @@ class WorkoutsView extends StatelessWidget {
                                             TextComponent(
                                               icon: FontAwesomeIcons
                                                   .calendarCheck,
-                                              title: 'Start date',
+                                              title: '46'.tr,
                                               text: controller
                                                   .programs[index].startDate
                                                   .toString()
@@ -67,7 +67,7 @@ class WorkoutsView extends StatelessWidget {
                                             TextComponent(
                                               icon: FontAwesomeIcons
                                                   .calendarXmark,
-                                              title: 'End date',
+                                              title: '47'.tr,
                                               text: controller
                                                   .programs[index].endDate
                                                   .toString()
@@ -76,14 +76,14 @@ class WorkoutsView extends StatelessWidget {
                                             TextComponent(
                                               icon:
                                                   FontAwesomeIcons.calendarDays,
-                                              title: 'Number of days',
+                                              title: '105'.tr,
                                               text: controller
                                                   .programs[index].numberOfDays
                                                   .toString(),
                                             ),
                                             TextComponent(
                                               icon: FontAwesomeIcons.repeat,
-                                              title: 'Repeat days',
+                                              title: '106'.tr,
                                               text: controller
                                                   .programs[index].repeatDays
                                                   .toString(),
@@ -101,7 +101,7 @@ class WorkoutsView extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Days:',
+                                            '${'49'.tr}:',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .titleLarge,
@@ -124,7 +124,8 @@ class WorkoutsView extends StatelessWidget {
                                                   child: CenterTextComponent(
                                                     icon: FontAwesomeIcons
                                                         .calendarDay,
-                                                    title: 'Day ${index2 + 1}',
+                                                    title:
+                                                        '${'Day'.tr} ${index2 + 1}',
                                                     text: controller
                                                         .programs[index]
                                                         .days[index2]
@@ -153,8 +154,8 @@ class WorkoutsView extends StatelessWidget {
                                 child: Center(
                                   child: Text(
                                     controller.programs.isEmpty
-                                        ? 'No programs to show'.tr
-                                        : 'No more workouts'.tr,
+                                        ? '51'.tr
+                                        : '108'.tr,
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineSmall,

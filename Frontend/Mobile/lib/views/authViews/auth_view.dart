@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile/views/authViews/login_view.dart';
 import 'package:mobile/views/authViews/register_view.dart';
 
@@ -12,19 +13,19 @@ class AuthView extends StatelessWidget {
         length: 2,
         initialIndex: 0,
         child: Scaffold(
-          bottomNavigationBar: const TabBar(
+          bottomNavigationBar: TabBar(
             tabs: <Widget>[
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.login,
                 ),
-                text: 'Login',
+                text: '25'.tr,
               ),
               Tab(
-                icon: Icon(
+                icon: const Icon(
                   Icons.group_add,
                 ),
-                text: 'Register',
+                text: '26'.tr,
               ),
             ],
           ),

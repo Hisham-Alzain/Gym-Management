@@ -19,7 +19,7 @@ class AddInfoView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Add Information'),
+        title: Text('72'.tr),
       ),
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -38,7 +38,7 @@ class AddInfoView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Text(
-                      'All informatiom below is required',
+                      '73'.tr,
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                   ),
@@ -71,7 +71,7 @@ class AddInfoView extends StatelessWidget {
                         },
                       ).toList(),
                       onChanged: (p0) => controller.selectGender(p0),
-                      hintText: 'Gender',
+                      hintText: '74'.tr,
                       hintTcon: FontAwesomeIcons.venusMars,
                     ),
                   ),
@@ -85,7 +85,7 @@ class AddInfoView extends StatelessWidget {
                               value: cm,
                               child: Center(
                                 child: Text(
-                                  '$cm cm',
+                                  '$cm ${'75'.tr}',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                               ),
@@ -93,7 +93,7 @@ class AddInfoView extends StatelessWidget {
                           )
                           .toList(),
                       onChanged: (p0) => controller.selectHeight(p0),
-                      hintText: 'Height',
+                      hintText: '76'.tr,
                       hintTcon: Icons.height,
                     ),
                   ),
@@ -107,7 +107,7 @@ class AddInfoView extends StatelessWidget {
                               value: kg,
                               child: Center(
                                 child: Text(
-                                  '$kg kg',
+                                  '$kg ${'77'.tr}',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                               ),
@@ -115,7 +115,7 @@ class AddInfoView extends StatelessWidget {
                           )
                           .toList(),
                       onChanged: (p0) => controller.selectWeight(p0),
-                      hintText: 'Weight',
+                      hintText: '78'.tr,
                       hintTcon: FontAwesomeIcons.weightScale,
                     ),
                   ),
@@ -129,7 +129,7 @@ class AddInfoView extends StatelessWidget {
                               value: day,
                               child: Center(
                                 child: Text(
-                                  '$day Days',
+                                  '$day ${'49'.tr}',
                                   style: Theme.of(context).textTheme.bodyLarge,
                                 ),
                               ),
@@ -137,7 +137,7 @@ class AddInfoView extends StatelessWidget {
                           )
                           .toList(),
                       onChanged: (p0) => controller.selectDay(p0),
-                      hintText: 'Active Days',
+                      hintText: '79'.tr,
                       hintTcon: Icons.directions_run_rounded,
                     ),
                   ),
@@ -153,7 +153,7 @@ class AddInfoView extends StatelessWidget {
                             child: GestureDetector(
                               onTap: () => controller.selectDate(context),
                               child: Text(
-                                "Birthdate: ${controller.birthdate.toString().split(' ')[0]}",
+                                "${'80'.tr}: ${controller.birthdate.toString().split(' ')[0]}",
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             ),
@@ -166,7 +166,7 @@ class AddInfoView extends StatelessWidget {
                     children: [
                       Expanded(
                         child: CustomRadioButton(
-                          text: 'No illness',
+                          text: '82'.tr,
                           value: false,
                           groupValue: controller.hasIllness,
                           onChanged: (p0) => controller.addIllness(p0!),
@@ -174,7 +174,7 @@ class AddInfoView extends StatelessWidget {
                       ),
                       Expanded(
                         child: CustomRadioButton(
-                          text: 'Illnesses',
+                          text: '81'.tr,
                           value: true,
                           groupValue: controller.hasIllness,
                           onChanged: (p0) => controller.addIllness(p0!),
@@ -190,7 +190,7 @@ class AddInfoView extends StatelessWidget {
                         textInputType: TextInputType.multiline,
                         obsecureText: false,
                         icon: Icons.healing,
-                        labelText: 'Illnesses',
+                        labelText: '81'.tr,
                         validator: (p0) =>
                             CustomValidation().validateRequiredField(p0),
                       ),
@@ -199,7 +199,7 @@ class AddInfoView extends StatelessWidget {
                     children: [
                       Expanded(
                         child: CustomRadioButton(
-                          text: 'No allergies',
+                          text: '84'.tr,
                           value: false,
                           groupValue: controller.hasAllergies,
                           onChanged: (p0) => controller.addAllergies(p0!),
@@ -207,7 +207,7 @@ class AddInfoView extends StatelessWidget {
                       ),
                       Expanded(
                         child: CustomRadioButton(
-                          text: 'Allergies',
+                          text: '83'.tr,
                           value: true,
                           groupValue: controller.hasAllergies,
                           onChanged: (p0) => controller.addAllergies(p0!),
@@ -223,7 +223,7 @@ class AddInfoView extends StatelessWidget {
                         textInputType: TextInputType.multiline,
                         obsecureText: false,
                         icon: Icons.sick,
-                        labelText: 'Allergies',
+                        labelText: '83'.tr,
                         validator: (p0) =>
                             CustomValidation().validateRequiredField(p0),
                       ),
@@ -232,7 +232,7 @@ class AddInfoView extends StatelessWidget {
                     children: [
                       Expanded(
                         child: CustomRadioButton(
-                          text: 'No disliked foods',
+                          text: '86'.tr,
                           value: false,
                           groupValue: controller.hasDislikedFood,
                           onChanged: (p0) => controller.addDislikedFood(p0!),
@@ -240,7 +240,7 @@ class AddInfoView extends StatelessWidget {
                       ),
                       Expanded(
                         child: CustomRadioButton(
-                          text: 'Disliked foods',
+                          text: '85'.tr,
                           value: true,
                           groupValue: controller.hasDislikedFood,
                           onChanged: (p0) => controller.addDislikedFood(p0!),
@@ -256,7 +256,7 @@ class AddInfoView extends StatelessWidget {
                         textInputType: TextInputType.multiline,
                         obsecureText: false,
                         icon: Icons.no_food,
-                        labelText: 'Disliked Foods',
+                        labelText: '85'.tr,
                         validator: (p0) =>
                             CustomValidation().validateRequiredField(p0),
                       ),
@@ -278,13 +278,13 @@ class AddInfoView extends StatelessWidget {
                         );
                       }
                     },
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Submit',
+                          '31'.tr,
                         ),
-                        Icon(Icons.arrow_forward_ios),
+                        const Icon(Icons.arrow_forward_ios),
                       ],
                     ),
                   ),

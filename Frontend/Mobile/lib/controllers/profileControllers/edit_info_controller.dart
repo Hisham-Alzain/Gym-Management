@@ -107,7 +107,7 @@ class EditInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/trainee',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee',
         data: {
           "height": height,
           "weight": weight,
@@ -134,7 +134,7 @@ class EditInfoController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?['errors']?.toString() ?? 'An error occurred',
+        e.response?.data?['errors']?.toString(),
       );
     }
   }

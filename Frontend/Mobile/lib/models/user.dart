@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:mobile/models/photo.dart';
 import 'package:mobile/models/subscription_plan.dart';
 
@@ -42,7 +43,7 @@ class User {
         email = json['email'] as String,
         phoneNumber = json['phone_number'] as String,
         birthDate = DateTime.parse(json['birth_date']),
-        gender = json['gender']['en'] as String,
+        gender = json['gender']['1'.tr] as String,
         height = double.parse(json['height'].toString()),
         weight = double.parse(json['weight'].toString()),
         photos = [

@@ -14,8 +14,8 @@ class ChangePasswordView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Change Password',
+        title: Text(
+          '27'.tr,
         ),
       ),
       body: SizedBox(
@@ -38,7 +38,7 @@ class ChangePasswordView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: Text(
-                          'Enter your new password',
+                          '28'.tr,
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
                       ),
@@ -49,7 +49,7 @@ class ChangePasswordView extends StatelessWidget {
                           textInputType: TextInputType.visiblePassword,
                           obsecureText: controller.passwordToggle,
                           icon: Icons.key,
-                          labelText: 'New password',
+                          labelText: '29'.tr,
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
                           maxLines: 1,
@@ -63,7 +63,7 @@ class ChangePasswordView extends StatelessWidget {
                           textInputType: TextInputType.visiblePassword,
                           obsecureText: controller.passwordToggle,
                           icon: Icons.lock,
-                          labelText: 'Confirm new password',
+                          labelText: '30'.tr,
                           validator: (p0) =>
                               CustomValidation().validateConfirmPassword(
                             p0,
@@ -85,13 +85,13 @@ class ChangePasswordView extends StatelessWidget {
                             );
                           }
                         },
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'change password',
+                              '31'.tr,
                             ),
-                            Icon(Icons.arrow_forward_ios),
+                            const Icon(Icons.arrow_forward_ios),
                           ],
                         ),
                       ),

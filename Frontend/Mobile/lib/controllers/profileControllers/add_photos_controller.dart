@@ -78,7 +78,7 @@ class AddPhotosController extends GetxController {
 
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/trainee/photos',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/photos',
         data: data,
         options: Options(
           headers: {
@@ -89,7 +89,7 @@ class AddPhotosController extends GetxController {
       );
       Get.back();
       if (response.statusCode == 201) {
-        customDialogs.showSuccessDialog('Photos uploaded');
+        customDialogs.showSuccessDialog('7'.tr);
         selectedPhotos.clear();
         if (generalController.inRegister) {
           generalController.inRegister = false;
@@ -108,7 +108,7 @@ class AddPhotosController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?.toString() ?? 'An error occurred',
+        e.response?.data?.toString(),
       );
     }
   }
@@ -117,7 +117,7 @@ class AddPhotosController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.43.23:8000/api/trainee/photos',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/photos',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -150,7 +150,7 @@ class AddPhotosController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?.toString() ?? 'An error occurred',
+        e.response?.data?.toString(),
       );
     }
   }

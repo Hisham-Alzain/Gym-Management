@@ -35,7 +35,7 @@ class LoginView extends StatelessWidget {
                       textInputType: TextInputType.emailAddress,
                       obsecureText: false,
                       icon: Icons.email,
-                      labelText: 'Email',
+                      labelText: '34'.tr,
                       validator: (p0) => CustomValidation().validateEmail(p0),
                       maxLines: 1,
                     ),
@@ -47,7 +47,7 @@ class LoginView extends StatelessWidget {
                       textInputType: TextInputType.visiblePassword,
                       obsecureText: controller.passwordToggle,
                       icon: Icons.key,
-                      labelText: 'Password',
+                      labelText: '38'.tr,
                       validator: (p0) =>
                           CustomValidation().validateRequiredField(p0),
                       suffixIcon: controller.passwordInkwell(),
@@ -60,15 +60,15 @@ class LoginView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                         child: TextButton(
-                          child: Text('Forgot Password',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                    decoration: TextDecoration.underline,
-                                    color: Colors.red.shade900,
-                                    decorationColor: Colors.red.shade900,
-                                  )),
+                          child: Text(
+                            '32'.tr,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.red.shade900,
+                                      decorationColor: Colors.red.shade900,
+                                    ),
+                          ),
                           onPressed: () => Get.offNamed('/forgotPassword'),
                         ),
                       ),
@@ -87,13 +87,13 @@ class LoginView extends StatelessWidget {
                           );
                         }
                       },
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Login',
+                            '39'.tr,
                           ),
-                          Icon(Icons.arrow_forward_ios),
+                          const Icon(Icons.arrow_forward_ios),
                         ],
                       ),
                     ),
@@ -104,7 +104,7 @@ class LoginView extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'Remeber Me?',
+                            '40'.tr,
                             style: Theme.of(context).textTheme.labelLarge,
                           ),
                           Checkbox(

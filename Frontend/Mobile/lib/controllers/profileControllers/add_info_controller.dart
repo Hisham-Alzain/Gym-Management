@@ -33,7 +33,7 @@ class AddInfoController extends GetxController {
     dio = Dio();
     customDialogs = CustomDialogs();
     selectedGender = null;
-    genders = {'Male': 'MALE', 'Female': 'FEMALE'};
+    genders = {'4'.tr: 'MALE', '5'.tr: 'FEMALE'};
     selectedHeight = null;
     cmList = List.generate(
       132,
@@ -128,7 +128,7 @@ class AddInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/trainee',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee',
         data: {
           "birth_date": birthDate.toString().split(' ')[0],
           "gender": gender,
@@ -149,7 +149,7 @@ class AddInfoController extends GetxController {
       );
       Get.back();
       if (response.statusCode == 200) {
-        customDialogs.showSuccessDialog('Info added Successfully');
+        customDialogs.showSuccessDialog('6'.tr);
         Future.delayed(
           const Duration(seconds: 1),
           () {
@@ -162,7 +162,7 @@ class AddInfoController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?['errors']?.toString() ?? 'An error occurred',
+        e.response?.data?['errors']?.toString(),
       );
     }
   }

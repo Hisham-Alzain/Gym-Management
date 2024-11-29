@@ -30,7 +30,7 @@ class ExerciseController extends GetxController {
     log(exercise.videoPath.toString());
     // videoPlayerController = VideoPlayerController.networkUrl(
     //   Uri(
-    //     path: 'http://192.168.43.23:8000/api/video/${exercise.videoPath}',
+    //     path: 'https://olive-salmon-530757.hostingersite.com/api/video/${exercise.videoPath}',
     //   ),
     // )..initialize().then((_) {
     //     update();
@@ -44,7 +44,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.43.23:8000/api/trainee/exercise/$id',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/exercise/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -62,7 +62,7 @@ class ExerciseController extends GetxController {
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
-        e.response?.data?.toString() ?? 'An error occurred',
+        e.response?.data?.toString(),
       );
     }
   }
@@ -75,7 +75,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/trainee/workout/set',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/workout/set',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -98,7 +98,7 @@ class ExerciseController extends GetxController {
       }
     } on DioException catch (e) {
       customDialogs.showErrorDialog(
-        e.response?.data?.toString() ?? 'An error occurred',
+        e.response?.data?.toString(),
       );
     }
   }

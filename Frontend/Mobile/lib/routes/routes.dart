@@ -86,6 +86,6 @@ List<GetPage<dynamic>>? getPages = [
   ),
   GetPage(
     name: '/settings',
-    page: () => SettingsView(),
+    page: () => const SettingsView(),
   ),
 ];

@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class Day {
   final int dayId;
   final String muscle;
@@ -9,5 +11,5 @@ class Day {
 
   Day.fromJson(Map<String, dynamic> json)
       : dayId = json['day_id'] as int,
-        muscle = json['muscle']['en'] as String;
+        muscle = json['muscle']['1'.tr] as String;
 }

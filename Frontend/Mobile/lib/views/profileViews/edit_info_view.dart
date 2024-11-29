@@ -17,7 +17,7 @@ class EditInfoView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Edit Information'),
+        title: Text('90'.tr),
       ),
       body: SizedBox(
         height: Get.height,
@@ -45,7 +45,7 @@ class EditInfoView extends StatelessWidget {
                                 value: cm,
                                 child: Center(
                                   child: Text(
-                                    '$cm cm',
+                                    '$cm ${'75'.tr}',
                                     style:
                                         Theme.of(context).textTheme.bodyLarge,
                                   ),
@@ -54,7 +54,7 @@ class EditInfoView extends StatelessWidget {
                             )
                             .toList(),
                         onChanged: (p0) => controller.selectHeight(p0),
-                        hintText: 'Height',
+                        hintText: '76'.tr,
                         hintTcon: Icons.height,
                       ),
                     ),
@@ -68,7 +68,7 @@ class EditInfoView extends StatelessWidget {
                                 value: kg,
                                 child: Center(
                                   child: Text(
-                                    '$kg kg',
+                                    '$kg ${'77'.tr}',
                                     style:
                                         Theme.of(context).textTheme.bodyLarge,
                                   ),
@@ -77,7 +77,7 @@ class EditInfoView extends StatelessWidget {
                             )
                             .toList(),
                         onChanged: (p0) => controller.selectWeight(p0),
-                        hintText: 'Weight',
+                        hintText: '78'.tr,
                         hintTcon: FontAwesomeIcons.weightScale,
                       ),
                     ),
@@ -91,7 +91,7 @@ class EditInfoView extends StatelessWidget {
                                 value: day,
                                 child: Center(
                                   child: Text(
-                                    '$day Days',
+                                    '$day ${'49'.tr}',
                                     style:
                                         Theme.of(context).textTheme.bodyLarge,
                                   ),
@@ -100,7 +100,7 @@ class EditInfoView extends StatelessWidget {
                             )
                             .toList(),
                         onChanged: (p0) => controller.selectDay(p0),
-                        hintText: 'Active Days',
+                        hintText: '79'.tr,
                         hintTcon: Icons.directions_run_rounded,
                       ),
                     ),
@@ -108,7 +108,7 @@ class EditInfoView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomRadioButton(
-                            text: 'No illness',
+                            text: '82'.tr,
                             value: false,
                             groupValue: controller.hasIllness,
                             onChanged: (p0) => controller.addIllness(p0!),
@@ -116,7 +116,7 @@ class EditInfoView extends StatelessWidget {
                         ),
                         Expanded(
                           child: CustomRadioButton(
-                            text: 'Illnesses',
+                            text: '81'.tr,
                             value: true,
                             groupValue: controller.hasIllness,
                             onChanged: (p0) => controller.addIllness(p0!),
@@ -132,7 +132,7 @@ class EditInfoView extends StatelessWidget {
                           textInputType: TextInputType.multiline,
                           obsecureText: false,
                           icon: Icons.healing,
-                          labelText: 'Illnesses',
+                          labelText: '81'.tr,
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
                         ),
@@ -141,7 +141,7 @@ class EditInfoView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomRadioButton(
-                            text: 'No allergies',
+                            text: '84'.tr,
                             value: false,
                             groupValue: controller.hasAllergies,
                             onChanged: (p0) => controller.addAllergies(p0!),
@@ -149,7 +149,7 @@ class EditInfoView extends StatelessWidget {
                         ),
                         Expanded(
                           child: CustomRadioButton(
-                            text: 'Allergies',
+                            text: '83'.tr,
                             value: true,
                             groupValue: controller.hasAllergies,
                             onChanged: (p0) => controller.addAllergies(p0!),
@@ -165,7 +165,7 @@ class EditInfoView extends StatelessWidget {
                           textInputType: TextInputType.multiline,
                           obsecureText: false,
                           icon: Icons.sick,
-                          labelText: 'Allergies',
+                          labelText: '83'.tr,
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
                         ),
@@ -174,7 +174,7 @@ class EditInfoView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: CustomRadioButton(
-                            text: 'No disliked foods',
+                            text: '86'.tr,
                             value: false,
                             groupValue: controller.hasDislikedFood,
                             onChanged: (p0) => controller.addDislikedFood(p0!),
@@ -182,7 +182,7 @@ class EditInfoView extends StatelessWidget {
                         ),
                         Expanded(
                           child: CustomRadioButton(
-                            text: 'Disliked foods',
+                            text: '85'.tr,
                             value: true,
                             groupValue: controller.hasDislikedFood,
                             onChanged: (p0) => controller.addDislikedFood(p0!),
@@ -198,7 +198,7 @@ class EditInfoView extends StatelessWidget {
                           textInputType: TextInputType.multiline,
                           obsecureText: false,
                           icon: Icons.no_food,
-                          labelText: 'Disliked Foods',
+                          labelText: '85'.tr,
                           validator: (p0) =>
                               CustomValidation().validateRequiredField(p0),
                         ),
@@ -218,13 +218,13 @@ class EditInfoView extends StatelessWidget {
                           );
                         }
                       },
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Submit',
+                            '31'.tr,
                           ),
-                          Icon(Icons.arrow_forward_ios),
+                          const Icon(Icons.arrow_forward_ios),
                         ],
                       ),
                     ),

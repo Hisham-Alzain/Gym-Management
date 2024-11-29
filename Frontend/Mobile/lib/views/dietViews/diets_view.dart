@@ -49,7 +49,7 @@ class DietsView extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Program ${index + 1}:',
+                                              '${'45'.tr} ${index + 1}:',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .titleLarge,
@@ -57,7 +57,7 @@ class DietsView extends StatelessWidget {
                                             TextComponent(
                                               icon: FontAwesomeIcons
                                                   .calendarCheck,
-                                              title: 'Start date',
+                                              title: '46'.tr,
                                               text: controller
                                                   .programs[index].startDate
                                                   .toString()
@@ -66,7 +66,7 @@ class DietsView extends StatelessWidget {
                                             TextComponent(
                                               icon: FontAwesomeIcons
                                                   .calendarXmark,
-                                              title: 'End date',
+                                              title: '47'.tr,
                                               text: controller
                                                   .programs[index].endDate
                                                   .toString()
@@ -74,7 +74,7 @@ class DietsView extends StatelessWidget {
                                             ),
                                             TextComponent(
                                               icon: Icons.numbers,
-                                              title: 'Number of meals',
+                                              title: '48'.tr,
                                               text: controller
                                                   .programs[index].numberOfMeals
                                                   .toString(),
@@ -92,7 +92,7 @@ class DietsView extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Days:',
+                                            '${'49'.tr}:',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .titleLarge,
@@ -114,7 +114,8 @@ class DietsView extends StatelessWidget {
                                                   ),
                                                   child: CenterTextComponent(
                                                     icon: Icons.fastfood,
-                                                    title: 'Meal ${index2 + 1}',
+                                                    title:
+                                                        '${'50'.tr} ${index2 + 1}',
                                                     text: controller
                                                         .programs[index]
                                                         .meals[index2]
@@ -143,8 +144,8 @@ class DietsView extends StatelessWidget {
                                 child: Center(
                                   child: Text(
                                     controller.programs.isEmpty
-                                        ? 'No programs to show'.tr
-                                        : 'No more diets'.tr,
+                                        ? '51'.tr
+                                        : '52'.tr,
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineSmall,

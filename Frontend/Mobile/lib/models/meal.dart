@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class Meal {
   final int mealId;
   final int id;
@@ -42,10 +44,10 @@ class Meal {
   Meal.fromJson(Map<String, dynamic> json)
       : mealId = json['meal_id'] as int,
         id = json['meal']['id'] as int,
-        gi = json['meal']['GI']['en'] as String,
-        mealName = json['meal']['translations']['en']['meal_name'] as String,
+        gi = json['meal']['GI']['1'.tr] as String,
+        mealName = json['meal']['translations']['1'.tr]['meal_name'] as String,
         description =
-            json['meal']['translations']['en']['description'] as String,
+            json['meal']['translations']['1'.tr]['description'] as String,
         caloriesPerGram = double.parse(json['meal']['calories_gram']),
         proteinPerGram = double.parse(json['meal']['protein_gram']),
         carbsPerGram = double.parse(json['meal']['carbs_gram']),

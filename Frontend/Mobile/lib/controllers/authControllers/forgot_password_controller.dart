@@ -63,7 +63,7 @@ class ForgotPasswordController extends GetxController {
     resendEmail = false;
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/forgetPassword',
+        'https://olive-salmon-530757.hostingersite.com/api/forgetPassword',
         data: {
           "email": email,
         },
@@ -101,7 +101,7 @@ class ForgotPasswordController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?['errors']?.toString() ?? 'An error occurred',
+        e.response?.data?['errors']?.toString(),
       );
     }
   }
@@ -115,7 +115,7 @@ class ForgotPasswordController extends GetxController {
 
     try {
       var response = await dio.post(
-        'http://192.168.43.23:8000/api/changePassword',
+        'https://olive-salmon-530757.hostingersite.com/api/changePassword',
         data: {
           "email": email,
           "password": newPassword,
@@ -140,7 +140,7 @@ class ForgotPasswordController extends GetxController {
     } on DioException catch (e) {
       Get.back();
       customDialogs.showErrorDialog(
-        e.response?.data?['errors']?.toString() ?? 'An error occurred',
+        e.response?.data?['errors']?.toString(),
       );
     }
   }

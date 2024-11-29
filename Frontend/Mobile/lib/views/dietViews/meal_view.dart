@@ -13,7 +13,7 @@ class MealView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meal'),
+        title: Text('50'.tr),
       ),
       body: SizedBox(
         height: Get.height,
@@ -48,32 +48,33 @@ class MealView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: EditContainer(
-                      name: 'Meal Information',
+                      name: '53'.tr,
                       child: Column(
                         children: [
                           TextComponent(
                             icon: Icons.local_restaurant,
-                            title: 'Name',
+                            title: '54'.tr,
                             text: controller.selectedMeal.mealName,
                           ),
                           TextComponent(
                             icon: Icons.balance,
-                            title: 'Quantity',
-                            text: "${controller.selectedMeal.quantity} g",
+                            title: '55'.tr,
+                            text:
+                                "${controller.selectedMeal.quantity} ${'70'.tr}",
                           ),
                           TextComponent(
                             icon: Icons.numbers,
-                            title: 'Meal Number',
+                            title: '56'.tr,
                             text: "${controller.selectedMeal.mealNumber}",
                           ),
                           TextComponent(
                             icon: Icons.timelapse,
-                            title: 'After Time:',
+                            title: '57'.tr,
                             text: controller.selectedMeal.timeAfter,
                           ),
                           TextComponent(
                             icon: Icons.description,
-                            title: 'Description',
+                            title: '58'.tr,
                             text: controller.selectedMeal.description,
                           ),
                         ],
@@ -87,7 +88,7 @@ class MealView extends StatelessWidget {
                         children: [
                           TextComponent(
                             icon: Icons.info,
-                            title: 'Special Details',
+                            title: '59'.tr,
                             text: controller.selectedMeal.details,
                           ),
                         ],
@@ -97,45 +98,51 @@ class MealView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: EditContainer(
-                      name: 'Nutrition Facts',
+                      name: '60'.tr,
                       child: Column(
                         children: [
                           TextComponent(
-                            title: 'Total Calories',
+                            title: '61'.tr,
                             text:
-                                "${controller.selectedMeal.totalCalories} cal",
+                                "${controller.selectedMeal.totalCalories} ${'71'.tr}",
                           ),
                           TextComponent(
-                            title: 'Calories Per Gram',
+                            title: '62'.tr,
                             text:
-                                "${controller.selectedMeal.caloriesPerGram} cal",
+                                "${controller.selectedMeal.caloriesPerGram} ${'71'.tr}",
                           ),
                           TextComponent(
-                            title: 'Total Protein',
-                            text: "${controller.selectedMeal.totalProtein} g",
+                            title: '63'.tr,
+                            text:
+                                "${controller.selectedMeal.totalProtein} ${'70'.tr}",
                           ),
                           TextComponent(
-                            title: 'Protein Per Gram',
-                            text: "${controller.selectedMeal.proteinPerGram} g",
+                            title: '64'.tr,
+                            text:
+                                "${controller.selectedMeal.proteinPerGram} ${'70'.tr}",
                           ),
                           TextComponent(
-                            title: 'Total Carbs',
-                            text: "${controller.selectedMeal.totalCarbs} g",
+                            title: '65'.tr,
+                            text:
+                                "${controller.selectedMeal.totalCarbs} ${'70'.tr}",
                           ),
                           TextComponent(
-                            title: 'Carbs Per Gram',
-                            text: "${controller.selectedMeal.carbsPerGram} g",
+                            title: '66'.tr,
+                            text:
+                                "${controller.selectedMeal.carbsPerGram} ${'70'.tr}",
                           ),
                           TextComponent(
-                            title: 'Total Fat',
-                            text: "${controller.selectedMeal.totalFat} g",
+                            title: '67'.tr,
+                            text:
+                                "${controller.selectedMeal.totalFat} ${'70'.tr}",
                           ),
                           TextComponent(
-                            title: 'Fat Per Gram',
-                            text: "${controller.selectedMeal.fatPerGram} g",
+                            title: '68'.tr,
+                            text:
+                                "${controller.selectedMeal.fatPerGram} ${'70'.tr}",
                           ),
                           TextComponent(
-                            title: 'GI',
+                            title: '69'.tr,
                             text: controller.selectedMeal.gi,
                           ),
                         ],

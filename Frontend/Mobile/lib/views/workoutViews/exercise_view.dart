@@ -82,24 +82,24 @@ class ExerciseView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: EditContainer(
-                              name: 'Exercise ${controller.exercise.name}',
+                              name: '${'97'.tr} ${controller.exercise.name}',
                               child: Column(
                                 children: [
                                   TextComponent(
                                     icon: Icons.fitness_center,
-                                    title: 'Muscle',
+                                    title: '98'.tr,
                                     text: controller.exercise.muscle,
                                   ),
                                   TextComponent(
                                     icon: Icons.description,
-                                    title: 'Description',
+                                    title: '58'.tr,
                                     text: controller.exercise.description,
                                   ),
                                   TextComponent(
                                     icon: Icons.numbers,
-                                    title: 'Number of sets',
+                                    title: '99'.tr,
                                     text:
-                                        "${controller.exercise.numberOfSets} sets",
+                                        "${controller.exercise.numberOfSets} ${'100'.tr}",
                                   ),
                                 ],
                               ),
@@ -108,7 +108,7 @@ class ExerciseView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: EditContainer(
-                              name: 'Sets',
+                              name: '100'.tr,
                               child: ListView.builder(
                                 itemCount: controller.exercise.sets.length,
                                 shrinkWrap: true,
@@ -137,13 +137,13 @@ class ExerciseView extends StatelessWidget {
                                           child: Row(
                                             children: [
                                               Text(
-                                                "Set ${controller.exercise.sets[index].setNumber}: ",
+                                                "${'101'.tr} ${controller.exercise.sets[index].setNumber}: ",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .titleLarge,
                                               ),
                                               Text(
-                                                "${controller.exercise.sets[index].expectedReps} expected reps",
+                                                "${controller.exercise.sets[index].expectedReps} ${'102'.tr}",
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .titleLarge,
@@ -164,7 +164,7 @@ class ExerciseView extends StatelessWidget {
                                                 obsecureText: false,
                                                 icon:
                                                     FontAwesomeIcons.arrowUp91,
-                                                labelText: 'Reps',
+                                                labelText: '103'.tr,
                                                 validator: (p0) =>
                                                     CustomValidation()
                                                         .validateNumber(p0),
@@ -180,7 +180,7 @@ class ExerciseView extends StatelessWidget {
                                                 obsecureText: false,
                                                 icon: FontAwesomeIcons
                                                     .weightHanging,
-                                                labelText: 'Weight',
+                                                labelText: '78'.tr,
                                                 validator: (p0) =>
                                                     CustomValidation()
                                                         .validateNumber(p0),
