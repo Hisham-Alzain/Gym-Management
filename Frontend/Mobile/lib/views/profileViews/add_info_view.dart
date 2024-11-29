@@ -24,7 +24,7 @@ class AddInfoView extends StatelessWidget {
       body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/personal_info_background.JPG'),
+            image: AssetImage('assets/personal_info_background.jpg'),
             fit: BoxFit.cover,
             alignment: Alignment(0, 2),
           ),

@@ -22,7 +22,7 @@ class ProfileView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/app_background.JPG'),
+              image: AssetImage('assets/app_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),

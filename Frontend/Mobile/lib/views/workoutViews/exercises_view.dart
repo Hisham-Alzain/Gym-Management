@@ -22,7 +22,7 @@ class ExercisesView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/exercises_background.JPG'),
+              image: AssetImage('assets/exercises_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),

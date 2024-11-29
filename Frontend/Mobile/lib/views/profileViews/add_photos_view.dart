@@ -30,7 +30,7 @@ class AddPhotosView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/personal_info_background.JPG'),
+              image: AssetImage('assets/personal_info_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
