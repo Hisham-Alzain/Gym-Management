@@ -1,15 +1,23 @@
 {
-    "headers":{
-        "head_1":"What I offer",
-        "head_2":"Gallery",
-        "head_3":"Pricing",
-        "head_4":"Contact"
+    "navigation": {
+        "home": "Home",
+        "about": "About",
+        "training": "Training",
+        "gallery": "Gallery",
+        "pricing": "Pricing",
+        "contact": "Contact"
     },
-    "hero":{
-        "name":"I am Coach Amr",
-        "typed_1":"Pharmacist",
-        "typed_2":"Fitness Coach",
-        "typed_3":"Body building Coach"
+    "headers": {
+        "head_1": "What I offer",
+        "head_2": "Gallery",
+        "head_3": "Pricing",
+        "head_4": "Contact"
+    },
+    "hero": {
+        "name": "I am Coach Amr",
+        "typed_1": "Pharmacist",
+        "typed_2": "Fitness Coach",
+        "typed_3": "Body building Coach"
     },
     "about": {
         "name": "Coach Amr:",
@@ -26,11 +34,12 @@
         "h3_before": "Before",
         "h3_after": "After"
     },
-    "pricing":{
-        "feature_1":"Fittness training",
-        "feature_2":"Weight losing classes",
-        "feature_3":"bodybuilding training",
-        "feature_4":"health consulting"
+    "pricing": {
+        "feature_1": "Fittness training",
+        "feature_2": "Weight losing classes",
+        "feature_3": "bodybuilding training",
+        "feature_4": "health consulting",
+        "btn": "Join Now"
     },
     "contact": {
         "h3_location": "Location",
@@ -41,6 +50,9 @@
         "p_email": "CoachAmr@gmail.com"
     },
     "footer": {
+        "lang": "Language:",
+        "en": "English",
+        "ar": "Arabic",
         "part1": "Copyright ©",
         "part2": "All rights reserved"
     }

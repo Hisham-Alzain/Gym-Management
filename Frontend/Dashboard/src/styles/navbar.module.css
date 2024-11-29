@@ -34,25 +34,14 @@ nav input {
 }
 
 .logo {
-  width: 250px;
   display: inline-flex;
+  align-items: center;
 }
 
 .logo img {
-  width: 50px;
+  width: 170px;
   height: 50px;
   border-radius: 5px;
-}
-
-.logo a {
-  color: #f2f2f2;
-  font-size: 25px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  padding-inline-start: 10px;
 }
 
 .lang {

@@ -5,10 +5,11 @@
 /* OUR CSS */
 /* NavBar */
 .logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  margin-inline: 10px;
+  width: 150px;
+  height: 50px;
+  border-radius: 5px;
+  margin-inline-end: 5px;
+  margin-inline-start: 10px;
 }
 
 .nav {
@@ -283,7 +284,7 @@
 
 .topic .topic-img img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 1px;
 }
 
 .topic .content-box {
@@ -463,7 +464,7 @@
 }
 
 #footer .container .top .row .column .caption .f-logo img {
-  width: 50px;
+  width: 200px;
   height: 50px;
 }
 
@@ -661,8 +662,8 @@
 
   .logo {
     position: absolute;
-    inset-block-start: 20px;
-    inset-inline-start: 20px;
+    inset-block-start: 10px;
+    inset-inline-start: 10px;
   }
 
   .responsive {

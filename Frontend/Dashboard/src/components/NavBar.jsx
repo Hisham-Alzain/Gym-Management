@@ -2,7 +2,8 @@ import { useContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars, FaTimes, FaDoorOpen } from "react-icons/fa";
 import { LoginContext, ProfileContext } from '../utils/Contexts.jsx';
-import logo from '../assets/gym.jpg';
+import logo1 from '../assets/logo1.png';
+import logo2 from '../assets/logo2.png';
 import styles from '../styles/navbar.module.css';
 
 
@@ -34,8 +35,7 @@ const NavBar = () => {
     <nav>
       <div className={styles.wrapper}>
         <div className={styles.logo}>
-          <img src={logo} alt="logo" />
-          <a href="/home">{t('components.nav_bar.nav_logo')}</a>
+          <img src={logo2} alt="Logo" />
         </div>
         <input
           type="radio"

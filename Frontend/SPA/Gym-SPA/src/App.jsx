@@ -12,14 +12,15 @@ import { useTranslation } from 'react-i18next';
 import Typed from 'typed.js';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import gym from './assets/gym.jpg'
+import logo1 from './assets/logo1.png';
+import logo2 from './assets/logo2.png';
 import app from './assets/gym-app.jpg';
 import coach from './assets/coach.jpg';
 import team1 from './assets/team1.png';
 import team2 from './assets/team2.png';
 import team3 from './assets/team3.png';
-import before from './assets/before-all.png';
-import after from './assets/after-all.png';
+import after from './assets/after.png';
+import before from './assets/before.png';
 import './App.css';
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
     return () => {
       typed.destroy(); // Cleanup on unmount
     };
-  }, []);
+  }, [i18n.language]);
 
   useEffect(() => {
     AOS.init();
@@ -66,12 +67,12 @@ function App() {
   }
 
   const navigation = [
-    { href: '#home', name: 'Home' },
-    { href: '#about', name: 'About' },
-    { href: '#training', name: 'Training' },
-    { href: '#gallery', name: 'Gallery' },
-    { href: '#pricing', name: 'Pricing' },
-    { href: '#contact', name: 'Contact' },
+    { href: '#home', name: t('navigation.home') },
+    { href: '#about', name: t('navigation.about') },
+    { href: '#training', name: t('navigation.training') },
+    { href: '#gallery', name: t('navigation.gallery') },
+    { href: '#pricing', name: t('navigation.pricing') },
+    { href: '#contact', name: t('navigation.contact') },
   ]
 
   const about = [
@@ -94,8 +95,8 @@ function App() {
   ]
 
   const gallery = [
-    { img: before, h3: t('gallery.h3_before'), p: 'GG' },
-    { img: after, h3: t('gallery.h3_after'), p: 'GG' }
+    { img: before, h3: t('gallery.h3_before'), p: ' ' },
+    { img: after, h3: t('gallery.h3_after'), p: ' ' }
   ]
 
   const pricing = [
@@ -135,7 +136,7 @@ function App() {
           <button className='hide-nav' onClick={toggleNavbar}>
             <FaTimes />
           </button>
-          <img className='logo' src={gym} alt='Logo' />
+          <img className='logo' src={logo2} alt='Logo' />
           <ul>
             {navigation.map((n, i) => (
               <li key={i} onClick={toggleNavbar}>
@@ -228,8 +229,7 @@ function App() {
                       <div className='content-box'>
                         <div className='content'>
                           <h3>{g.h3}</h3>
-                          {/* <p>{g.p}</p> */}
-                          {/* <a href="#" className='btn'>View Courses</a> */}
+                          <p>{g.p}</p>
                         </div>
                       </div>
                     </div>
@@ -263,7 +263,7 @@ function App() {
                         </div>
                       ))}
                       <div className='button'>
-                        <a href="#" className='btn'>Join Now</a>
+                        <a href="#" className='btn'>{t('pricing.btn')}</a>
                       </div>
                     </div>
                   </div>
@@ -302,15 +302,15 @@ function App() {
                 <div className='column'>
                   <div className='caption'>
                     <div className='f-logo'>
-                      <a href='#'><img src={gym} alt="" /></a>
+                      <a href='#'><img src={logo2} alt="" /></a>
                       <div className='lang'>
-                        Language:
+                        {t('footer.lang')}
                         <select onChange={changeLanguage} value={i18n.language}>
                           <option key='en' value='en'>
-                            English
+                            {t('footer.en')}
                           </option>
                           <option key='ar' value='ar'>
-                            Arabic
+                            {t('footer.ar')}
                           </option>
                         </select>
                       </div>
