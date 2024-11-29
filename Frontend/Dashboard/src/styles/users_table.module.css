@@ -104,14 +104,14 @@
 
 /* Action Buttons */
 .delete_button {
-    padding: 10px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s;
-    margin-inline: 3px;
-    background-color: #dc3545;
     color: #ffffff;
+    background: #dc3545;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 10px;
+    margin-inline: 3px;
+    transition: background-color 0.3s;
 }
 
 .delete_button:hover {
