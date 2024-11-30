@@ -17,6 +17,7 @@ class ExerciseSeeder extends Seeder
         $exercises = [
             [
                 "muscle" => "Legs",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -25,13 +26,14 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "طاولة أمامي",
                         "description" => ""
                     ]
                 ],
             ],
             [
                 "muscle" => "Legs",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -40,13 +42,14 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "طاولة خلفي",
                         "description" => ""
                     ]
                 ],
             ],
             [
                 "muscle" => "Chest",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -55,13 +58,14 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "ضغط صدر",
                         "description" => ""
                     ]
                 ],
             ],
             [
                 "muscle" => "Chest",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -70,13 +74,14 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "فراشة صدر",
                         "description" => ""
                     ]
                 ],
             ],
             [
                 "muscle" => "Back",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -85,13 +90,14 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "سحب بكرة أمامي",
                         "description" => ""
                     ]
                 ],
             ],
             [
                 "muscle" => "Back",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -100,13 +106,14 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "تجديف أرضي",
                         "description" => ""
                     ]
                 ],
             ],
             [
                 "muscle" => "Shoulders",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -115,13 +122,14 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "ضغط اكتاف ألة",
                         "description" => ""
                     ]
                 ],
             ],
             [
                 "muscle" => "Shoulders",
+                "thumbnail_path"=>"",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -130,7 +138,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "رفرفة جانبي",
                         "description" => ""
                     ]
                 ],
@@ -145,7 +153,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "تبادل دامبل",
                         "description" => ""
                     ]
                 ],
@@ -160,7 +168,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "مسطرة تراي",
                         "description" => ""
                     ]
                 ],
@@ -175,7 +183,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "ضغط بار علوي",
                         "description" => ""
                     ]
                 ],
@@ -190,7 +198,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "ضغط دامبل صدر ",
                         "description" => ""
                     ]
                 ],
@@ -205,7 +213,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "فتح دامبل مستوي",
                         "description" => ""
                     ]
                 ],
@@ -220,7 +228,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "فتح دامبل علوي",
                         "description" => ""
                     ]
                 ],
@@ -235,7 +243,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "متوازي",
                         "description" => ""
                     ]
                 ],
@@ -250,7 +258,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "روماني",
                         "description" => ""
                     ]
                 ],
@@ -265,7 +273,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "دامبل سكوات",
                         "description" => ""
                     ]
                 ],
@@ -280,7 +288,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "بيك ديك كتف خلفي",
                         "description" => ""
                     ]
                 ],
@@ -295,7 +303,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "مطرقة",
                         "description" => ""
                     ]
                 ],
@@ -310,7 +318,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "سحب بكرة مسكة مثلث",
                         "description" => ""
                     ]
                 ],
@@ -325,7 +333,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "تجديف مطرقة",
                         "description" => ""
                     ]
                 ],
@@ -340,7 +348,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "سكوات بالبار",
                         "description" => ""
                     ]
                 ],
@@ -355,7 +363,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "تدلية دامبل",
                         "description" => ""
                     ]
                 ],
@@ -370,7 +378,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "بطات",
                         "description" => ""
                     ]
                 ],
@@ -385,7 +393,7 @@ class ExerciseSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "",
+                        "name" => "رفرفة أمامي مطرقة",
                         "description" => ""
                     ]
                 ],
