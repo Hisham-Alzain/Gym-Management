@@ -176,7 +176,11 @@
             "th2": "Set Number",
             "set": "Set",
             "rep": "expected reps",
-            "kilo": "Kg"
+            "rest": "minutes expected rest time",
+            "tempo": "expected tempo",
+            "kilo": "Kg",
+            "m1": "minute",
+            "m2": "minutes"
         },
         "meals": {
             "search": "Search meal",

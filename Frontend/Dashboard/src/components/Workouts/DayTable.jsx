@@ -50,7 +50,9 @@ const DayTable = ({ exerciseDay, handleBackButtonClick }) => {
                       {`${t('components.day_table.set')} ${set.set_number}`}
                     </td>
                     <td colSpan={set.user_sets.length}>
-                      {`${set.expected_reps} ${t('components.day_table.rep')}`}
+                      {`${set.expected_reps} ${t('components.day_table.rep')}`}<br />
+                      {`${set.expected_rest_time} ${t('components.day_table.rest')}`}
+                      <br />{`${set.tempo} ${t('components.day_table.tempo')}`}
                     </td>
                   </tr>
                   <tr>
@@ -62,7 +64,11 @@ const DayTable = ({ exerciseDay, handleBackButtonClick }) => {
                           {userSet ?
                             `${userSet.reps || 'N/A'} x ${userSet.rep_weight || 'N/A'}
                             ${t('components.day_table.kilo')}`
-                            : 'N/A'}
+                            : 'N/A'}<br />
+                          {userSet ? userSet.rest_time ?
+                            userSet.rest_time == 1 ? `${userSet.rest_time} ${t('components.day_table.m1')}`
+                              : `${userSet.rest_time} ${t('components.day_table.m2')}`
+                            : 'N/A' : 'N/A'}
                         </td>
                       );
                     })}
