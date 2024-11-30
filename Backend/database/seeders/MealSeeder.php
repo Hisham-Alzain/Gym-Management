@@ -240,7 +240,7 @@ class MealSeeder extends Seeder
                     ],
                     [
                         "lang" => "ar",
-                        "name" => "جبنة بيضة",
+                        "name" => "جبنة بيضاء",
                         "description" => ""
                     ]
                 ],
