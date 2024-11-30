@@ -16,7 +16,7 @@ class MealSeeder extends Seeder
     {
         $meals = [
             [
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806rice_photo.jpg',
                 'calories'=>3.65,
                 'protein'=>0.0719,
                 'carbs'=>0.755,
@@ -35,7 +35,7 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806sweetPotato_photo.jpg',
                 'calories'=>0.79,
                 'protein'=>0.0158,
                 'carbs'=>0.173,
@@ -54,12 +54,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806potato_photo.jpg',
                 'calories'=>3.61,
                 'protein'=>0.0811,
                 'carbs'=>0.799,
                 'fat'=>0.0095,
-                'GI',
+                'GI'=>'High',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -73,12 +73,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806pasta_photo.jpg',
                 'calories'=>0.51,
                 'protein'=>0.0141,
                 'carbs'=>0.0805,
                 'fat'=>0.0148,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -92,12 +92,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806bulgur_photo.jpg',
                 'calories'=>3.72,
                 'protein'=>0.118,
                 'carbs'=>0.759,
                 'fat'=>0.0242,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -111,12 +111,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806beans_photo.jpg',
                 'calories'=>3.45,
                 'protein'=>0.21,
                 'carbs'=>0.598,
                 'fat'=>0.022,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -130,12 +130,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806hummus_photo.jpg',
                 'calories'=>2.43,
                 'protein'=>0.0735,
                 'carbs'=>0.149,
                 'fat'=>0.171,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -149,12 +149,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806omlette_photo.jpg',
                 'calories'=>0.52,
                 'protein'=>0.107,
                 'carbs'=>0.0236,
                 'fat'=>0,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -168,12 +168,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806boiledEggs_photo.jpg',
                 'calories'=>0.52,
                 'protein'=>0.107,
                 'carbs'=>0.0236,
                 'fat'=>0,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -188,12 +188,12 @@ class MealSeeder extends Seeder
                 ],
             ],
             [
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806yogurt_photo.jpg',
                 'calories'=>0.5,
                 'protein'=>0.0423,
                 'carbs'=>0.08,
                 'fat'=>0,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -207,12 +207,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806milk_photo.jpg',
                 'calories'=>0.78,
                 'protein'=>0.0382,
                 'carbs'=>0.0557,
                 'fat'=>0.05,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -226,12 +226,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806cheese_photo.jpg',
                 'calories'=>3.25,
                 'protein'=>0.245,
                 'carbs'=>0.0207,
                 'fat'=>0.243,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -245,12 +245,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806lamp_photo.jpg',
                 'calories',
                 'protein',
                 'carbs',
                 'fat',
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -264,12 +264,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806beef_photo.jpg',
                 'calories'=>2.32,
                 'protein'=>0.184,
                 'carbs'=>0,
                 'fat'=>0.178,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -283,12 +283,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806chickenBreast_photo.jpg',
                 'calories'=>1.06,
                 'protein'=>0.225,
                 'carbs'=>0,
                 'fat'=>0.0193,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -302,12 +302,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806chickenThigh_photo.jpg',
                 'calories'=>1.44,
                 'protein'=>0.186,
                 'carbs'=>0,
                 'fat'=>0.0792,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -321,12 +321,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806banana_photo.jpg',
                 'calories'=>0.85,
                 'protein'=>0.0073,
                 'carbs'=>0.201,
                 'fat'=>0.0022,
-                'GI',
+                'GI'=>'High',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -340,12 +340,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806strawberry_photo.jpg',
                 'calories'=>0.36,
                 'protein'=>0.0064,
                 'carbs'=>0.0786,
                 'fat'=>0.0022,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -359,12 +359,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806grapes_photo.jpg',
                 'calories'=>0.31,
                 'protein'=>0.0083,
                 'carbs'=>0.0551,
                 'fat'=>0.0063,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -378,12 +378,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806orange_photo.jpg',
                 'calories'=>0.52,
                 'protein'=>0.0091,
                 'carbs'=>0.118,
                 'fat'=>0.0015,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -397,12 +397,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806apple_photo.jpg',
                 'calories'=>0.65,
                 'protein'=>0.0015,
                 'carbs'=>0.156,
                 'fat'=>0.0016,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -416,12 +416,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806pomegranate_photo.jpg',
                 'calories'=>0.83,
                 'protein'=>0.0167,
                 'carbs'=>0.187,
                 'fat'=>0.0117,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -435,12 +435,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806apricot_photo.jpg',
                 'calories'=>0.879,
                 'protein'=>0.0096,
                 'carbs'=>0.102,
                 'fat'=>0.004,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -454,12 +454,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806watermelon_photo.jpg',
                 'calories'=>0.3,
                 'protein'=>0.0061,
                 'carbs'=>0.0755,
                 'fat'=>0.0015,
-                'GI',
+                'GI'=>'High',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -473,12 +473,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806seeds_photo.jpg',
                 'calories'=>6.09,
                 'protein'=>0.19,
                 'carbs'=>0.245,
                 'fat'=>0.484,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -492,12 +492,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806corn_photo.jpg',
                 'calories'=>0.85,
                 'protein'=>0.0279,
                 'carbs'=>0.147,
                 'fat'=>0.0163,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -511,12 +511,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806olives_photo.jpg',
                 'calories'=>1.41,
                 'protein'=>0.0115,
                 'carbs'=>0.05,
                 'fat'=>0.129,
-                'GI',
+                'GI'=>'Low',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -530,12 +530,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806walnut_photo.jpg',
                 'calories'=>7.3,
                 'protein'=>0.146,
                 'carbs'=>0.109,
                 'fat'=>0.697,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -549,12 +549,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806almonds_photo.jpg',
                 'calories'=>6.22,
                 'protein'=>0.26,
                 'carbs'=>0.162,
                 'fat'=>0.5,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -568,12 +568,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806hazelnut_photo.jpg',
                 'calories'=>6.41,
                 'protein'=>0.135,
                 'carbs'=>0.26,
                 'fat'=>0.53,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -587,12 +587,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806nuts_photo.jpg',
                 'calories'=>5.65,
                 'protein'=>0.174,
                 'carbs'=>0.36,
                 'fat'=>0.389,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -606,12 +606,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806pistachio_photo.jpg',
                 'calories'=>5.65,
                 'protein'=>0.174,
                 'carbs'=>0.36,
                 'fat'=>0.389,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
@@ -625,12 +625,12 @@ class MealSeeder extends Seeder
                     ]
                 ],
             ],[
-                'thumbnail_path'=>'',
+                'thumbnail_path'=>'meals_thumbnails/2024_11_05_182806cashew_photo.jpg',
                 'calories'=>5.65,
                 'protein'=>0.174,
                 'carbs'=>0.36,
                 'fat'=>0.389,
-                'GI',
+                'GI'=>'Mid',
                 "translations" => [
                     [
                         "lang" => "en",
