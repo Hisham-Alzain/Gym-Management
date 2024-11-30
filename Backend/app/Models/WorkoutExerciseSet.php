@@ -21,8 +21,8 @@ class WorkoutExerciseSet extends Model
         'set_number',
         'expected_reps',
         'expected_weight',
-        'user_reps',
-        'user_rep_weight'
+        'expected_rest_time',
+        'tempo'
     ];
 
     /**

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('workout_exercise_id')->constrained('workout_exercises')->cascadeOnDelete();
             $table->integer('set_number');
             $table->integer('expected_reps');
+            $table->integer('expected_rest_time'); # Minutes
+            $table->string('tempo')->nullable();
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('set_id')->constrained('workout_exercise_sets')->cascadeOnDelete();
             $table->date('day_date');
             $table->integer('user_reps');
+            $table->integer('user_rest_time');
             $table->decimal('user_rep_weight');
             $table->timestamps();
         });

@@ -38,12 +38,14 @@ class WorkoutRequest extends FormRequest
 
             // Workout_excercises table
             'days.*.exercises' => ['required', 'array'],
-            'days.*.exercises.*.exercise_name' => ['required', 'exists:exercises,name'],
+            'days.*.exercises.*.exercise_id' => ['required', 'exists:exercises,id'],
 
             // Workout_excercise_reps table
             'days.*.exercises.*.sets' => ['required', 'array'],
             'days.*.exercises.*.sets.*.set_no' => ['required', 'integer'],
             'days.*.exercises.*.sets.*.exp_reps' => ['required', 'integer'],
+            'days.*.exercises.*.sets.*.exp_rest' => ['required', 'integer'],
+            'days.*.exercises.*.sets.*.tempo' => ['sometimes'],
         ];
     }
 

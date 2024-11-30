@@ -31,6 +31,8 @@ class WorkoutExerciseSetResource extends JsonResource
             'set_id' => $this->id,
             'set_number' => $this->set_number,
             'expected_reps' => $this->expected_reps,
+            'expected_rest_time' => $this->expected_rest_time,
+            'tempo' => $this->tempo,
             'user_sets' => $user_sets
         ];
     }

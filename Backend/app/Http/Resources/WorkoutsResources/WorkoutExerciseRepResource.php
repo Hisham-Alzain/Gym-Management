@@ -17,6 +17,7 @@ class WorkoutExerciseRepResource extends JsonResource
         return [
             'date' => $this->day_date,
             'reps' => $this->user_reps,
+            'rest_time' => $this->user_rest_time,
             'rep_weight' => number_format($this->user_rep_weight, 2, '.', ''),
         ];
     }
