@@ -5,7 +5,7 @@ import styles from '../../styles/day_table.module.css';
 
 const DayTable = ({ exerciseDay, handleBackButtonClick }) => {
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
   // Variables
   const uniqueDates = new Set();
 
@@ -25,7 +25,7 @@ const DayTable = ({ exerciseDay, handleBackButtonClick }) => {
         {t('components.day_table.back')}
       </button>
       <table className={styles.exercise_table}>
-        <caption>{exerciseDay.muscle}</caption>
+        <caption>{exerciseDay.muscle[i18n.language]}</caption>
         <thead>
           <tr>
             <th>{t('components.day_table.th1')}</th>
@@ -43,7 +43,7 @@ const DayTable = ({ exerciseDay, handleBackButtonClick }) => {
                   <tr>
                     {setIndex === 0 && (
                       <td rowSpan={exercise.exercise.sets.length * 2}>
-                        {exercise.exercise.name}
+                        {exercise.exercise.translations[i18n.language].name}
                       </td>
                     )}
                     <td>

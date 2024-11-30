@@ -12,7 +12,7 @@ const ShowProgram = () => {
   // Params
   const { program_id } = useParams();
   // Translations
-  const { t } = useTranslation('global');
+  const { t, i18n } = useTranslation('global');
   // Context
   const { accessToken } = useContext(LoginContext);
   // States
@@ -66,12 +66,12 @@ const ShowProgram = () => {
           {workoutDays.map((day) => (
             <div key={day.day_id} className={styles.card}>
               <button onClick={() => setSelectedDay(day)}>
-                {day.muscle}
+                {day.muscle[i18n.language]}
               </button>
               <ul>
                 {day.exercises.map((exercise) => (
                   <li key={exercise.workout_exercise_id}>
-                    <h4>{exercise.exercise.name}</h4>
+                    <h4>{exercise.exercise.translations[i18n.language].name}</h4>
                     <h4>
                       {exercise.exercise.no_sets === 1 ?
                         `${exercise.exercise.no_sets} ${t('components.show_program.no_sets1')}` :
