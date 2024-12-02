@@ -22,101 +22,112 @@ class LoginView extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          child: Form(
-            key: _loginController.loginForm,
-            child: GetBuilder<LoginController>(
-              builder: (controller) => Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: CustomTextField(
-                      controller: controller.emailController,
-                      textInputType: TextInputType.emailAddress,
-                      obsecureText: false,
-                      icon: Icons.email,
-                      labelText: '34'.tr,
-                      validator: (p0) => CustomValidation().validateEmail(p0),
-                      maxLines: 1,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                    child: CustomTextField(
-                      controller: controller.passwordController,
-                      textInputType: TextInputType.visiblePassword,
-                      obsecureText: controller.passwordToggle,
-                      icon: Icons.key,
-                      labelText: '38'.tr,
-                      validator: (p0) =>
-                          CustomValidation().validateRequiredField(p0),
-                      suffixIcon: controller.passwordInkwell(),
-                      maxLines: 1,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+          child: Center(
+            child: SingleChildScrollView(
+              child: Form(
+                key: _loginController.loginForm,
+                child: GetBuilder<LoginController>(
+                  builder: (controller) => Column(
                     children: [
+                      Image.asset(
+                        'assets/white_logo.png',
+                        height: 180,
+                      ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                        child: TextButton(
-                          child: Text(
-                            '32'.tr,
-                            style:
-                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        padding: const EdgeInsets.all(20),
+                        child: CustomTextField(
+                          controller: controller.emailController,
+                          textInputType: TextInputType.emailAddress,
+                          obsecureText: false,
+                          icon: Icons.email,
+                          labelText: '34'.tr,
+                          validator: (p0) =>
+                              CustomValidation().validateEmail(p0),
+                          maxLines: 1,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        child: CustomTextField(
+                          controller: controller.passwordController,
+                          textInputType: TextInputType.visiblePassword,
+                          obsecureText: controller.passwordToggle,
+                          icon: Icons.key,
+                          labelText: '38'.tr,
+                          validator: (p0) =>
+                              CustomValidation().validateRequiredField(p0),
+                          suffixIcon: controller.passwordInkwell(),
+                          maxLines: 1,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                            child: TextButton(
+                              child: Text(
+                                '32'.tr,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(
                                       decoration: TextDecoration.underline,
                                       color: Colors.red.shade900,
                                       decorationColor: Colors.red.shade900,
                                     ),
+                              ),
+                              onPressed: () => Get.offNamed('/forgotPassword'),
+                            ),
                           ),
-                          onPressed: () => Get.offNamed('/forgotPassword'),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: OutlinedButton(
+                          onPressed: () {
+                            if (controller.loginForm.currentState?.validate() ==
+                                true) {
+                              controller.login(
+                                controller.emailController.text,
+                                controller.passwordController.text,
+                                controller.rememberMe,
+                              );
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '39'.tr,
+                              ),
+                              const Icon(Icons.arrow_forward_ios),
+                            ],
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: OutlinedButton(
-                      onPressed: () {
-                        if (controller.loginForm.currentState?.validate() ==
-                            true) {
-                          controller.login(
-                            controller.emailController.text,
-                            controller.passwordController.text,
-                            controller.rememberMe,
-                          );
-                        }
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '39'.tr,
-                          ),
-                          const Icon(Icons.arrow_forward_ios),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            '40'.tr,
-                            style: Theme.of(context).textTheme.labelLarge,
-                          ),
-                          Checkbox(
-                            value: controller.rememberMe,
-                            activeColor: Colors.red.shade900,
-                            onChanged: (value) => controller.toggleRemeberMe(),
+                          Row(
+                            children: [
+                              Text(
+                                '40'.tr,
+                                style: Theme.of(context).textTheme.labelLarge,
+                              ),
+                              Checkbox(
+                                value: controller.rememberMe,
+                                activeColor: Colors.red.shade900,
+                                onChanged: (value) =>
+                                    controller.toggleRemeberMe(),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
           ),

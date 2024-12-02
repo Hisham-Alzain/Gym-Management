@@ -89,7 +89,7 @@ class MealView extends StatelessWidget {
                           TextComponent(
                             icon: Icons.info,
                             title: '59'.tr,
-                            text: controller.selectedMeal.details,
+                            text: controller.selectedMeal.details ?? '95'.tr,
                           ),
                         ],
                       ),
@@ -140,6 +140,26 @@ class MealView extends StatelessWidget {
                             title: '68'.tr,
                             text:
                                 "${controller.selectedMeal.fatPerGram} ${'70'.tr}",
+                          ),
+                          TextComponent(
+                            title: '116'.tr,
+                            text:
+                                "${controller.selectedMeal.totalCalcium} ${'70'.tr}",
+                          ),
+                          TextComponent(
+                            title: '117'.tr,
+                            text:
+                                "${controller.selectedMeal.calciumPerGram} ${'70'.tr}",
+                          ),
+                          TextComponent(
+                            title: '118'.tr,
+                            text:
+                                "${controller.selectedMeal.totalSodium} ${'70'.tr}",
+                          ),
+                          TextComponent(
+                            title: '68'.tr,
+                            text:
+                                "${controller.selectedMeal.sodiumPerGram} ${'70'.tr}",
                           ),
                           TextComponent(
                             title: '69'.tr,

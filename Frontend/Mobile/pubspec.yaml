@@ -29,4 +29,5 @@ dev_dependencies:
 flutter:
   assets: 
    - assets/
+   - assets/google_fonts/
   uses-material-design: true

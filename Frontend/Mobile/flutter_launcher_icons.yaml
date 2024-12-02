@@ -1,17 +1,17 @@
 # flutter pub run flutter_launcher_icons
 flutter_launcher_icons:
-  image_path: "assets/logo/black_logo.png"
+  image_path: "assets/black_logo.png"
 
   android: "launcher_icon"
-  image_path_android: "assets/logo/black_logo.png"
+  image_path_android: "assets/black_logo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: "assets/logo/black_logo.png"
+  adaptive_icon_foreground: "assets/black_logo.png"
   adaptive_icon_foreground_inset: 10
   #adaptive_icon_monochrome: "assets/logo/black_logo.png"
 
   ios: true
-  image_path_ios: "assets/logo/black_logo.png"
+  image_path_ios: "assets/black_logo.png"
   remove_alpha_channel_ios: true
   #image_path_ios_dark_transparent: "assets/logo/black_logo.png"
   #image_path_ios_tinted_grayscale: "assets/logo/black_logo.png"

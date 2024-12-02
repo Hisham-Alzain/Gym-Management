@@ -119,6 +119,11 @@ class Local implements Translations {
           "113": "Profile",
           "114": "General",
           "115": "Language",
+          "116": "Total calcium",
+          "117": "Calcium per gram",
+          "118": "Total sodium",
+          "119": "Sodium per gram",
+          "120": "Minute",
         },
         'ar': {
           '1': 'ar',
@@ -236,6 +241,10 @@ class Local implements Translations {
           "113": "Profile",
           "114": "General",
           "115": "Language",
+          "116": "Total calcium",
+          "117": "Calcium per gram",
+          "118": "Total sodium",
+          "119": "Sodium per gram",
         },
       };
 }
