@@ -309,10 +309,12 @@ class DietsController extends MainController
             'meal_id' => ['required'],
             'lang' => ['required'],
             'description' => ['sometimes'],
-            'calories' => ['sometimes'],
-            'protein' => ['sometimes'],
-            'carbs' => ['sometimes'],
-            'fat' => ['sometimes']
+            'calories' => ['sometimes', 'numeric'],
+            'protein' => ['sometimes', 'numeric'],
+            'carbs' => ['sometimes', 'numeric'],
+            'fat' => ['sometimes', 'numeric'],
+            'Ca' => ['sometimes', 'numeric'],
+            'Na' => ['sometimes', 'numeric'],
         ]);
 
         // Get user

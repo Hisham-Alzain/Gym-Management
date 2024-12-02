@@ -18,6 +18,8 @@ const MealCard = ({ MealData }) => {
   const [newProtein, setNewProtein] = useState(MealData.protein_per_gram);
   const [newCarbs, setNewCarbs] = useState(MealData.carbs_per_gram);
   const [newFat, setNewFat] = useState(MealData.fat_per_gram);
+  const [newCa, setNewCa] = useState(MealData.Ca_per_gram);
+  const [newNa, setNewNa] = useState(MealData.Na_per_gram);
 
   const handleDescription = (event) => {
     setNewDescription(event.target.value);
@@ -33,7 +35,9 @@ const MealCard = ({ MealData }) => {
       newCalories,
       newProtein,
       newCarbs,
-      newFat
+      newFat,
+      newCa,
+      newNa
     ).then((response) => {
       if (response.status == 200) {
         console.log('Meal updated');
@@ -98,6 +102,8 @@ const MealCard = ({ MealData }) => {
                 <p>{`${t('components.meals_card.p2')} ${MealData.protein_per_gram}g`}</p>
                 <p>{`${t('components.meals_card.p3')} ${MealData.carbs_per_gram}g`}</p>
                 <p>{`${t('components.meals_card.p4')} ${MealData.fat_per_gram}g`}</p>
+                <p>{`${t('components.meals_card.p5')} ${MealData.Ca_per_gram}g`}</p>
+                <p>{`${t('components.meals_card.p6')} ${MealData.Na_per_gram}g`}</p>
               </> : <div className={styles.input_div}>
                 <input
                   type="number"
@@ -131,17 +137,33 @@ const MealCard = ({ MealData }) => {
                   step="0.01"
                   className={styles.custom_input}
                 />
+                <input
+                  type="number"
+                  value={newCa}
+                  onChange={(event) => setNewCa(event.target.value)}
+                  placeholder={t('components.meals_card.input5')}
+                  step="0.01"
+                  className={styles.custom_input}
+                />
+                <input
+                  type="number"
+                  value={newNa}
+                  onChange={(event) => setNewNa(event.target.value)}
+                  placeholder={t('components.meals_card.input6')}
+                  step="0.01"
+                  className={styles.custom_input}
+                />
               </div>
             }
           </div>
           {!updating ?
-            <p>{`${t('components.meals_card.p5')} ${MealData.translations[i18n.language].description}`}</p>
+            <p>{`${t('components.meals_card.p7')} ${MealData.translations[i18n.language].description}`}</p>
             : <textarea
               rows={7}
               type='text'
               value={newDescription}
               onChange={handleDescription}
-              placeholder={t('components.meals_card.input5')}
+              placeholder={t('components.meals_card.input7')}
               className={styles.description}
             />
           }
