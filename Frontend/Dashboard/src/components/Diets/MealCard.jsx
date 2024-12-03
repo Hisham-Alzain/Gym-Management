@@ -18,7 +18,7 @@ const MealCard = ({ MealData }) => {
   const [newProtein, setNewProtein] = useState(MealData.protein_per_gram);
   const [newCarbs, setNewCarbs] = useState(MealData.carbs_per_gram);
   const [newFat, setNewFat] = useState(MealData.fat_per_gram);
-  const [newCa, setNewCa] = useState(MealData.Ca_per_gram);
+  const [newK, setNewK] = useState(MealData.K_per_gram);
   const [newNa, setNewNa] = useState(MealData.Na_per_gram);
 
   const handleDescription = (event) => {
@@ -36,7 +36,7 @@ const MealCard = ({ MealData }) => {
       newProtein,
       newCarbs,
       newFat,
-      newCa,
+      newK,
       newNa
     ).then((response) => {
       if (response.status == 200) {
@@ -102,7 +102,7 @@ const MealCard = ({ MealData }) => {
                 <p>{`${t('components.meals_card.p2')} ${MealData.protein_per_gram}g`}</p>
                 <p>{`${t('components.meals_card.p3')} ${MealData.carbs_per_gram}g`}</p>
                 <p>{`${t('components.meals_card.p4')} ${MealData.fat_per_gram}g`}</p>
-                <p>{`${t('components.meals_card.p5')} ${MealData.Ca_per_gram}g`}</p>
+                <p>{`${t('components.meals_card.p5')} ${MealData.K_per_gram}g`}</p>
                 <p>{`${t('components.meals_card.p6')} ${MealData.Na_per_gram}g`}</p>
               </> : <div className={styles.input_div}>
                 <input
@@ -139,8 +139,8 @@ const MealCard = ({ MealData }) => {
                 />
                 <input
                   type="number"
-                  value={newCa}
-                  onChange={(event) => setNewCa(event.target.value)}
+                  value={newK}
+                  onChange={(event) => setNewK(event.target.value)}
                   placeholder={t('components.meals_card.input5')}
                   step="0.01"
                   className={styles.custom_input}

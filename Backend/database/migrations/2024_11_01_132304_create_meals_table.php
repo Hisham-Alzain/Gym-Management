@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('protein'); # per 1 gram
             $table->decimal('carbs'); # per 1 gram
             $table->decimal('fat'); # per 1 gram
-            $table->decimal('Ca'); # per 1 gram
+            $table->decimal('K'); # per 1 gram
             $table->decimal('Na'); # per 1 gram
             $table->enum('GI', GI::names());
             $table->string('thumbnail_path')->nullable();

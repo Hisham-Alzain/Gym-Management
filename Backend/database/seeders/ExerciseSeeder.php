@@ -17,7 +17,8 @@ class ExerciseSeeder extends Seeder
         $exercises = [
             [
                 "muscle" => "Legs",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "",
+                "video_path" => "exercises_videos/2024_12_1Legextension.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -33,7 +34,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Legs",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30legcurls.jpg",
+                "video_path" => "exercises_videos/2024_12_1Legcurl.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -49,7 +51,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Chest",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "",
+                "video_path" => "exercises_videos/2024_12_1MachineChestPress.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -65,7 +68,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Chest",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30chestfly.jpg",
+                "video_path" => "exercises_videos/2024_12_1ChestFly.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -81,7 +85,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Back",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lat_pulldown.jpg",
+                "video_path" => "exercises_videos/2024_12_1latpylldown.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -97,7 +102,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Back",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30rows.jpg",
+                "video_path" => "exercises_videos/2024_12_1Rows.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -113,7 +119,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Shoulders",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30shoulder_press.jpg",
+                "video_path" => "exercises_videos/2024_12_1Legextension.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -129,7 +136,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Shoulders",
-                "thumbnail_path"=>"",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
+                "video_path" => "exercises_videos/2024_12_1LateralRaise.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -145,6 +153,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Biceps",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30dumbelcurl.jpg",
+                "video_path" => "exercises_videos/2024_12_1DumbellCurl.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -160,6 +170,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Triceps",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30pushdown.jpg",
+                "video_path" => "exercises_videos/2024_12_1Pushdown.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -175,6 +187,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Chest",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30inclineBenchpress.jpg",
+                "video_path" => "exercises_videos/2024_12_1InclineChestPressBar.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -190,6 +204,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Chest",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
+                "video_path" => "exercises_videos/2024_12_1DumbellChestPress.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -205,6 +221,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Chest",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -220,6 +237,8 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Chest",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
+                "video_path" => "exercises_videos/2024_12_1ChestFly.gif",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -235,6 +254,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Chest",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -250,6 +270,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Back",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -265,6 +286,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Legs",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -280,6 +302,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Shoulders",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -295,6 +318,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Biceps",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -310,6 +334,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Back",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -325,6 +350,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Back",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -340,6 +366,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Legs",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -355,6 +382,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Triceps",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -370,6 +398,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Legs",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -385,6 +414,7 @@ class ExerciseSeeder extends Seeder
             ],
             [
                 "muscle" => "Shoulders",
+                "thumbnail_path" => "exercises_thumbnails/2024_11_30lateral_raise.jpg",
                 "translations" => [
                     [
                         "lang" => "en",
@@ -403,7 +433,9 @@ class ExerciseSeeder extends Seeder
         // Create exercises
         foreach ($exercises as $exerciseData) {
             $exercise = Exercise::create([
-                "muscle" => $exerciseData["muscle"]
+                "muscle" => $exerciseData["muscle"],
+                "thumbnail_path" => $exerciseData["thumbnail_path"],
+                "video_path" => $exerciseData["video_path"] ?? ""
             ]);
 
             foreach ($exerciseData['translations'] as $translation) {

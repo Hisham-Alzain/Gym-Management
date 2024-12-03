@@ -19,7 +19,7 @@ class DietMealResource extends JsonResource
         $total_protein = $this->quantity * $this->meal->protein;
         $total_carbs = $this->quantity * $this->meal->carbs;
         $total_fat = $this->quantity * $this->meal->fat;
-        $Ca_fat = $this->quantity * $this->meal->Ca;
+        $K_fat = $this->quantity * $this->meal->K;
         $Na_fat = $this->quantity * $this->meal->Na;
 
         // Calculate time
@@ -50,13 +50,13 @@ class DietMealResource extends JsonResource
                 'protein_gram' => number_format($this->meal->protein, 2, '.', ''),
                 'carbs_gram' => number_format($this->meal->carbs, 2, '.', ''),
                 'fat_gram' => number_format($this->meal->fat, 2, '.', ''),
-                'Ca_gram' => number_format($this->meal->Ca, 2, '.', ''),
+                'K_gram' => number_format($this->meal->K, 2, '.', ''),
                 'Na_gram' => number_format($this->meal->Na, 2, '.', ''),
                 'calories_total' => number_format($total_calories, 2, '.', ''),
                 'protein_total' => number_format($total_protein, 2, '.', ''),
                 'carbs_total' => number_format($total_carbs, 2, '.', ''),
                 'fat_total' => number_format($total_fat, 2, '.', ''),
-                'Ca_total' => number_format($Ca_fat, 2, '.', ''),
+                'K_total' => number_format($K_fat, 2, '.', ''),
                 'Na_total' => number_format($Na_fat, 2, '.', ''),
                 'thumbnail_path' => $this->meal->thumbnail_path,
 

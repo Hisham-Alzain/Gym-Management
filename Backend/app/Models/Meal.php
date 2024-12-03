@@ -22,7 +22,7 @@ class Meal extends Model
         'protein',
         'carbs',
         'fat',
-        'Ca',
+        'K',
         'Na',
         "GI"
     ];
@@ -46,7 +46,7 @@ class Meal extends Model
             'protein' => 'decimal:2',
             'carbs' => 'decimal:2',
             'fat' => 'decimal:2',
-            'Ca' => 'decimal:2',
+            'K' => 'decimal:2',
             'Na' => 'decimal:2',
             'GI' => GI::class
         ];

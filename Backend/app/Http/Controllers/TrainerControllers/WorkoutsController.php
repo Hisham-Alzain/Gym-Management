@@ -82,7 +82,7 @@ class WorkoutsController extends MainController
                             'workout_exercise_id' => $exercise->id,
                             'set_number' => $S['set_no'],
                             'expected_reps' => $S['exp_reps'],
-                            'expected_rest_time' => $S['exp_rest'],
+                            'expected_rest_time' => $S['expected_rest_time'],
                             'tempo' => $S['tempo']
                         ]);
                     }

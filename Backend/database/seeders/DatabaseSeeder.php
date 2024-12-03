@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
             'role' => 'Trainer'
         ]);
         $this->call(ExerciseSeeder::class);
+        $this->call(MealSeeder::class);
     }
 }
