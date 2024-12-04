@@ -56,8 +56,8 @@ class DietMealResource extends JsonResource
                 'protein_total' => number_format($total_protein, 2, '.', ''),
                 'carbs_total' => number_format($total_carbs, 2, '.', ''),
                 'fat_total' => number_format($total_fat, 2, '.', ''),
-                'K_total' => number_format($K_fat, 2, '.', ''),
-                'Na_total' => number_format($Na_fat, 2, '.', ''),
+                'K_total' => number_format($K_fat, 4, '.', ''),
+                'Na_total' => number_format($Na_fat, 4, '.', ''),
                 'thumbnail_path' => $this->meal->thumbnail_path,
 
                 // DietMeal Model
