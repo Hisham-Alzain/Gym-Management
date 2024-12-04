@@ -144,6 +144,12 @@ Route::get(
         }
 
         $ext = pathinfo($path, PATHINFO_EXTENSION);
+        if ($ext == 'gif') {
+            $type = 'image/' . $ext;
+        } else {
+            $type = 'video/' . $ext;
+        }
+
         return response()->stream(function () use ($path) {
             try {
                 $stream = fopen($path, 'rb');
@@ -153,7 +159,7 @@ Route::get(
                 Log::error($e);
             }
         }, 200, [
-            'Content-Type' => 'video/' . $ext,
+            'Content-Type' => $type,
             'Access-Control-Allow-Origin' => '*'
         ]);
     }

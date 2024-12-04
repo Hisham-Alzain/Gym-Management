@@ -90,7 +90,8 @@ const ExerciseCard = ({ ExerciseData }) => {
           }
         </div>
         <div className={styles.column}>
-          <VideoPopUp Path={ExerciseData.video} />
+          <VideoPopUp Path={ExerciseData.video}
+            Name={ExerciseData.translations[i18n.language].name} />
           <UploadPopUp exercise_id={ExerciseData.exercise_id} />
           {!updating &&
             <button

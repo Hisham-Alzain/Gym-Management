@@ -68,10 +68,11 @@
     justify-content: center;
 }
 
-.video_div video {
+.video_div video,
+.video_div img {
     width: 100%;
     height: 100%;
-    max-width: 1280px;
-    max-height: 720px;
+    max-width: 640px;
+    max-height: 480px;
     object-fit: contain;
 }

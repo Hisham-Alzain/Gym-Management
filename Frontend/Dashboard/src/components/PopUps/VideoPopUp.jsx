@@ -7,7 +7,7 @@ import LoadingBars from '../LoadingBars';
 import styles from '../../styles/PopUps/video_popup.module.css';
 
 
-const VideoPopUp = ({ Path }) => {
+const VideoPopUp = ({ Path, Name }) => {
   // Translations
   const { t } = useTranslation('global');
   // Context
@@ -65,12 +65,12 @@ const VideoPopUp = ({ Path }) => {
             &times;
           </button>
           {isLoading ? <LoadingBars /> : <>
-            <div className={styles.header}>
-              {t('components.pop_ups.video_popup.header')}
-            </div>
+            <div className={styles.header}>{Name}</div>
+            {/* {t('components.pop_ups.video_popup.header')} */}
             <div className={styles.content}>
               <div className={styles.video_div}>
-                {Path && videoData ?
+                {Path && videoData ? videoData.type === 'image/gif' ?
+                  <img src={videoData.URL} alt="GIF" /> :
                   <video ref={vidRef} controls>
                     <source src={videoData.URL} type={videoData.type} />
                     {t('components.pop_ups.video_popup.video_tag')}
@@ -87,6 +87,6 @@ const VideoPopUp = ({ Path }) => {
       }
     </Popup>
   );
-};
+}
 
 export default VideoPopUp;
