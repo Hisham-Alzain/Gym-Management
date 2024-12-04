@@ -20,6 +20,8 @@ const MealCard = ({ MealData }) => {
   const [newFat, setNewFat] = useState(MealData.fat_per_gram);
   const [newK, setNewK] = useState(MealData.K_per_gram);
   const [newNa, setNewNa] = useState(MealData.Na_per_gram);
+  const [thumbnail_path, setThumbnailPath] = useState(MealData.thumbnail_path);
+  
 
   const handleDescription = (event) => {
     setNewDescription(event.target.value);
@@ -70,13 +72,24 @@ const MealCard = ({ MealData }) => {
     });
   }
 
+  const handlePhotoChange = (event) => {
+    setThumbnailPath(null);
+    const image = event.target.files[0];
+    const allowedImageTypes = ["image/png", "image/jpg", "image/jpeg"];
+    if (image && allowedImageTypes.includes(image.type)) {
+      setThumbnailPath(image);
+    } else {
+      console.log("Invalid Image type. Please select a PNG, JPG, JPEG image.");
+    }
+  }
+
 
   return (
     <div className={styles.meal_card}>
       {MealData && <div className={styles.row}>
-        <div className={styles.img_holder}>
+        <label htmlFor='thumbnailPath' className={styles.img_holder}>
           {MealData.thumbnail_path ? (
-            <img src={MealData.thumbnail_path}
+            <img src={thumbnail_path}
               alt="Uploaded Photo"
               style={{ pointerEvents: 'none' }}
               className={styles.image}
@@ -88,7 +101,17 @@ const MealCard = ({ MealData }) => {
               className={styles.image}
             />
           )}
-        </div>
+        </label>
+        <input
+          id='thumbnailPath'
+          type='file'
+          placeholder='Photo'
+          accept='.png,.jpg,.jpeg'
+          onChange={handlePhotoChange}
+          width="10px" height="10px"
+          style={{ visibility: 'hidden' }}
+          className={styles.inputx}
+        />
         <div className={styles.info}>
           <div className={styles.title_div}>
             <h3 className={styles.title}>
@@ -105,54 +128,66 @@ const MealCard = ({ MealData }) => {
                 <p>{`${t('components.meals_card.p5')} ${MealData.K_per_gram}g`}</p>
                 <p>{`${t('components.meals_card.p6')} ${MealData.Na_per_gram}g`}</p>
               </> : <div className={styles.input_div}>
-                <input
-                  type="number"
-                  value={newCalories}
-                  onChange={(event) => setNewCalories(event.target.value)}
-                  placeholder={t('components.meals_card.input1')}
-                  step="0.01"
-                  className={styles.custom_input}
-                />
-                <input
-                  type="number"
-                  value={newProtein}
-                  onChange={(event) => setNewProtein(event.target.value)}
-                  placeholder={t('components.meals_card.input2')}
-                  step="0.01"
-                  className={styles.custom_input}
-                />
-                <input
-                  type="number"
-                  value={newCarbs}
-                  onChange={(event) => setNewCarbs(event.target.value)}
-                  placeholder={t('components.meals_card.input3')}
-                  step="0.01"
-                  className={styles.custom_input}
-                />
-                <input
-                  type="number"
-                  value={newFat}
-                  onChange={(event) => setNewFat(event.target.value)}
-                  placeholder={t('components.meals_card.input4')}
-                  step="0.01"
-                  className={styles.custom_input}
-                />
-                <input
-                  type="number"
-                  value={newK}
-                  onChange={(event) => setNewK(event.target.value)}
-                  placeholder={t('components.meals_card.input5')}
-                  step="0.01"
-                  className={styles.custom_input}
-                />
-                <input
-                  type="number"
-                  value={newNa}
-                  onChange={(event) => setNewNa(event.target.value)}
-                  placeholder={t('components.meals_card.input6')}
-                  step="0.01"
-                  className={styles.custom_input}
-                />
+                <label>Calories:
+                  <input
+                    type="number"
+                    value={newCalories}
+                    onChange={(event) => setNewCalories(event.target.value)}
+                    placeholder={t('components.meals_card.input1')}
+                    step="0.01"
+                    className={styles.custom_input}
+                  />
+                </label>
+                <label>Protien:
+                  <input
+                    type="number"
+                    value={newProtein}
+                    onChange={(event) => setNewProtein(event.target.value)}
+                    placeholder={t('components.meals_card.input2')}
+                    step="0.01"
+                    className={styles.custom_input}
+                  />
+                </label>
+                <label>Carbs:
+                  <input
+                    type="number"
+                    value={newCarbs}
+                    onChange={(event) => setNewCarbs(event.target.value)}
+                    placeholder={t('components.meals_card.input3')}
+                    step="0.01"
+                    className={styles.custom_input}
+                  />
+                </label>
+                <label>Fat:
+                  <input
+                    type="number"
+                    value={newFat}
+                    onChange={(event) => setNewFat(event.target.value)}
+                    placeholder={t('components.meals_card.input4')}
+                    step="0.01"
+                    className={styles.custom_input}
+                  />
+                </label>
+                <label>K:
+                  <input
+                    type="number"
+                    value={newK}
+                    onChange={(event) => setNewK(event.target.value)}
+                    placeholder={t('components.meals_card.input5')}
+                    step="0.01"
+                    className={styles.custom_input}
+                  />
+                </label>
+                <label>Na:
+                  <input
+                    type="number"
+                    value={newNa}
+                    onChange={(event) => setNewNa(event.target.value)}
+                    placeholder={t('components.meals_card.input6')}
+                    step="0.01"
+                    className={styles.custom_input}
+                  />
+                </label>
               </div>
             }
           </div>

@@ -70,7 +70,7 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
   }
 
   const columnStructure = [
-    { key: 'program_id', label: t('components.pop_ups.workouts_popup.label1') },
+    { key: 'index', label: t('components.pop_ups.workouts_popup.label1') },
     { key: 'start_date', label: t('components.pop_ups.workouts_popup.label2') },
     { key: 'end_date', label: t('components.pop_ups.workouts_popup.label3') },
   ];
@@ -114,10 +114,12 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
                     </tr>
                   </thead>
                   <tbody>{programs.length > 0 ? (
-                    programs.map((program) => <tr key={program.program_id}>
+                    programs.map((program, index) => <tr key={program.program_id}>
                       {columnStructure.map((column) => (
                         <td key={column.key}>
-                          {program[column.key]}
+                          {column.key == 'index' ? index + 1 :
+                            program[column.key]
+                          }
                         </td>
                       ))}
                       <td>

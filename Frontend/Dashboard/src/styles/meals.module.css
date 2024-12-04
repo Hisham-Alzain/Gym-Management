@@ -79,6 +79,10 @@
     justify-content: center;
 }
 
+.inputx{
+    width: 1px;
+}
+
 .image {
     width: 130px;
     height: 130px;
