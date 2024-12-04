@@ -25,7 +25,7 @@ const NewMealPopUp = () => {
   const [protein, setProtein] = useState('');
   const [carbs, setcarbs] = useState('');
   const [fat, setfat] = useState('');
-  const [Ca, setCa] = useState('');
+  const [K, setK] = useState('');
   const [Na, setNa] = useState('');
   const [gis, setGis] = useState([]);
   const [gi, setGi] = useState('');
@@ -60,7 +60,7 @@ const NewMealPopUp = () => {
       protein,
       carbs,
       fat,
-      Ca,
+      K,
       Na,
       gi,
       thumbnailPath
@@ -196,8 +196,8 @@ const NewMealPopUp = () => {
                   />
                   <input
                     type="number"
-                    value={Ca}
-                    onChange={(event) => setCa(event.target.value)}
+                    value={K}
+                    onChange={(event) => setK(event.target.value)}
                     placeholder={t('components.pop_ups.meal_popup.input7')}
                     step="0.01"
                     className={styles.custom_input2}
