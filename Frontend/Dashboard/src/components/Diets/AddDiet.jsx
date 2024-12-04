@@ -9,17 +9,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../../styles/add_diet.module.css";
 
-const SuccessPopup = ({ onClose }) => {
-  return (
-    <div className={styles.modal}>
-      <div className={styles.modal_content}>
-        <h2>{t('components.add_diet.Success')}</h2>
-        <p>{t('components.add_diet.SuccessPopup')}</p>
-        <button onClick={onClose}>{t('components.add_diet.ReturnPopup')}</button>
-      </div>
-    </div>
-  );
-};
 
 const AddDiet = () => {
   // Params
@@ -144,6 +133,19 @@ const AddDiet = () => {
   if (isLoading) {
     return <LoadingBars />;
   }
+
+  const SuccessPopup = ({ onClose }) => {
+    return (
+      <div className={styles.modal}>
+        <div className={styles.modal_content}>
+          <h2>{t('components.add_diet.Success')}</h2>
+          <p>{t('components.add_diet.SuccessPopup')}</p>
+          <button onClick={onClose}>{t('components.add_diet.ReturnPopup')}</button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.programs}>
       {showSuccessPopup && <SuccessPopup onClose={handleClosePopup} />}

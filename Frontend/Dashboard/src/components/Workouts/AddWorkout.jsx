@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, useRef } from 'react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { FaCalendarDays } from "react-icons/fa6";
 import { LoginContext } from '../../utils/Contexts';
@@ -30,7 +30,7 @@ const AddWorkout = () => {
   const [endDate, setEndDate] = useState(new Date().toISOString().split('T')[0]);
   const [dateDifference, setDateDifference] = useState('');
   const [error, setError] = useState('');
-
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [repeatDays, setRepeatDays] = useState(2);
   const [exercises, setExercises] = useState(Array.from({ length: repeatDays }, () => []));
   const [selectedMuscles, setSelectedMuscles] = useState(Array.from({ length: repeatDays }, () => ""));
@@ -39,6 +39,7 @@ const AddWorkout = () => {
   const [availableExercises, setAvailableExercises] = useState(Array.from({ length: repeatDays }, () => []));
   const [currentPage, setCurrentPage] = useState(Array.from({ length: repeatDays }, () => 1));
   const [lastPage, setLastPage] = useState(Array.from({ length: repeatDays }, () => 1));
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!initialized.current) {
@@ -175,8 +176,9 @@ const AddWorkout = () => {
     }
 
     CreateDefaultWorkout(accessToken, user_id, startDate, endDate, program).then((response) => {
-      if (response.status === 200) {
+      if (response.status === 201) {
         console.log(response.data);
+        setShowSuccessPopup(true);
       } else {
         console.log('Error creating workout', response);
         if (response.data.errors && response.data.errors.end_date) {
@@ -227,6 +229,7 @@ const AddWorkout = () => {
       if (response.status === 201) {
         console.log(response.data);
         setIsCreatingWorkout(false);
+        setShowSuccessPopup(true);
       } else {
         console.log('Error creating workout', response);
         setError(t('components.add_workout.error1'));
@@ -234,11 +237,30 @@ const AddWorkout = () => {
     });
   }
 
+  const handleClosePopup = () => {
+    setShowSuccessPopup(false);
+    navigate('/home');
+  }
+
   if (isLoading) {
     return <LoadingBars />;
   }
+
+  const SuccessPopup = ({ onClose }) => {
+    return (
+      <div className={styles.modal}>
+        <div className={styles.modal_content}>
+          <h2>{t('components.add_diet.Success')}</h2>
+          <p>{t('components.add_workout.SuccessPopup')}</p>
+          <button onClick={onClose}>{t('components.add_diet.ReturnPopup')}</button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.programs}>
+      {showSuccessPopup && <SuccessPopup onClose={handleClosePopup} />}
       <div className={styles.header}>
         <h1>{t('components.add_workout.h1')} {user_name}</h1>
         <div className={styles.row}>

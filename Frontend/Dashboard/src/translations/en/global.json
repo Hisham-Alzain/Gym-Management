@@ -163,7 +163,8 @@
             "error1": "Failed to create workout. Please try again.",
             "error2": "Please enter both start and end dates before creating a workout.",
             "error3": "Please enter both start and end dates.",
-            "error4": "Please add at least one exercise for Day"
+            "error4": "Please add at least one exercise for Day",
+            "SuccessPopup":"Your workout program has been created successfully!"
         },
         "show_program": {
             "header": "'s Workout Program",
