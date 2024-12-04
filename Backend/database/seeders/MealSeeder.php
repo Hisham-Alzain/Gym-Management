@@ -22,8 +22,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.755,
                 'fat' => 0.0385,
                 'GI' => 'Mid',
-                'K'=>0.00265,
-                'Na'=>0,
+                'K' => 0.00265,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -44,8 +44,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.173,
                 'fat' => 0.0038,
                 'GI' => 'High',
-                'K'=>0.0127,
-                'Na'=>0,
+                'K' => 0.0127,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -66,8 +66,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.799,
                 'fat' => 0.0095,
                 'GI' => 'High',
-                'K'=>0.0127,
-                'Na'=>0,
+                'K' => 0.0127,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -88,8 +88,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0805,
                 'fat' => 0.0148,
                 'GI' => 'Mid',
-                'K'=>0.00319,
-                'Na'=>0.00419,
+                'K' => 0.00319,
+                'Na' => 0.00419,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -110,8 +110,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.759,
                 'fat' => 0.0242,
                 'GI' => 'Low',
-                'K'=>0.00358,
-                'Na'=>0,
+                'K' => 0.00358,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -132,8 +132,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.598,
                 'fat' => 0.022,
                 'GI' => 'Low',
-                'K'=>0.0142,
-                'Na'=>0,
+                'K' => 0.0142,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -154,8 +154,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.149,
                 'fat' => 0.171,
                 'GI' => 'Low',
-                'K'=>0.0029,
-                'Na'=>0.0044,
+                'K' => 0.0029,
+                'Na' => 0.0044,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -176,8 +176,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0236,
                 'fat' => 0,
                 'GI' => 'Low',
-                'K'=>0.0013,
-                'Na'=>0.0013,
+                'K' => 0.0013,
+                'Na' => 0.0013,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -198,8 +198,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0236,
                 'fat' => 0,
                 'GI' => 'Low',
-                'K'=>0.0013,
-                'Na'=>0.0013,
+                'K' => 0.0013,
+                'Na' => 0.0013,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -220,8 +220,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.08,
                 'fat' => 0,
                 'GI' => 'Low',
-                'K'=>0.0021,
-                'Na'=>0.0005,
+                'K' => 0.0021,
+                'Na' => 0.0005,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -242,8 +242,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0557,
                 'fat' => 0.05,
                 'GI' => 'Low',
-                'K'=>0.0023,
-                'Na'=>0.001,
+                'K' => 0.0023,
+                'Na' => 0.001,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -264,8 +264,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0207,
                 'fat' => 0.243,
                 'GI' => 'Low',
-                'K'=>0.0012,
-                'Na'=>0.0181,
+                'K' => 0.0012,
+                'Na' => 0.0181,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -281,13 +281,13 @@ class MealSeeder extends Seeder
             ],
             [
                 'thumbnail_path' => 'meals_thumbnails/2024_11_05_182806lamp_photo.jpg',
-                'calories'=>2.43,
-                'protein'=>0.17,
-                'carbs'=>0,
-                'fat'=>0.194,
+                'calories' => 2.43,
+                'protein' => 0.17,
+                'carbs' => 0,
+                'fat' => 0.194,
                 'GI' => 'Low',
-                'K'=>0.0027,
-                'Na'=>0.0006,
+                'K' => 0.0027,
+                'Na' => 0.0006,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -308,8 +308,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0,
                 'fat' => 0.178,
                 'GI' => 'Low',
-                'K'=>0.0028,
-                'Na'=>0.0006,
+                'K' => 0.0028,
+                'Na' => 0.0006,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -330,8 +330,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0,
                 'fat' => 0.0193,
                 'GI' => 'Low',
-                'K'=>0.0033,
-                'Na'=>0.0007,
+                'K' => 0.0033,
+                'Na' => 0.0007,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -352,8 +352,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0,
                 'fat' => 0.0792,
                 'GI' => 'Low',
-                'K'=>0.0027,
-                'Na'=>0.0006,
+                'K' => 0.0027,
+                'Na' => 0.0006,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -374,8 +374,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.201,
                 'fat' => 0.0022,
                 'GI' => 'High',
-                'K'=>0.0033,
-                'Na'=>0,
+                'K' => 0.0033,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -396,8 +396,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0786,
                 'fat' => 0.0022,
                 'GI' => 'Low',
-                'K'=>0.0016,
-                'Na'=>0,
+                'K' => 0.0016,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -418,8 +418,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0551,
                 'fat' => 0.0063,
                 'GI' => 'Mid',
-                'K'=>0.0022,
-                'Na'=>0,
+                'K' => 0.0022,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -440,8 +440,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.118,
                 'fat' => 0.0015,
                 'GI' => 'Low',
-                'K'=>0.0017,
-                'Na'=>0.0001,
+                'K' => 0.0017,
+                'Na' => 0.0001,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -462,8 +462,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.156,
                 'fat' => 0.0016,
                 'GI' => 'Low',
-                'K'=>0.0011,
-                'Na'=>0,
+                'K' => 0.0011,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -484,8 +484,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.187,
                 'fat' => 0.0117,
                 'GI' => 'Low',
-                'K'=>0.0024,
-                'Na'=>0,
+                'K' => 0.0024,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -506,8 +506,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.102,
                 'fat' => 0.004,
                 'GI' => 'Low',
-                'K'=>0.0026,
-                'Na'=>0,
+                'K' => 0.0026,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -528,8 +528,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.0755,
                 'fat' => 0.0015,
                 'GI' => 'High',
-                'K'=>0.0011,
-                'Na'=>0,
+                'K' => 0.0011,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -550,8 +550,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.245,
                 'fat' => 0.484,
                 'GI' => 'Mid',
-                'K'=>0.0066,
-                'Na'=>0,
+                'K' => 0.0066,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -572,8 +572,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.147,
                 'fat' => 0.0163,
                 'GI' => 'Mid',
-                'K'=>0.0014,
-                'Na'=>0,
+                'K' => 0.0014,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -594,8 +594,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.05,
                 'fat' => 0.129,
                 'GI' => 'Low',
-                'K'=>0.0004,
-                'Na'=>0.0162,
+                'K' => 0.0004,
+                'Na' => 0.0162,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -616,8 +616,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.109,
                 'fat' => 0.697,
                 'GI' => 'Mid',
-                'K'=>0.0042,
-                'Na'=>0,
+                'K' => 0.0042,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -638,8 +638,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.162,
                 'fat' => 0.5,
                 'GI' => 'Mid',
-                'K'=>0.0067,
-                'Na'=>0,
+                'K' => 0.0067,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -660,8 +660,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.26,
                 'fat' => 0.53,
                 'GI' => 'Mid',
-                'K'=>0.063,
-                'Na'=>0,
+                'K' => 0.063,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -682,8 +682,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.36,
                 'fat' => 0.389,
                 'GI' => 'Mid',
-                'K'=>0.0638,
-                'Na'=>0,
+                'K' => 0.0638,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -704,8 +704,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.36,
                 'fat' => 0.389,
                 'GI' => 'Mid',
-                'K'=>0.1,
-                'Na'=>0,
+                'K' => 0.1,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",
@@ -726,8 +726,8 @@ class MealSeeder extends Seeder
                 'carbs' => 0.36,
                 'fat' => 0.389,
                 'GI' => 'Mid',
-                'K'=>0.0638,
-                'Na'=>0,
+                'K' => 0.0638,
+                'Na' => 0,
                 "translations" => [
                     [
                         "lang" => "en",

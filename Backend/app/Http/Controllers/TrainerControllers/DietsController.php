@@ -313,7 +313,7 @@ class DietsController extends MainController
             'protein' => ['sometimes', 'numeric'],
             'carbs' => ['sometimes', 'numeric'],
             'fat' => ['sometimes', 'numeric'],
-            'Ca' => ['sometimes', 'numeric'],
+            'K' => ['sometimes', 'numeric'],
             'Na' => ['sometimes', 'numeric'],
         ]);
 
