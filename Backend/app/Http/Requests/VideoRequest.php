@@ -25,7 +25,7 @@ class VideoRequest extends FormRequest
     {
         return [
             'exercise_id' => ['required', 'exists:exercises,id'],
-            'video' => ['required', 'mimes:mp4,m4v,mkv,webm,flv,avi,wmv']
+            'video' => ['required', 'mimes:mp4,m4v,mkv,webm,flv,avi,wmv,gif']
         ];
     }
 

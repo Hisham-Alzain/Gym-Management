@@ -17,7 +17,7 @@ const UploadPopUp = ({ exercise_id }) => {
   const handleFileChange = (event) => {
     event.preventDefault();
     setFile(null);
-    const allowedFileTypes = ["video/mp4", "video/m4v", "video/mkv", "video/webm", "video/flv", "video/avi", "video/wmv"];
+    const allowedFileTypes = ["video/mp4", "video/m4v", "video/mkv", "video/webm", "video/flv", "video/avi", "video/wmv", "image/gif"];
     if (event.target.files.length > 0) {
       if (allowedFileTypes.includes(event.target.files[0].type)) {
         setFile(event.target.files[0]);
@@ -62,7 +62,7 @@ const UploadPopUp = ({ exercise_id }) => {
               <input
                 id='file'
                 type='file'
-                accept='.mp4,.m4v,.mkv,.webm,.flv,.avi,.wmv'
+                accept='.mp4,.m4v,.mkv,.webm,.flv,.avi,.wmv,.gif'
                 onChange={handleFileChange}
               />
               {file &&
