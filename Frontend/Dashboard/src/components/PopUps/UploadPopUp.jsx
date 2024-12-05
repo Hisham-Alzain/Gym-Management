@@ -27,8 +27,8 @@ const UploadPopUp = ({ exercise_id }) => {
     }
   }
 
-  const handleFileUpload = (event) => {
-    UploadExerciseVideo(accessToken, exercise_id, event.target.files[0]).then((response) => {
+  const handleFileUpload = () => {
+    UploadExerciseVideo(accessToken, exercise_id, file).then((response) => {
       if (response.status == 200) {
         console.log('Video uploaded successfully');
         window.location.reload();
