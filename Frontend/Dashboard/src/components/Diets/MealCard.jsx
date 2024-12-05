@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginContext } from "../../utils/Contexts";
-import { UpdateMeal, DeleteMeal } from '../../apis/DietsApis';
+import { UpdateMeal, UpdateMealPhoto, DeleteMeal } from '../../apis/DietsApis';
 import img_holder from '../../assets/noImage.jpg';
 import styles from '../../styles/meals.module.css';
 
@@ -21,7 +21,7 @@ const MealCard = ({ MealData }) => {
   const [newK, setNewK] = useState(MealData.K_per_gram);
   const [newNa, setNewNa] = useState(MealData.Na_per_gram);
   const [thumbnail_path, setThumbnailPath] = useState(MealData.thumbnail_path);
-  
+
 
   const handleDescription = (event) => {
     setNewDescription(event.target.value);
@@ -72,12 +72,19 @@ const MealCard = ({ MealData }) => {
     });
   }
 
-  const handlePhotoChange = (event) => {
+  const handlePhotoChange = (event, meal_id) => {
     setThumbnailPath(null);
     const image = event.target.files[0];
     const allowedImageTypes = ["image/png", "image/jpg", "image/jpeg"];
     if (image && allowedImageTypes.includes(image.type)) {
       setThumbnailPath(image);
+      UpdateMealPhoto(accessToken, meal_id, event.target.files[0]).then((response) => {
+        if (response.status === 200) {
+          window.location.reload();
+        } else {
+          console.log(response);
+        }
+      });
     } else {
       console.log("Invalid Image type. Please select a PNG, JPG, JPEG image.");
     }
@@ -89,7 +96,7 @@ const MealCard = ({ MealData }) => {
       {MealData && <div className={styles.row}>
         <label htmlFor='thumbnailPath' className={styles.img_holder}>
           {MealData.thumbnail_path ? (
-            <img src={thumbnail_path}
+            <img src={MealData.thumbnail_path}
               alt="Uploaded Photo"
               style={{ pointerEvents: 'none' }}
               className={styles.image}
@@ -107,7 +114,7 @@ const MealCard = ({ MealData }) => {
           type='file'
           placeholder='Photo'
           accept='.png,.jpg,.jpeg'
-          onChange={handlePhotoChange}
+          onChange={(event) => handlePhotoChange(event, MealData.meal_id)}
           width="10px" height="10px"
           style={{ visibility: 'hidden' }}
           className={styles.inputx}

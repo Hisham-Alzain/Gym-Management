@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Http\Requests\ExerciseRequest;
+use App\Http\Requests\ExercisePhotoRequest;
 use App\Http\Requests\WorkoutRequest;
 use App\Http\Requests\DefaultWorkoutRequest;
 use App\Http\Requests\VideoRequest;
@@ -392,6 +393,80 @@ class WorkoutsController extends MainController
             ], 200);
         }
     }
+
+    public function UpdateExercisePhoto(ExercisePhotoRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get exercise
+            $exercise = Exercise::find($validated['exercise_id']);
+
+            // Check exercise
+            if ($exercise == null) {
+                return response()->json([
+                    'errors' => ['exercise' => 'Exercise was not found'],
+                ], 404);
+            }
+
+            // Handle file uploads if present in the request
+            if ($request->hasFile('thumbnail_path')) {
+                // Get Uploaded photos
+                $thumbnail = $request->file('thumbnail_path');
+
+                // Set destination
+                $destination = 'exercises_thumbnails';
+
+                // Get file name
+                $extension = $thumbnail->getClientOriginalName();
+
+                // Set file name
+                $fileName = now()->format('Y_m_d_His') . $extension;
+
+                // Check and delete previous video
+                $previous_path = $exercise->thumbnail_path;
+                if ($previous_path != null) {
+                    if (file_exists(storage_path('app/private/' . $previous_path))) {
+                        unlink(storage_path('app/private/' . $previous_path));
+                    }
+                }
+
+                // Store file and get path
+                $path = $thumbnail->storeAs($destination, $fileName);
+                $exercise->thumbnail_path = $path;
+                $exercise->save();
+            } else {
+                // Response
+                return response()->json([
+                    'errors' => ['thumbnail' => 'Invalid thumbnail'],
+                ], 401);
+            }
+
+            // Response
+            return response()->json([
+                "message" => "exercise thumbnail updated successfully"
+            ], 200);
+        }
+    }
+
 
     public function AddExercise(ExerciseRequest $request)
     {

@@ -128,6 +128,24 @@ export const UpdateMeal = async (token, meal_id, lang, description, calories, pr
   }
 };
 
+export const UpdateMealPhoto = async (token, meal_id, thumbnail_path) => {
+  try {
+    const response = await axios.post(`http://127.0.0.1:8000/api/meals/photo`, {
+      "meal_id": meal_id,
+      "thumbnail_path": thumbnail_path
+    }, {
+      headers: {
+        'Content-Type': 'multipart/form-data; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const DeleteMeal = async (token, meal_id) => {
   try {
     const response = await axios.delete(`http://127.0.0.1:8000/api/meals/${meal_id}`, {

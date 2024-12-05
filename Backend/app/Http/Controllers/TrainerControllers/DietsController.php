@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Requests\MealRequest;
+use App\Http\Requests\MealPhotoRequest;
 use App\Http\Requests\DietRequest;
 use App\Http\Resources\MealResource;
 use App\Http\Resources\MealCollection;
@@ -236,6 +237,79 @@ class DietsController extends MainController
                     'path' => $meals->path(),
                 ],
             ]);
+        }
+    }
+
+    public function UpdateMealPhoto(MealPhotoRequest $request)
+    {
+        // Validate request
+        $validated = $request->validated();
+
+        // Get user
+        $user = Auth::user();
+
+        // Check user
+        if ($user == null) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user_role
+        $policy = new AdminPolicy();
+        if (!$policy->Policy(User::find($user->id))) {
+            // Response
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        } else {
+            // Get meal
+            $meal = Meal::find($validated['meal_id']);
+
+            // Check meal
+            if ($meal == null) {
+                return response()->json([
+                    'errors' => ['meal' => 'Meal was not found'],
+                ], 404);
+            }
+
+            // Handle file uploads if present in the request
+            if ($request->hasFile('thumbnail_path')) {
+                // Get Uploaded photos
+                $thumbnail = $request->file('thumbnail_path');
+
+                // Set destination
+                $destination = 'meals_thumbnails';
+
+                // Get file name
+                $extension = $thumbnail->getClientOriginalName();
+
+                // Set file name
+                $fileName = now()->format('Y_m_d_His') . $extension;
+
+                // Check and delete previous video
+                $previous_path = $meal->thumbnail_path;
+                if ($previous_path != null) {
+                    if (file_exists(storage_path('app/private/' . $previous_path))) {
+                        unlink(storage_path('app/private/' . $previous_path));
+                    }
+                }
+
+                // Store file and get path
+                $path = $thumbnail->storeAs($destination, $fileName);
+                $meal->thumbnail_path = $path;
+                $meal->save();
+            } else {
+                // Response
+                return response()->json([
+                    'errors' => ['thumbnail' => 'Invalid thumbnail'],
+                ], 401);
+            }
+
+            // Response
+            return response()->json([
+                "message" => "meal thumbnail updated successfully"
+            ], 200);
         }
     }
 

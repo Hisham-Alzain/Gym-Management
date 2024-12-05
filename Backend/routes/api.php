@@ -80,6 +80,7 @@ Route::controller(TrainerWorkoutsController::class)->group(function () {
         Route::post('/exercise/create', 'AddExercise');
         Route::post('/exercise/update', 'UpdateExercise');
         Route::post('/exercise/video', 'UploadExerciseVideo');
+        Route::post('/exercise/photo', 'UpdateExercisePhoto');
         Route::delete('/exercises/{exercise_id}', 'DeleteExercise');
     });
 });
@@ -94,6 +95,7 @@ Route::controller(TrainerDietsController::class)->group(function () {
         Route::get('/meals', 'ShowMeals');
         Route::post('/meals/create', 'AddMeal');
         Route::post('/meals/update', 'UpdateMeal');
+        Route::post('/meals/photo', 'UpdateMealPhoto');
         Route::delete('/meals/{meal_id}', 'DeleteMeal');
     });
 });

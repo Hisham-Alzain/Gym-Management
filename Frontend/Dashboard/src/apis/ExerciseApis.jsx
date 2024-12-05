@@ -35,7 +35,26 @@ export const UploadExerciseVideo = async (token, exercise_id, video) => {
         console.log(video);
         const response = await axios.post(`http://127.0.0.1:8000/api/exercise/video`, {
             "exercise_id": exercise_id,
-            "video": video,
+            "video": video
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data; charset=UTF-8',
+                'Accept': "application/json;",
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response;
+    } catch (error) {
+        return error.response;
+    }
+};
+
+export const UpdateExercisePhoto = async (token, exercise_id, thumbnail_path) => {
+    try {
+        console.log('nigga');
+        const response = await axios.post(`http://127.0.0.1:8000/api/exercise/photo`, {
+            "exercise_id": exercise_id,
+            "thumbnail_path": thumbnail_path
         }, {
             headers: {
                 'Content-Type': 'multipart/form-data; charset=UTF-8',
