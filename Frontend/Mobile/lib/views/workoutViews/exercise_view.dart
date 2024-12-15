@@ -110,6 +110,7 @@ class ExerciseView extends StatelessWidget {
                             child: EditContainer(
                               name: '100'.tr,
                               child: ListView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: controller.exercise.sets.length,
                                 shrinkWrap: true,
                                 itemBuilder: (context, index) {
@@ -124,88 +125,155 @@ class ExerciseView extends StatelessWidget {
                                         .userSets?.repWeight
                                         .toString(),
                                   );
+                                  final restTimeController =
+                                      TextEditingController(
+                                    text: controller
+                                        .exercise.sets[index].userSets?.restTime
+                                        .toString(),
+                                  );
                                   final GlobalKey<FormState> setsForm =
                                       GlobalKey<FormState>();
                                   return Form(
                                     key: setsForm,
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: Row(
-                                            children: [
-                                              Text(
-                                                "${'101'.tr} ${controller.exercise.sets[index].setNumber}: ",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleLarge,
-                                              ),
-                                              Text(
-                                                "${controller.exercise.sets[index].expectedReps} ${'102'.tr}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleLarge,
-                                              ),
-                                            ],
-                                          ),
+                                        TextComponent(
+                                          title:
+                                              '${'101'.tr} ${controller.exercise.sets[index].setNumber}',
+                                          text: '',
+                                        ),
+                                        TextComponent(
+                                          title: '102'.tr,
+                                          text:
+                                              '${controller.exercise.sets[index].expectedReps} ${'103'.tr}',
+                                        ),
+                                        TextComponent(
+                                          title: '121'.tr,
+                                          text:
+                                              '${controller.exercise.sets[index].expectedRestTime} ${'120'.tr} ',
+                                        ),
+                                        TextComponent(
+                                          title: '122'.tr,
+                                          text: controller
+                                              .exercise.sets[index].tempo,
                                         ),
                                         Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
                                           children: [
-                                            SizedBox(
-                                              width: 130,
-                                              child: CustomTextField(
-                                                controller: repsController,
-                                                textInputType:
-                                                    TextInputType.number,
-                                                obsecureText: false,
-                                                icon:
-                                                    FontAwesomeIcons.arrowUp91,
-                                                labelText: '103'.tr,
-                                                validator: (p0) =>
-                                                    CustomValidation()
-                                                        .validateNumber(p0),
-                                                maxLines: 1,
+                                            Padding(
+                                              padding: const EdgeInsets.all(5),
+                                              child: SizedBox(
+                                                height: 60,
+                                                width: 150,
+                                                child: CustomTextField(
+                                                  controller: repsController,
+                                                  textInputType:
+                                                      TextInputType.number,
+                                                  obsecureText: false,
+                                                  icon: FontAwesomeIcons
+                                                      .arrowUp91,
+                                                  labelText: '103'.tr,
+                                                  validator: (p0) =>
+                                                      CustomValidation()
+                                                          .validateNumber(p0),
+                                                  maxLines: 1,
+                                                ),
                                               ),
                                             ),
-                                            SizedBox(
-                                              width: 130,
-                                              child: CustomTextField(
-                                                controller: weightController,
-                                                textInputType:
-                                                    TextInputType.number,
-                                                obsecureText: false,
-                                                icon: FontAwesomeIcons
-                                                    .weightHanging,
-                                                labelText: '78'.tr,
-                                                validator: (p0) =>
-                                                    CustomValidation()
-                                                        .validateNumber(p0),
-                                                maxLines: 1,
+                                            Padding(
+                                              padding: const EdgeInsets.all(5),
+                                              child: SizedBox(
+                                                height: 60,
+                                                width: 150,
+                                                child: CustomTextField(
+                                                  controller: weightController,
+                                                  textInputType:
+                                                      TextInputType.number,
+                                                  obsecureText: false,
+                                                  icon: FontAwesomeIcons
+                                                      .weightHanging,
+                                                  labelText: '78'.tr,
+                                                  validator: (p0) =>
+                                                      CustomValidation()
+                                                          .validateNumber(p0),
+                                                  maxLines: 1,
+                                                ),
                                               ),
                                             ),
-                                            IconButton(
-                                              onPressed: () {
-                                                if (setsForm.currentState
-                                                        ?.validate() ==
-                                                    true) {
-                                                  controller.addSet(
-                                                    controller.exercise
-                                                        .sets[index].setId,
-                                                    int.parse(
-                                                        repsController.text),
-                                                    double.parse(
-                                                        weightController.text),
-                                                  );
-                                                }
-                                              },
-                                              icon: const Icon(
-                                                  Icons.add_circle_outline),
-                                              iconSize: 30,
-                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(5),
+                                              child: SizedBox(
+                                                height: 60,
+                                                width: 150,
+                                                child: CustomTextField(
+                                                  controller:
+                                                      restTimeController,
+                                                  textInputType:
+                                                      TextInputType.number,
+                                                  obsecureText: false,
+                                                  icon: FontAwesomeIcons.clock,
+                                                  labelText: '123'.tr,
+                                                  validator: (p0) =>
+                                                      CustomValidation()
+                                                          .validateNumber(p0),
+                                                  maxLines: 1,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(5),
+                                              child: RedContainer(
+                                                  height: 60,
+                                                  width: 150,
+                                                  child: IconButton(
+                                                    onPressed: () {
+                                                      if (setsForm.currentState
+                                                              ?.validate() ==
+                                                          true) {
+                                                        controller.addSet(
+                                                          controller
+                                                              .exercise
+                                                              .sets[index]
+                                                              .setId,
+                                                          int.parse(
+                                                              repsController
+                                                                  .text),
+                                                          double.parse(
+                                                              weightController
+                                                                  .text),
+                                                          int.parse(
+                                                              restTimeController
+                                                                  .text),
+                                                        );
+                                                      }
+                                                    },
+                                                    icon: Row(
+                                                      children: [
+                                                        const Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                            right: 5,
+                                                          ),
+                                                          child: Icon(
+                                                            Icons
+                                                                .add_circle_outline,
+                                                            size: 30,
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          "124".tr,
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .labelLarge,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )),
+                                            ),
                                           ],
                                         ),
                                       ],

@@ -10,13 +10,13 @@ class Meal {
   final double proteinPerGram; //g
   final double carbsPerGram; //g
   final double fatPerGram; //g
-  final double calciumPerGram; //g
+  final double potassiumPerGram; //g
   final double sodiumPerGram; //g
   final double totalCalories; //cal
   final double totalProtein; //g
   final double totalCarbs; //g
   final double totalFat; //g
-  final double totalCalcium; //g
+  final double totalPotassium; //g
   final double totalSodium; //g
   final String? thumbnailPath;
   final double quantity;
@@ -34,13 +34,13 @@ class Meal {
     required this.proteinPerGram,
     required this.carbsPerGram,
     required this.fatPerGram,
-    required this.calciumPerGram,
+    required this.potassiumPerGram,
     required this.sodiumPerGram,
     required this.totalCalories,
     required this.totalProtein,
     required this.totalCarbs,
     required this.totalFat,
-    required this.totalCalcium,
+    required this.totalPotassium,
     required this.totalSodium,
     required this.thumbnailPath,
     required this.quantity,
@@ -60,13 +60,13 @@ class Meal {
         proteinPerGram = double.parse(json['meal']['protein_gram']),
         carbsPerGram = double.parse(json['meal']['carbs_gram']),
         fatPerGram = double.parse(json['meal']['fat_gram']),
-        calciumPerGram = double.parse(json['meal']['Ca_gram']),
+        potassiumPerGram = double.parse(json['meal']['K_gram']),
         sodiumPerGram = double.parse(json['meal']['Na_gram']),
         totalCalories = double.parse(json['meal']['calories_total']),
         totalProtein = double.parse(json['meal']['protein_total']),
         totalCarbs = double.parse(json['meal']['carbs_total']),
         totalFat = double.parse(json['meal']['fat_total']),
-        totalCalcium = double.parse(json['meal']['Ca_total']),
+        totalPotassium = double.parse(json['meal']['K_total']),
         totalSodium = double.parse(json['meal']['Na_total']),
         thumbnailPath = json['meal']['thumbnail_path'] as String,
         quantity = double.parse(json['meal']['quantity']),
@@ -84,13 +84,13 @@ class Meal {
         proteinPerGram = 0,
         carbsPerGram = 0,
         fatPerGram = 0,
-        calciumPerGram = 0,
+        potassiumPerGram = 0,
         sodiumPerGram = 0,
         totalCalories = 0,
         totalProtein = 0,
         totalCarbs = 0,
         totalFat = 0,
-        totalCalcium = 0,
+        totalPotassium = 0,
         totalSodium = 0,
         thumbnailPath = '',
         quantity = 0,

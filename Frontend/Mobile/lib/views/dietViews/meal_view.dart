@@ -144,12 +144,12 @@ class MealView extends StatelessWidget {
                           TextComponent(
                             title: '116'.tr,
                             text:
-                                "${controller.selectedMeal.totalCalcium} ${'70'.tr}",
+                                "${controller.selectedMeal.totalPotassium} ${'70'.tr}",
                           ),
                           TextComponent(
                             title: '117'.tr,
                             text:
-                                "${controller.selectedMeal.calciumPerGram} ${'70'.tr}",
+                                "${controller.selectedMeal.potassiumPerGram} ${'70'.tr}",
                           ),
                           TextComponent(
                             title: '118'.tr,

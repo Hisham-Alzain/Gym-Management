@@ -54,7 +54,6 @@ class ExerciseController extends GetxController {
         ),
       );
       if (response.statusCode == 200) {
-        log(response.data.toString());
         exercise = Exercise.fromJson(response.data['exercise']);
         update();
       } else if (response.statusCode == 401) {
@@ -71,6 +70,7 @@ class ExerciseController extends GetxController {
     int setId,
     int reps,
     double weight,
+    int restTime,
   ) async {
     String token = storage?.read('token');
     try {
@@ -87,6 +87,7 @@ class ExerciseController extends GetxController {
           "set_id": setId,
           "day_date": DateTime.now().toString().split(' ')[0],
           "user_reps": reps,
+          "user_rest_time": restTime,
           "user_rep_weight": weight,
         },
       );
