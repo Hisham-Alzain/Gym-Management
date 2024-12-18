@@ -153,20 +153,18 @@ class ProfileView extends StatelessWidget {
                                   TextComponent(
                                     icon: Icons.healing,
                                     title: '81'.tr,
-                                    text:
-                                        ' ${controller.user.illnesses} ?? ${'95'.tr}',
+                                    text: controller.user.illnesses ?? '95'.tr,
                                   ),
                                   TextComponent(
                                     icon: Icons.sick,
                                     title: '83'.tr,
-                                    text:
-                                        ' ${controller.user.allergies} ?? ${'95'.tr}',
+                                    text: controller.user.allergies ?? '95'.tr,
                                   ),
                                   TextComponent(
                                     icon: Icons.no_food,
                                     title: '85'.tr,
-                                    text:
-                                        ' ${controller.user.dislikedFoods} ?? ${'95'.tr}',
+                                    text: controller.user.dislikedFoods ??
+                                        '95'.tr,
                                   ),
                                   TextComponent(
                                     icon: Icons.directions_run_rounded,
