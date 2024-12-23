@@ -10,15 +10,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -27,15 +33,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -44,15 +56,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -61,15 +79,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -78,15 +102,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -95,15 +125,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -112,15 +148,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -129,15 +171,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -146,15 +194,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -163,15 +217,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     }
@@ -190,15 +250,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -207,15 +273,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -224,15 +296,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -241,15 +319,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -258,15 +342,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -275,15 +365,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -292,37 +388,49 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     }
                 ]
             },
             {
-                "muscle": "Biceps_Legs_Shoulders",
+                "muscle": "Legs_Shoulders_Biceps",
                 "exercises": [
                     {
                         "exercise_id": 1,
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -331,15 +439,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -348,15 +462,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -365,15 +485,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -382,15 +508,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -399,15 +531,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -416,15 +554,21 @@
                         "sets": [
                             {
                                 "set_no": 1,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
-                                "exp_reps": 15
+                                "exp_reps": 15,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
-                                "exp_reps": 10
+                                "exp_reps": 10,
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     }
@@ -444,20 +588,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -467,20 +611,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -490,20 +634,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -513,20 +657,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -536,20 +680,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -559,20 +703,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     }
@@ -587,20 +731,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -610,20 +754,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -633,20 +777,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -656,20 +800,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -679,20 +823,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -702,20 +846,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     }
@@ -730,20 +874,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -753,20 +897,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -776,20 +920,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -799,20 +943,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -822,20 +966,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -845,20 +989,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     },
@@ -868,20 +1012,20 @@
                             {
                                 "set_no": 1,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 2,
                                 "exp_reps": 15,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             },
                             {
                                 "set_no": 3,
                                 "exp_reps": 10,
-                                "expected_rest_time":30,
-                                "tempo":""
+                                "expected_rest_time": 30,
+                                "tempo": ""
                             }
                         ]
                     }

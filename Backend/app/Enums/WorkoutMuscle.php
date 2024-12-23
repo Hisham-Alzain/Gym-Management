@@ -12,7 +12,7 @@ enum WorkoutMuscle: string
     case Arms = 'Arms';
     case Legs = 'Legs';
     case Abs = 'Abs';
-    case ALL = 'All';
+    case ALL = 'ALL';
     case Chest_Biceps = 'Chest_Biceps';
     case Back_Triceps = 'Back_Triceps';
     case Legs_Shoulders = 'Legs_Shoulders';

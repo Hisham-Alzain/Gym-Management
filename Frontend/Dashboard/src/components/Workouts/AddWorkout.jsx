@@ -135,26 +135,28 @@ const AddWorkout = () => {
   }
 
   const addExercise = (dayIndex) => {
-    const newExercises = exercises.map((dayExercises, index) => {
-      if (index === dayIndex) {
-        // Initialize with default sets and reps
-        return [...dayExercises, {
-          id: selectedExercises[dayIndex],
-          name: selectedName[dayIndex],
-          sets: new Array(3).fill(0),
-          reps: new Array(3).fill(0),
-          rest: new Array(3).fill(0),
-          tempo: new Array(3).fill([0, 0, 0, 0])
-        }];
-      }
-      return dayExercises;
-    });
-    setExercises(newExercises);
+    if (selectedExercises[dayIndex] != "") {
+      const newExercises = exercises.map((dayExercises, index) => {
+        if (index === dayIndex) {
+          // Initialize with default sets and reps
+          return [...dayExercises, {
+            id: selectedExercises[dayIndex],
+            name: selectedName[dayIndex],
+            sets: new Array(3).fill(0),
+            reps: new Array(3).fill(0),
+            rest: new Array(3).fill(0),
+            tempo: new Array(3).fill([0, 0, 0, 0])
+          }];
+        }
+        return dayExercises;
+      });
+      setExercises(newExercises);
 
-    const newSelectedExercises = [...selectedExercises];
-    newSelectedExercises[dayIndex] = "";
-    setSelectedExercises(newSelectedExercises);
-    setSelectedName(newSelectedExercises)
+      const newSelectedExercises = [...selectedExercises];
+      newSelectedExercises[dayIndex] = "";
+      setSelectedExercises(newSelectedExercises);
+      setSelectedName(newSelectedExercises)
+    }
   }
 
   const removeExercise = (dayIndex, exerciseIndex) => {
@@ -226,6 +228,7 @@ const AddWorkout = () => {
     };
 
     CreateWorkout(accessToken, workoutData).then((response) => {
+      console.log(workoutData);
       if (response.status === 201) {
         console.log(response.data);
         setIsCreatingWorkout(false);
