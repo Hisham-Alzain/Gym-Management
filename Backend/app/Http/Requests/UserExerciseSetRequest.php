@@ -28,7 +28,7 @@ class UserExerciseSetRequest extends FormRequest
             'day_date' => ['required', 'date_format:Y-m-d'],
             'user_reps' => ['required', 'integer'],
             'user_rest_time' => ['required', 'integer'],
-            'user_rep_weight' => ['required', 'decimal:1'],
+            'user_rep_weight' => ['required'],
         ];
     }
 
