@@ -128,7 +128,7 @@ class AddInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'https://olive-salmon-530757.hostingersite.com/api/trainee',
+        'http://192.168.0.104:8000/api/trainee',
         data: {
           "birth_date": birthDate.toString().split(' ')[0],
           "gender": gender,

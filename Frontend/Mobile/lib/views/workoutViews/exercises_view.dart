@@ -73,9 +73,6 @@ class ExercisesView extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          // const Icon(
-                                          //   Icons.sports_gymnastics,
-                                          // ),
                                           Text(
                                             '${'97'.tr}: ${controller.exercises[index].name}',
                                             style: Theme.of(context)

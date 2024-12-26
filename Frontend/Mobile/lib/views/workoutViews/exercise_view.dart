@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:mobile/customWidgets/custom_image.dart';
 import 'package:mobile/customWidgets/custom_texts.dart';
 import 'package:mobile/controllers/workout_controllers.dart/exercise_controller.dart';
 import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_text_field.dart';
 import 'package:mobile/customWidgets/custom_validation.dart';
+import 'package:mobile/main.dart';
 
 class ExerciseView extends StatelessWidget {
   final ExerciseController _exerciseController = Get.put(ExerciseController());
@@ -38,45 +40,16 @@ class ExerciseView extends StatelessWidget {
                   : SingleChildScrollView(
                       child: Column(
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.all(10),
+                          Padding(
+                            padding: const EdgeInsets.all(10),
                             child: RedContainer(
-                              height: 300,
-                              child: Center(
-                                  // child: controller.videoPlayerController.value
-                                  //         .isInitialized
-                                  //     ? Stack(
-                                  //         children: [
-                                  //           // AspectRatio(
-                                  //           //   aspectRatio: controller
-                                  //           //       .videoPlayerController
-                                  //           //       .value
-                                  //           //       .aspectRatio,
-                                  //           //   child: VideoPlayer(controller
-                                  //           //       .videoPlayerController),
-                                  //           // ),
-                                  //           FloatingActionButton(
-                                  //             onPressed: () {
-                                  //               controller.videoPlayerController
-                                  //                       .value.isPlaying
-                                  //                   ? controller
-                                  //                       .videoPlayerController
-                                  //                       .pause()
-                                  //                   : controller
-                                  //                       .videoPlayerController
-                                  //                       .play();
-                                  //             },
-                                  //             child: Icon(
-                                  //               controller.videoPlayerController
-                                  //                       .value.isPlaying
-                                  //                   ? Icons.pause
-                                  //                   : Icons.play_arrow,
-                                  //             ),
-                                  //           ),
-                                  //         ],
-                                  //       )
-                                  //     : const CircularProgressIndicator(),
-                                  ),
+                              width: 300,
+                              child: CustomImage(
+                                path: controller.exercise.videoPath.toString(),
+                                token: storage!.read('token'),
+                                height: 300,
+                                width: 300,
+                              ),
                             ),
                           ),
                           Padding(
@@ -226,53 +199,50 @@ class ExerciseView extends StatelessWidget {
                                             Padding(
                                               padding: const EdgeInsets.all(5),
                                               child: RedContainer(
-                                                  height: 60,
-                                                  width: 150,
-                                                  child: IconButton(
-                                                    onPressed: () {
-                                                      if (setsForm.currentState
-                                                              ?.validate() ==
-                                                          true) {
-                                                        controller.addSet(
-                                                          controller
-                                                              .exercise
-                                                              .sets[index]
-                                                              .setId,
-                                                          int.parse(
-                                                              repsController
-                                                                  .text),
-                                                          double.parse(
-                                                              weightController
-                                                                  .text),
-                                                          int.parse(
-                                                              restTimeController
-                                                                  .text),
-                                                        );
-                                                      }
-                                                    },
-                                                    icon: Row(
-                                                      children: [
-                                                        const Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                            right: 5,
-                                                          ),
-                                                          child: Icon(
-                                                            Icons
-                                                                .add_circle_outline,
-                                                            size: 30,
-                                                          ),
+                                                height: 60,
+                                                width: 150,
+                                                child: IconButton(
+                                                  onPressed: () {
+                                                    if (setsForm.currentState
+                                                            ?.validate() ==
+                                                        true) {
+                                                      controller.addSet(
+                                                        controller.exercise
+                                                            .sets[index].setId,
+                                                        int.parse(repsController
+                                                            .text),
+                                                        double.parse(
+                                                            weightController
+                                                                .text),
+                                                        int.parse(
+                                                            restTimeController
+                                                                .text),
+                                                      );
+                                                    }
+                                                  },
+                                                  icon: Row(
+                                                    children: [
+                                                      const Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                          right: 5,
                                                         ),
-                                                        Text(
-                                                          "124".tr,
-                                                          style:
-                                                              Theme.of(context)
-                                                                  .textTheme
-                                                                  .labelLarge,
+                                                        child: Icon(
+                                                          Icons
+                                                              .add_circle_outline,
+                                                          size: 30,
                                                         ),
-                                                      ],
-                                                    ),
-                                                  )),
+                                                      ),
+                                                      Text(
+                                                        "124".tr,
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .labelLarge,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),

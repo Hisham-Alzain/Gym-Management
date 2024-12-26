@@ -107,7 +107,7 @@ class EditInfoController extends GetxController {
     String token = storage!.read('token');
     try {
       var response = await dio.post(
-        'https://olive-salmon-530757.hostingersite.com/api/trainee',
+        'http://192.168.0.104:8000/api/trainee',
         data: {
           "height": height,
           "weight": weight,
