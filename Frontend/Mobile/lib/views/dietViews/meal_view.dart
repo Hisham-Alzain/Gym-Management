@@ -32,7 +32,7 @@ class MealView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: RedContainer(
-                      height: 200,
+                      width: 200,
                       child: controller.selectedMeal.thumbnailPath == null
                           ? const Icon(
                               Icons.fastfood,

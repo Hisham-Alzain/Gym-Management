@@ -136,7 +136,7 @@ class ExerciseView extends StatelessWidget {
                                               padding: const EdgeInsets.all(5),
                                               child: SizedBox(
                                                 height: 60,
-                                                width: 150,
+                                                width: 160,
                                                 child: CustomTextField(
                                                   controller: repsController,
                                                   textInputType:
@@ -156,7 +156,7 @@ class ExerciseView extends StatelessWidget {
                                               padding: const EdgeInsets.all(5),
                                               child: SizedBox(
                                                 height: 60,
-                                                width: 150,
+                                                width: 160,
                                                 child: CustomTextField(
                                                   controller: weightController,
                                                   textInputType:
@@ -180,7 +180,7 @@ class ExerciseView extends StatelessWidget {
                                               padding: const EdgeInsets.all(5),
                                               child: SizedBox(
                                                 height: 60,
-                                                width: 150,
+                                                width: 160,
                                                 child: CustomTextField(
                                                   controller:
                                                       restTimeController,
@@ -200,7 +200,7 @@ class ExerciseView extends StatelessWidget {
                                               padding: const EdgeInsets.all(5),
                                               child: RedContainer(
                                                 height: 60,
-                                                width: 150,
+                                                width: 160,
                                                 child: IconButton(
                                                   onPressed: () {
                                                     if (setsForm.currentState

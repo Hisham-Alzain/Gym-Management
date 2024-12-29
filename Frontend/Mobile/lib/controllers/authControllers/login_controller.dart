@@ -55,7 +55,7 @@ class LoginController extends GetxController {
     customDialogs.showLoadingDialog();
     try {
       var response = await dio.post(
-        'http://192.168.0.104:8000/api/login/trainee',
+        'http://192.168.93.51:8000/api/login/trainee',
         data: {
           "email": email,
           "password": password,

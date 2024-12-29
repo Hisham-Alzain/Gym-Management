@@ -55,7 +55,7 @@ class DietsController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.104:8000/api/trainee/diets?page=$page',
+        'http://192.168.93.51:8000/api/trainee/diets?page=$page',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
