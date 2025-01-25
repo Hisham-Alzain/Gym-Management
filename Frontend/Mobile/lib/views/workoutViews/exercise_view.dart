@@ -7,6 +7,7 @@ import 'package:mobile/controllers/workout_controllers.dart/exercise_controller.
 import 'package:mobile/customWidgets/custom_containers.dart';
 import 'package:mobile/customWidgets/custom_text_field.dart';
 import 'package:mobile/customWidgets/custom_validation.dart';
+import 'package:mobile/customWidgets/custom_video_player.dart';
 import 'package:mobile/main.dart';
 
 class ExerciseView extends StatelessWidget {
@@ -43,13 +44,20 @@ class ExerciseView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: RedContainer(
+                              height: 300,
                               width: 300,
-                              child: CustomImage(
-                                path: controller.exercise.videoPath.toString(),
-                                token: storage!.read('token'),
-                                height: 300,
-                                width: 300,
-                              ),
+                              child: controller.videoType == "mp4"
+                                  ? CustomPlayableVideoPlayer(
+                                      videoPlayerController:
+                                          controller.videoPlayerController,
+                                    )
+                                  : CustomImage(
+                                      path: controller.exercise.videoPath
+                                          .toString(),
+                                      token: storage!.read('token'),
+                                      height: 300,
+                                      width: 300,
+                                    ),
                             ),
                           ),
                           Padding(

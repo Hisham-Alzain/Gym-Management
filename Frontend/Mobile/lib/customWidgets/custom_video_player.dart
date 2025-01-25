@@ -1,0 +1,68 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
+
+class CustomVideoPlayer extends StatelessWidget {
+  final VideoPlayerController videoPlayerController;
+  const CustomVideoPlayer({super.key, required this.videoPlayerController});
+
+  @override
+  Widget build(BuildContext context) {
+    return videoPlayerController.value.isInitialized
+        ? VideoPlayer(videoPlayerController)
+        : Center(
+            child: Text(
+              '12'.tr,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          );
+  }
+}
+
+class CustomPlayableVideoPlayer extends StatefulWidget {
+  final VideoPlayerController videoPlayerController;
+  const CustomPlayableVideoPlayer({
+    super.key,
+    required this.videoPlayerController,
+  });
+
+  @override
+  State<CustomPlayableVideoPlayer> createState() =>
+      _CustomPlayableVideoPlayerState();
+}
+
+class _CustomPlayableVideoPlayerState extends State<CustomPlayableVideoPlayer> {
+  @override
+  Widget build(BuildContext context) {
+    return widget.videoPlayerController.value.isInitialized
+        ? Stack(
+            children: [
+              VideoPlayer(widget.videoPlayerController),
+              Center(
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      widget.videoPlayerController.value.isPlaying
+                          ? widget.videoPlayerController.pause()
+                          : widget.videoPlayerController.play();
+                    });
+                  },
+                  icon: Icon(
+                    widget.videoPlayerController.value.isPlaying
+                        ? Icons.pause
+                        : Icons.play_arrow,
+                    size: 100,
+                    color: Colors.white70,
+                  ),
+                ),
+              ),
+            ],
+          )
+        : Center(
+            child: Text(
+              '12'.tr,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          );
+  }
+}

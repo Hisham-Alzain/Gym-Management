@@ -17,6 +17,7 @@ class ExerciseController extends GetxController {
   late Exercise exercise;
   late VideoPlayerController videoPlayerController;
   bool loading = true;
+  String videoType = 'mp4';
 
   @override
   Future<void> onInit() async {
@@ -27,14 +28,9 @@ class ExerciseController extends GetxController {
     customDialogs = CustomDialogs();
     exercise = Exercise.empty();
     await getExercise(exercisesController.exerciseId);
-    // log(exercise.videoPath.toString());
-    // videoPlayerController = VideoPlayerController.networkUrl(
-    //   Uri(
-    //     path: 'http://192.168.93.51:8000/api/video/${exercise.videoPath}',
-    //   ),
-    // )..initialize().then((_) {
-    //     update();
-    //   });
+    videoPlayerController =
+        VideoPlayerController.asset('assets/splashScreenVideo.mp4');
+    await videoPlayerController.initialize();
     loading = false;
     update();
     super.onInit();
@@ -44,7 +40,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.93.51:8000/api/trainee/exercise/$id',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/exercise/$id',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
@@ -75,7 +71,7 @@ class ExerciseController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.post(
-        'http://192.168.93.51:8000/api/trainee/workout/set',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/workout/set',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

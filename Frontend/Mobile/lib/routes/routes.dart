@@ -21,12 +21,12 @@ import 'package:mobile/views/splash_screen.dart';
 List<GetPage<dynamic>>? getPages = [
   GetPage(
     name: '/splashScreen',
-    page: () => const SplashScreen(),
-    middlewares: [Middleware()],
+    page: () => SplashScreen(),
   ),
   GetPage(
     name: '/auth',
     page: () => const AuthView(),
+    middlewares: [Middleware()],
   ),
   GetPage(
     name: '/login',

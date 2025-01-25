@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
@@ -19,11 +20,11 @@ class MiddlewareController extends GetxController {
 
   Future<MiddlewareCases> checkToken() async {
     String? token = storage?.read('token');
-    log('Token:$token');
+    log("token: $token");
     if (token != null) {
       try {
         var response = await dio.get(
-          'http://192.168.93.51:8000/api/check_token',
+          'https://olive-salmon-530757.hostingersite.com/api/check_token',
           options: Options(
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',
@@ -40,23 +41,15 @@ class MiddlewareController extends GetxController {
           }
         }
       } on DioException catch (e) {
-        switch (e.type) {
-          case DioExceptionType.badResponse:
-            if (e.response!.statusCode == 401) {
-              Future.delayed(
-                const Duration(seconds: 1),
-                () {
-                  customDialogs.showSesionExpiredDialog();
-                },
-              );
-            }
-          case DioExceptionType.connectionTimeout:
-            return MiddlewareCases.invalidToken;
-          default:
-            return MiddlewareCases.invalidToken;
+        if (e.response?.statusCode == 401) {
+          Future.delayed(const Duration(seconds: 1), () {
+            customDialogs.showSesionExpiredDialog();
+          });
+          return MiddlewareCases.invalidToken;
         }
+        return MiddlewareCases.invalidToken;
       }
     }
-    return MiddlewareCases.noToken;
+    return MiddlewareCases.invalidToken;
   }
 }

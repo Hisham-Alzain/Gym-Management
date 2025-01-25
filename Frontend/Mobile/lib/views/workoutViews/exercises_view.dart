@@ -50,43 +50,41 @@ class ExercisesView extends StatelessWidget {
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 150,
-                                        width: 300,
-                                        child: controller.exercises[index]
-                                                    .thumbnailPath ==
-                                                null
-                                            ? const Icon(
-                                                Icons.fitness_center,
-                                                size: 75,
-                                              )
-                                            : CustomImage(
-                                                path: controller
-                                                    .exercises[index]
-                                                    .thumbnailPath
-                                                    .toString(),
-                                                token: storage!.read('token'),
-                                              ),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            '${'97'.tr}: ${controller.exercises[index].name}',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge,
+                                  SizedBox(
+                                    height: 150,
+                                    width: 150,
+                                    child: controller.exercises[index]
+                                                .thumbnailPath ==
+                                            null
+                                        ? const Icon(
+                                            Icons.fitness_center,
+                                            size: 75,
+                                          )
+                                        : CustomImage(
+                                            path: controller
+                                                .exercises[index].thumbnailPath
+                                                .toString(),
+                                            token: storage!.read('token'),
                                           ),
-                                        ],
-                                      ),
-                                    ],
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          ' ${controller.exercises[index].name}',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headlineSmall,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   const Icon(
                                     Icons.arrow_forward_ios,
                                     size: 50,
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
