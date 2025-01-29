@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const FetchExerciseMuscles = async (token, addingExercise = 0) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/muscles/${addingExercise}`, {
+        const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/muscles/${addingExercise}`, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Accept': "application/json",
@@ -17,7 +17,7 @@ export const FetchExerciseMuscles = async (token, addingExercise = 0) => {
 
 export const FetchExercises = async (token, page, muscle) => {
     try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/exercises?page=${page}&muscle[eq]=${muscle}`, {
+        const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/exercises?page=${page}&muscle[eq]=${muscle}`, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Accept': "application/json",
@@ -33,7 +33,7 @@ export const FetchExercises = async (token, page, muscle) => {
 export const UploadExerciseVideo = async (token, exercise_id, video) => {
     try {
         console.log(video);
-        const response = await axios.post(`http://127.0.0.1:8000/api/exercise/video`, {
+        const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/exercise/video`, {
             "exercise_id": exercise_id,
             "video": video
         }, {
@@ -51,8 +51,7 @@ export const UploadExerciseVideo = async (token, exercise_id, video) => {
 
 export const UpdateExercisePhoto = async (token, exercise_id, thumbnail_path) => {
     try {
-        console.log('nigga');
-        const response = await axios.post(`http://127.0.0.1:8000/api/exercise/photo`, {
+        const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/exercise/photo`, {
             "exercise_id": exercise_id,
             "thumbnail_path": thumbnail_path
         }, {
@@ -71,7 +70,7 @@ export const UpdateExercisePhoto = async (token, exercise_id, thumbnail_path) =>
 
 export const AddExercise = async (token, en_name, ar_name, muscle, en_description, ar_description, thumbnail_path, video_path) => {
     try {
-        const response = await axios.post(`http://127.0.0.1:8000/api/exercise/create`, {
+        const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/exercise/create`, {
             "en_name": en_name,
             "ar_name": ar_name,
             "muscle": muscle,
@@ -94,7 +93,7 @@ export const AddExercise = async (token, en_name, ar_name, muscle, en_descriptio
 
 export const UpdateExercise = async (token, exercise_id, description, lang) => {
     try {
-        const response = await axios.post(`http://127.0.0.1:8000/api/exercise/update`, {
+        const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/exercise/update`, {
             "exercise_id": exercise_id,
             "description": description,
             "lang": lang
@@ -113,7 +112,7 @@ export const UpdateExercise = async (token, exercise_id, description, lang) => {
 
 export const DeleteExercise = async (token, exercise_id) => {
     try {
-        const response = await axios.delete(`http://127.0.0.1:8000/api/exercises/${exercise_id}`, {
+        const response = await axios.delete(`https://olive-salmon-530757.hostingersite.com/api/exercises/${exercise_id}`, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Accept': "application/json",

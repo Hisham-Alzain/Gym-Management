@@ -87,6 +87,12 @@
                 "title": "Upload video",
                 "header": "Upload your video",
                 "button": "Upload"
+            },
+            "upimg_popup": {
+                "trigger": "Upload Image",
+                "title": "Upload Image",
+                "header": "Upload your image",
+                "button": "Upload"
             }
         },
         "nav_bar": {
@@ -164,7 +170,7 @@
             "error2": "Please enter both start and end dates before creating a workout.",
             "error3": "Please enter both start and end dates.",
             "error4": "Please add at least one exercise for Day",
-            "SuccessPopup":"Your workout program has been created successfully!"
+            "SuccessPopup": "Your workout program has been created successfully!"
         },
         "show_program": {
             "header": "'s Workout Program",
@@ -195,9 +201,15 @@
             "p2": "Protein 1g:",
             "p3": "Carbs 1g:",
             "p4": "Fat 1g:",
-            "p5": "K 1g:",
-            "p6": "Na 1g:",
+            "p5": "Na 1g:",
+            "p6": "K 1g:",
             "p7": "Description:",
+            "label1": "Calories:",
+            "label2": "Protein:",
+            "label3": "Carbs:",
+            "label4": "Fat:",
+            "label5": "Na:",
+            "label6": "K:",
             "input1": "Meal Calories per gram",
             "input2": "Meal Protein per gram",
             "input3": "Meal Carbs per gram",
@@ -250,9 +262,9 @@
             "error_missing_dates": "Please enter both start and end dates.",
             "error_missing_meal": "Please complete meal details for meal {{mealNumber}}.",
             "error_server": "An error occurred while creating the diet. Please try again.",
-            "Success":"Success!",
-            "SuccessPopup":"Your diet program has been created successfully!",
-            "ReturnPopup":"Go to Home"
+            "Success": "Success!",
+            "SuccessPopup": "Your diet program has been created successfully!",
+            "ReturnPopup": "Go to Home"
         },
         "show_diet": {
             "header": "'s Diet Program",

@@ -26,41 +26,41 @@ function App() {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
+    // if (!initialized.current) {
+    //   initialized.current = true;
 
-      // Get user token from cookie (if there is any)
-      const cookieToken = Cookies.get('access_token');
+    // Get user token from cookie (if there is any)
+    const cookieToken = Cookies.get('access_token');
 
-      // Check user token
-      if (typeof cookieToken !== 'undefined') {
-        CheckToken(cookieToken).then((response) => {
-          if (response.status === 200) {
-            setLoggedIn(true);
-            setAccessToken(cookieToken);
-            FetchProfile(cookieToken).then((response) => {
-              if (response.status === 200) {
-                setProfile(response.data.user);
-              }
-              else {
-                console.log(response);
-              }
-            }).then(() => {
-              setIsLoading(false);
-            });
-          }
-          else {
-            Cookies.remove('access_token');
-            console.log(response);
+    // Check user token
+    if (typeof cookieToken !== 'undefined') {
+      CheckToken(cookieToken).then((response) => {
+        if (response.status === 200) {
+          setLoggedIn(true);
+          setAccessToken(cookieToken);
+          FetchProfile(cookieToken).then((response) => {
+            if (response.status === 200) {
+              setProfile(response.data.user);
+            }
+            else {
+              console.log(response);
+            }
+          }).then(() => {
             setIsLoading(false);
-          }
-        });
-      }
-      else {
-        setIsLoading(false);
-      }
+          });
+        }
+        else {
+          Cookies.remove('access_token');
+          console.log(response);
+          setIsLoading(false);
+        }
+      });
     }
-  }, [loggedIn]);
+    else {
+      setIsLoading(false);
+    }
+    // }
+  }, []);
 
   useEffect(() => {
     if (loggedIn && accessToken) {

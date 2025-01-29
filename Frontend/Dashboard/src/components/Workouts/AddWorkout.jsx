@@ -42,30 +42,30 @@ const AddWorkout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      FetchExerciseMuscles(accessToken).then((response) => {
-        if (response.status === 200) {
-          setMuscles(response.data.muscles);
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
+    FetchExerciseMuscles(accessToken).then((response) => {
+      if (response.status === 200) {
+        setMuscles(response.data.muscles);
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
 
-      FetchDefaultWorkouts(accessToken).then((response) => {
-        if (response.status === 200) {
-          setDefaults(response.data.workouts);
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchDefaultWorkouts(accessToken).then((response) => {
+      if (response.status === 200) {
+        setDefaults(response.data.workouts);
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, []);
 
   useEffect(() => {
@@ -135,7 +135,7 @@ const AddWorkout = () => {
   }
 
   const addExercise = (dayIndex) => {
-    if (selectedExercises[dayIndex] != "") {
+    if (selectedExercises[dayIndex] !== "") {
       const newExercises = exercises.map((dayExercises, index) => {
         if (index === dayIndex) {
           // Initialize with default sets and reps
@@ -155,7 +155,7 @@ const AddWorkout = () => {
       const newSelectedExercises = [...selectedExercises];
       newSelectedExercises[dayIndex] = "";
       setSelectedExercises(newSelectedExercises);
-      setSelectedName(newSelectedExercises)
+      setSelectedName(newSelectedExercises);
     }
   }
 
@@ -228,7 +228,6 @@ const AddWorkout = () => {
     };
 
     CreateWorkout(accessToken, workoutData).then((response) => {
-      console.log(workoutData);
       if (response.status === 201) {
         console.log(response.data);
         setIsCreatingWorkout(false);

@@ -23,30 +23,30 @@ const ShowDiet = () => {
   const [meals, setMeals] = useState([]);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      FetchDietProgram(accessToken, program_id).then((response) => {
-        if (response.status === 200) {
-          setProgram(response.data.program);
-          response.data.program.meals.map((meal) => {
-            if (meal.meal.thumbnail_path) {
-              FetchImage(accessToken, meal.meal.thumbnail_path).then((response) => {
-                meal.meal.thumbnail_path = response.imageURL;
-                setMeals((prevState) => ([...prevState, meal]));
-              });
-            } else {
-              setMeals((prevState) => ([...prevState, meal]));
-            }
-          })
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchDietProgram(accessToken, program_id).then((response) => {
+      if (response.status === 200) {
+        setProgram(response.data.program);
+        response.data.program.meals.map((meal) => {
+          // if (meal.meal.thumbnail_path) {
+          //   FetchImage(accessToken, meal.meal.thumbnail_path).then((response) => {
+          //     meal.meal.thumbnail_path = response.imageURL;
+          //     setMeals((prevState) => ([...prevState, meal]));
+          //   });
+          // } else {
+          setMeals((prevState) => ([...prevState, meal]));
+          // }
+        });
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, [accessToken, program_id]);
 
 
@@ -79,7 +79,7 @@ const ShowDiet = () => {
                 <td className={styles.td1}>
                   <div className={styles.img_holder}>
                     {meal.meal.thumbnail_path ? (
-                      <img src={meal.meal.thumbnail_path}
+                      <img src={`https://olive-salmon-530757.hostingersite.com/storage/${meal.meal.thumbnail_path}`}
                         alt="Uploaded Photo"
                         style={{ pointerEvents: 'none' }}
                         className={styles.image} />

@@ -371,13 +371,17 @@ class WorkoutsController extends MainController
                 // Check and delete previous video
                 $previous_path = $exercise->video_path;
                 if ($previous_path != null) {
+                    if (file_exists(storage_path('app/public/' . $previous_path))) {
+                        unlink(storage_path('app/public/' . $previous_path));
+                    }
                     if (file_exists(storage_path('app/private/' . $previous_path))) {
                         unlink(storage_path('app/private/' . $previous_path));
                     }
                 }
 
                 // Store file and get path
-                $path = $video->storeAs($destination, $fileName);
+                $video->storeAs($destination, $fileName, options: ['disk' => 'local']);
+                $path = $video->storeAs($destination, $fileName, options: ['disk' => 'public']);
                 $exercise->video_path = $path;
                 $exercise->save();
             } else {
@@ -444,13 +448,17 @@ class WorkoutsController extends MainController
                 // Check and delete previous video
                 $previous_path = $exercise->thumbnail_path;
                 if ($previous_path != null) {
+                    if (file_exists(storage_path('app/public/' . $previous_path))) {
+                        unlink(storage_path('app/public/' . $previous_path));
+                    }
                     if (file_exists(storage_path('app/private/' . $previous_path))) {
                         unlink(storage_path('app/private/' . $previous_path));
                     }
                 }
 
                 // Store file and get path
-                $path = $thumbnail->storeAs($destination, $fileName);
+                $thumbnail->storeAs($destination, $fileName, ['disk' => 'local']);
+                $path = $thumbnail->storeAs($destination, $fileName, ['disk' => 'public']);
                 $exercise->thumbnail_path = $path;
                 $exercise->save();
             } else {
@@ -506,7 +514,8 @@ class WorkoutsController extends MainController
                 $photoName = now()->format('Y_m_d_His') . $thumbnail_extension;
 
                 // Store file and get path
-                $thumbnail_path = $thumbnail->storeAs($thumbnail_destination, $photoName);
+                $thumbnail->storeAs($thumbnail_destination, $photoName, ['disk' => 'local']);
+                $thumbnail_path = $thumbnail->storeAs($thumbnail_destination, $photoName, ['disk' => 'public']);
                 $validated['thumbnail_path'] = $thumbnail_path;
             }
 
@@ -525,7 +534,8 @@ class WorkoutsController extends MainController
                 $fileName = now()->format('Y_m_d_His') . $video_extension;
 
                 // Store file and get path
-                $video_path = $thumbnail->storeAs($video_destination, $fileName);
+                $thumbnail->storeAs($video_destination, $fileName, ['disk' => 'local']);
+                $video_path = $thumbnail->storeAs($video_destination, $fileName, ['disk' => 'public']);
                 $validated['video_path'] = $video_path;
             }
 

@@ -17,7 +17,7 @@ const Users = () => {
   // Translations
   const { t } = useTranslation('global');
   // Context
-  const { accessToken } = useContext(LoginContext);
+  const { loggedIn, accessToken } = useContext(LoginContext);
   // States
   const initialized = useRef(false);
   const navigate = useNavigate();
@@ -28,28 +28,27 @@ const Users = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-    } else {
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      FetchUsers(accessToken, currentPage).then((response) => {
-        if (response.status === 200) {
-          setData(response.data.pagination_data);
-          setUserData([]);
-          response.data.users.map((user) => {
-            if (!userData.some(item => user.user_id === item.user_id)) {
-              setUserData(response.data.users);
-            }
-          });
-        } else {
-          console.log(response.data);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
-  }, [currentPage]);
+    FetchUsers(accessToken, currentPage).then((response) => {
+      if (response.status === 200) {
+        setData(response.data.pagination_data);
+        setUserData([]);
+        response.data.users.map((user) => {
+          if (!userData.some(item => user.user_id === item.user_id)) {
+            setUserData(response.data.users);
+          }
+        });
+      } else {
+        console.log(response.data);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
+  }, [loggedIn, currentPage]);
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);

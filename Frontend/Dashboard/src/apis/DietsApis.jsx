@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const FetchUserDiets = async (token, user_id) => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/diets/${user_id}`, {
+    const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/diets/${user_id}`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -17,7 +17,7 @@ export const FetchUserDiets = async (token, user_id) => {
 
 export const FetchDietProgram = async (token, program_id) => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/diet/${program_id}`, {
+    const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/diet/${program_id}`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -32,7 +32,7 @@ export const FetchDietProgram = async (token, program_id) => {
 
 export const DeleteDietProgram = async (token, program_id) => {
   try {
-    const response = await axios.delete(`http://127.0.0.1:8000/api/diets/${program_id}`, {
+    const response = await axios.delete(`https://olive-salmon-530757.hostingersite.com/api/diets/${program_id}`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -47,7 +47,7 @@ export const DeleteDietProgram = async (token, program_id) => {
 
 export const FetchMealGi = async (token) => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/meal/GI`, {
+    const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/meal/GI`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -62,7 +62,7 @@ export const FetchMealGi = async (token) => {
 
 export const FetchMeals = async (token, page) => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/meals?page=${page}`, {
+    const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/meals?page=${page}`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -77,7 +77,7 @@ export const FetchMeals = async (token, page) => {
 
 export const AddMeal = async (token, en_name, ar_name, en_description, ar_description, calories, protein, carbs, fat, K, Na, gi, thumbnail_path) => {
   try {
-    const response = await axios.post(`http://127.0.0.1:8000/api/meals/create`, {
+    const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/meals/create`, {
       "en_meal_name": en_name,
       "ar_meal_name": ar_name,
       "en_description": en_description,
@@ -105,7 +105,7 @@ export const AddMeal = async (token, en_name, ar_name, en_description, ar_descri
 
 export const UpdateMeal = async (token, meal_id, lang, description, calories, protein, carbs, fat, K, Na) => {
   try {
-    const response = await axios.post(`http://127.0.0.1:8000/api/meals/update`, {
+    const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/meals/update`, {
       "meal_id": meal_id,
       "lang": lang,
       "description": description,
@@ -130,7 +130,7 @@ export const UpdateMeal = async (token, meal_id, lang, description, calories, pr
 
 export const UpdateMealPhoto = async (token, meal_id, thumbnail_path) => {
   try {
-    const response = await axios.post(`http://127.0.0.1:8000/api/meals/photo`, {
+    const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/meals/photo`, {
       "meal_id": meal_id,
       "thumbnail_path": thumbnail_path
     }, {
@@ -148,7 +148,7 @@ export const UpdateMealPhoto = async (token, meal_id, thumbnail_path) => {
 
 export const DeleteMeal = async (token, meal_id) => {
   try {
-    const response = await axios.delete(`http://127.0.0.1:8000/api/meals/${meal_id}`, {
+    const response = await axios.delete(`https://olive-salmon-530757.hostingersite.com/api/meals/${meal_id}`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -163,7 +163,7 @@ export const DeleteMeal = async (token, meal_id) => {
 
 export const CreateDietProgram = async (token, dietData) => {
   try {
-    const response = await axios.post('http://127.0.0.1:8000/api/diets/create', {
+    const response = await axios.post('https://olive-salmon-530757.hostingersite.com/api/diets/create', {
       "user_id": dietData.user_id,
       "start_date": dietData.startDate,
       "end_date": dietData.endDate,

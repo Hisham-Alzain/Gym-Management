@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const FetchUsers = async (token) => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/users', {
+    const response = await axios.get('https://olive-salmon-530757.hostingersite.com/api/users', {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -17,7 +17,7 @@ export const FetchUsers = async (token) => {
 
 export const FetchSubscriptions = async (token, user_id) => {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/subscription/${user_id}`, {
+    const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/subscription/${user_id}`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -32,7 +32,7 @@ export const FetchSubscriptions = async (token, user_id) => {
 
 export const StartSubscription = async (token, user_id, duration) => {
   try {
-    const response = await axios.post(`http://127.0.0.1:8000/api/subscription/start`, {
+    const response = await axios.post(`https://olive-salmon-530757.hostingersite.com/api/subscription/start`, {
       "user_id": user_id,
       "duration": duration,
     }, {
@@ -50,7 +50,7 @@ export const StartSubscription = async (token, user_id, duration) => {
 
 export const DeleteUser = async (token, user_id) => {
   try {
-    const response = await axios.delete(`http://127.0.0.1:8000/api/users/${user_id}`, {
+    const response = await axios.delete(`https://olive-salmon-530757.hostingersite.com/api/users/${user_id}`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Accept': "application/json",
@@ -66,7 +66,7 @@ export const DeleteUser = async (token, user_id) => {
 export const FetchImage = async (token, imagePath) => {
   try {
     const response = await axios({
-      url: `http://127.0.0.1:8000/api/image/${imagePath}`,
+      url: `https://olive-salmon-530757.hostingersite.com/api/image/${imagePath}?not-from-cache-please`,
       method: 'GET',
       responseType: 'blob', // important
       headers: {
@@ -98,7 +98,7 @@ export const FetchImage = async (token, imagePath) => {
 export const FetchVideo = async (token, videoPath) => {
   try {
     const response = await axios({
-      url: `http://127.0.0.1:8000/api/video/${videoPath}`,
+      url: `https://olive-salmon-530757.hostingersite.com/api/video/${videoPath}`,
       method: 'GET',
       responseType: 'blob', // important
       headers: {
@@ -130,7 +130,7 @@ export const FetchVideo = async (token, videoPath) => {
 export const FetchFile = async (token, filePath) => {
   try {
     const response = await axios({
-      url: `http://127.0.0.1:8000/api/file/${filePath}`,
+      url: `https://olive-salmon-530757.hostingersite.com/api/file/${filePath}`,
       method: 'GET',
       responseType: 'blob', // important
       headers: {
