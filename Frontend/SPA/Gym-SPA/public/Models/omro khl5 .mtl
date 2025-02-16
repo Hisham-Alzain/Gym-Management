@@ -1,0 +1,99 @@
+# Blender 4.2.0 MTL File: 'omro khl5 .blend'
+# www.blender.org
+
+newmtl .HG_Eyes_Inner
+Kd 0.495000 0.495000 0.495000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+Pr 0.748767
+Pm 0.500000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Bump -bm 2.000000 C:/Users/Mohammad Jabri/Desktop/blender plugins/human/HUMAN GEN 4/HUMAN GEN 4/textures/eyes/.HG_Eye_Normal.png
+
+newmtl .HG_Eyes_Outer_FAST
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Pr 0.400000
+Pm 0.000000
+
+newmtl .HG_Eyes_Outer_Refraction
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Pr 0.400000
+Pm 0.000000
+
+newmtl .HG_Hair_Eye
+Kd 0.028511 0.028511 0.028511
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Pr 0.400000
+Pm 0.000000
+
+newmtl .HG_Hair_Face
+Kd 0.028511 0.028511 0.028511
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Pr 0.400000
+Pm 0.000000
+
+newmtl .HG_Hair_Head
+Kd 0.028511 0.028511 0.028511
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+Pr 0.400000
+Pm 0.000000
+
+newmtl .HG_Teeth
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+Pr 0.000000
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.000000
+aniso 0.000000
+anisor 0.000000
+map_Kd C:/Users/Mohammad Jabri/Desktop/blender plugins/human/HUMAN GEN 4/HUMAN GEN 4/textures/teeth/TeethTongueSet_C_2K.png
+map_Bump -bm 1.000000 C:/Users/Mohammad Jabri/Desktop/blender plugins/human/HUMAN GEN 4/HUMAN GEN 4/textures/teeth/TeethTongueSet_N_2K.png
+
+newmtl .Human
+Kd 0.409508 0.272036 0.147251
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+Pr 0.081818
+Pm 0.000000
+Ps 0.000000
+Pc 0.000000
+Pcr 0.000000
+aniso 0.000000
+anisor 0.000000
