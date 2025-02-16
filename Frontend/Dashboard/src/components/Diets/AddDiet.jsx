@@ -32,20 +32,20 @@ const AddDiet = () => {
 
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      FetchMeals(accessToken).then((response) => {
-        if (response.status === 200) {
-          setAvailableMeals(response.data.meals);
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchMeals(accessToken).then((response) => {
+      if (response.status === 200) {
+        setAvailableMeals(response.data.meals);
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, []);
 
   useEffect(() => {

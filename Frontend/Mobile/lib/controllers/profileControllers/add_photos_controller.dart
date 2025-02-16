@@ -78,7 +78,7 @@ class AddPhotosController extends GetxController {
 
     try {
       var response = await dio.post(
-        'http://192.168.0.104:8000/api/trainee/photos',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/photos',
         data: data,
         options: Options(
           headers: {
@@ -117,7 +117,7 @@ class AddPhotosController extends GetxController {
     String token = storage?.read('token');
     try {
       var response = await dio.get(
-        'http://192.168.0.104:8000/api/trainee/photos',
+        'https://olive-salmon-530757.hostingersite.com/api/trainee/photos',
         options: Options(
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',

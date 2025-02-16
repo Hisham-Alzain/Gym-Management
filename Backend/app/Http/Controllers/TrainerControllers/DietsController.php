@@ -290,13 +290,17 @@ class DietsController extends MainController
                 // Check and delete previous video
                 $previous_path = $meal->thumbnail_path;
                 if ($previous_path != null) {
+                    if (file_exists(storage_path('app/public/' . $previous_path))) {
+                        unlink(storage_path('app/public/' . $previous_path));
+                    }
                     if (file_exists(storage_path('app/private/' . $previous_path))) {
                         unlink(storage_path('app/private/' . $previous_path));
                     }
                 }
 
                 // Store file and get path
-                $path = $thumbnail->storeAs($destination, $fileName);
+                $thumbnail->storeAs($destination, $fileName, ['disk' => 'local']);
+                $path = $thumbnail->storeAs($destination, $fileName, ['disk' => 'public']);
                 $meal->thumbnail_path = $path;
                 $meal->save();
             } else {
@@ -350,7 +354,8 @@ class DietsController extends MainController
                 $photoName = now()->format('Y_m_d_His') . $thumbnail_extension;
 
                 // Store file and get path
-                $thumbnail_path = $thumbnail->storeAs($thumbnail_destination, $photoName);
+                $thumbnail->storeAs($thumbnail_destination, $photoName, ['disk' => 'local']);
+                $thumbnail_path = $thumbnail->storeAs($thumbnail_destination, $photoName, ['disk' => 'public']);
                 $validated['thumbnail_path'] = $thumbnail_path;
             }
             // Create meal

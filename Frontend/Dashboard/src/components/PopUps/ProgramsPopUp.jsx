@@ -25,27 +25,27 @@ const ProgramsPopUp = ({ user_id, user_name }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-    } else {
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    // } else {
+    setIsLoading(true);
 
-      FetchUserWorkouts(accessToken, user_id).then((response) => {
-        if (response.status === 200) {
-          setData(response.data.pagination_data);
-          setPrograms([]);
-          response.data.programs.map((program) => {
-            if (!programs.some(item => program.program_id === item.id)) {
-              setPrograms(response.data.programs);
-            }
-          });
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchUserWorkouts(accessToken, user_id).then((response) => {
+      if (response.status === 200) {
+        setData(response.data.pagination_data);
+        setPrograms([]);
+        response.data.programs.map((program) => {
+          if (!programs.some(item => program.program_id === item.id)) {
+            setPrograms(response.data.programs);
+          }
+        });
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, [currentPage]);
 
   const handleAddWorkout = (event) => {

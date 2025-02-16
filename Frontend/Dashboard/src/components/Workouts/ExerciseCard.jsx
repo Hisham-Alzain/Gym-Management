@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LoginContext } from "../../utils/Contexts";
-import { UpdateExercise, UpdateExercisePhoto, DeleteExercise } from '../../apis/ExerciseApis';
+import { UpdateExercise, DeleteExercise } from '../../apis/ExerciseApis';
+import UpImgPopUp from '../PopUps/UpImgPopUp';
 import VideoPopUp from '../PopUps/VideoPopUp';
 import UploadPopUp from '../PopUps/UploadPopUp';
 import img_holder from '../../assets/noImage.jpg';
@@ -16,7 +17,6 @@ const ExerciseCard = ({ ExerciseData }) => {
   // States
   const [updating, setUpdating] = useState(false);
   const [newDescription, setNewDescription] = useState(ExerciseData.translations[i18n.language].description);
-  const [thumbnail_path, setThumbnailPath] = useState(ExerciseData.photo);
 
   const handleDescription = (event) => {
     setNewDescription(event.target.value);
@@ -52,31 +52,12 @@ const ExerciseCard = ({ ExerciseData }) => {
     });
   }
 
-  const handlePhotoChange = (event, exercise_id) => {
-    setThumbnailPath(null);
-    const image = event.target.files[0];
-    const allowedImageTypes = ["image/png", "image/jpg", "image/jpeg"];
-    if (image && allowedImageTypes.includes(image.type)) {
-      setThumbnailPath(image);
-      UpdateExercisePhoto(accessToken, exercise_id, event.target.files[0]).then((response) => {
-        if (response.status === 200) {
-          window.location.reload();
-        } else {
-          console.log(response);
-        }
-      });
-    } else {
-      console.log("Invalid Image type. Please select a PNG, JPG, JPEG image.");
-    }
-  }
-
-
   return (
     <div className={styles.exercise_card}>
       {ExerciseData && <div className={styles.row}>
-        <label htmlFor='thumbnailPath' className={styles.img_holder}>
+        <div className={styles.img_holder}>
           {ExerciseData.photo ? (
-            <img src={ExerciseData.photo}
+            <img src={`https://olive-salmon-530757.hostingersite.com/storage/${ExerciseData.photo}`}
               alt="Uploaded Photo"
               style={{ pointerEvents: 'none' }}
               className={styles.image}
@@ -88,17 +69,7 @@ const ExerciseCard = ({ ExerciseData }) => {
               className={styles.image}
             />
           )}
-        </label>
-        <input
-          id='thumbnailPath'
-          type='file'
-          placeholder='Photo'
-          accept='.png,.jpg,.jpeg'
-          onChange={(event) => handlePhotoChange(event, ExerciseData.exercise_id)}
-          width="10px" height="10px"
-          style={{ visibility: 'hidden' }}
-          className={styles.inputx}
-        />
+        </div>
         <div className={styles.info}>
           <div className={styles.name_muscle}>
             <h3 className={styles.title}>{ExerciseData.translations[i18n.language].name}</h3>
@@ -121,6 +92,7 @@ const ExerciseCard = ({ ExerciseData }) => {
         <div className={styles.column}>
           <VideoPopUp Path={ExerciseData.video}
             Name={ExerciseData.translations[i18n.language].name} />
+          <UpImgPopUp id={ExerciseData.exercise_id} meal={false} />
           <UploadPopUp exercise_id={ExerciseData.exercise_id} />
           {!updating &&
             <button

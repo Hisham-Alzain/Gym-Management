@@ -23,27 +23,27 @@ const SubscriptionPopUp = ({ user_id, user_name }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-    } else {
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    // } else {
+    setIsLoading(true);
 
-      FetchSubscriptions(accessToken, user_id, currentPage).then((response) => {
-        if (response.status === 200) {
-          setData(response.data.pagination_data);
-          setSubscriptions([]);
-          response.data.subscriptions.map((subscription) => {
-            if (!subscriptions.some(item => subscription.id === item.id)) {
-              setSubscriptions(response.data.subscriptions);
-            }
-          });
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchSubscriptions(accessToken, user_id, currentPage).then((response) => {
+      if (response.status === 200) {
+        setData(response.data.pagination_data);
+        setSubscriptions([]);
+        response.data.subscriptions.map((subscription) => {
+          if (!subscriptions.some(item => subscription.id === item.id)) {
+            setSubscriptions(response.data.subscriptions);
+          }
+        });
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, [currentPage]);
 
   const handleSubscription = (event) => {

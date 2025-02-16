@@ -38,38 +38,38 @@ const Exercises = () => {
   }, []);
 
   useEffect(() => {
-    if (!filtered.current) {
-      filtered.current = true;
+    // if (!filtered.current) {
+    //   filtered.current = true;
 
-      setIsLoading(true);
-      FetchExercises(accessToken, nextPage, filterMuscle).then((response) => {
-        if (response.status === 200) {
-          setData(response.data.pagination_data);
-          if (!response.data.pagination_data.has_more_pages) {
-            setIsDone(true);
-          }
-          response.data.exercises.map((exercise) => {
-            // Check if exercise is already in array
-            if (!exercises.some(item => exercise.exercise_id === item.exercise_id)) {
-
-              // if not add exercise
-              if (exercise.photo) {
-                FetchImage(accessToken, exercise.photo).then((response) => {
-                  exercise.photo = response.imageURL;
-                  setExercises((prevState) => ([...prevState, exercise]));
-                });
-              } else {
-                setExercises((prevState) => ([...prevState, exercise]));
-              }
-            }
-          });
-        } else {
-          console.log(response.statusText);
+    setIsLoading(true);
+    FetchExercises(accessToken, nextPage, filterMuscle).then((response) => {
+      if (response.status === 200) {
+        setData(response.data.pagination_data);
+        if (!response.data.pagination_data.has_more_pages) {
+          setIsDone(true);
         }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+        response.data.exercises.map((exercise) => {
+          // Check if exercise is already in array
+          if (!exercises.some(item => exercise.exercise_id === item.exercise_id)) {
+
+            // if not add exercise
+            // if (exercise.photo) {
+            //   FetchImage(accessToken, exercise.photo).then((response) => {
+            //     exercise.photo = response.imageURL;
+            //     setExercises((prevState) => ([...prevState, exercise]));
+            //   });
+            // } else {
+            setExercises((prevState) => ([...prevState, exercise]));
+            // }
+          }
+        });
+      } else {
+        console.log(response.statusText);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, [nextPage, filterMuscle]);
 
   useEffect(() => {

@@ -32,20 +32,20 @@ const NewMealPopUp = () => {
   const [thumbnailPath, setThumbnailPath] = useState('');
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      setIsLoading(true);
-      FetchMealGi(accessToken).then((response) => {
-        if (response.status === 200) {
-          setGis(response.data.gis);
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchMealGi(accessToken).then((response) => {
+      if (response.status === 200) {
+        setGis(response.data.gis);
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, []);
 
   const handleNewMeal = (event) => {

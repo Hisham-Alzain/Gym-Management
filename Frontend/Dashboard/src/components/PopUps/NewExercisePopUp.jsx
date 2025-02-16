@@ -27,20 +27,20 @@ const NewExercisePopUp = () => {
   const [videoPath, setVideoPath] = useState('');
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      setIsLoading(true);
-      FetchExerciseMuscles(accessToken, 1).then((response) => {
-        if (response.status === 200) {
-          setMuscles(response.data.muscles);
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchExerciseMuscles(accessToken, 1).then((response) => {
+      if (response.status === 200) {
+        setMuscles(response.data.muscles);
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, []);
 
   const handleNewExercise = (event) => {

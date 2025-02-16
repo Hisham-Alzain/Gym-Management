@@ -23,21 +23,21 @@ const ShowProgram = () => {
   const [workoutDays, setWorkoutDays] = useState(null);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      FetchWorkoutProgram(accessToken, program_id).then((response) => {
-        if (response.status === 200) {
-          setProgram(response.data.program);
-          setWorkoutDays(response.data.program.days)
-        } else {
-          console.log(response);
-        }
-      }).then(() => {
-        setIsLoading(false);
-      });
-    }
+    FetchWorkoutProgram(accessToken, program_id).then((response) => {
+      if (response.status === 200) {
+        setProgram(response.data.program);
+        setWorkoutDays(response.data.program.days)
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    // }
   }, [accessToken, program_id]);
 
   const handleBackButtonClick = () => {

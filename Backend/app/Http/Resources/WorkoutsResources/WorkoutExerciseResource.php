@@ -23,8 +23,10 @@ class WorkoutExerciseResource extends JsonResource
                 'translations' => new ExerciseTranslationsCollection($this->exercise->translations),
                 'no_sets' => $this->sets()->count(),
                 'sets' => new WorkoutExerciseSetCollection($this->sets),
-                'video_path' => $this->exercise->video_path,
                 'thumbnail_path' => $this->exercise->thumbnail_path,
+
+                'video_path' => $this->exercise->video_path,
+                'video_ext' => pathinfo(storage_path($this->exercise->video_path), PATHINFO_EXTENSION),
             ]
         ];
     }

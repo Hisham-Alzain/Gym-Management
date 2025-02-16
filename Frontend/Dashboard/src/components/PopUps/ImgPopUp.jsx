@@ -19,24 +19,24 @@ const ImgPopUp = ({ user }) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-      setIsLoading(true);
+    // if (!initialized.current) {
+    //   initialized.current = true;
+    setIsLoading(true);
 
-      if (user.photos.length > 0) {
-        user.photos.map((photo) => {
-          FetchImage(accessToken, photo.photo_path).then((response) => {
-            if (response.status === 200) {
-              setImages((prev) => [...prev, response.imageURL]);
-            }
-          }).then(() => {
-            setIsLoading(false);
-          });
-        })
-      } else {
+    if (user.photos.length > 0) {
+      user.photos.map((photo) => {
+        // FetchImage(accessToken, photo.photo_path).then((response) => {
+        //   if (response.status === 200) {
+        setImages((prev) => [...prev, `https://olive-salmon-530757.hostingersite.com/storage/${photo}`]);
+        //   }
+        // }).then(() => {
         setIsLoading(false);
-      }
+        // });
+      })
+    } else {
+      setIsLoading(false);
     }
+    // }
   }, [user]);
 
 

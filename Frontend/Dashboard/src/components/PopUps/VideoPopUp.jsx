@@ -19,29 +19,40 @@ const VideoPopUp = ({ Path, Name }) => {
   const [videoData, setVideoData] = useState(null);
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
-    } else {
+    // if (!initialized.current) {
+    //   initialized.current = true;
       setIsLoading(true);
 
       if (Path) {
-        FetchVideo(accessToken, Path).then((response) => {
-          if (response.status == 200) {
-            setVideoData({
-              URL: response.videoURL,
-              type: response.type,
-              size: response.size,
-            });
-          } else {
+        const url = `https://olive-salmon-530757.hostingersite.com/storage/${Path}`;
+        const xhr = new XMLHttpRequest();
+        xhr.open('HEAD', url, true);
+        xhr.onload = function() {
+          const type = xhr.getResponseHeader('Content-Type');
+          setVideoData({
+            URL: url,
+            type: type
+          });
+        };
+        xhr.send();
+
+        // FetchVideo(accessToken, Path).then((response) => {
+        //   if (response.status == 200) {
+        //     setVideoData({
+        //       URL: response.videoURL,
+        //       type: response.type,
+        //       size: response.size,
+        //     });
+        //   } else {
             setIsLoading(false);
-          }
-        }).then(() => {
-          setIsLoading(false);
-        });
+        //   }
+        // }).then(() => {
+        //   setIsLoading(false);
+        // });
       } else {
         setIsLoading(false);
       }
-    }
+    // }
   }, [Path]);
 
   const handlePlayVideo = () => {

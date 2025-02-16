@@ -14,26 +14,26 @@ const Logout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!initialized.current) {
-      initialized.current = true;
+    // if (!initialized.current) {
+    //   initialized.current = true;
 
-      // Perform Logout logic (Call api)
-      LogoutAPI(accessToken).then((response) => {
-        if (response.status === 200) {
-          // Logout user and delete Token
-          setLoggedIn(false);
-          setAccessToken(null);
-          Cookies.remove('access_token');
-          setProfile({});
-        }
-        else {
-          console.log(response.statusText);
-        }
-      }).then(() => {
-        // Redirect to index
-        navigate('/');
-      });
-    }
+    // Perform Logout logic (Call api)
+    LogoutAPI(accessToken).then((response) => {
+      if (response.status === 200) {
+        // Logout user and delete Token
+        setLoggedIn(false);
+        setAccessToken(null);
+        Cookies.remove('access_token');
+        setProfile({});
+      }
+      else {
+        console.log(response.statusText);
+      }
+    }).then(() => {
+      // Redirect to index
+      navigate('/');
+    });
+    // }
   }, []);
 
   return <LoadingBars />;
