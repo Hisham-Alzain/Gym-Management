@@ -1,8 +1,38 @@
 import { useRef, useState, Suspense } from 'react'
+import * as THREE from "three";
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Environment } from '@react-three/drei'
+import Omro from '../public/Models/Omro'
 import Nuclear from '../public/Nuclear.jsx'
+// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
+// import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
+// import { useLoader } from '@react-three/fiber'
+// import { DDSLoader } from "three-stdlib"
 import './Test_3d.css';
+
+// THREE.DefaultLoadingManager.addHandler(/\.dds$/i, new DDSLoader());
+// const Scene = () => {
+//     const materials = useLoader(MTLLoader, "omro khl5 .mtl");
+//     const obj = useLoader(OBJLoader, "omro khl5 .obj", (loader) => {
+//         materials.preload();
+//         loader.setMaterials(materials);
+//     });
+
+//     console.log(obj);
+//     return <primitive object={obj} scale={0.4} />;
+// };
+
+// export default function Test_3d() {
+//     return (
+//         <Canvas>
+//             <Suspense fallback={null}>
+//                 <Scene />
+//                 <OrbitControls />
+//                 <Environment preset="sunset" background />
+//             </Suspense>
+//         </Canvas>
+//     );
+// }
 
 // function Box(props) {
 //     // This reference gives us direct access to the THREE.Mesh object
@@ -16,11 +46,11 @@ import './Test_3d.css';
 //     return (
 //         <mesh
 //             {...props}
-            // ref={ref}
-            // scale={clicked ? 3 : 2}
-            // onClick={(event) => click(!clicked)}
-            // onPointerOver={(event) => (event.stopPropagation(), hover(true))}
-            // onPointerOut={(event) => hover(false)}>
+// ref={ref}
+// scale={clicked ? 3 : 2}
+// onClick={(event) => click(!clicked)}
+// onPointerOver={(event) => (event.stopPropagation(), hover(true))}
+// onPointerOut={(event) => hover(false)}>
 //             <boxGeometry args={[1, 1, 1]} />
 //             <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
 //         </mesh>
@@ -34,8 +64,8 @@ export default function Test_3d() {
                 <ambientLight intensity={Math.PI / 2} />
                 <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
                 <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-                <Nuclear />
-                <OrbitControls enableZoom={false}/>
+                <Omro />
+                <OrbitControls enableZoom={false} />
             </Suspense>
         </Canvas>
     )
@@ -57,3 +87,4 @@ export default function Test_3d() {
     </h1>
 </div>
 </> */}
+
