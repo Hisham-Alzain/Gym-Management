@@ -67,7 +67,7 @@ class ProfileView extends StatelessWidget {
                                       ),
                                     )
                                   : SizedBox(
-                                      height: 200,
+                                      height: 250,
                                       child: ListView.builder(
                                         shrinkWrap: true,
                                         scrollDirection: Axis.horizontal,

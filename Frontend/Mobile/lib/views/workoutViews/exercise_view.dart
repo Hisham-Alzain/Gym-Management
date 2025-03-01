@@ -45,23 +45,23 @@ class ExerciseView extends StatelessWidget {
                             child: RedContainer(
                               height: 250,
                               width: 250,
-                              child: controller.exercise.videoExt == 'mp4'
-                                  ? controller.videoPlayerController.value
-                                          .isInitialized
+                              child: controller.exercise.videoPath == null
+                                  ? const Icon(
+                                      Icons.videocam,
+                                      size: 75,
+                                    )
+                                  : controller.exercise.videoExt == 'mp4'
                                       ? CustomPlayableVideoPlayer(
                                           videoPlayerController:
                                               controller.videoPlayerController,
                                         )
-                                      : const Center(
-                                          child: Text('Video failed to load'),
-                                        )
-                                  : CustomImage(
-                                      path: controller.exercise.videoPath
-                                          .toString(),
-                                      token: storage!.read('token'),
-                                      height: 300,
-                                      width: 300,
-                                    ),
+                                      : CustomImage(
+                                          path: controller.exercise.videoPath
+                                              .toString(),
+                                          token: storage!.read('token'),
+                                          height: 300,
+                                          width: 300,
+                                        ),
                             ),
                           ),
                           Padding(

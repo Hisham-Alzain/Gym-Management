@@ -48,13 +48,10 @@ class ExercisesView extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(10),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   SizedBox(
-                                    height: 150,
-                                    width: 150,
+                                    height: 125,
+                                    width: 125,
                                     child: controller.exercises[index]
                                                 .thumbnailPath ==
                                             null
@@ -76,7 +73,7 @@ class ExercisesView extends StatelessWidget {
                                           ' ${controller.exercises[index].name}',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .headlineSmall,
+                                              .bodyLarge,
                                         ),
                                       ],
                                     ),

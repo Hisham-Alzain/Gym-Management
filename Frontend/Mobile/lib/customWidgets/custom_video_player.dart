@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 class CustomVideoPlayer extends StatelessWidget {
@@ -51,10 +50,10 @@ class _CustomPlayableVideoPlayerState extends State<CustomPlayableVideoPlayer> {
               ),
             ],
           )
-        : Center(
-            child: Text(
-              '12'.tr,
-              style: Theme.of(context).textTheme.headlineSmall,
+        : const Center(
+            child: Icon(
+              Icons.videocam_off_sharp,
+              size: 75,
             ),
           );
   }

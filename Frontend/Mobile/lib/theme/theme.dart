@@ -21,6 +21,7 @@ class Themes {
       labelLarge: GoogleFonts.afacad(color: Colors.white, fontSize: 15),
       bodyLarge: GoogleFonts.afacad(color: Colors.white),
       bodyMedium: GoogleFonts.afacad(color: Colors.white, fontSize: 18),
+      bodySmall: GoogleFonts.afacad(color: Colors.white),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(

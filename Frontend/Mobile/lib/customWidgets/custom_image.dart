@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class CustomImage extends StatelessWidget {
@@ -19,9 +20,10 @@ class CustomImage extends StatelessWidget {
     return Image.network(
       'https://olive-salmon-530757.hostingersite.com/api/image/$path',
       errorBuilder: (context, error, stackTrace) {
-        return Text(
-          error.toString(),
-          style: Theme.of(context).textTheme.bodyLarge,
+        log(error.toString());
+        return const Icon(
+          Icons.image_not_supported,
+          size: 75,
         );
       },
       height: height,
