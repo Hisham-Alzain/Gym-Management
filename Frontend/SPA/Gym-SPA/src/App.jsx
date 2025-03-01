@@ -274,7 +274,7 @@ function App() {
           </div>
         </section>
 
-        <ModelSection />
+        {/*<ModelSection />*/}
         {/* Contact */}
         <section id='contact'>
           <div className='container'>
