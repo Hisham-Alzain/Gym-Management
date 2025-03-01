@@ -22,6 +22,7 @@ import team3 from './assets/team3.png';
 import after from './assets/after.png';
 import before from './assets/before.png';
 import './App.css';
+import ModelSection from './ModelSection';
 
 function App() {
   // Translations
@@ -273,6 +274,7 @@ function App() {
           </div>
         </section>
 
+        <ModelSection />
         {/* Contact */}
         <section id='contact'>
           <div className='container'>

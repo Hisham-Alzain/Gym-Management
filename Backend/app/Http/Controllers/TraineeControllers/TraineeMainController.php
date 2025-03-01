@@ -267,7 +267,7 @@ class TraineeMainController extends MainController
         // Response
         return response()->json([
             "message" => "Photos retrieved successfully",
-            'photos' => $user->userInfo->photos->take(5),
+            'photos' => $user->userInfo->photos->take(6),
         ], 200);
     }
 
