@@ -11,6 +11,7 @@ class Exercise {
   final List<Sets> sets;
   final String? videoPath;
   final String? thumbnailPath;
+  final String? videoExt;
 
   Exercise({
     required this.workoutExerciseId,
@@ -22,6 +23,7 @@ class Exercise {
     required this.sets,
     required this.videoPath,
     required this.thumbnailPath,
+    required this.videoExt,
   });
 
   Exercise.fromJson(Map<String, dynamic> json)
@@ -36,7 +38,8 @@ class Exercise {
           for (var sets in json['exercise']['sets']) (Sets.fromJson(sets)),
         ],
         videoPath = json['exercise']['video_path'],
-        thumbnailPath = json['exercise']['thumbnail_path'];
+        thumbnailPath = json['exercise']['thumbnail_path'],
+        videoExt = json['exercise']['video_ext'];
 
   Exercise.empty()
       : workoutExerciseId = 0,
@@ -47,5 +50,6 @@ class Exercise {
         numberOfSets = 0,
         sets = [],
         videoPath = '',
-        thumbnailPath = '';
+        thumbnailPath = '',
+        videoExt = '';
 }

@@ -7,6 +7,7 @@ import 'package:mobile/main.dart';
 class ExercisesView extends StatelessWidget {
   final ExercisesController _exercisesController =
       Get.put(ExercisesController());
+
   ExercisesView({super.key});
 
   @override
@@ -22,13 +23,12 @@ class ExercisesView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/exercises_background.jpg'),
+              image: AssetImage('assets/app_photos/exercises_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
           child: RefreshIndicator(
-            key: _exercisesController.refreshIndicatorKey,
-            onRefresh: () => _exercisesController.getDay(
+            onRefresh: () async => await _exercisesController.getDay(
               _exercisesController.workoutsController.dayId,
             ),
             child: GetBuilder<ExercisesController>(

@@ -24,13 +24,12 @@ class ExerciseView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/general_background.jpg'),
+              image: AssetImage('assets/app_photos/general_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
           child: RefreshIndicator(
-            key: _exerciseController.refreshIndicatorKey,
-            onRefresh: () => _exerciseController.getExercise(
+            onRefresh: () async => await _exerciseController.getExercise(
               _exerciseController.exercisesController.exerciseId,
             ),
             child: GetBuilder<ExerciseController>(
@@ -44,13 +43,18 @@ class ExerciseView extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(10),
                             child: RedContainer(
-                              height: 300,
-                              width: 300,
-                              child: controller.videoType == "mp4"
-                                  ? CustomPlayableVideoPlayer(
-                                      videoPlayerController:
-                                          controller.videoPlayerController,
-                                    )
+                              height: 250,
+                              width: 250,
+                              child: controller.exercise.videoExt == 'mp4'
+                                  ? controller.videoPlayerController.value
+                                          .isInitialized
+                                      ? CustomPlayableVideoPlayer(
+                                          videoPlayerController:
+                                              controller.videoPlayerController,
+                                        )
+                                      : const Center(
+                                          child: Text('Video failed to load'),
+                                        )
                                   : CustomImage(
                                       path: controller.exercise.videoPath
                                           .toString(),

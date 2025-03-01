@@ -1,0 +1,2 @@
+D:/projects/Gym-Management/Frontend/Mobile/android/app/.cxx/Debug/1p4qq4x6/x86_64/CMakeFiles/edit_cache.dir
+D:/projects/Gym-Management/Frontend/Mobile/android/app/.cxx/Debug/1p4qq4x6/x86_64/CMakeFiles/rebuild_cache.dir

@@ -18,13 +18,12 @@ class DietsView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/diet_background.jpg'),
+              image: AssetImage('assets/app_photos/diet_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
           child: RefreshIndicator(
-            key: _dietsController.refreshIndicatorKey,
-            onRefresh: () => _dietsController.refreshView(),
+            onRefresh: () async => await _dietsController.refreshView(),
             child: GetBuilder<DietsController>(
               builder: (controller) => controller.loading
                   ? const Center(
@@ -98,6 +97,8 @@ class DietsView extends StatelessWidget {
                                                 .titleLarge,
                                           ),
                                           ListView.builder(
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
                                             itemCount: controller
                                                 .programs[index].meals.length,
                                             shrinkWrap: true,

@@ -16,7 +16,7 @@ class SettingsView extends StatelessWidget {
       body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/general_background.jpg'),
+            image: AssetImage('assets/app_photos/general_background.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -55,7 +55,8 @@ class SettingsView extends StatelessWidget {
                               ),
                             );
                           }).toList(),
-                          onChanged: (p0) => controller.changeLang(p0),
+                          onChanged: (p0) async =>
+                              await controller.changeLang(p0),
                         ),
                       ],
                     ),

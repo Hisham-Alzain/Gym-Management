@@ -1,5 +1,5 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/controllers/workout_controllers.dart/exercises_controller.dart';
@@ -9,7 +9,6 @@ import 'package:mobile/models/exercise.dart';
 import 'package:video_player/video_player.dart';
 
 class ExerciseController extends GetxController {
-  late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late ExercisesController exercisesController;
   late Dio dio;
@@ -17,20 +16,36 @@ class ExerciseController extends GetxController {
   late Exercise exercise;
   late VideoPlayerController videoPlayerController;
   bool loading = true;
-  String videoType = 'mp4';
 
   @override
   Future<void> onInit() async {
-    refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
     exercisesController = Get.find<ExercisesController>();
     dio = Dio();
     customDialogs = CustomDialogs();
     exercise = Exercise.empty();
     await getExercise(exercisesController.exerciseId);
-    videoPlayerController =
-        VideoPlayerController.asset('assets/splashScreenVideo.mp4');
-    await videoPlayerController.initialize();
+    log(exercise.videoPath.toString());
+    if (exercise.videoExt == 'mp4') {
+      try {
+        String token = storage!.read('token');
+        videoPlayerController = VideoPlayerController.networkUrl(
+          Uri.parse(
+            'https://olive-salmon-530757.hostingersite.com/api/image/${exercise.videoPath}',
+          ),
+          httpHeaders: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'image/*; charset=UTF-8',
+            'Accept': 'image/*,application/json',
+            'Connection': 'Keep-Alive',
+            'Authorization': 'Bearer $token',
+          },
+        );
+        await videoPlayerController.initialize();
+      } catch (e) {
+        log('Error initializing video player: $e');
+      }
+    }
     loading = false;
     update();
     super.onInit();
@@ -88,7 +103,7 @@ class ExerciseController extends GetxController {
         },
       );
       if (response.statusCode == 200) {
-        refreshIndicatorKey.currentState!.show();
+        await getExercise(exercisesController.exerciseId);
         update();
       } else if (response.statusCode == 401) {
         generalController.handleUnauthorized();

@@ -18,7 +18,7 @@ class LoginView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/auth_background1.jpg'),
+              image: AssetImage('assets/app_photos/auth_background1.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -30,7 +30,7 @@ class LoginView extends StatelessWidget {
                   builder: (controller) => Column(
                     children: [
                       Image.asset(
-                        'assets/white_logo.png',
+                        'assets/app_photos/white_logo.png',
                         height: 180,
                       ),
                       Padding(
@@ -85,10 +85,10 @@ class LoginView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: OutlinedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (controller.loginForm.currentState?.validate() ==
                                 true) {
-                              controller.login(
+                              await controller.login(
                                 controller.emailController.text,
                                 controller.passwordController.text,
                                 controller.rememberMe,

@@ -9,7 +9,6 @@ import 'package:mobile/models/meal.dart';
 import 'package:mobile/models/pagination_data.dart';
 
 class DietsController extends GetxController {
-  late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late Dio dio;
   late CustomDialogs customDialogs;
@@ -21,7 +20,6 @@ class DietsController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
     dio = Dio();
     customDialogs = CustomDialogs();

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/middleware/middleware.dart';
 import 'package:mobile/views/dietViews/diets_view.dart';
@@ -27,6 +28,9 @@ List<GetPage<dynamic>>? getPages = [
     name: '/auth',
     page: () => const AuthView(),
     middlewares: [Middleware()],
+    transition: Transition.fadeIn,
+    transitionDuration: const Duration(seconds: 1),
+    curve: Curves.linear,
   ),
   GetPage(
     name: '/login',

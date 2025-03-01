@@ -6,7 +6,6 @@ import 'package:mobile/controllers/workout_controllers.dart/workouts_controller.
 
 class WorkoutsView extends StatelessWidget {
   final WorkoutsController _workoutsController = Get.put(WorkoutsController());
-
   WorkoutsView({super.key});
 
   @override
@@ -19,13 +18,12 @@ class WorkoutsView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/app_background.jpg'),
+              image: AssetImage('assets/app_photos/app_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
           child: RefreshIndicator(
-            key: _workoutsController.refreshIndicatorKey,
-            onRefresh: () => _workoutsController.refreshView(),
+            onRefresh: () async => await _workoutsController.refreshView(),
             child: GetBuilder<WorkoutsController>(
               builder: (controller) => controller.loading
                   ? const Center(
@@ -107,6 +105,8 @@ class WorkoutsView extends StatelessWidget {
                                                 .titleLarge,
                                           ),
                                           ListView.builder(
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
                                             itemCount: controller
                                                 .programs[index].days.length,
                                             shrinkWrap: true,

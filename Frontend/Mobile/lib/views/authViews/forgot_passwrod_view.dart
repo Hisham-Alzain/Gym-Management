@@ -29,7 +29,7 @@ class ForgotPasswordView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/general_background.jpg'),
+              image: AssetImage('assets/app_photos/general_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -62,10 +62,10 @@ class ForgotPasswordView extends StatelessWidget {
                           ),
                         ),
                         OutlinedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (controller.emailForm.currentState?.validate() ==
                                 true) {
-                              controller
+                              await controller
                                   .sendEmail(controller.emailController.text);
                             }
                           },
@@ -106,7 +106,7 @@ class ForgotPasswordView extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: controller.resendEmail
-                              ? () => controller
+                              ? () async => await controller
                                   .sendEmail(controller.emailController.text)
                               : null,
                           child: Text(

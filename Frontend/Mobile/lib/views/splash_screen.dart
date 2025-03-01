@@ -5,7 +5,7 @@ import 'package:mobile/customWidgets/custom_video_player.dart';
 
 class SplashScreen extends StatelessWidget {
   final SplashScreenController _splashScreenController =
-      Get.put(SplashScreenController());
+      Get.find<SplashScreenController>();
 
   SplashScreen({super.key});
 
@@ -13,13 +13,15 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GetBuilder<SplashScreenController>(
-        builder: (controller) => SafeArea(
-          child: Center(
-            child: CustomVideoPlayer(
-              videoPlayerController: controller.videoPlayerController,
+        builder: (controller) {
+          return SafeArea(
+            child: Center(
+              child: CustomVideoPlayer(
+                videoPlayerController: controller.videoPlayerController,
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

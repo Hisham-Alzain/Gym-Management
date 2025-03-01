@@ -9,7 +9,6 @@ import 'package:mobile/models/pagination_data.dart';
 import 'package:mobile/models/workout_program.dart';
 
 class WorkoutsController extends GetxController {
-  late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late Dio dio;
   late CustomDialogs customDialogs;
@@ -21,7 +20,6 @@ class WorkoutsController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
     dio = Dio();
     customDialogs = CustomDialogs();

@@ -19,7 +19,7 @@ class RegisterView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/auth_background2.jpg'),
+              image: AssetImage('assets/app_photos/auth_background2.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -114,11 +114,11 @@ class RegisterView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(10),
                         child: OutlinedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (controller.registerForm.currentState
                                     ?.validate() ==
                                 true) {
-                              controller.register(
+                              await controller.register(
                                 controller.nameController.text,
                                 controller.emailController.text,
                                 controller.passwordController.text,

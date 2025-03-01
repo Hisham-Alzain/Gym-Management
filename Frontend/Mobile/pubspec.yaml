@@ -30,4 +30,6 @@ flutter:
   assets: 
    - assets/
    - assets/google_fonts/
+   - assets/app_photos/
+   - assets/model_photos/
   uses-material-design: true

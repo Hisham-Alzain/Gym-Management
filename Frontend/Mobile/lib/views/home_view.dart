@@ -31,7 +31,7 @@ class HomeView extends StatelessWidget {
                   title: '110'.tr,
                   icon: Icons.logout,
                   onTap: () => _homeController.customDialogs.showLogoutDialog(
-                    () => _homeController.logout(),
+                    () async => await _homeController.logout(),
                   ),
                 ),
               ],

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/controllers/workout_controllers.dart/workouts_controller.dart';
@@ -8,7 +7,6 @@ import 'package:mobile/main.dart';
 import 'package:mobile/models/exercise.dart';
 
 class ExercisesController extends GetxController {
-  late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late WorkoutsController workoutsController;
   late Dio dio;
@@ -19,7 +17,6 @@ class ExercisesController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
     workoutsController = Get.find<WorkoutsController>();
     dio = Dio();

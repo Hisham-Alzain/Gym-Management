@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
@@ -7,7 +6,6 @@ import 'package:mobile/main.dart';
 import 'package:mobile/models/user.dart';
 
 class ProfileController extends GetxController {
-  late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late Dio dio;
   late CustomDialogs customDialogs;
@@ -16,7 +14,6 @@ class ProfileController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
     dio = Dio();
     customDialogs = CustomDialogs();

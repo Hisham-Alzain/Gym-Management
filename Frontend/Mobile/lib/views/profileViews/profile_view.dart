@@ -22,13 +22,12 @@ class ProfileView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/app_background.jpg'),
+              image: AssetImage('assets/app_photos/app_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
           child: RefreshIndicator(
-            key: _profileController.refreshIndicatorKey,
-            onRefresh: () => _profileController.getUserInfo(),
+            onRefresh: () async => await _profileController.getUserInfo(),
             child: GetBuilder<ProfileController>(
               builder: (controller) => controller.loading
                   ? const Center(

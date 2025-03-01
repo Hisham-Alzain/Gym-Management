@@ -126,7 +126,7 @@ class EditInfoController extends GetxController {
       );
       Get.back();
       if (response.statusCode == 200) {
-        profileController.refreshIndicatorKey.currentState!.show();
+        await profileController.getUserInfo();
         Get.back();
       } else if (response.statusCode == 401) {
         generalController.handleUnauthorized();

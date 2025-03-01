@@ -24,7 +24,7 @@ class ChangePasswordView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/general_background.jpg'),
+              image: AssetImage('assets/app_photos/general_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -74,11 +74,11 @@ class ChangePasswordView extends StatelessWidget {
                         ),
                       ),
                       OutlinedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (controller.passwordForm.currentState
                                   ?.validate() ==
                               true) {
-                            controller.changePasssword(
+                            await controller.changePasssword(
                               controller.emailController.text,
                               controller.newPasswordController.text,
                               controller.newPasswordController.text,

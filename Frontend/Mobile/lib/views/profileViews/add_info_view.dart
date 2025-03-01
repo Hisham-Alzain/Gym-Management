@@ -24,7 +24,7 @@ class AddInfoView extends StatelessWidget {
       body: DecoratedBox(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/personal_info_background.jpg'),
+            image: AssetImage('assets/app_photos/personal_info_background.jpg'),
             fit: BoxFit.cover,
             alignment: Alignment(0, 2),
           ),
@@ -151,7 +151,8 @@ class AddInfoView extends StatelessWidget {
                           padding: const EdgeInsets.all(10),
                           child: Center(
                             child: GestureDetector(
-                              onTap: () => controller.selectDate(context),
+                              onTap: () async =>
+                                  await controller.selectDate(context),
                               child: Text(
                                 "${'80'.tr}: ${controller.birthdate.toString().split(' ')[0]}",
                                 style: Theme.of(context).textTheme.bodyLarge,
@@ -262,11 +263,11 @@ class AddInfoView extends StatelessWidget {
                       ),
                     ),
                   OutlinedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (controller.personalInfoForm.currentState
                               ?.validate() ==
                           true) {
-                        controller.addInfo(
+                        await controller.addInfo(
                           controller.birthdate,
                           controller.selectedGender.toString(),
                           controller.selectedHeight!.toDouble(),

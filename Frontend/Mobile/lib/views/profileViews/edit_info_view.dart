@@ -25,7 +25,8 @@ class EditInfoView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/personal_info_background.jpg'),
+              image:
+                  AssetImage('assets/app_photos/personal_info_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -204,11 +205,11 @@ class EditInfoView extends StatelessWidget {
                         ),
                       ),
                     OutlinedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (controller.personalInfoForm.currentState
                                 ?.validate() ==
                             true) {
-                          controller.editInfo(
+                          await controller.editInfo(
                             controller.selectedHeight!.toDouble(),
                             controller.selectedWeight!.toDouble(),
                             controller.illnessController.text,

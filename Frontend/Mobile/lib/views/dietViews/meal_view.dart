@@ -21,7 +21,7 @@ class MealView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/diet_background.jpg'),
+              image: AssetImage('assets/app_photos/diet_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
@@ -32,7 +32,8 @@ class MealView extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: RedContainer(
-                      width: 200,
+                      height: 250,
+                      width: 250,
                       child: controller.selectedMeal.thumbnailPath == null
                           ? const Icon(
                               Icons.fastfood,

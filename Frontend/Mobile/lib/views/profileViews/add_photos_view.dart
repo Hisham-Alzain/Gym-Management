@@ -30,13 +30,13 @@ class AddPhotosView extends StatelessWidget {
         child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/personal_info_background.jpg'),
+              image:
+                  AssetImage('assets/app_photos/personal_info_background.jpg'),
               fit: BoxFit.cover,
             ),
           ),
           child: RefreshIndicator(
-            key: _addPhotosController.refreshIndicatorKey,
-            onRefresh: () => _addPhotosController.getPhotos(),
+            onRefresh: () async => await _addPhotosController.getPhotos(),
             child: GetBuilder<AddPhotosController>(
               builder: (controller) => controller.loading
                   ? const Center(
@@ -65,8 +65,8 @@ class AddPhotosView extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       RedContainer(
-                                        height: 400,
-                                        width: 200,
+                                        height: 250,
+                                        width: 250,
                                         child: controller.displayPhotos.isEmpty
                                             ? controller.modelPhotos[index]
                                             : controller.displayPhotos[index],
@@ -91,7 +91,8 @@ class AddPhotosView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 ElevatedButton(
-                                  onPressed: () => controller.addPhotos(),
+                                  onPressed: () async =>
+                                      await controller.addPhotos(),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -114,7 +115,8 @@ class AddPhotosView extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: OutlinedButton(
-                                onPressed: () => controller.uploadPhotos(),
+                                onPressed: () async =>
+                                    await controller.uploadPhotos(),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,

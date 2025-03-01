@@ -9,7 +9,6 @@ import 'package:mobile/main.dart';
 import 'package:mobile/models/photo.dart';
 
 class AddPhotosController extends GetxController {
-  late GlobalKey<RefreshIndicatorState> refreshIndicatorKey;
   late GeneralController generalController;
   late Dio dio;
   late CustomDialogs customDialogs;
@@ -21,17 +20,16 @@ class AddPhotosController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
     generalController = Get.find<GeneralController>();
     dio = Dio();
     customDialogs = CustomDialogs();
-    modelPhotos = List.generate(
-      5,
-      (_) => Image.asset(
-        'assets/general_background.jpg',
-        fit: BoxFit.fill,
-      ),
-    );
+    modelPhotos = [
+      for (int i = 1; i <= 6; i++)
+        Image.asset(
+          'assets/model_photos/$i.png',
+          fit: BoxFit.fill,
+        ),
+    ];
     if (!generalController.inRegister) {
       await getPhotos();
     }
@@ -50,7 +48,7 @@ class AddPhotosController extends GetxController {
     if (pickedPhotos == null || pickedPhotos.isEmpty) return;
     selectedPhotos.clear();
     displayPhotos.clear();
-    selectedPhotos.addAll(pickedPhotos.take(5));
+    selectedPhotos.addAll(pickedPhotos.take(6));
     displayPhotos = [
       for (var photo in selectedPhotos)
         Image.memory(
@@ -100,7 +98,7 @@ class AddPhotosController extends GetxController {
             },
           );
         } else {
-          refreshIndicatorKey.currentState!.show();
+          await getPhotos();
         }
       } else if (response.statusCode == 401) {
         generalController.handleUnauthorized();
@@ -132,7 +130,7 @@ class AddPhotosController extends GetxController {
           for (var photo in response.data['photos']) Photo.fromJson(photo),
         ];
         for (var photo in uploadedPhotos) {
-          if (displayPhotos.length < 5) {
+          if (displayPhotos.length < 6) {
             displayPhotos.add(
               CustomImage(
                 path: photo.photoPath,

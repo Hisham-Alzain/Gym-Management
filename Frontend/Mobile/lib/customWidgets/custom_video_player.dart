@@ -8,14 +8,7 @@ class CustomVideoPlayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return videoPlayerController.value.isInitialized
-        ? VideoPlayer(videoPlayerController)
-        : Center(
-            child: Text(
-              '12'.tr,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
-          );
+    return VideoPlayer(videoPlayerController);
   }
 }
 

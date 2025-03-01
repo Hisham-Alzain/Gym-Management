@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:mobile/controllers/general_controller.dart';
 import 'package:mobile/customWidgets/custom_dialogs.dart';
+import 'package:mobile/enums/enums.dart';
 import 'package:mobile/main.dart';
 
 class HomeController extends GetxController {
@@ -33,7 +34,8 @@ class HomeController extends GetxController {
       );
       Get.back();
       if (response.statusCode == 200) {
-        storage!.remove('token');
+        await storage!.remove('token');
+        middlewareCase = MiddlewareCases.invalidToken;
         customDialogs.showSuccessDialog('8'.tr);
         Future.delayed(
           const Duration(seconds: 1),
