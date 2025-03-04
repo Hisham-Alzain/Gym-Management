@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile/controllers/general_controller.dart';
+import 'package:mobile/controllers/settings_controller.dart';
 import 'package:mobile/customWidgets/custom_drop_down_button.dart';
 import 'package:mobile/customWidgets/custom_list_tiles.dart';
 
@@ -20,9 +20,10 @@ class SettingsView extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: GetBuilder<GeneralController>(
+        child: GetBuilder<SettingsController>(
           builder: (controller) => Center(
             child: ListView(
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,

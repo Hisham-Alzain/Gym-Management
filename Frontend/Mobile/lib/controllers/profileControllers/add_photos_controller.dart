@@ -12,7 +12,7 @@ class AddPhotosController extends GetxController {
   late GeneralController generalController;
   late Dio dio;
   late CustomDialogs customDialogs;
-  late List<Widget> modelPhotos;
+  List<Widget> modelPhotos = [];
   List<XFile> selectedPhotos = [];
   List<Widget> displayPhotos = [];
   List<Photo> uploadedPhotos = [];

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mobile/controllers/general_controller.dart';
+import 'package:mobile/controllers/settings_controller.dart';
 import 'package:mobile/controllers/splash_screen_controller.dart';
 import 'package:mobile/enums/enums.dart';
 import 'package:mobile/l10n/local.dart';
@@ -32,6 +33,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GeneralController generalController = Get.put(GeneralController());
+    final SettingsController settingsController = Get.put(SettingsController());
     return GetMaterialApp(
       initialRoute: '/splashScreen',
       getPages: getPages,
@@ -42,7 +44,7 @@ class MainApp extends StatelessWidget {
       },
       onReady: () async => await generalController.requestPermissions(),
       theme: Themes.theme,
-      locale: generalController.locale,
+      locale: settingsController.locale,
       translations: Local(),
     );
   }
