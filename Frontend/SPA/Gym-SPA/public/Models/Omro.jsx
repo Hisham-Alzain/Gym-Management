@@ -4,19 +4,28 @@ Command: npx gltfjsx@6.5.3 omro.gltf
 */
 
 import React from 'react'
+import { useRef, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function Model(props) {
   const { nodes, materials } = useGLTF('/Models/omro.gltf')
+  const ref = useRef()
+  const [hovered, hover] = useState(false)
+  const [clicked, click] = useState(false)
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.HG_Body.geometry} material={materials['.Human']} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh geometry={nodes.HG_Body.geometry} material={materials['.Human']} rotation={[Math.PI / 2, 0, 0]} scale={1.5}/>
       <group rotation={[Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.HG_Eyes_1.geometry} material={materials['.HG_Eyes_Outer_FAST']} />
-        <mesh geometry={nodes.HG_Eyes_2.geometry} material={materials['.HG_Eyes_Inner']} />
+        <mesh geometry={nodes.HG_Eyes_1.geometry} material={materials['.HG_Eyes_Outer_FAST']}          
+          ref={ref}
+          scale={clicked ? 1.6 : 1.5}
+          onClick={(event) => click(!clicked)}
+          onPointerOver={(event) => (event.stopPropagation(), hover(true))}
+          onPointerOut={(event) => hover(false)} />
+        <mesh geometry={nodes.HG_Eyes_2.geometry} material={materials['.HG_Eyes_Inner']} scale={1.5}/>
       </group>
-      <mesh geometry={nodes.HG_TeethLower.geometry} material={materials['.HG_Teeth']} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.HG_TeethUpper.geometry} material={materials['.HG_Teeth']} rotation={[Math.PI / 2, 0, 0]} />
+      <mesh geometry={nodes.HG_TeethLower.geometry} material={materials['.HG_Teeth']} rotation={[Math.PI / 2, 0, 0]} scale={1.5}/>
+      <mesh geometry={nodes.HG_TeethUpper.geometry} material={materials['.HG_Teeth']} rotation={[Math.PI / 2, 0, 0]} scale={1.5}/>
     </group>
   )
 }
