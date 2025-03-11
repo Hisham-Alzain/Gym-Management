@@ -7,7 +7,7 @@ import global_ar from './translations/ar/global.json';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
 import './index.css';
-//import Test_3d from './test_3d.jsx';
+import Test_3d from './Test_3d.jsx';
 
 
 const lng = localStorage.getItem('Lang');
