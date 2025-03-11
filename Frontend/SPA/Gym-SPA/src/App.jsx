@@ -103,7 +103,7 @@ function App() {
   const pricing = [
     {
       plan: '1 Month',
-      price: '$150/M',
+      price: '$100',
       features: [
         t('pricing.feature_1'),
         t('pricing.feature_2'),
@@ -113,7 +113,7 @@ function App() {
     },
     {
       plan: '3 Months',
-      price: '$100/M',
+      price: '$200',
       features: [
         t('pricing.feature_1'),
         t('pricing.feature_2'),
@@ -264,7 +264,7 @@ function App() {
                         </div>
                       ))}
                       <div className='button'>
-                        <a href="#" className='btn'>{t('pricing.btn')}</a>
+                        <a href="#contact" className='btn'>{t('pricing.btn')}</a>
                       </div>
                     </div>
                   </div>
@@ -327,10 +327,10 @@ function App() {
                       </ul>
                     </div>
                     <div className='social'>
-                      <a href="#"><FaFacebookF /></a>
-                      <a href="#"><FaInstagram /></a>
-                      <a href="#"><FaWhatsapp /></a>
-                      <a href="#"><FaTelegramPlane /></a>
+                      {/* <a href="#"><FaFacebookF /></a> */}
+                      <a href="https://www.instagram.com/compass.team_"><FaInstagram /></a>
+                      <a href="https://wa.me/963994971127" target="_blank"><FaWhatsapp /></a>
+                      <a href="https://t.me/+963994971127" target="_blank"><FaTelegramPlane /></a>
                     </div>
                   </div>
                 </div>
