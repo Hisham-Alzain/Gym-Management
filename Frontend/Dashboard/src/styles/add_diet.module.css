@@ -305,19 +305,110 @@
     color: #333;
 }
 
+/* Style for the totals container */
 .totals {
     margin-top: 20px;
-    padding: 15px;
-    background-color: #9b0707;
-    border: 1px solid #333;
+    padding: 20px;
+    background-color: #9b0707; /* Updated background color */
+    border: 1px solid #ddd;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #fff; /* Ensure text is readable on dark background */
+}
+
+/* Style for the totals info paragraphs */
+.totals_info {
+    margin-top: 15px;
 }
 
 .totals_info p {
-    margin: 5px 0;
+    margin: 8px 0;
     font-size: 14px;
     font-weight: bold;
+    color: #fff; /* Ensure text is readable on dark background */
+}
+
+/* Style for the equation label and selector */
+.equation_container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.equation_label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff; /* Ensure text is readable on dark background */
+}
+
+.equation_selector {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ddd;
     color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.equation_selector:hover {
+    border-color: #999;
+}
+
+.equation_selector:focus {
+    outline: none;
+    border-color: #4a4848; /* Match the dark background */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* White shadow for contrast */
+}
+
+/* Style for the equation value display */
+.equation_value {
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff; /* Ensure text is readable on dark background */
+    margin-left: 10px;
+}
+
+/* Style for the submit button */
+.submit_button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #9b0707; /* Light background for contrast */
+    color: #fff; /* Dark text for contrast */
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.submit_button:hover {
+    background-color: #f0f0f0; /* Slightly darker on hover */
+    color: #7a0505; /* Darker red on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .equation_container {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        align-items: flex-start;
+    }
+
+    .equation_selector {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .totals {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .totals_info p {
+        font-size: 12px; /* Smaller font size for smaller screens */
+    }
 }
 
 @media screen and (max-width: 970px) {

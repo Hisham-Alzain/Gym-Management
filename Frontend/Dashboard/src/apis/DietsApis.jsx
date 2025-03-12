@@ -180,3 +180,18 @@ export const CreateDietProgram = async (token, dietData) => {
     return error.response;
   }
 };
+
+export const GetEquations = async (token, trainer_id) => {
+  try {
+    const response = await axios.get(`https://olive-salmon-530757.hostingersite.com/api/diets/equations/${trainer_id}`, {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Accept': "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
