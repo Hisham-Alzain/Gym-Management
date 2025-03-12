@@ -14,7 +14,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import logo1 from './assets/logo1.png';
 import logo2 from './assets/logo2.png';
-import app from './assets/gym-app.jpg';
+import app from './assets/amorat.png';
 import coach from './assets/coach.jpg';
 import team1 from './assets/team1.png';
 import team2 from './assets/team2.png';

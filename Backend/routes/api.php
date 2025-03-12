@@ -91,6 +91,7 @@ Route::controller(TrainerDietsController::class)->group(function () {
         Route::get('/diet/{program_id}', 'ShowDietProgram');
         Route::post('/diets/create', 'CreateDietProgram');
         Route::delete('/diets/{program_id}', 'DeleteDietProgram');
+        Route::get('/diets/equations/{trainee_id}','GetEquations');
 
         Route::get('/meals', 'ShowMeals');
         Route::post('/meals/create', 'AddMeal');
