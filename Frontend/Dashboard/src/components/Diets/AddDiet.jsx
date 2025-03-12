@@ -247,7 +247,7 @@ const AddDiet = () => {
                 ))}
               </select>
               <span className={styles.equation_value}>
-                {equations[selectedEquation] ? `(${equations[selectedEquation]})` : ""}
+                {equations[selectedEquation] ? `(${equations[selectedEquation].toFixed(2)})` : ""}kcal
               </span>
             </div>
             {(() => {
