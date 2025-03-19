@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { FaCalendarDays } from "react-icons/fa6";
 import { LoginContext } from '../../utils/Contexts';
-import { CreateDietProgram, FetchMeals } from '../../apis/DietsApis';
+import { CreateDietProgram, FetchMeals, GetEquations } from '../../apis/DietsApis';
 import LoadingBars from '../LoadingBars';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -29,7 +29,8 @@ const AddDiet = () => {
   const [availableMeals, setAvailableMeals] = useState([]);
   const [meals, setMeals] = useState(Array.from({ length: mealsNo }, () => []));
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
-
+  const [equations, setEquations] = useState([]);
+  const [selectedEquation, setSelectedEquation] = useState(1.2);
 
   useEffect(() => {
     // if (!initialized.current) {
@@ -39,6 +40,16 @@ const AddDiet = () => {
     FetchMeals(accessToken).then((response) => {
       if (response.status === 200) {
         setAvailableMeals(response.data.meals);
+      } else {
+        console.log(response);
+      }
+    }).then(() => {
+      setIsLoading(false);
+    });
+    GetEquations(accessToken, user_id).then((response) => {
+      if (response.status === 200) {
+        console.log(response.data);
+        setEquations(response.data);
       } else {
         console.log(response);
       }
@@ -219,6 +230,26 @@ const AddDiet = () => {
           </label>
           {/* Total Nutritional Values */}
           <div className={styles.totals}>
+            {/* Equation Selector */}
+            <div className={styles.equation_container}>
+              <label className={styles.equation_label}>
+                {t("components.add_diet.select_equation")}:
+              </label>
+              <select
+                className={styles.equation_selector}
+                value={selectedEquation}
+                onChange={(e) => setSelectedEquation(parseFloat(e.target.value))}
+              >
+                {[1.2, 1.5, 1.9].map((equation, index) => (
+                  <option key={index} value={equation}>
+                    {equation}
+                  </option>
+                ))}
+              </select>
+              <span className={styles.equation_value}>
+                {equations[selectedEquation] ? `(${equations[selectedEquation].toFixed(2)})` : ""}kcal
+              </span>
+            </div>
             {(() => {
               // Calculate totals
               let totalCalories = 0;

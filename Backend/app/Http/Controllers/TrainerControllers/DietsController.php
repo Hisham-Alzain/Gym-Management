@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\TrainerControllers;
 
+use App\Enums\Genders;
 use App\Http\Controllers\MainController;
 
 use App\Models\User;
@@ -49,6 +50,60 @@ class DietsController extends MainController
         } else {
             //to be implented when defaultDiet json is filled with data
         }
+    }
+
+    public function GetEquations(Request $request, $trainee_id)
+    {
+        // Get the authenticated user
+        $user = Auth::user();
+
+        // Check if the user is authenticated
+        if (!$user) {
+            return response()->json([
+                'errors' => ['user' => 'Invalid user'],
+            ], 401);
+        }
+
+        // Check user role using AdminPolicy
+        $policy = new AdminPolicy();
+        if (!$policy->Policy($user)) {
+            return response()->json([
+                'errors' => ['user' => 'Unauthorized access'],
+            ], 401);
+        }
+
+        // Find the trainee
+        $trainee = User::find($trainee_id);
+        if (!$trainee) {
+            return response()->json([
+                'errors' => ['trainee' => 'Trainee not found'],
+            ], 404);
+        }
+
+        // Get trainee info
+        $trainee_info = $trainee->userInfo;
+        if (!$trainee_info) {
+            return response()->json([
+                'errors' => ['trainee' => 'Trainee info not found'],
+            ], 404);
+        }
+
+        // Calculate age
+        $age = now()->diffInYears($trainee->birth_date);
+
+        // Calculate equation based on gender
+        if ($trainee->gender == Genders::MALE) {
+            $eq = (6.25 * $trainee_info->height) + (10 * $trainee_info->weight) + (5 * $age);
+        } else {
+            $eq = (6.25 * $trainee_info->height) + (10 * $trainee_info->weight) - (5 * $age);
+        }
+
+        // Return the results
+        return response()->json([
+            '1.2' => 1.2 * $eq,
+            '1.5' => 1.5 * $eq,
+            '1.9' => 1.9 * $eq,
+        ]);
     }
 
     public function CreateDietProgram(DietRequest $request)

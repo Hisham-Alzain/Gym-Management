@@ -264,7 +264,8 @@
             "error_server": "An error occurred while creating the diet. Please try again.",
             "Success": "Success!",
             "SuccessPopup": "Your diet program has been created successfully!",
-            "ReturnPopup": "Go to Home"
+            "ReturnPopup": "Go to Home",
+            "select_equation": "Equation coefficient"
         },
         "show_diet": {
             "header": "'s Diet Program",
